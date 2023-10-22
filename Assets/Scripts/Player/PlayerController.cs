@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,14 +12,25 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _jumpForce;
     [SerializeField] private int _maxJumps;
 
+    private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody2D;
     private int _availableJumps;
+    private float _movementInput;
+    private bool _desiredJump;
+    private Vector2 _desiredVelocity;
     #endregion
 
     #region Unity methods
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Player.Enable();
+        _desiredVelocity = Vector2.zero;
+
+        _playerInputActions.Player.Jump.performed += JumpInput;
+
+
 
         if (_groundCheck == null)
         {
@@ -26,31 +38,31 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    void Start()
-    {
-        
-    }
-    
-
     void Update()
     {
-        MovePlayer();
+        HandleInputs();
+    }
+
+    private void FixedUpdate()
+    {
+        HorizontalMovement();
+        Jump();
+        ApplyMovement();
     }
     #endregion
 
-    private void MovePlayer()
+    private void HandleInputs()
     {
-        Vector2 myVelocity = _rigidbody2D.velocity;
-
-        myVelocity.x = Input.GetAxis("Horizontal") * _speed;
-
-        myVelocity = this.Jump(myVelocity);
-
-        _rigidbody2D.velocity = myVelocity;
-
+        _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
     }
 
-    private Vector2 Jump(Vector2 myVelocity)
+    public void HorizontalMovement()
+    {
+        _desiredVelocity = _rigidbody2D.velocity;
+        _desiredVelocity.x = _movementInput * _speed;
+    }
+
+    public void Jump()
     {
         bool isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
 
@@ -59,14 +71,21 @@ public class PlayerController : MonoBehaviour
             _availableJumps = _maxJumps;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && _availableJumps > 0) 
+        if (_desiredJump && _availableJumps > 0)
         {
-            myVelocity.y += _jumpForce;
+            _desiredVelocity.y += _jumpForce;
             _availableJumps -= 1;
+            _desiredJump = false;
         }
-
-        return myVelocity;
     }
 
+    public void ApplyMovement()
+    {
+        _rigidbody2D.velocity = _desiredVelocity;
+    }
 
+    public void JumpInput(InputAction.CallbackContext context)
+    {
+        _desiredJump = true;
+    }
 }

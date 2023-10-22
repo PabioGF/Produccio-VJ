@@ -10,17 +10,14 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] private float _attackDuration;
     [SerializeField] private float _attackCd;
 
-    private Animator _animator;
     private bool _isAttacking;
     private float _attackDurationTimer;
     private float _attackCdTimer = 1;
     #endregion
 
-    // Start is called before the first frame update
+    #region Unity methods
     void Start()
     {
-        _animator = GetComponent<Animator>();
-
         _attackArea.SetActive(false);
         if (_attackArea == null)
         {
@@ -28,20 +25,19 @@ public class PlayerAttack : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
     void Update()
     {
         Attack();
         CheckBools();
         
     }
+    #endregion
 
     private void Attack()
     {
         if (Input.GetKeyDown(KeyCode.Mouse0) && _attackCdTimer > _attackCd) {
             _isAttacking = true;
             _attackArea.SetActive(_isAttacking);
-            _animator.SetTrigger("Attack");
         }
     }
 
@@ -56,7 +52,6 @@ public class PlayerAttack : MonoBehaviour
                 _attackArea.SetActive(_isAttacking);
                 _attackDurationTimer = 0;
                 _attackCdTimer = 0;
-
             }
         } else
         {
