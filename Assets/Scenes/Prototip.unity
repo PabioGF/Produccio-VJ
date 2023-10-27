@@ -585,9 +585,29 @@ MonoBehaviour:
     m_ActionId: 11c80d85-db84-4d42-befc-09efbd06b478
     m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2091833593}
+        m_TargetAssemblyTypeName: PlayerAttack, Assembly-CSharp
+        m_MethodName: AttackInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: b171e5a0-419f-4707-948d-f634f0674a3f
     m_ActionName: Player/Attack
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: d25f771d-d6a7-42d1-bce4-3ddfa7949b3a
+    m_ActionName: Player/DodgeTrigger[/Keyboard/leftShift]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5b266f6c-f243-4921-928f-9f98ad9c20e7
+    m_ActionName: Player/Dodge Input[/Keyboard/s,/Keyboard/w]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
@@ -602,6 +622,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e5e9c1f9b4c33524f8c107b20ba62532, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2091833593 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5160320821678128178, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+  m_PrefabInstance: {fileID: 7360726067014642325}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2091833583}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2803ee88544f194798a15c8438aeaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &7360726067014642325
@@ -733,12 +764,40 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _maxJumps
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _maxSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _fallSpeed
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: _jumpForce
-      value: 5
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _bufferTime
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _acceleration
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _maxFallSpeed
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 7522392117402914908, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: m_AngularDrag
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7522392117402914908, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: m_GravityScale
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7828853054973466525, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: m_IsActive

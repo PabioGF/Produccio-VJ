@@ -11,6 +11,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _jumpForce;
     [SerializeField] private int _maxJumps;
+    [SerializeField] private float _maxSpeed;
+    [SerializeField] private float _acceleration;
+    [SerializeField] private float _bufferTime;
+    [SerializeField] private float _fallSpeed;
+    [SerializeField] private float _maxFallSpeed;
 
     private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody2D;
@@ -18,6 +23,9 @@ public class PlayerController : MonoBehaviour
     private float _movementInput;
     private bool _desiredJump;
     private Vector2 _desiredVelocity;
+    private bool _isGrounded;
+    private float _jumpPressed;
+    private float _timer;
     #endregion
 
     #region Unity methods
@@ -26,11 +34,8 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        _desiredVelocity = Vector2.zero;
 
         _playerInputActions.Player.Jump.performed += JumpInput;
-
-
 
         if (_groundCheck == null)
         {
@@ -41,11 +46,13 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInputs();
+        _timer += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         HorizontalMovement();
+        HandleEnvironment();
         Jump();
         ApplyMovement();
     }
@@ -56,22 +63,35 @@ public class PlayerController : MonoBehaviour
         _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
     }
 
+    private void HandleEnvironment()
+    {
+        _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        if (_isGrounded && _desiredVelocity.y <= 0)
+        {
+            _desiredVelocity.y = -0.1f;
+        }
+        else
+        {
+            _desiredVelocity.y = Mathf.MoveTowards(_desiredVelocity.y, -_maxFallSpeed, _fallSpeed * Time.fixedDeltaTime);
+        }
+    }
+
     public void HorizontalMovement()
     {
-        _desiredVelocity = _rigidbody2D.velocity;
-        _desiredVelocity.x = _movementInput * _speed;
+        _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, _acceleration * Time.fixedDeltaTime);
     }
 
     public void Jump()
     {
-        bool isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
-
-        if (isGrounded && !Input.GetKey(KeyCode.Space))
+        if (_isGrounded)
         {
             _availableJumps = _maxJumps;
         }
 
-        if (_desiredJump && _availableJumps > 0)
+        bool bufferedJump = _timer - _jumpPressed <= _bufferTime;
+
+        if (_desiredJump && _availableJumps > 0 && bufferedJump)
         {
             _desiredVelocity.y += _jumpForce;
             _availableJumps -= 1;
@@ -87,5 +107,6 @@ public class PlayerController : MonoBehaviour
     public void JumpInput(InputAction.CallbackContext context)
     {
         _desiredJump = true;
+        _jumpPressed = _timer;
     }
 }
