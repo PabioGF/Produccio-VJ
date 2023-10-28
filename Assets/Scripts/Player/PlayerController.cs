@@ -8,15 +8,21 @@ public class PlayerController : MonoBehaviour
 
     #region Variables
     [SerializeField] GameObject _groundCheck;
+
+    [Header("Movement settings")]
     [SerializeField] private float _speed;
-    [SerializeField] private float _jumpForce;
-    [SerializeField] private int _maxJumps;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
+    [SerializeField] private float _airAcceleration;
+
+    [Header("Jump settings")]
+    [SerializeField] private float _jumpForce;
+    [SerializeField] private int _maxJumps;
     [SerializeField] private float _bufferTime;
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
 
+    private PlayerCombat _playerCombat;
     private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody2D;
     private int _availableJumps;
@@ -32,6 +38,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _playerCombat = GetComponent<PlayerCombat>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 
@@ -41,6 +48,11 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("[PlayerController] La referència a groundCheck és null");
         }
+    }
+
+    private void OnDestroy()
+    {
+        _playerInputActions.Player.Jump.performed -= JumpInput;
     }
 
     void Update()
@@ -60,7 +72,13 @@ public class PlayerController : MonoBehaviour
 
     private void HandleInputs()
     {
-        _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
+        if (!_playerCombat.DodgeStance())
+        {
+            _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
+        } else
+        {
+            _movementInput = 0;
+        }
     }
 
     private void HandleEnvironment()
@@ -79,7 +97,15 @@ public class PlayerController : MonoBehaviour
 
     public void HorizontalMovement()
     {
-        _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, _acceleration * Time.fixedDeltaTime);
+        if (_movementInput == 0)
+        {
+            _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, 0, _acceleration * Time.fixedDeltaTime);
+        } 
+        else
+        {
+            float acceleration = _isGrounded ? _acceleration : _airAcceleration; 
+            _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
+        }
     }
 
     public void Jump()
@@ -106,7 +132,11 @@ public class PlayerController : MonoBehaviour
 
     public void JumpInput(InputAction.CallbackContext context)
     {
-        _desiredJump = true;
-        _jumpPressed = _timer;
+        if (context.performed) 
+        {
+            _desiredJump = true;
+            _jumpPressed = _timer;
+        }
+        
     }
 }
