@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerCombat : MonoBehaviour
 {
-
     #region Variables
     [Header("Attack settings")]
     [SerializeField] private GameObject _attackArea;
@@ -13,7 +12,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _attackCd;
 
     [Header("Dodge settings")]
-    [SerializeField] private GameObject _dodgeArea;
     [SerializeField] private GameObject _hurtbox;
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
@@ -21,8 +19,10 @@ public class PlayerCombat : MonoBehaviour
     private PlayerInputActions _playerInputActions;
     private bool _isAttacking;
     private float _attackCdTimer;
+
     private bool _dodgeStance;
-    private bool _isDodging;
+    private bool _isDodgingUp;
+    private bool _isDodgingDown;
     private float _dodgeCdTimer;
     #endregion
 
@@ -38,10 +38,6 @@ public class PlayerCombat : MonoBehaviour
         {
             Debug.LogError("[PlayerAttack] La referència a Attack Area és null");
         }
-        if (_dodgeArea == null)
-        {
-            Debug.LogError("[PlayerAttack] La referència a Dodge Area és null");
-        }
         if (_hurtbox == null)
         {
             Debug.LogError("[PlayerAttack] La referència a Hurtbox és null");
@@ -56,7 +52,6 @@ public class PlayerCombat : MonoBehaviour
     void Start()
     {
         _attackArea.SetActive(false); 
-        _dodgeArea.SetActive(false);
     }
 
     void Update()
@@ -73,9 +68,12 @@ public class PlayerCombat : MonoBehaviour
     private void HandleTimers()
     {
         if (!_isAttacking) { _attackCdTimer += Time.deltaTime; }
-        if (!_isDodging) { _dodgeCdTimer += Time.deltaTime; }
+        if (!_isDodgingUp && !_isDodgingDown) { _dodgeCdTimer += Time.deltaTime; }
     }
 
+    /// <summary>
+    /// Handles the dodge logic when holding the dodge trigger buttond and moving to the upper or lower direction axis
+    /// </summary>
     private void HandleDodge()
     {
         if (_playerInputActions.Player.DodgeTrigger.ReadValue<float>() == 1) { _dodgeStance = true; }
@@ -88,16 +86,19 @@ public class PlayerCombat : MonoBehaviour
             if (dodgeDirection == 1) 
             {
                 Debug.Log("dodge Up");
-                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge()); }
+                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge(true)); }
             }
             if (dodgeDirection == -1) 
             { 
                 Debug.Log("Dodge down");
-                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge()); }
+                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge(false)); }
             }
         }
     }
 
+    /// <summary>
+    /// Executes the attack coroutine when the button is pressed and the player is not pressing the dodge trigger button
+    /// </summary>
     public void AttackInput(InputAction.CallbackContext context)
     {
         if (context.performed && !_dodgeStance)
@@ -106,6 +107,9 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Activates the attack area during the set time and disables it afterwards
+    /// </summary>
     public IEnumerator ExecuteAttack()
     {
         _isAttacking = true;
@@ -118,30 +122,58 @@ public class PlayerCombat : MonoBehaviour
         _isAttacking = false;
     }
 
-    public IEnumerator ExecuteDodge()
+    /// <summary>
+    /// Determines the dodging direction of the player and deactivates it after the set time has passed
+    /// </summary>
+    public IEnumerator ExecuteDodge(bool upDodge)
     {
-        _isDodging = true;
-        _dodgeArea.SetActive(true);
-        _hurtbox.SetActive(false);
+        if (upDodge) { _isDodgingUp = true; }
+        else { _isDodgingDown = true;}
         _dodgeCdTimer = 0;
 
         yield return new WaitForSeconds(_dodgeDuration);
 
-        _dodgeArea.SetActive(false);
-        _hurtbox.SetActive(true);
-        _isDodging = false;
+        if (upDodge) { _isDodgingUp = false; }
+        else { _isDodgingDown = false; }
     }
 
+    /// <summary>
+    /// Returns the dodgeStance bool
+    /// </summary>
     public bool DodgeStance()
     {
         return _dodgeStance;
     }
 
+    /// <summary>
+    /// Handles all the collision interactions
+    /// </summary>
     public void OnHurtboxTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("enemyHit");
+            EnemyCollisionHandler(collision);
+        }
+    }
+
+    /// <summary>
+    /// Handles all the enemy collisions
+    /// </summary>
+    private void EnemyCollisionHandler(Collider2D collision)
+    {
+        if (_isDodgingUp)
+        {
+            if (collision.GetComponent<TestDodge>().GetAttackType()) { Debug.Log("Dodged"); }
+            else { Debug.Log("Enemy Hit"); }
+        }
+        else if (_isDodgingDown)
+        {
+            if (collision.GetComponent<TestDodge>().GetAttackType()) { Debug.Log("Enemy Hit"); }
+            else { Debug.Log("Dodged"); }
+        }
+        else
+        {
+            Debug.Log("Enemy Hit");
         }
     }
 }

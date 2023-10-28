@@ -5,7 +5,6 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-
     #region Variables
     [SerializeField] GameObject _groundCheck;
 
@@ -70,6 +69,9 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// Function that gets the player movement inputs
+    /// </summary>
     private void HandleInputs()
     {
         if (!_playerCombat.DodgeStance())
@@ -81,6 +83,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that handles with the external conditions that affect the player movement
+    /// </summary>
     private void HandleEnvironment()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
@@ -95,6 +100,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that handles the horizontal movement of the player
+    /// </summary>
     public void HorizontalMovement()
     {
         if (_movementInput == 0)
@@ -108,6 +116,9 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that handles the executrion of the jump considering all the variables that are implied
+    /// </summary>
     public void Jump()
     {
         if (_isGrounded)
@@ -125,11 +136,17 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Function that applies the final movement to the player
+    /// </summary>
     public void ApplyMovement()
     {
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
+    /// <summary>
+    /// Function that executes then the jump button is pressed and lets the script know
+    /// </summary>
     public void JumpInput(InputAction.CallbackContext context)
     {
         if (context.performed) 
@@ -137,6 +154,5 @@ public class PlayerController : MonoBehaviour
             _desiredJump = true;
             _jumpPressed = _timer;
         }
-        
     }
 }
