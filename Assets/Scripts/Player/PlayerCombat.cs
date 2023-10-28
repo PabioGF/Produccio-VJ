@@ -14,6 +14,7 @@ public class PlayerCombat : MonoBehaviour
 
     [Header("Dodge settings")]
     [SerializeField] private GameObject _dodgeArea;
+    [SerializeField] private GameObject _hurtbox;
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
@@ -40,6 +41,10 @@ public class PlayerCombat : MonoBehaviour
         if (_dodgeArea == null)
         {
             Debug.LogError("[PlayerAttack] La referència a Dodge Area és null");
+        }
+        if (_hurtbox == null)
+        {
+            Debug.LogError("[PlayerAttack] La referència a Hurtbox és null");
         }
     }
 
@@ -117,16 +122,26 @@ public class PlayerCombat : MonoBehaviour
     {
         _isDodging = true;
         _dodgeArea.SetActive(true);
+        _hurtbox.SetActive(false);
         _dodgeCdTimer = 0;
 
         yield return new WaitForSeconds(_dodgeDuration);
 
         _dodgeArea.SetActive(false);
+        _hurtbox.SetActive(true);
         _isDodging = false;
     }
 
     public bool DodgeStance()
     {
         return _dodgeStance;
+    }
+
+    public void OnHurtboxTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Enemy"))
+        {
+            Debug.Log("enemyHit");
+        }
     }
 }
