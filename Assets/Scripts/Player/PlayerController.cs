@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables
     [SerializeField] GameObject _groundCheck;
+    [SerializeField] GameObject _topCheck;
 
     [Header("Movement settings")]
     [SerializeField] private float _speed;
@@ -31,6 +32,7 @@ public class PlayerController : MonoBehaviour
     private bool _isGrounded;
     private float _jumpPressed;
     private float _timer;
+    private bool _stopJump;
     #endregion
 
     #region Unity methods
@@ -45,7 +47,11 @@ public class PlayerController : MonoBehaviour
 
         if (_groundCheck == null)
         {
-            Debug.LogError("[PlayerController] La referència a groundCheck és null");
+            Debug.LogError("[PlayerController] La referència a Ground Check és null");
+        }
+        if (_topCheck == null)
+        {
+            Debug.LogError("[PlayerController] La referència a Top Check és null");
         }
     }
 
@@ -89,6 +95,9 @@ public class PlayerController : MonoBehaviour
     private void HandleEnvironment()
     {
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+        _stopJump = Physics2D.OverlapCircle(_topCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        Debug.Log(_stopJump);
 
         if (_isGrounded && _desiredVelocity.y <= 0)
         {
@@ -96,6 +105,7 @@ public class PlayerController : MonoBehaviour
         }
         else
         {
+            if (_stopJump) _desiredVelocity.y = Mathf.Min(0, _desiredVelocity.y);
             _desiredVelocity.y = Mathf.MoveTowards(_desiredVelocity.y, -_maxFallSpeed, _fallSpeed * Time.fixedDeltaTime);
         }
     }

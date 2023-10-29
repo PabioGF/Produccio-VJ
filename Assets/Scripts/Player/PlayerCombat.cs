@@ -16,6 +16,9 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
+    [Header("Other settings")]
+    [SerializeField] private float _hitStopDuration;
+
     private PlayerInputActions _playerInputActions;
     private bool _isAttacking;
     private float _attackCdTimer;
@@ -24,6 +27,8 @@ public class PlayerCombat : MonoBehaviour
     private bool _isDodgingUp;
     private bool _isDodgingDown;
     private float _dodgeCdTimer;
+
+    private HitStopController _hitStopController;
     #endregion
 
     #region Unity methods
@@ -33,6 +38,7 @@ public class PlayerCombat : MonoBehaviour
         _playerInputActions.Player.Enable();
 
         _playerInputActions.Player.Attack.performed += AttackInput;
+        _hitStopController = FindAnyObjectByType<HitStopController>();
 
         if (_attackArea == null)
         {
@@ -67,8 +73,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleTimers()
     {
-        if (!_isAttacking) { _attackCdTimer += Time.deltaTime; }
-        if (!_isDodgingUp && !_isDodgingDown) { _dodgeCdTimer += Time.deltaTime; }
+        if (!_isAttacking) _attackCdTimer += Time.deltaTime;
+        if (!_isDodgingUp && !_isDodgingDown) _dodgeCdTimer += Time.deltaTime;
     }
 
     /// <summary>
@@ -76,22 +82,26 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void HandleDodge()
     {
-        if (_playerInputActions.Player.DodgeTrigger.ReadValue<float>() == 1) { _dodgeStance = true; }
-        else { _dodgeStance = false; }
+        if (_playerInputActions.Player.DodgeTrigger.ReadValue<float>() == 1) _dodgeStance = true;
+        else _dodgeStance = false;
 
         if (_dodgeStance)
         {
             float dodgeDirection = _playerInputActions.Player.DodgeInput.ReadValue<float>();
 
-            if (dodgeDirection == 1) 
+            if (_dodgeCdTimer > _dodgeCd)
             {
-                Debug.Log("dodge Up");
-                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge(true)); }
-            }
-            if (dodgeDirection == -1) 
-            { 
-                Debug.Log("Dodge down");
-                if (_dodgeCdTimer > _dodgeCd) { StartCoroutine(ExecuteDodge(false)); }
+
+                if (dodgeDirection == 1) 
+                {
+                    _isDodgingUp = true;
+                    Invoke(nameof(StopDodge), _dodgeDuration);
+                }
+                if (dodgeDirection == -1) 
+                {
+                    _isDodgingDown = true;
+                    Invoke(nameof(StopDodge), _dodgeDuration);
+                }
             }
         }
     }
@@ -103,7 +113,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (context.performed && !_dodgeStance)
         {
-            if (_attackCdTimer > _attackCd) { StartCoroutine(ExecuteAttack()); }
+            if (_attackCdTimer > _attackCd) StartCoroutine(ExecuteAttack()); 
         }
     }
 
@@ -125,16 +135,10 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Determines the dodging direction of the player and deactivates it after the set time has passed
     /// </summary>
-    public IEnumerator ExecuteDodge(bool upDodge)
+    public void StopDodge()
     {
-        if (upDodge) { _isDodgingUp = true; }
-        else { _isDodgingDown = true;}
-        _dodgeCdTimer = 0;
-
-        yield return new WaitForSeconds(_dodgeDuration);
-
-        if (upDodge) { _isDodgingUp = false; }
-        else { _isDodgingDown = false; }
+        _isDodgingUp = false;
+        _isDodgingDown = false;
     }
 
     /// <summary>
@@ -163,17 +167,28 @@ public class PlayerCombat : MonoBehaviour
     {
         if (_isDodgingUp)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) { Debug.Log("Dodged"); }
-            else { Debug.Log("Enemy Hit"); }
+            if (collision.GetComponent<TestDodge>().GetAttackType()) OnDodge();
+            else OnEnemyHit();
         }
         else if (_isDodgingDown)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) { Debug.Log("Enemy Hit"); }
-            else { Debug.Log("Dodged"); }
+            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit(); 
+            else OnDodge();
         }
         else
         {
-            Debug.Log("Enemy Hit");
+            OnEnemyHit();
         }
+    }
+
+    private void OnEnemyHit()
+    {
+        Debug.Log("Enemy Hit");
+        _hitStopController.StopTime(0f, _hitStopDuration);
+    }
+
+    private void OnDodge()
+    {
+        Debug.Log("Dodged");
     }
 }

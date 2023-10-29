@@ -91,7 +91,7 @@ MonoBehaviour:
   _maxSpeed: 10
   _acceleration: 50
   _airAcceleration: 30
-  _jumpForce: 10
+  _jumpForce: 12
   _maxJumps: 1
   _bufferTime: 0.2
   _fallSpeed: 30
@@ -109,12 +109,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _attackArea: {fileID: 7828853054973466525}
-  _attackDuration: 0.3
+  _attackDuration: 0.1
   _attackCd: 0.4
-  _dodgeArea: {fileID: 8112752297346848620}
   _hurtbox: {fileID: 6811687874427469595}
   _dodgeDuration: 0.5
   _dodgeCd: 1
+  _hitStopDuration: 0.05
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -174,8 +174,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.001585424, y: -0.015226126}
-  m_Size: {x: 0.59900415, y: 0.7859335}
+  m_Offset: {x: 0.020992756, y: 0.006053835}
+  m_Size: {x: 0.5538478, y: 0.7433736}
   m_Direction: 0
 --- !u!95 &1162993274704312679
 Animator:
@@ -397,6 +397,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8515079538127497808}
   - component: {fileID: 4719653573109154232}
+  - component: {fileID: 7076986651902574862}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -464,6 +465,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.50741816, y: 0.8195119}
   m_EdgeRadius: 0
+--- !u!114 &7076986651902574862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6811687874427469595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c46f82584b702cc42896de86a7aa5152, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 5180191103471191624}
 --- !u!1 &7828853054973466525
 GameObject:
   m_ObjectHideFlags: 0
