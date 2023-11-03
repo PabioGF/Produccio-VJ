@@ -6,27 +6,39 @@ public class TestDodge : MonoBehaviour
 {
     [SerializeField] private bool _bulletType;
     [SerializeField] private float _lifeSpan;
+    [SerializeField] private float _speed;
 
-    private Rigidbody2D rb;
-    public float speed;
-    public bool upAttack;
+
+    private Rigidbody2D _rigidbody;
     private float _timer;
+    private Vector2 _direction;
     
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();  
+        _rigidbody = GetComponent<Rigidbody2D>();  
     }
 
     void Update()
     {
-        rb.velocity = Vector3.left * speed;
+        Move();
+        
         _timer = Time.deltaTime;
 
         if (_timer > _lifeSpan) Destroy(gameObject);
     }
 
+    private void Move()
+    {
+        _rigidbody.velocity = _direction.normalized * _speed;
+    }
+
     public bool GetAttackType()
     {
         return _bulletType;
+    }
+
+    public void SetDirection(Vector2 direction)
+    {
+        _direction = direction;
     }
 }
