@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class TestDodge : MonoBehaviour
 {
+    [SerializeField] private bool _bulletType;
+    [SerializeField] private float _lifeSpan;
+
     private Rigidbody2D rb;
     public float speed;
     public bool upAttack;
+    private float _timer;
     
     void Start()
     {
@@ -16,14 +20,13 @@ public class TestDodge : MonoBehaviour
     void Update()
     {
         rb.velocity = Vector3.left * speed;
-        if (transform.position.x < -5)
-        {
-            transform.position = new Vector3(5, transform.position.y, transform.position.z);
-        }
+        _timer = Time.deltaTime;
+
+        if (_timer > _lifeSpan) Destroy(gameObject);
     }
 
     public bool GetAttackType()
     {
-        return upAttack;
+        return _bulletType;
     }
 }
