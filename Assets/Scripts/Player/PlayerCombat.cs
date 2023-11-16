@@ -27,6 +27,7 @@ public class PlayerCombat : MonoBehaviour
     private bool _isDodgingUp;
     private bool _isDodgingDown;
     private float _dodgeCdTimer;
+    private Animator _myAnimator;
 
     private HitStopController _hitStopController;
     #endregion
@@ -39,6 +40,7 @@ public class PlayerCombat : MonoBehaviour
 
         _playerInputActions.Player.Attack.performed += AttackInput;
         _hitStopController = FindAnyObjectByType<HitStopController>();
+        _myAnimator = GetComponent<Animator>();
 
         if (_attackArea == null)
         {
@@ -57,16 +59,12 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        _attackArea.SetActive(false); 
+       _attackArea.SetActive(false); 
     }
 
     void Update()
     {
         HandleTimers();
-    }
-
-    private void FixedUpdate()
-    {
         HandleDodge();
     }
     #endregion
@@ -113,23 +111,19 @@ public class PlayerCombat : MonoBehaviour
     {
         if (context.performed && !_dodgeStance)
         {
-            if (_attackCdTimer > _attackCd) StartCoroutine(ExecuteAttack()); 
+            Debug.Log("Attack");
+            ExecuteAttack();
         }
     }
 
     /// <summary>
     /// Activates the attack area during the set time and disables it afterwards
     /// </summary>
-    public IEnumerator ExecuteAttack()
+    public void ExecuteAttack()
     {
+        _myAnimator.SetTrigger("startAttack");
         _isAttacking = true;
-        _attackArea.SetActive(true);
         _attackCdTimer = 0;
-
-        yield return new WaitForSeconds(_attackDuration);
-
-        _attackArea.SetActive(false);
-        _isAttacking = false;
     }
 
     /// <summary>
@@ -154,7 +148,7 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     public void OnHurtboxTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Enemy"))
+        if (collision.CompareTag("Enemy") || collision.CompareTag("Projectile"))
         {
             EnemyCollisionHandler(collision);
         }
@@ -168,27 +162,38 @@ public class PlayerCombat : MonoBehaviour
         if (_isDodgingUp)
         {
             if (collision.GetComponent<TestDodge>().GetAttackType()) OnDodge();
-            else OnEnemyHit();
+            else OnEnemyHit(collision);
         }
         else if (_isDodgingDown)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit(); 
+            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit(collision); 
             else OnDodge();
         }
         else
         {
-            OnEnemyHit();
+            OnEnemyHit(collision);
         }
     }
 
-    private void OnEnemyHit()
+    private void OnEnemyHit(Collider2D collision)
     {
         Debug.Log("Enemy Hit");
+        if (collision.CompareTag("Projectile")) Destroy(collision.gameObject);
         _hitStopController.StopTime(0f, _hitStopDuration);
     }
 
     private void OnDodge()
     {
         Debug.Log("Dodged");
+    }
+
+    private void EnableAttackArea()
+    {
+        _attackArea.SetActive(true);
+    }
+
+    private void DIsableAttackArea()
+    {
+        _attackArea.SetActive(false);
     }
 }
