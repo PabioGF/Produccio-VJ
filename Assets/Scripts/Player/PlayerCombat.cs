@@ -161,12 +161,12 @@ public class PlayerCombat : MonoBehaviour
     {
         if (_isDodgingUp)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnDodge();
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnDodge();
             else OnEnemyHit(collision);
         }
         else if (_isDodgingDown)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit(collision); 
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnEnemyHit(collision); 
             else OnDodge();
         }
         else
@@ -181,7 +181,6 @@ public class PlayerCombat : MonoBehaviour
         if (collision.CompareTag("Projectile")) Destroy(collision.gameObject);
         _hitStopController.StopTime(0f, _hitStopDuration);
     }
-
     private void OnDodge()
     {
         Debug.Log("Dodged");
@@ -195,5 +194,15 @@ public class PlayerCombat : MonoBehaviour
     private void DIsableAttackArea()
     {
         _attackArea.SetActive(false);
+    }
+
+    public bool IsDodgingUp()
+    {
+        return _isDodgingUp;
+    }
+
+    public bool IsDodgingDown()
+    {
+        return _isDodgingDown;
     }
 }

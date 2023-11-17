@@ -75,6 +75,7 @@ GameObject:
   - component: {fileID: 942383339766095506}
   - component: {fileID: 6838906068520528515}
   - component: {fileID: 5160320821678128178}
+  - component: {fileID: 445240575444087349}
   - component: {fileID: 7522392117402914908}
   - component: {fileID: 1831358464902730382}
   - component: {fileID: 1162993274704312679}
@@ -119,7 +120,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _topCheck: {fileID: 4851809869253839299}
-  _speed: 5
   _maxSpeed: 10
   _acceleration: 50
   _airAcceleration: 30
@@ -147,6 +147,20 @@ MonoBehaviour:
   _dodgeDuration: 0.5
   _dodgeCd: 1
   _hitStopDuration: 0.05
+--- !u!114 &445240575444087349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5180191103471191624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff9c087a175cf45b2b866f2a7cccb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCombat: {fileID: 5160320821678128178}
+  _maxLife: 1
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4

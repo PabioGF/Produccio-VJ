@@ -54,6 +54,6 @@ public class TurretScript : MonoBehaviour
     {
         GameObject bullet = Random.Range(0f, 1f) > _upperBulletProbability ? _highBullet : _lowBullet;
         GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
-        newBullet.GetComponent<TestDodge>().SetDirection(_aimDirection);
+        newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
 }

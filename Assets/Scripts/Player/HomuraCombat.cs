@@ -176,12 +176,12 @@ public class HomuraCombat : MonoBehaviour
     {
         if (_isDodgingUp)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnDodge();
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnDodge();
             else OnEnemyHit();
         }
         else if (_isDodgingDown)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit();
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnEnemyHit();
             else OnDodge();
         }
         else

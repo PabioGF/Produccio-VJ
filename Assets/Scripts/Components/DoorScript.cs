@@ -10,7 +10,7 @@ public class DoorScript : MonoBehaviour
     private void Open()
     {
         _isOpen = true;
-        Destroy(_collider);
+        _collider.enabled = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
