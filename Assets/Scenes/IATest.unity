@@ -228,8 +228,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1ea2cfdb22ced478d5055110e33619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
-  upAttack: 0
+  _bulletType: 0
+  _lifeSpan: 0
+  _speed: 0
 --- !u!61 &236916827
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -381,6 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf7fb6f1d39d404e8f8465f8351d21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _damage: 0
 --- !u!1 &265574511
 GameObject:
   m_ObjectHideFlags: 0
@@ -702,6 +704,10 @@ PrefabInstance:
     - target: {fileID: 4609108240381488255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
       propertyPath: m_Name
       value: Shooter
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609108240381488255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8718256914232003255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
       propertyPath: type
@@ -1209,7 +1215,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1372386990}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Feet2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1283,7 +1289,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1444083968}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Feet1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1557,12 +1563,16 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4609108240381488255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
+      propertyPath: m_Layer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4609108240381488255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8718256914232003255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
       propertyPath: type
-      value: normal
+      value: shooter
       objectReference: {fileID: 0}
     - target: {fileID: 8718256914232003255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
       propertyPath: player
