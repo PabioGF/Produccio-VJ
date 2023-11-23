@@ -147,10 +147,10 @@ public class IAController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        LifeComponent life = collision.gameObject.GetComponent<LifeComponent>();
+        PlayerLifeComponent life = collision.gameObject.GetComponent<PlayerLifeComponent>();
         if (life != null)
         {
-            life.ApplyDamage(1f);
+            life.ReceiveHit(1f, true);
         }
     }
 }
