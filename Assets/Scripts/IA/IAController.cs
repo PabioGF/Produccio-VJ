@@ -12,6 +12,9 @@ public class IAController : MonoBehaviour
     private Transform jugador;
     public float tiempoCambioDireccion = 3.0f;
     public string type;
+    public enum EnemyType { Shooter, Normal}
+    public EnemyType typeenum;
+        
     private float tiempoActual;
     private int direccion = 1;
     public float distanciaDisparo = 10.0f;
@@ -34,7 +37,8 @@ public class IAController : MonoBehaviour
     private void Update()
     {
         Vector3 myVelocity = myRB.velocity;
-        if(type == "normal")
+
+        if(typeenum == EnemyType.Normal)
         {
             myVelocity = NormalIA(myVelocity);
         }
@@ -45,6 +49,7 @@ public class IAController : MonoBehaviour
         myRB.velocity = myVelocity;
 
     }
+
 
     private Vector3 ShooterIA(Vector3 myVelocity)
     {
@@ -88,7 +93,15 @@ public class IAController : MonoBehaviour
         // Lanzamos un rayo desde el enemigo hacia el jugador.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, jugador.position - transform.position, distanciaDisparo);
         Debug.Log("Rayo de visión lanzado.");
-        Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
+        if (hit.collider != null)
+        {
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
+        }
+        else
+        {
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
+        }
+        
 
         // Si el rayo no choca con ningún objeto, devuelve true.
         return hit.collider != null && hit.collider.CompareTag("Player");
