@@ -115,14 +115,15 @@ public class HomuraCombat : MonoBehaviour
     /// </summary>
     public void AttackInput(InputAction.CallbackContext context)
     {
+        Debug.Log("attack");
         if (context.performed && !_dodgeStance)
         {
-            if (_attackCdTimer > _attackCd)
-            {
-                
-                StartCoroutine(ExecuteAttack());
-                
-            }
+           
+                Debug.Log("attack");
+                //StartCoroutine(ExecuteAttack());
+                ExecuteAttack();
+
+ 
                 
 
         }
@@ -131,20 +132,13 @@ public class HomuraCombat : MonoBehaviour
     /// <summary>
     /// Activates the attack area during the set time and disables it afterwards
     /// </summary>
-    public IEnumerator ExecuteAttack()
+    public void ExecuteAttack()
     {
-        _myAnimator.ResetTrigger("endAttack");
+        
         _myAnimator.SetTrigger("startAttack");
         _isAttacking = true;
-        _attackArea.SetActive(true);
         _attackCdTimer = 0;
 
-        yield return new WaitForSeconds(_attackDuration);
-
-        _myAnimator.ResetTrigger("startAttack");
-        _myAnimator.SetTrigger("endAttack");
-        _attackArea.SetActive(false);
-        _isAttacking = false;
     }
 
     /// <summary>
@@ -182,12 +176,12 @@ public class HomuraCombat : MonoBehaviour
     {
         if (_isDodgingUp)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnDodge();
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnDodge();
             else OnEnemyHit();
         }
         else if (_isDodgingDown)
         {
-            if (collision.GetComponent<TestDodge>().GetAttackType()) OnEnemyHit();
+            if (collision.GetComponent<BulletScript>().GetAttackType()) OnEnemyHit();
             else OnDodge();
         }
         else

@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] GameObject _topCheck;
 
     [Header("Movement settings")]
-    [SerializeField] private float _speed;
     [SerializeField] private float _maxSpeed;
     [SerializeField] private float _acceleration;
     [SerializeField] private float _airAcceleration;
@@ -33,6 +32,9 @@ public class PlayerController : MonoBehaviour
     private float _jumpPressed;
     private float _timer;
     private bool _stopJump;
+
+    private Animator _myAnimator;
+    private bool _hasKey;
     #endregion
     public bool hasKey = false;
 
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
+        _myAnimator = GetComponent<Animator>();
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 
@@ -59,6 +62,8 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("[PlayerController] La refer�ncia a Top Check �s null");
         }
+        
+
     }
 
     private void OnDestroy()
@@ -128,6 +133,8 @@ public class PlayerController : MonoBehaviour
             float acceleration = _isGrounded ? _acceleration : _airAcceleration; 
             _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
         }
+
+        _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
     /// <summary>
@@ -148,6 +155,8 @@ public class PlayerController : MonoBehaviour
             _availableJumps -= 1;
             _desiredJump = false;
         }
+
+        _myAnimator.SetBool("isGrounded", _isGrounded);
     }
 
     /// <summary>
@@ -168,5 +177,15 @@ public class PlayerController : MonoBehaviour
             _desiredJump = true;
             _jumpPressed = _timer;
         }
+    }
+
+    public void GiveKey(bool key)
+    {
+        _hasKey = key;
+    }
+
+    public bool HasKey()
+    {
+        return _hasKey;
     }
 }

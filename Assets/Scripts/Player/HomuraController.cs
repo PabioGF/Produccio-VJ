@@ -101,7 +101,7 @@ public class HomuraController : MonoBehaviour
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
         _stopJump = Physics2D.OverlapCircle(_topCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
 
-        Debug.Log(_stopJump);
+        //Debug.Log(_stopJump);
 
         if (_isGrounded && _desiredVelocity.y <= 0)
         {
