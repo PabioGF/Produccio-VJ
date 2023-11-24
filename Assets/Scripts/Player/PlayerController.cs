@@ -134,6 +134,16 @@ public class PlayerController : MonoBehaviour
             _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
         }
 
+        if(_desiredVelocity.x < 0)
+        {
+            transform.localScale = new Vector3(-1, 1, 1);
+
+        } else
+        {
+            transform.localScale = new Vector3(1, 1, 1);
+
+        }
+
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
