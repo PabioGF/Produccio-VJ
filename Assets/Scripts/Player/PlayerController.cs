@@ -34,8 +34,14 @@ public class PlayerController : MonoBehaviour
     private float _timer;
     private bool _stopJump;
     #endregion
+    public bool hasKey = false;
 
     #region Unity methods
+    public void setKey(bool key)
+    {
+        hasKey = key; 
+    }
+
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -47,11 +53,11 @@ public class PlayerController : MonoBehaviour
 
         if (_groundCheck == null)
         {
-            Debug.LogError("[PlayerController] La referència a Ground Check és null");
+            Debug.LogError("[PlayerController] La referï¿½ncia a Ground Check ï¿½s null");
         }
         if (_topCheck == null)
         {
-            Debug.LogError("[PlayerController] La referència a Top Check és null");
+            Debug.LogError("[PlayerController] La referï¿½ncia a Top Check ï¿½s null");
         }
     }
 
