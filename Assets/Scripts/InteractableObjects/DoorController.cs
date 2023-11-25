@@ -8,6 +8,8 @@ public class DoorController : InteractableObject
     [SerializeField] private Sprite _openSprite;
 
     private bool isOpen;
+    private bool isUnlocked;
+    private bool _hasInteracted;
 
     protected override void Awake()
     {
@@ -17,31 +19,41 @@ public class DoorController : InteractableObject
 
     protected override void Interact(PlayerController playerController)
     {
-        bool hasKey = playerController.HasItem(InventoryItem.ItemType.Key, id);
-        Debug.Log("Has key");
-
-        if (hasKey)
+        if (isUnlocked)
         {
-            isOpen = true;
-            //collision.GetComponent<PlayerController>().setKey(false);
-            //GetComponent<SpriteRenderer>().sprite = _openSprite;
-            GetComponent<Collider2D>().enabled = false;
+            ToggleDoor();
         }
         else
         {
-            Debug.Log("Necesitas una llave para abrir esta puerta.");
+            bool hasKey = playerController.HasItem(InventoryItem.ItemType.Key, id);
+            Debug.Log(hasKey);
+            if (hasKey)
+            {
+                isUnlocked = true;
+                ToggleDoor();
+            }
         }
+    }
+
+    private void ToggleDoor()
+    {
+        GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
+        GetComponent<Collider2D>().enabled = isOpen ? true : false;
+        isOpen = !isOpen;
     }
 
     /// <summary>
     /// Checks if the player enters the door trigger
     /// </summary>
     /// <param name="collision">Collision</param>
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
+        if (_playerInputActions.Player.Interact.ReadValue<float>() == 0) _hasInteracted = false;
+
         if (collision.TryGetComponent<PlayerController>(out var component) && _playerInputActions.Player.Interact.ReadValue<float>() == 1)
         {
-            Interact(component);
+            if (!_hasInteracted) Interact(component);
+            _hasInteracted = true;
         }
     }
 }

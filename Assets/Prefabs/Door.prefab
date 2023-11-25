@@ -10,9 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1812639029791364061}
   - component: {fileID: 3503412097645726394}
-  - component: {fileID: 735984035810861300}
   - component: {fileID: 212344166546849818}
   - component: {fileID: 5062917582159612491}
+  - component: {fileID: 6108749265521433605}
   m_Layer: 6
   m_Name: Door
   m_TagString: Ground
@@ -87,19 +87,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &735984035810861300
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1595495727249769263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6ef7bfa8e694ecc458fb519aef015178, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _collider: {fileID: 5062917582159612491}
 --- !u!50 &212344166546849818
 Rigidbody2D:
   serializedVersion: 4
@@ -156,7 +143,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -172,3 +159,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6108749265521433605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1595495727249769263}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5830c5299ba64023ac34d43fc216ff8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  id: 1
+  _closedSprite: {fileID: 0}
+  _openSprite: {fileID: 0}
