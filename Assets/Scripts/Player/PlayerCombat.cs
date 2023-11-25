@@ -16,20 +16,18 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
-    [Header("Other settings")]
-    [SerializeField] private float _hitStopDuration;
-
     private PlayerInputActions _playerInputActions;
     private bool _isAttacking;
     private float _attackCdTimer;
 
     private bool _dodgeStance;
-    private bool _isDodgingUp;
-    private bool _isDodgingDown;
+    private bool _isDodging;
     private float _dodgeCdTimer;
     private Animator _myAnimator;
 
-    private HitStopController _hitStopController;
+    public enum DodgeType { HighDodge, LowDodge };
+    private DodgeType _dodgeType;
+
     #endregion
 
     #region Unity methods
@@ -39,7 +37,6 @@ public class PlayerCombat : MonoBehaviour
         _playerInputActions.Player.Enable();
 
         _playerInputActions.Player.Attack.performed += AttackInput;
-        _hitStopController = FindAnyObjectByType<HitStopController>();
         _myAnimator = GetComponent<Animator>();
 
         if (_attackArea == null)
@@ -59,7 +56,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-       _attackArea.SetActive(false); 
+        _attackArea.SetActive(false);
     }
 
     void Update()
@@ -72,7 +69,7 @@ public class PlayerCombat : MonoBehaviour
     private void HandleTimers()
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
-        if (!_isDodgingUp && !_isDodgingDown) _dodgeCdTimer += Time.deltaTime;
+        if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
     }
 
     /// <summary>
@@ -90,14 +87,14 @@ public class PlayerCombat : MonoBehaviour
             if (_dodgeCdTimer > _dodgeCd)
             {
 
-                if (dodgeDirection == 1) 
+                if (dodgeDirection == 1)
                 {
-                    _isDodgingUp = true;
+                    _dodgeType = DodgeType.HighDodge;
                     Invoke(nameof(StopDodge), _dodgeDuration);
                 }
-                if (dodgeDirection == -1) 
+                if (dodgeDirection == -1)
                 {
-                    _isDodgingDown = true;
+                    _dodgeType = DodgeType.LowDodge;
                     Invoke(nameof(StopDodge), _dodgeDuration);
                 }
             }
@@ -131,8 +128,7 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     public void StopDodge()
     {
-        _isDodgingUp = false;
-        _isDodgingDown = false;
+        _isDodging = false;
     }
 
     /// <summary>
@@ -143,45 +139,7 @@ public class PlayerCombat : MonoBehaviour
         return _dodgeStance;
     }
 
-    /// <summary>
-    /// Handles all the collision interactions
-    /// </summary>
-    public void OnHurtboxTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Projectile"))
-        {
-            EnemyCollisionHandler(collision);
-        }
-    }
-
-    /// <summary>
-    /// Handles all the enemy collisions
-    /// </summary>
-    private void EnemyCollisionHandler(Collider2D collision)
-    {
-        if (_isDodgingUp)
-        {
-            if (collision.GetComponent<BulletScript>().GetAttackType()) OnDodge();
-            else OnEnemyHit(collision);
-        }
-        else if (_isDodgingDown)
-        {
-            if (collision.GetComponent<BulletScript>().GetAttackType()) OnEnemyHit(collision); 
-            else OnDodge();
-        }
-        else
-        {
-            OnEnemyHit(collision);
-        }
-    }
-
-    private void OnEnemyHit(Collider2D collision)
-    {
-        Debug.Log("Enemy Hit");
-        if (collision.CompareTag("Projectile")) Destroy(collision.gameObject);
-        _hitStopController.StopTime(0f, _hitStopDuration);
-    }
-    private void OnDodge()
+    public void OnDodge()
     {
         Debug.Log("Dodged");
     }
@@ -196,13 +154,8 @@ public class PlayerCombat : MonoBehaviour
         _attackArea.SetActive(false);
     }
 
-    public bool IsDodgingUp()
-    {
-        return _isDodgingUp;
-    }
+    public DodgeType GetDodgeType => _dodgeType;
 
-    public bool IsDodgingDown()
-    {
-        return _isDodgingDown;
-    }
+    public bool IsDodging => _isDodging;
+
 }

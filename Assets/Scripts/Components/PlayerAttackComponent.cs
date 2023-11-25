@@ -8,7 +8,7 @@ public class PlayerAttackComponent : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.TryGetComponent<EnemyLifeComponent>(out var life))
+        if (collision.TryGetComponent<LifeComponent>(out var life))
         {
             life.ReceiveHit(_damage);
         }       

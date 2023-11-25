@@ -8,19 +8,31 @@ public class PlayerLifeComponent : LifeComponent
     #region Variables
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private float _respawnDelay;
+    [SerializeField] private float _hitStopDuration;
+    [SerializeField] private HitStopController _hitStopController;
     #endregion
 
-    protected override void ReceiveHit(float amount, AttackTypes attackType)
+    public override void ReceiveHit(float amount, AttackTypes attackType)
     {
-        if (attackType == AttackTypes.HighAttack && _playerCombat.IsDodgingUp() || attackType == AttackTypes.LowAttack && _playerCombat.IsDodgingDown()) return;
-
-        base.ReceiveHit(amount);
-        Invoke(nameof(Respawn), _respawnDelay);
+        if (attackType == AttackTypes.HighAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.HighDodge ||
+            attackType == AttackTypes.LowAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.LowDodge ||
+            attackType == AttackTypes.DefaultAttack && _playerCombat.IsDodging)
+        {
+            _playerCombat.OnDodge();
+        }
+        else
+        {
+            _hitStopController.StopTime(0f, _hitStopDuration);
+            base.ReceiveHit(amount);
+            if (_isDead)
+                Invoke(nameof(Respawn), _respawnDelay);
+        } 
     }
 
     private void Respawn()
     {
-        transform.position = new Vector3(-5, 0, 0);
-        gameObject.SetActive(true);
+        _parent.transform.position = new Vector3(-5, 0, 0);
+        _currentLife = _maxLife;
+        _parent.gameObject.SetActive(true);
     }
 }
