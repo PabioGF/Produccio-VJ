@@ -3,33 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerLifeComponent : MonoBehaviour
+public class PlayerLifeComponent : LifeComponent
 {
     #region Variables
     [SerializeField] private PlayerCombat _playerCombat;
-    [SerializeField] private float _maxLife;
-    private float _currentLife;
-    private bool _isDead;
+    [SerializeField] private float _respawnDelay;
     #endregion
 
-    #region Unity methods
-    void Start()
+    protected override void ReceiveHit(float amount, AttackTypes attackType)
     {
-        _currentLife = _maxLife;
-    }
-    #endregion
-    public void ReceiveHit(float amount, bool upAttack)
-    {
-        if (upAttack && _playerCombat.IsDodgingUp() || !upAttack && _playerCombat.IsDodgingDown()) return; 
+        if (attackType == AttackTypes.HighAttack && _playerCombat.IsDodgingUp() || attackType == AttackTypes.LowAttack && _playerCombat.IsDodgingDown()) return;
 
-        _currentLife -= amount;
-
-        if (_currentLife <= 0)
-        {
-            _isDead = true;
-            gameObject.SetActive(false);
-            Invoke(nameof(Respawn), 0.5f);
-        }
+        base.ReceiveHit(amount);
+        Invoke(nameof(Respawn), _respawnDelay);
     }
 
     private void Respawn()
