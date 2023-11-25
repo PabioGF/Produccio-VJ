@@ -86,16 +86,13 @@ public class PlayerCombat : MonoBehaviour
 
             if (_dodgeCdTimer > _dodgeCd)
             {
-
                 if (dodgeDirection == 1)
                 {
-                    _dodgeType = DodgeType.HighDodge;
-                    Invoke(nameof(StopDodge), _dodgeDuration);
+                    ExecuteDodge(DodgeType.HighDodge);
                 }
                 if (dodgeDirection == -1)
                 {
-                    _dodgeType = DodgeType.LowDodge;
-                    Invoke(nameof(StopDodge), _dodgeDuration);
+                    ExecuteDodge(DodgeType.LowDodge);
                 }
             }
         }
@@ -121,6 +118,15 @@ public class PlayerCombat : MonoBehaviour
         _myAnimator.SetTrigger("startAttack");
         _isAttacking = true;
         _attackCdTimer = 0;
+    }
+
+    private void ExecuteDodge(DodgeType dodgeType)
+    {
+        Debug.Log("Dodging");
+        _dodgeCdTimer = 0;
+        _isDodging = true;
+        _dodgeType = dodgeType;
+        Invoke(nameof(StopDodge), _dodgeDuration);
     }
 
     /// <summary>

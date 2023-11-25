@@ -19,6 +19,7 @@ public class KeyScript : InventoryItem
 
     protected override void PickUp(PlayerController playerController)
     {
+        Debug.Log("PickKey");
         //playerController.setKey(true);
         GetComponent<SpriteRenderer>().enabled = false;
         Destroy(gameObject, 0.5f);
@@ -26,13 +27,27 @@ public class KeyScript : InventoryItem
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out var component) && Input.GetKeyDown(KeyCode.E))
+        if (collision.CompareTag("Player")) 
         {
-            PickUp(component);
+            _collider = collision;
+            _playerContact = true;
+        }
+            
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _collider = null;
+            _playerContact = false;
         }
     }
     public override void InteractInput(InputAction.CallbackContext context)
     {
-        Debug.Log("Interact");
+        if (_collider.TryGetComponent<PlayerController>(out var component))
+        {
+            PickUp(component);
+        }
     }
 }

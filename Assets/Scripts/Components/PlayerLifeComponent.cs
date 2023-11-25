@@ -14,20 +14,23 @@ public class PlayerLifeComponent : LifeComponent
 
     public override void ReceiveHit(float amount, AttackTypes attackType)
     {
-        if (attackType == AttackTypes.HighAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.HighDodge ||
-            attackType == AttackTypes.LowAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.LowDodge ||
-            attackType == AttackTypes.DefaultAttack && _playerCombat.IsDodging)
+        if (_playerCombat.IsDodging)
         {
-            _playerCombat.OnDodge();
+            if ((attackType == AttackTypes.HighAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.HighDodge) ||
+            (attackType == AttackTypes.LowAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.LowDodge) ||
+            attackType == AttackTypes.DefaultAttack)
+            {
+                _playerCombat.OnDodge();
+                return;
+            }
         }
-        else
-        {
-            Debug.Log("Hit");
-            _hitStopController.StopTime(0f, _hitStopDuration);
-            base.ReceiveHit(amount);
-            if (_isDead)
-                Invoke(nameof(Respawn), _respawnDelay);
-        } 
+        
+        Debug.Log("Hit");
+        _hitStopController.StopTime(0f, _hitStopDuration);
+        base.ReceiveHit(amount);
+        if (_isDead)
+            Invoke(nameof(Respawn), _respawnDelay);
+        
     }
 
     private void Respawn()
