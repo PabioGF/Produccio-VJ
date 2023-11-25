@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] GameObject _groundCheck;
     [SerializeField] GameObject _topCheck;
+    [SerializeField] InventoryController _inventoryController;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -181,13 +182,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    public void GiveKey(bool key)
+    #region Inventory
+    public void AddItem(InventoryItem item)
     {
-        _hasKey = key;
+        _inventoryController.AddItem(item);
     }
 
-    public bool HasKey()
+    public bool HasItem(InventoryItem.ItemType type, int id)
     {
-        return _hasKey;
+        return _inventoryController.HasItem(type, id);
     }
+
+    public void RemoveItem()
+    {
+
+    }
+    #endregion
 }

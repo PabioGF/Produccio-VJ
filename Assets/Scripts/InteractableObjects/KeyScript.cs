@@ -5,47 +5,33 @@ using UnityEngine.InputSystem;
 
 public class KeyScript : InventoryItem
 {
+    public override ItemType GetItemType()
+    {
+        return type;
+    }
+
+    public override int GetItemId()
+    {
+        return id;
+    }
+
     protected override void Awake()
     {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
-        _playerInputActions.Player.Interact.performed += InteractInput;
-    }
-
-    protected override void OnDestroy()
-    {
-        _playerInputActions.Player.Jump.performed -= InteractInput;
     }
 
     protected override void PickUp(PlayerController playerController)
     {
-        Debug.Log("PickKey");
-        //playerController.setKey(true);
-        GetComponent<SpriteRenderer>().enabled = false;
+        Debug.Log("Pick Key");
+        playerController.AddItem(GetComponent<InventoryItem>());
+        gameObject.SetActive(false);
         Destroy(gameObject, 0.5f);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player")) 
-        {
-            _collider = collision;
-            _playerContact = true;
-        }
-            
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Player"))
-        {
-            _collider = null;
-            _playerContact = false;
-        }
-    }
-    public override void InteractInput(InputAction.CallbackContext context)
-    {
-        if (_collider.TryGetComponent<PlayerController>(out var component))
+        if (collision.TryGetComponent<PlayerController>(out var component) && _playerInputActions.Player.Interact.ReadValue<float>() == 1) 
         {
             PickUp(component);
         }

@@ -5,13 +5,14 @@ using UnityEngine.InputSystem;
 
 public abstract class InventoryItem : MonoBehaviour
 {
-    protected enum ItemType { Key, Lever }
+    [SerializeField] protected ItemType type;
+    [SerializeField] protected int id;
+
+    public enum ItemType { Key, Shield }
     protected PlayerInputActions _playerInputActions;
-    protected bool _playerContact;
-    protected Collider2D _collider;
 
     protected abstract void Awake();
-    protected abstract void OnDestroy();
     protected abstract void PickUp(PlayerController playerController);
-    public abstract void InteractInput(InputAction.CallbackContext context);
+    public abstract ItemType GetItemType();
+    public abstract int GetItemId();
 }
