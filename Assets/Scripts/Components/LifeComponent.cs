@@ -21,6 +21,7 @@ public class LifeComponent : MonoBehaviour
     public virtual void ReceiveHit(float amount, AttackTypes attackType = AttackTypes.DefaultAttack)
     {
         _currentLife -= amount;
+        Debug.Log("Aqui");
 
         if (_currentLife <= 0)
         {

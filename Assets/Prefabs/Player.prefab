@@ -127,7 +127,6 @@ MonoBehaviour:
   _bufferTime: 0.2
   _fallSpeed: 30
   _maxFallSpeed: 100
-  hasKey: 0
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,6 +297,10 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 5b266f6c-f243-4921-928f-9f98ad9c20e7
     m_ActionName: Player/Dodge Input[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 80b28008-3c1c-48ea-8117-9d935a106cde
+    m_ActionName: Player/Interact[/Keyboard/e,/XInputControllerWindows/buttonNorth]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

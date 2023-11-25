@@ -22,6 +22,7 @@ public class PlayerLifeComponent : LifeComponent
         }
         else
         {
+            Debug.Log("Hit");
             _hitStopController.StopTime(0f, _hitStopDuration);
             base.ReceiveHit(amount);
             if (_isDead)
@@ -31,6 +32,7 @@ public class PlayerLifeComponent : LifeComponent
 
     private void Respawn()
     {
+        _isDead = false;
         _parent.transform.position = new Vector3(-5, 0, 0);
         _currentLife = _maxLife;
         _parent.gameObject.SetActive(true);

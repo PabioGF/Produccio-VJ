@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OpenDoor : MonoBehaviour
+public class DoorController : MonoBehaviour
 {
     public Sprite spriteOpenedDoor;
     public Collider2D colliderDesapear; 
@@ -11,6 +11,7 @@ public class OpenDoor : MonoBehaviour
     //Función que abre la puerta si se dispone de la llave
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        /*
         if (!doorOpened && collision.CompareTag("Player"))
         {
             bool hasKey = collision.GetComponent<PlayerController>().hasKey;
@@ -29,5 +30,6 @@ public class OpenDoor : MonoBehaviour
                 Debug.Log("Necesitas una llave para abrir esta puerta.");
             }
         }
+        */
     }
 }

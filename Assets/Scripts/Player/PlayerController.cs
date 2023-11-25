@@ -36,14 +36,8 @@ public class PlayerController : MonoBehaviour
     private Animator _myAnimator;
     private bool _hasKey;
     #endregion
-    public bool hasKey = false;
 
     #region Unity methods
-    public void setKey(bool key)
-    {
-        hasKey = key; 
-    }
-
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
@@ -62,8 +56,6 @@ public class PlayerController : MonoBehaviour
         {
             Debug.LogError("[PlayerController] La refer�ncia a Top Check �s null");
         }
-        
-
     }
 
     private void OnDestroy()
