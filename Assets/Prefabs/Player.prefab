@@ -58,7 +58,7 @@ Transform:
   m_GameObject: {fileID: 4851809869253839299}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.364, z: 0}
+  m_LocalPosition: {x: -0.102, y: 0.842, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -75,14 +75,13 @@ GameObject:
   - component: {fileID: 942383339766095506}
   - component: {fileID: 6838906068520528515}
   - component: {fileID: 5160320821678128178}
-  - component: {fileID: 445240575444087349}
   - component: {fileID: 7522392117402914908}
   - component: {fileID: 1831358464902730382}
   - component: {fileID: 1162993274704312679}
   - component: {fileID: 8162162992974682894}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -120,14 +119,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _topCheck: {fileID: 4851809869253839299}
-  _maxSpeed: 10
-  _acceleration: 50
+  _maxSpeed: 8
+  _acceleration: 70
   _airAcceleration: 30
   _jumpForce: 12
   _maxJumps: 1
   _bufferTime: 0.2
   _fallSpeed: 30
   _maxFallSpeed: 100
+  hasKey: 0
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -146,21 +146,6 @@ MonoBehaviour:
   _hurtbox: {fileID: 6811687874427469595}
   _dodgeDuration: 0.5
   _dodgeCd: 1
-  _hitStopDuration: 0.05
---- !u!114 &445240575444087349
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5180191103471191624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ff9c087a175cf45b2b866f2a7cccb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCombat: {fileID: 5160320821678128178}
-  _maxLife: 1
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -184,9 +169,9 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!70 &1831358464902730382
 CapsuleCollider2D:
@@ -220,8 +205,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.103318214, y: 0.006053835}
-  m_Size: {x: 0.30522585, y: 0.7433736}
+  m_Offset: {x: -0.11746907, y: 0.0074911118}
+  m_Size: {x: 0.41936302, y: 1.7375073}
   m_Direction: 0
 --- !u!95 &1162993274704312679
 Animator:
@@ -233,7 +218,7 @@ Animator:
   m_GameObject: {fileID: 5180191103471191624}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 760e269c9ca613b4a927b74981ac4f20, type: 2}
+  m_Controller: {fileID: 9100000, guid: 6da4a77d98bba4646a6d506cc4fe78a0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -427,7 +412,7 @@ Transform:
   m_GameObject: {fileID: 6139601005165452146}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.4105, z: 0}
+  m_LocalPosition: {x: -0.1277, y: -0.8592, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -443,7 +428,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8515079538127497808}
   - component: {fileID: 4719653573109154232}
-  - component: {fileID: 7076986651902574862}
+  - component: {fileID: 3573265447690019017}
   m_Layer: 0
   m_Name: Hurtbox
   m_TagString: Untagged
@@ -511,7 +496,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3918383, y: 1.641526}
   m_EdgeRadius: 0
---- !u!114 &7076986651902574862
+--- !u!114 &3573265447690019017
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -520,10 +505,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 6811687874427469595}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c46f82584b702cc42896de86a7aa5152, type: 3}
+  m_Script: {fileID: 11500000, guid: 95ff9c087a175cf45b2b866f2a7cccb2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 5180191103471191624}
+  _maxLife: 2
+  _playerCombat: {fileID: 5160320821678128178}
+  _respawnDelay: 2
+  _hitStopDuration: 0.5
+  _hitStopController: {fileID: 0}
 --- !u!1 &7828853054973466525
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +524,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8285716040168945687}
   - component: {fileID: 360344718509005982}
+  - component: {fileID: 3183382154455112320}
   m_Layer: 0
   m_Name: AttackArea
   m_TagString: Untagged
@@ -550,9 +541,9 @@ Transform:
   m_GameObject: {fileID: 7828853054973466525}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.523, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 1
+  m_LocalPosition: {x: 0.803, y: 0.047, z: 0}
+  m_LocalScale: {x: 1.5721014, y: 1.1834921, z: 1.4131249}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 668350209096963149}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -601,3 +592,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.66865766, y: 1.3317411}
   m_EdgeRadius: 0
+--- !u!114 &3183382154455112320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7828853054973466525}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdf7fb6f1d39d404e8f8465f8351d21c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: 1
