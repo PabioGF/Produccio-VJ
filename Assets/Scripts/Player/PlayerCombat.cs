@@ -17,6 +17,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _dodgeCd;
 
     private PlayerInputActions _playerInputActions;
+    private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
     private float _attackCdTimer;
 
@@ -26,6 +27,7 @@ public class PlayerCombat : MonoBehaviour
     private Animator _myAnimator;
 
     public enum DodgeType { HighDodge, LowDodge };
+    public enum AttackTypes { FastAttack, SlowAttack }
     private DodgeType _dodgeType;
 
     #endregion
@@ -36,8 +38,10 @@ public class PlayerCombat : MonoBehaviour
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 
-        _playerInputActions.Player.Attack.performed += AttackInput;
+        _playerInputActions.Player.FastAttack.performed += FastAttackInput;
+        _playerInputActions.Player.SlowAttack.performed += SlowAttackInput;
         _myAnimator = GetComponent<Animator>();
+        _attackBuffer = new Queue<AttackTypes>();
 
         if (_attackArea == null)
         {
@@ -51,7 +55,8 @@ public class PlayerCombat : MonoBehaviour
 
     private void OnDestroy()
     {
-        _playerInputActions.Player.Attack.performed -= AttackInput;
+        _playerInputActions.Player.FastAttack.performed -= FastAttackInput;
+        _playerInputActions.Player.SlowAttack.performed -= SlowAttackInput;
     }
 
     void Start()
@@ -66,12 +71,79 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
+    /// <summary>
+    /// Controls the attack and dodge timers
+    /// </summary>
     private void HandleTimers()
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
         if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
     }
 
+    #region Attack
+    /// <summary>
+    /// Method called when the fastAttack button is pressed
+    /// </summary>
+    public void FastAttackInput(InputAction.CallbackContext context)
+    {
+        //Only attacks if the player is not dodging or it is not in coolDown
+        if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        {
+            Debug.Log("FastAttack");
+            _attackBuffer.Enqueue(AttackTypes.FastAttack);
+        }
+    }
+
+    /// <summary>
+    /// Method called when the slowAttack button is pressed
+    /// </summary>
+    public void SlowAttackInput(InputAction.CallbackContext context)
+    {
+        //Only attacks if the player is not dodging or it is not in coolDown
+        if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        {
+            Debug.Log("SlowAttack");
+            _attackBuffer.Enqueue(AttackTypes.SlowAttack);
+        }
+    }
+
+    private void ExecuteAttack()
+    {
+        if (_attackBuffer.TryDequeue(out AttackTypes attack))
+        {
+            _isAttacking = true;
+            _myAnimator.SetTrigger("startAttack");
+            _attackCdTimer = 0;
+
+            if (attack == AttackTypes.FastAttack)
+            {
+
+            }
+            else if (attack == AttackTypes.SlowAttack)
+            {
+
+            } 
+        }
+    }
+
+    /// <summary>
+    /// Enables the attack area (animator method)
+    /// </summary>
+    private void EnableAttackArea()
+    {
+        _attackArea.SetActive(true);
+    }
+
+    /// <summary>
+    /// Disables the attack area (animator method)
+    /// </summary>
+    private void DisableAttackArea()
+    {
+        _attackArea.SetActive(false);
+    }
+    #endregion
+
+    #region Dodge
     /// <summary>
     /// Handles the dodge logic when holding the dodge trigger buttond and moving to the upper or lower direction axis
     /// </summary>
@@ -97,29 +169,11 @@ public class PlayerCombat : MonoBehaviour
             }
         }
     }
-
+    
     /// <summary>
-    /// Executes the attack coroutine when the button is pressed and the player is not pressing the dodge trigger button
+    /// Executes the dodge action
     /// </summary>
-    public void AttackInput(InputAction.CallbackContext context)
-    {
-        if (context.performed && !_dodgeStance)
-        {
-            Debug.Log("Attack");
-            ExecuteAttack();
-        }
-    }
-
-    /// <summary>
-    /// Activates the attack area during the set time and disables it afterwards
-    /// </summary>
-    public void ExecuteAttack()
-    {
-        _myAnimator.SetTrigger("startAttack");
-        _isAttacking = true;
-        _attackCdTimer = 0;
-    }
-
+    /// <param name="dodgeType">The dodge type</param>
     private void ExecuteDodge(DodgeType dodgeType)
     {
         Debug.Log("Dodging");
@@ -130,7 +184,7 @@ public class PlayerCombat : MonoBehaviour
     }
 
     /// <summary>
-    /// Determines the dodging direction of the player and deactivates it after the set time has passed
+    /// Stops the dodge action
     /// </summary>
     public void StopDodge()
     {
@@ -138,30 +192,29 @@ public class PlayerCombat : MonoBehaviour
     }
 
     /// <summary>
-    /// Returns the dodgeStance bool
+    /// Method called when the player successfully dodges an attack
     /// </summary>
-    public bool DodgeStance()
-    {
-        return _dodgeStance;
-    }
-
     public void OnDodge()
     {
         Debug.Log("Dodged");
     }
+    #endregion
 
-    private void EnableAttackArea()
-    {
-        _attackArea.SetActive(true);
-    }
+    #region Getters
+    /// <summary>
+    /// Returns the dodgeStance bool
+    /// </summary>
+    public bool DodgeStance => _dodgeStance;
 
-    private void DIsableAttackArea()
-    {
-        _attackArea.SetActive(false);
-    }
-
+    /// <summary>
+    /// Returns the dodge type
+    /// </summary>
     public DodgeType GetDodgeType => _dodgeType;
 
+    /// <summary>
+    /// Returns wheter the player is dodging or not
+    /// </summary>
     public bool IsDodging => _isDodging;
+    #endregion
 
 }

@@ -84,10 +84,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInputs()
     {
-        if (!_playerCombat.DodgeStance())
+        if (!_playerCombat.DodgeStance)
         {
             _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
-        } else
+        } 
+        else
         {
             _movementInput = 0;
         }

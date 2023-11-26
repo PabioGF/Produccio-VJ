@@ -46,9 +46,27 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
-                    ""name"": ""Attack"",
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""80b28008-3c1c-48ea-8117-9d935a106cde"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FastAttack"",
                     ""type"": ""Button"",
                     ""id"": ""b171e5a0-419f-4707-948d-f634f0674a3f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""SlowAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""81e217f9-9ef5-4891-ac1f-f71f9b447289"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -71,15 +89,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
-                },
-                {
-                    ""name"": ""Interact"",
-                    ""type"": ""Button"",
-                    ""id"": ""80b28008-3c1c-48ea-8117-9d935a106cde"",
-                    ""expectedControlType"": ""Button"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -178,7 +187,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""FastAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -189,7 +198,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Attack"",
+                    ""action"": ""FastAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -283,6 +292,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
+                    ""id"": ""348b4419-8c3c-448c-9d15-df4998af21cc"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bbdf6fb8-a56d-4030-935a-0b8b01d295d3"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SlowAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
                     ""id"": ""84fe69b5-8c19-4816-9536-49932b060d12"",
                     ""path"": ""<Keyboard>/e"",
                     ""interactions"": """",
@@ -295,7 +326,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""4ace41ff-bf7a-4491-aa63-986bd6863849"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -312,10 +343,11 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
-        m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
+        m_Player_FastAttack = m_Player.FindAction("FastAttack", throwIfNotFound: true);
+        m_Player_SlowAttack = m_Player.FindAction("SlowAttack", throwIfNotFound: true);
         m_Player_DodgeTrigger = m_Player.FindAction("DodgeTrigger", throwIfNotFound: true);
         m_Player_DodgeInput = m_Player.FindAction("Dodge Input", throwIfNotFound: true);
-        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -379,20 +411,22 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Jump;
-    private readonly InputAction m_Player_Attack;
+    private readonly InputAction m_Player_Interact;
+    private readonly InputAction m_Player_FastAttack;
+    private readonly InputAction m_Player_SlowAttack;
     private readonly InputAction m_Player_DodgeTrigger;
     private readonly InputAction m_Player_DodgeInput;
-    private readonly InputAction m_Player_Interact;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputAction @Attack => m_Wrapper.m_Player_Attack;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
+        public InputAction @FastAttack => m_Wrapper.m_Player_FastAttack;
+        public InputAction @SlowAttack => m_Wrapper.m_Player_SlowAttack;
         public InputAction @DodgeTrigger => m_Wrapper.m_Player_DodgeTrigger;
         public InputAction @DodgeInput => m_Wrapper.m_Player_DodgeInput;
-        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -408,18 +442,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
-            @Attack.started += instance.OnAttack;
-            @Attack.performed += instance.OnAttack;
-            @Attack.canceled += instance.OnAttack;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
+            @FastAttack.started += instance.OnFastAttack;
+            @FastAttack.performed += instance.OnFastAttack;
+            @FastAttack.canceled += instance.OnFastAttack;
+            @SlowAttack.started += instance.OnSlowAttack;
+            @SlowAttack.performed += instance.OnSlowAttack;
+            @SlowAttack.canceled += instance.OnSlowAttack;
             @DodgeTrigger.started += instance.OnDodgeTrigger;
             @DodgeTrigger.performed += instance.OnDodgeTrigger;
             @DodgeTrigger.canceled += instance.OnDodgeTrigger;
             @DodgeInput.started += instance.OnDodgeInput;
             @DodgeInput.performed += instance.OnDodgeInput;
             @DodgeInput.canceled += instance.OnDodgeInput;
-            @Interact.started += instance.OnInteract;
-            @Interact.performed += instance.OnInteract;
-            @Interact.canceled += instance.OnInteract;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -430,18 +467,21 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
-            @Attack.started -= instance.OnAttack;
-            @Attack.performed -= instance.OnAttack;
-            @Attack.canceled -= instance.OnAttack;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
+            @FastAttack.started -= instance.OnFastAttack;
+            @FastAttack.performed -= instance.OnFastAttack;
+            @FastAttack.canceled -= instance.OnFastAttack;
+            @SlowAttack.started -= instance.OnSlowAttack;
+            @SlowAttack.performed -= instance.OnSlowAttack;
+            @SlowAttack.canceled -= instance.OnSlowAttack;
             @DodgeTrigger.started -= instance.OnDodgeTrigger;
             @DodgeTrigger.performed -= instance.OnDodgeTrigger;
             @DodgeTrigger.canceled -= instance.OnDodgeTrigger;
             @DodgeInput.started -= instance.OnDodgeInput;
             @DodgeInput.performed -= instance.OnDodgeInput;
             @DodgeInput.canceled -= instance.OnDodgeInput;
-            @Interact.started -= instance.OnInteract;
-            @Interact.performed -= instance.OnInteract;
-            @Interact.canceled -= instance.OnInteract;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -463,9 +503,10 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
-        void OnAttack(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
+        void OnFastAttack(InputAction.CallbackContext context);
+        void OnSlowAttack(InputAction.CallbackContext context);
         void OnDodgeTrigger(InputAction.CallbackContext context);
         void OnDodgeInput(InputAction.CallbackContext context);
-        void OnInteract(InputAction.CallbackContext context);
     }
 }
