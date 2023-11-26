@@ -127,14 +127,13 @@ public class PlayerController : MonoBehaviour
             _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
         }
 
-        if(_desiredVelocity.x < 0)
+        if (_desiredVelocity.x < 0)
         {
-            transform.localScale = new Vector3(-1, 1, 1);
-
-        } else
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        } 
+        else if (_desiredVelocity.x > 0)
         {
-            transform.localScale = new Vector3(1, 1, 1);
-
+            transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
@@ -193,9 +192,9 @@ public class PlayerController : MonoBehaviour
         return _inventoryController.HasItem(type, id);
     }
 
-    public void RemoveItem()
+    public void RemoveItem(InventoryItem.ItemType type, int id)
     {
-
+        _inventoryController.RemoveItem(type, id);
     }
     #endregion
 }

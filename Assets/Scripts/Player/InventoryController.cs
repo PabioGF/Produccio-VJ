@@ -31,8 +31,15 @@ public class InventoryController : MonoBehaviour
         return false;
     }
 
-    public void RemoveItem()
+    public void RemoveItem(InventoryItem.ItemType type, int id)
     {
-
+        foreach (InventoryItem item in _inventoryItems)
+        {
+            if (item.GetItemType() == type && item.GetItemId() == id)
+            {
+                _inventoryItems.Remove(item);
+                return;
+            }
+        }
     }
 }

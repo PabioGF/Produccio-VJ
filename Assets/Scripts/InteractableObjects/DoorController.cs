@@ -26,6 +26,7 @@ public class DoorController : InteractableObject
         else
         {
             bool hasKey = playerController.HasItem(InventoryItem.ItemType.Key, id);
+            playerController.RemoveItem(InventoryItem.ItemType.Key, id);
             Debug.Log(hasKey);
             if (hasKey)
             {
@@ -38,7 +39,7 @@ public class DoorController : InteractableObject
     private void ToggleDoor()
     {
         GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
-        GetComponent<Collider2D>().enabled = isOpen ? true : false;
+        GetComponent<Collider2D>().enabled = isOpen;
         isOpen = !isOpen;
     }
 
