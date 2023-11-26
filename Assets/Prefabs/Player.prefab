@@ -233,11 +233,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2803ee88544f194798a15c8438aeaee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _attackArea: {fileID: 7828853054973466525}
+  _fastAttackArea: {fileID: 7828853054973466525}
+  _slowAttackArea: {fileID: 165679107438649102}
   _attackDuration: 0.1
   _attackCd: 0.4
-  _maxTimeBetweenAttacks: 0
-  _hurtbox: {fileID: 6811687874427469595}
+  _maxTimeBetweenAttacks: 1
+  _maxComboLength: 3
   _dodgeDuration: 0.5
   _dodgeCd: 1
 --- !u!50 &7522392117402914908

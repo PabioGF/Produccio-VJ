@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public abstract class InventoryItem : MonoBehaviour
 {
     [SerializeField] protected ItemType type;
-    [SerializeField] protected int id;
+    [SerializeField] protected int id = 0;
 
     public enum ItemType { Key, Shield }
     protected PlayerInputActions _playerInputActions;

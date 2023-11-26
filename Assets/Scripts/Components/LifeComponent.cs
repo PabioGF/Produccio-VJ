@@ -5,8 +5,11 @@ using UnityEngine;
 public class LifeComponent : MonoBehaviour
 {
     #region Variables
+
+    [Header("Life component fields")]
     [SerializeField] protected GameObject _parent;
     [SerializeField] protected float _maxLife;
+
     protected float _currentLife;
     protected bool _isDead;
     public enum AttackTypes { DefaultAttack, HighAttack, LowAttack }

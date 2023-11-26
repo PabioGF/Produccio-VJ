@@ -6,10 +6,12 @@ using UnityEngine.UI;
 public class PlayerLifeComponent : LifeComponent
 {
     #region Variables
+    [Header("Specific fields")]
     [SerializeField] private PlayerCombat _playerCombat;
+    [SerializeField] private PlayerController _playerController;
+    [SerializeField] private HitStopController _hitStopController;
     [SerializeField] private float _respawnDelay;
     [SerializeField] private float _hitStopDuration;
-    [SerializeField] private HitStopController _hitStopController;
     #endregion
 
     public override void ReceiveHit(float amount, AttackTypes attackType)
@@ -27,6 +29,14 @@ public class PlayerLifeComponent : LifeComponent
         
         Debug.Log("Hit");
         _hitStopController.StopTime(0f, _hitStopDuration);
+
+        if (_playerController.HasItem(InventoryItem.ItemType.Shield))
+        {
+            Debug.Log("Shield");
+            _playerController.RemoveItem(InventoryItem.ItemType.Shield);
+            return;
+        }
+
         base.ReceiveHit(amount);
         if (_isDead)
             Invoke(nameof(Respawn), _respawnDelay);

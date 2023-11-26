@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
+    #region Jump
     /// <summary>
     /// Function that handles the executrion of the jump considering all the variables that are implied
     /// </summary>
@@ -181,19 +182,35 @@ public class PlayerController : MonoBehaviour
             _jumpPressed = _timer;
         }
     }
+    #endregion
 
     #region Inventory
+    /// <summary>
+    /// Adds an item to the inventory
+    /// </summary>
+    /// <param name="item">Item to add</param>
     public void AddItem(InventoryItem item)
     {
         _inventoryController.AddItem(item);
     }
 
-    public bool HasItem(InventoryItem.ItemType type, int id)
+    /// <summary>
+    /// Checks if the given object is in the inventory
+    /// </summary>
+    /// <param name="type">The type of the object</param>
+    /// <param name="id">The id of the object</param>
+    /// <returns>Whether the object is in the inventory or not</returns>
+    public bool HasItem(InventoryItem.ItemType type, int id = 0)
     {
         return _inventoryController.HasItem(type, id);
     }
 
-    public void RemoveItem(InventoryItem.ItemType type, int id)
+    /// <summary>
+    /// Removes an object from the inventory
+    /// </summary>
+    /// <param name="type">The type of the object</param>
+    /// <param name="id">The id of the object</param>
+    public void RemoveItem(InventoryItem.ItemType type, int id = 0)
     {
         _inventoryController.RemoveItem(type, id);
     }
