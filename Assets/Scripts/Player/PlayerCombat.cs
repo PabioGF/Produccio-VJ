@@ -6,13 +6,16 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     #region Variables
+    [SerializeField] private GameObject _fastAttackArea;
+    [SerializeField] private GameObject _slowAttackArea;
+
     [Header("Attack settings")]
-    [SerializeField] private GameObject _attackArea;
     [SerializeField] private float _attackDuration;
     [SerializeField] private float _attackCd;
+    [SerializeField] private float _maxTimeBetweenAttacks;
+    [SerializeField] private int _maxComboLength;
 
     [Header("Dodge settings")]
-    [SerializeField] private GameObject _hurtbox;
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
@@ -20,6 +23,9 @@ public class PlayerCombat : MonoBehaviour
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
     private float _attackCdTimer;
+    private int _currComboLength;
+    private float _attackPerformed;
+    private float _timer;
 
     private bool _dodgeStance;
     private bool _isDodging;
@@ -43,14 +49,11 @@ public class PlayerCombat : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
 
-        if (_attackArea == null)
-        {
-            Debug.LogError("[PlayerAttack] La referència a Attack Area és null");
-        }
-        if (_hurtbox == null)
-        {
-            Debug.LogError("[PlayerAttack] La referència a Hurtbox és null");
-        }
+        if (_fastAttackArea == null)
+            Debug.LogError("[PlayerAttack] Fast Attack Area reference is null");
+
+        if (_slowAttackArea == null)
+            Debug.LogError("[PlayerAttack] Slow Attack Area reference is null");
     }
 
     private void OnDestroy()
@@ -61,13 +64,15 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        _attackArea.SetActive(false);
+        _fastAttackArea.SetActive(false);
+        _slowAttackArea.SetActive(false);
     }
 
     void Update()
     {
         HandleTimers();
         HandleDodge();
+        ExecuteAttack();
     }
     #endregion
 
@@ -78,6 +83,7 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
         if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
+        _timer += Time.deltaTime;
     }
 
     #region Attack
@@ -89,7 +95,7 @@ public class PlayerCombat : MonoBehaviour
         //Only attacks if the player is not dodging or it is not in coolDown
         if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
         {
-            Debug.Log("FastAttack");
+            if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.FastAttack);
         }
     }
@@ -102,44 +108,94 @@ public class PlayerCombat : MonoBehaviour
         //Only attacks if the player is not dodging or it is not in coolDown
         if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
         {
-            Debug.Log("SlowAttack");
+            if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.SlowAttack);
         }
     }
 
+    /// <summary>
+    /// Executes the next attack stored in the input buffer
+    /// </summary>
     private void ExecuteAttack()
     {
+        if (_isAttacking) return;
+
+        if (_timer - _attackPerformed > _maxTimeBetweenAttacks)
+            _currComboLength = 0;
+
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
-            _isAttacking = true;
-            _myAnimator.SetTrigger("startAttack");
-            _attackCdTimer = 0;
+            _currComboLength += 1;
+            print(_currComboLength);
 
-            if (attack == AttackTypes.FastAttack)
+            if (_currComboLength > _maxComboLength)
             {
-
+                _attackBuffer.Clear();
+                _attackCdTimer = 0;
+                _currComboLength = 0;
+                return;
             }
-            else if (attack == AttackTypes.SlowAttack)
-            {
 
-            } 
+            _isAttacking = true;
+            _attackPerformed = _timer;
+
+            switch (attack)
+            {
+                case AttackTypes.FastAttack:
+                    _attackBuffer.Clear();
+                    _myAnimator.SetTrigger("FastAttack");
+                    break;
+
+                case AttackTypes.SlowAttack:
+                    _attackBuffer.Clear();
+                    _myAnimator.SetTrigger("SlowAttack");
+                    break;
+            }
         }
     }
 
     /// <summary>
     /// Enables the attack area (animator method)
     /// </summary>
-    private void EnableAttackArea()
+    private void EnableAttackArea(int type)
     {
-        _attackArea.SetActive(true);
+        AttackTypes attackType = (AttackTypes)type;
+
+        switch (attackType)
+        {
+            case AttackTypes.FastAttack:
+                _fastAttackArea.SetActive(true);
+                break;
+            case AttackTypes.SlowAttack:
+                _slowAttackArea.SetActive(true);
+                break;
+        }
     }
 
     /// <summary>
     /// Disables the attack area (animator method)
     /// </summary>
-    private void DisableAttackArea()
+    private void DisableAttackArea(int type)
     {
-        _attackArea.SetActive(false);
+        AttackTypes attackType = (AttackTypes)type;
+
+        switch (attackType)
+        {
+            case AttackTypes.FastAttack:
+                _fastAttackArea.SetActive(false);
+                break;
+            case AttackTypes.SlowAttack:
+                _slowAttackArea.SetActive(false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Method called when the attack animation is over (animator method)
+    /// </summary>
+    private void AttackFinished()
+    {
+        _isAttacking = false;
     }
     #endregion
 
