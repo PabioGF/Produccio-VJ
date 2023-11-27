@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class IAController : MonoBehaviour
 {
     public float velocidadMovimiento = 2.0f;
@@ -9,41 +10,44 @@ public class IAController : MonoBehaviour
     public float puntoFinalX;
     public float distanciaDeteccion = 5.0f;
     public GameObject player;
-    private Transform jugador;
+    protected Transform jugador;
     public float tiempoCambioDireccion = 3.0f;
-    public string type;
-    public enum EnemyType { Shooter, Normal}
-    public EnemyType typeenum;
-        
-    private float tiempoActual;
-    private int direccion = 1;
-    public float distanciaDisparo = 10.0f;
-    Rigidbody2D myRB;
-    bool hasDetected = false;
-    public GameObject balaPrefab;
+    protected float tiempoActual;
+    protected float distanciaDisparo = 10.0f;
+
+    protected int direccion = 1;
+
+    public Rigidbody2D myRB;
+    protected bool hasDetected = false;
+  
+    protected Vector3 myVelocity;
 
 
-    private void Start()
+    protected virtual void Start()
     {
         //Posición inicial del enemigo.
-        transform.position = new Vector3(puntoInicialX, transform.position.y, transform.position.z);
+       // transform.position = new Vector3(puntoInicialX, transform.position.y, transform.position.z);
         jugador = player.transform;
         ReiniciarTemporizador();
         hasDetected = false;
 
         myRB = GetComponent<Rigidbody2D>();
+        
     }
 
-    private void Update()
+    protected virtual void Update()
     {
-        Vector3 myVelocity = myRB.velocity;
+        myVelocity = myRB.velocity;
 
-        if(typeenum == EnemyType.Normal)
+        if (VerificarLineaDeVision() || hasDetected)
         {
-            myVelocity = NormalIA(myVelocity);
+
+            hasDetected = true;
         }
-        else if(type == "shooter"){
-            myVelocity = ShooterIA(myVelocity);
+
+        if (!hasDetected)
+        {
+            myVelocity = BasicMovement(myVelocity);
         }
 
         myRB.velocity = myVelocity;
@@ -51,45 +55,10 @@ public class IAController : MonoBehaviour
     }
 
 
-    private Vector3 ShooterIA(Vector3 myVelocity)
-    {
-        //Debug.Log(VerificarLineaDeVision());
-        if (VerificarLineaDeVision() || hasDetected)
-        {
-            
-            hasDetected = true;
-            Disparar();
-            myVelocity.x = 0;
-        }
-        else
-        {
-            if (!hasDetected)
-            {
-
-                myVelocity = BasicMovement(myVelocity);
-
-            }
-
-        }
-
-        return myVelocity;
-    }
-
-    private void Disparar()
-    {
-
-        if (Time.time > tiempoActual)
-        {
-            GameObject bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
-            bala.GetComponent<Rigidbody2D>().velocity = new Vector2(direccion * 5.0f, 0f);
-
-            //Frecuencia de disparo.
-            tiempoActual = Time.time + 1.0f; 
-        }
-    }
 
     private bool VerificarLineaDeVision()
     {
+        Debug.Log("hola");
         // Lanzamos un rayo desde el enemigo hacia el jugador.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, jugador.position - transform.position, distanciaDisparo);
         Debug.Log("Rayo de visión lanzado.");
@@ -106,7 +75,7 @@ public class IAController : MonoBehaviour
         // Si el rayo no choca con ningún objeto, devuelve true.
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
-    private Vector3 NormalIA(Vector3 myVelocity)
+   /* private Vector3 NormalIA(Vector3 myVelocity)
     {
         float distanciaAlJugador = Vector3.Distance(transform.position, jugador.position);
 
@@ -131,7 +100,7 @@ public class IAController : MonoBehaviour
         }
 
         return myVelocity;
-    }
+    }*/
 
     private Vector3 BasicMovement(Vector3 myVelocity)
     {
@@ -158,12 +127,12 @@ public class IAController : MonoBehaviour
         direccion *= -1;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
     {
-        LifeComponent life = collision.gameObject.GetComponent<LifeComponent>();
+        PlayerLifeComponent life = collision.gameObject.GetComponent<PlayerLifeComponent>();
         if (life != null)
         {
-            life.ApplyDamage(1f);
+            life.ReceiveHit(1f,true);
         }
     }
 }
