@@ -6,30 +6,36 @@ using UnityEngine.InputSystem;
 public class PlayerCombat : MonoBehaviour
 {
     #region Variables
+    [SerializeField] private GameObject _fastAttackArea;
+    [SerializeField] private GameObject _slowAttackArea;
+
     [Header("Attack settings")]
-    [SerializeField] private GameObject _attackArea;
     [SerializeField] private float _attackDuration;
     [SerializeField] private float _attackCd;
+    [SerializeField] private float _maxTimeBetweenAttacks;
+    [SerializeField] private int _maxComboLength;
 
     [Header("Dodge settings")]
-    [SerializeField] private GameObject _hurtbox;
     [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
-    [Header("Other settings")]
-    [SerializeField] private float _hitStopDuration;
-
     private PlayerInputActions _playerInputActions;
+    private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
     private float _attackCdTimer;
+    private int _currComboLength;
+    private float _attackPerformed;
+    private float _timer;
 
     private bool _dodgeStance;
-    private bool _isDodgingUp;
-    private bool _isDodgingDown;
+    private bool _isDodging;
     private float _dodgeCdTimer;
     private Animator _myAnimator;
 
-    private HitStopController _hitStopController;
+    public enum DodgeType { HighDodge, LowDodge };
+    public enum AttackTypes { FastAttack, SlowAttack }
+    private DodgeType _dodgeType;
+
     #endregion
 
     #region Unity methods
@@ -38,43 +44,162 @@ public class PlayerCombat : MonoBehaviour
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 
-        _playerInputActions.Player.Attack.performed += AttackInput;
-        _hitStopController = FindAnyObjectByType<HitStopController>();
+        _playerInputActions.Player.FastAttack.performed += FastAttackInput;
+        _playerInputActions.Player.SlowAttack.performed += SlowAttackInput;
         _myAnimator = GetComponent<Animator>();
+        _attackBuffer = new Queue<AttackTypes>();
 
-        if (_attackArea == null)
-        {
-            Debug.LogError("[PlayerAttack] La referència a Attack Area és null");
-        }
-        if (_hurtbox == null)
-        {
-            Debug.LogError("[PlayerAttack] La referència a Hurtbox és null");
-        }
+        if (_fastAttackArea == null)
+            Debug.LogError("[PlayerAttack] Fast Attack Area reference is null");
+
+        if (_slowAttackArea == null)
+            Debug.LogError("[PlayerAttack] Slow Attack Area reference is null");
     }
 
     private void OnDestroy()
     {
-        _playerInputActions.Player.Attack.performed -= AttackInput;
+        _playerInputActions.Player.FastAttack.performed -= FastAttackInput;
+        _playerInputActions.Player.SlowAttack.performed -= SlowAttackInput;
     }
 
     void Start()
     {
-       _attackArea.SetActive(false); 
+        _fastAttackArea.SetActive(false);
+        _slowAttackArea.SetActive(false);
     }
 
     void Update()
     {
         HandleTimers();
         HandleDodge();
+        ExecuteAttack();
     }
     #endregion
 
+    /// <summary>
+    /// Controls the attack and dodge timers
+    /// </summary>
     private void HandleTimers()
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
-        if (!_isDodgingUp && !_isDodgingDown) _dodgeCdTimer += Time.deltaTime;
+        if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
+        _timer += Time.deltaTime;
     }
 
+    #region Attack
+    /// <summary>
+    /// Method called when the fastAttack button is pressed
+    /// </summary>
+    public void FastAttackInput(InputAction.CallbackContext context)
+    {
+        //Only attacks if the player is not dodging or it is not in coolDown
+        if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        {
+            if (_isAttacking) _attackBuffer.Clear();
+            _attackBuffer.Enqueue(AttackTypes.FastAttack);
+        }
+    }
+
+    /// <summary>
+    /// Method called when the slowAttack button is pressed
+    /// </summary>
+    public void SlowAttackInput(InputAction.CallbackContext context)
+    {
+        //Only attacks if the player is not dodging or it is not in coolDown
+        if (context.performed && !_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        {
+            if (_isAttacking) _attackBuffer.Clear();
+            _attackBuffer.Enqueue(AttackTypes.SlowAttack);
+        }
+    }
+
+    /// <summary>
+    /// Executes the next attack stored in the input buffer
+    /// </summary>
+    private void ExecuteAttack()
+    {
+        if (_isAttacking) return;
+
+        if (_timer - _attackPerformed > _maxTimeBetweenAttacks)
+            _currComboLength = 0;
+
+        if (_attackBuffer.TryDequeue(out AttackTypes attack))
+        {
+            _currComboLength += 1;
+            print(_currComboLength);
+
+            if (_currComboLength > _maxComboLength)
+            {
+                _attackBuffer.Clear();
+                _attackCdTimer = 0;
+                _currComboLength = 0;
+                return;
+            }
+
+            _isAttacking = true;
+            _attackPerformed = _timer;
+
+            switch (attack)
+            {
+                case AttackTypes.FastAttack:
+                    _attackBuffer.Clear();
+                    _myAnimator.SetTrigger("FastAttack");
+                    break;
+
+                case AttackTypes.SlowAttack:
+                    _attackBuffer.Clear();
+                    _myAnimator.SetTrigger("SlowAttack");
+                    break;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Enables the attack area (animator method)
+    /// </summary>
+    private void EnableAttackArea(int type)
+    {
+        AttackTypes attackType = (AttackTypes)type;
+
+        switch (attackType)
+        {
+            case AttackTypes.FastAttack:
+                _fastAttackArea.SetActive(true);
+                break;
+            case AttackTypes.SlowAttack:
+                _slowAttackArea.SetActive(true);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Disables the attack area (animator method)
+    /// </summary>
+    private void DisableAttackArea(int type)
+    {
+        AttackTypes attackType = (AttackTypes)type;
+
+        switch (attackType)
+        {
+            case AttackTypes.FastAttack:
+                _fastAttackArea.SetActive(false);
+                break;
+            case AttackTypes.SlowAttack:
+                _slowAttackArea.SetActive(false);
+                break;
+        }
+    }
+
+    /// <summary>
+    /// Method called when the attack animation is over (animator method)
+    /// </summary>
+    private void AttackFinished()
+    {
+        _isAttacking = false;
+    }
+    #endregion
+
+    #region Dodge
     /// <summary>
     /// Handles the dodge logic when holding the dodge trigger buttond and moving to the upper or lower direction axis
     /// </summary>
@@ -89,120 +214,63 @@ public class PlayerCombat : MonoBehaviour
 
             if (_dodgeCdTimer > _dodgeCd)
             {
-
-                if (dodgeDirection == 1) 
+                if (dodgeDirection == 1)
                 {
-                    _isDodgingUp = true;
-                    Invoke(nameof(StopDodge), _dodgeDuration);
+                    ExecuteDodge(DodgeType.HighDodge);
                 }
-                if (dodgeDirection == -1) 
+                if (dodgeDirection == -1)
                 {
-                    _isDodgingDown = true;
-                    Invoke(nameof(StopDodge), _dodgeDuration);
+                    ExecuteDodge(DodgeType.LowDodge);
                 }
             }
         }
     }
-
+    
     /// <summary>
-    /// Executes the attack coroutine when the button is pressed and the player is not pressing the dodge trigger button
+    /// Executes the dodge action
     /// </summary>
-    public void AttackInput(InputAction.CallbackContext context)
+    /// <param name="dodgeType">The dodge type</param>
+    private void ExecuteDodge(DodgeType dodgeType)
     {
-        if (context.performed && !_dodgeStance)
-        {
-            Debug.Log("Attack");
-            ExecuteAttack();
-        }
+        Debug.Log("Dodging");
+        _dodgeCdTimer = 0;
+        _isDodging = true;
+        _dodgeType = dodgeType;
+        Invoke(nameof(StopDodge), _dodgeDuration);
     }
 
     /// <summary>
-    /// Activates the attack area during the set time and disables it afterwards
-    /// </summary>
-    public void ExecuteAttack()
-    {
-        _myAnimator.SetTrigger("startAttack");
-        _isAttacking = true;
-        _attackCdTimer = 0;
-    }
-
-    /// <summary>
-    /// Determines the dodging direction of the player and deactivates it after the set time has passed
+    /// Stops the dodge action
     /// </summary>
     public void StopDodge()
     {
-        _isDodgingUp = false;
-        _isDodgingDown = false;
+        _isDodging = false;
     }
 
     /// <summary>
-    /// Returns the dodgeStance bool
+    /// Method called when the player successfully dodges an attack
     /// </summary>
-    public bool DodgeStance()
-    {
-        return _dodgeStance;
-    }
-
-    /// <summary>
-    /// Handles all the collision interactions
-    /// </summary>
-    public void OnHurtboxTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.CompareTag("Enemy") || collision.CompareTag("Projectile"))
-        {
-            EnemyCollisionHandler(collision);
-        }
-    }
-
-    /// <summary>
-    /// Handles all the enemy collisions
-    /// </summary>
-    private void EnemyCollisionHandler(Collider2D collision)
-    {
-        if (_isDodgingUp)
-        {
-            if (collision.GetComponent<BulletScript>().GetAttackType()) OnDodge();
-            else OnEnemyHit(collision);
-        }
-        else if (_isDodgingDown)
-        {
-            if (collision.GetComponent<BulletScript>().GetAttackType()) OnEnemyHit(collision); 
-            else OnDodge();
-        }
-        else
-        {
-            OnEnemyHit(collision);
-        }
-    }
-
-    private void OnEnemyHit(Collider2D collision)
-    {
-        Debug.Log("Enemy Hit");
-        if (collision.CompareTag("Projectile")) Destroy(collision.gameObject);
-        _hitStopController.StopTime(0f, _hitStopDuration);
-    }
-    private void OnDodge()
+    public void OnDodge()
     {
         Debug.Log("Dodged");
     }
+    #endregion
 
-    private void EnableAttackArea()
-    {
-        _attackArea.SetActive(true);
-    }
+    #region Getters
+    /// <summary>
+    /// Returns the dodgeStance bool
+    /// </summary>
+    public bool DodgeStance => _dodgeStance;
 
-    private void DIsableAttackArea()
-    {
-        _attackArea.SetActive(false);
-    }
+    /// <summary>
+    /// Returns the dodge type
+    /// </summary>
+    public DodgeType GetDodgeType => _dodgeType;
 
-    public bool IsDodgingUp()
-    {
-        return _isDodgingUp;
-    }
+    /// <summary>
+    /// Returns wheter the player is dodging or not
+    /// </summary>
+    public bool IsDodging => _isDodging;
+    #endregion
 
-    public bool IsDodgingDown()
-    {
-        return _isDodgingDown;
-    }
 }

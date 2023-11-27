@@ -5,7 +5,6 @@ using UnityEngine;
 public class BulletScript : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private bool _bulletType;
     [SerializeField] private float _lifeSpan;
     [SerializeField] private float _speed;
 
@@ -28,11 +27,6 @@ public class BulletScript : MonoBehaviour
     }
     #endregion
 
-    public bool GetAttackType()
-    {
-        return _bulletType;
-    }
-
     public void SetDirection(Vector2 direction)
     {
         _direction = direction;
@@ -40,9 +34,10 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.CompareTag("Ground"))
         {
             Destroy(gameObject);
         }
+        
     }
 }

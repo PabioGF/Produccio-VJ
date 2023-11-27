@@ -14,7 +14,6 @@ GameObject:
   - component: {fileID: 1811160521062728700}
   - component: {fileID: 944517098901546206}
   - component: {fileID: 1848695839686454265}
-  - component: {fileID: -8863007312910124445}
   m_Layer: 0
   m_Name: LowBullet
   m_TagString: Projectile
@@ -102,6 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _attackType: 2
 --- !u!50 &1811160521062728700
 Rigidbody2D:
   serializedVersion: 4
@@ -186,19 +186,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f1ea2cfdb22ced478d5055110e33619, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _bulletType: 0
   _lifeSpan: 10
   _speed: 5
---- !u!114 &-8863007312910124445
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2941671906316021625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 713e6533dd9df924e848134a14099db0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _damage: 1

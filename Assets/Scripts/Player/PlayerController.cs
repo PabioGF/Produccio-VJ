@@ -8,6 +8,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] GameObject _groundCheck;
     [SerializeField] GameObject _topCheck;
+    [SerializeField] InventoryController _inventoryController;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -50,14 +51,12 @@ public class PlayerController : MonoBehaviour
 
         if (_groundCheck == null)
         {
-            Debug.LogError("[PlayerController] La referència a Ground Check és null");
+            Debug.LogError("[PlayerController] La referï¿½ncia a Ground Check ï¿½s null");
         }
         if (_topCheck == null)
         {
-            Debug.LogError("[PlayerController] La referència a Top Check és null");
+            Debug.LogError("[PlayerController] La referï¿½ncia a Top Check ï¿½s null");
         }
-        
-
     }
 
     private void OnDestroy()
@@ -85,10 +84,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInputs()
     {
-        if (!_playerCombat.DodgeStance())
+        if (!_playerCombat.DodgeStance)
         {
             _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
-        } else
+        } 
+        else
         {
             _movementInput = 0;
         }
@@ -128,9 +128,19 @@ public class PlayerController : MonoBehaviour
             _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
         }
 
+        if (_desiredVelocity.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+        } 
+        else if (_desiredVelocity.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
+    #region Jump
     /// <summary>
     /// Function that handles the executrion of the jump considering all the variables that are implied
     /// </summary>
@@ -172,14 +182,37 @@ public class PlayerController : MonoBehaviour
             _jumpPressed = _timer;
         }
     }
+    #endregion
 
-    public void GiveKey(bool key)
+    #region Inventory
+    /// <summary>
+    /// Adds an item to the inventory
+    /// </summary>
+    /// <param name="item">Item to add</param>
+    public void AddItem(InventoryItem item)
     {
-        _hasKey = key;
+        _inventoryController.AddItem(item);
     }
 
-    public bool HasKey()
+    /// <summary>
+    /// Checks if the given object is in the inventory
+    /// </summary>
+    /// <param name="type">The type of the object</param>
+    /// <param name="id">The id of the object</param>
+    /// <returns>Whether the object is in the inventory or not</returns>
+    public bool HasItem(InventoryItem.ItemType type, int id = 0)
     {
-        return _hasKey;
+        return _inventoryController.HasItem(type, id);
     }
+
+    /// <summary>
+    /// Removes an object from the inventory
+    /// </summary>
+    /// <param name="type">The type of the object</param>
+    /// <param name="id">The id of the object</param>
+    public void RemoveItem(InventoryItem.ItemType type, int id = 0)
+    {
+        _inventoryController.RemoveItem(type, id);
+    }
+    #endregion
 }
