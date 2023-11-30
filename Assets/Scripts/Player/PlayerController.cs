@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,6 @@ public class PlayerController : MonoBehaviour
 {
     #region Variables
     [SerializeField] GameObject _groundCheck;
-    [SerializeField] GameObject _topCheck;
     [SerializeField] InventoryController _inventoryController;
 
     [Header("Movement settings")]
@@ -21,18 +21,20 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _bufferTime;
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
+    [SerializeField] private float _coyoteTime;
 
     private PlayerCombat _playerCombat;
     private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody2D;
     private int _availableJumps;
     private float _movementInput;
-    private bool _desiredJump;
     private Vector2 _desiredVelocity;
     private bool _isGrounded;
     private float _jumpPressed;
     private float _timer;
     private bool _stopJump;
+    private float _coyoteStart;
+    private bool _desiredJump;
 
     private Animator _myAnimator;
     private bool _hasKey;
@@ -49,14 +51,7 @@ public class PlayerController : MonoBehaviour
 
         _playerInputActions.Player.Jump.performed += JumpInput;
 
-        if (_groundCheck == null)
-        {
-            Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
-        }
-        if (_topCheck == null)
-        {
-            Debug.LogError("[PlayerController] La refer�ncia a Top Check �s null");
-        }
+        if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
     }
 
     private void OnDestroy()
@@ -99,8 +94,35 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleEnvironment()
     {
+        if (!Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground")) && _isGrounded)
+        {
+            _coyoteStart = _timer;
+            _availableJumps -= 1;
+        }
+
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
-        _stopJump = Physics2D.OverlapCircle(_topCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        bool rightHit = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f);
+        bool centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up * 0.5f );
+        bool leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up * 0.5f);
+
+        Debug.Log("Right ray: " + rightHit);
+        Debug.Log("Center ray: " + centerRaycast);
+        Debug.Log("Left ray: " + leftRaycast);
+
+        if (leftRaycast && !centerRaycast)
+        {
+            transform.position += new Vector3(0.2f, 0);
+        }     
+        else if (rightHit && !centerRaycast)
+        {
+            transform.position += new Vector3(0.2f, 0);
+        }
+
+        _stopJump = centerRaycast;
 
         if (_isGrounded && _desiredVelocity.y <= 0)
         {
@@ -152,11 +174,11 @@ public class PlayerController : MonoBehaviour
         }
 
         bool bufferedJump = _timer - _jumpPressed <= _bufferTime;
+        bool canJump = _availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime;
 
-        if (_desiredJump && _availableJumps > 0 && bufferedJump)
+        if (bufferedJump && canJump && _desiredJump)
         {
             _desiredVelocity.y += _jumpForce;
-            _availableJumps -= 1;
             _desiredJump = false;
         }
 
@@ -178,8 +200,8 @@ public class PlayerController : MonoBehaviour
     {
         if (context.performed) 
         {
-            _desiredJump = true;
             _jumpPressed = _timer;
+            _desiredJump = true;
         }
     }
     #endregion

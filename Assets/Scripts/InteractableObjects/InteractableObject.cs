@@ -13,4 +13,6 @@ public abstract class InteractableObject : MonoBehaviour
 
     protected abstract void Awake();
     protected abstract void Interact(PlayerController playerController);
+
+    protected abstract void OnTriggerStay2D(Collider2D collision);
 }

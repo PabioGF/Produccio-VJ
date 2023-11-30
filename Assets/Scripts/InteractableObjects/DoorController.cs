@@ -47,7 +47,7 @@ public class DoorController : InteractableObject
     /// Checks if the player enters the door trigger
     /// </summary>
     /// <param name="collision">Collision</param>
-    private void OnTriggerStay2D(Collider2D collision)
+    protected override void OnTriggerStay2D(Collider2D collision)
     {
         if (_playerInputActions.Player.Interact.ReadValue<float>() == 0) _hasInteracted = false;
 
