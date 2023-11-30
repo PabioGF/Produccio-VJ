@@ -102,22 +102,20 @@ public class PlayerController : MonoBehaviour
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
 
-        bool rightHit = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f);
-        bool centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        // Raycast to check if the head is colliding with an obstacle
+        RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f, Color.green);
+        RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up * 0.5f );
-        bool leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up * 0.5f);
+        RaycastHit2D leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
+        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up * 0.5f, Color.red);
 
-        Debug.Log("Right ray: " + rightHit);
-        Debug.Log("Center ray: " + centerRaycast);
-        Debug.Log("Left ray: " + leftRaycast);
-
-        if (leftRaycast && !centerRaycast)
+        // Moves the player if its partially colliding
+        if (rightRaycast && !centerRaycast)
         {
-            transform.position += new Vector3(0.2f, 0);
+            transform.position -= new Vector3 (0.2f, 0);
         }     
-        else if (rightHit && !centerRaycast)
+        else if (leftRaycast && !centerRaycast)
         {
             transform.position += new Vector3(0.2f, 0);
         }
