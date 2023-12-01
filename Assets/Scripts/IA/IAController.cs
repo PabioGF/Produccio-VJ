@@ -22,6 +22,9 @@ public class IAController : MonoBehaviour
   
     protected Vector3 myVelocity;
 
+    public int radioDeteccionSuelo;
+
+    public Transform leftFoot, rightFoot;
 
     protected virtual void Start()
     {
@@ -64,46 +67,32 @@ public class IAController : MonoBehaviour
         Debug.Log("Rayo de visión lanzado.");
         if (hit.collider != null)
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green,1);
+            Debug.Log("dentro");
         }
         else
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red,1);
+            Debug.Log("fuera");
         }
         
 
         // Si el rayo no choca con ningún objeto, devuelve true.
         return hit.collider != null && hit.collider.CompareTag("Player");
     }
-   /* private Vector3 NormalIA(Vector3 myVelocity)
-    {
-        float distanciaAlJugador = Vector3.Distance(transform.position, jugador.position);
-
-        if (distanciaAlJugador <= distanciaDeteccion || hasDetected)
-        {
-            hasDetected = true;
-            Vector3 direccionJugador = (jugador.position - transform.position).normalized;
-            myVelocity.x = velocidadMovimiento * direccionJugador.x;
-
-        }
-        else
-        {
-            if (!hasDetected)
-            {
-                
-               myVelocity = BasicMovement(myVelocity);
-
-            }
-
-
-
-        }
-
-        return myVelocity;
-    }*/
 
     private Vector3 BasicMovement(Vector3 myVelocity)
     {
+
+        bool leftFootColliding = CheckFeetColliding(leftFoot);
+        bool rightFootColliding = CheckFeetColliding(rightFoot);
+
+        if (!leftFootColliding || !rightFootColliding)
+        {
+            CambiarDireccion();
+            ReiniciarTemporizador();
+        }
+
         myVelocity.x = velocidadMovimiento * direccion;
 
         tiempoActual -= Time.deltaTime;
@@ -117,6 +106,13 @@ public class IAController : MonoBehaviour
         return myVelocity;
     }
 
+    private bool CheckFeetColliding(Transform feet)
+    {
+        Collider2D collider = Physics2D.OverlapCircle(feet.position, 0.2f, LayerMask.GetMask("Ground"));
+        return collider != null;
+        
+    }
+
     private void ReiniciarTemporizador()
     {
         tiempoActual = tiempoCambioDireccion;
@@ -127,12 +123,4 @@ public class IAController : MonoBehaviour
         direccion *= -1;
     }
 
-   private void OnCollisionEnter2D(Collision2D collision)
-    {
-        PlayerLifeComponent life = collision.gameObject.GetComponent<PlayerLifeComponent>();
-        if (life != null)
-        {
-            life.ReceiveHit(1f,true);
-        }
-    }
 }

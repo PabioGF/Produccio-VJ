@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class NormalIA : IAController
 {
-    public float distanciaDisparo = 10.0f;
+    
 
 
     protected override void Start()
@@ -14,13 +14,16 @@ public class NormalIA : IAController
     {
         base.Update();
         Vector3 myVelocity = base.myVelocity;
-        myRB.velocity = myVelocity;
+        
         if (hasDetected)
         {
+            
             Vector3 direccionJugador = (jugador.position - transform.position).normalized;
             myVelocity.x = velocidadMovimiento * direccionJugador.x;
             Pegar();
         }
+
+        myRB.velocity = myVelocity;
     }
 
 

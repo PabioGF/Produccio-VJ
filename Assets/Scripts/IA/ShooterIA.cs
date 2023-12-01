@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShooterIA : IAController
 {
     public GameObject balaPrefab;
-
+   
 
     protected override void Start()
     {
@@ -20,6 +20,8 @@ public class ShooterIA : IAController
             Disparar();
             myVelocity.x = 0;
         }
+
+        myRB.velocity = myVelocity;
     }
         
 
