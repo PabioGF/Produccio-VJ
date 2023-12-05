@@ -211,7 +211,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
-  _topCheck: {fileID: 4851809869253839299}
   _inventoryController: {fileID: 1742377338972371357}
   _maxSpeed: 8
   _acceleration: 70
@@ -236,6 +235,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _fastAttackArea: {fileID: 7828853054973466525}
   _slowAttackArea: {fileID: 165679107438649102}
+  _playerController: {fileID: 0}
   _attackDuration: 0.1
   _attackCd: 0.4
   _maxTimeBetweenAttacks: 1
@@ -485,7 +485,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.9375, y: 1.6875}
+  m_Size: {x: 0.25, y: 0.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
