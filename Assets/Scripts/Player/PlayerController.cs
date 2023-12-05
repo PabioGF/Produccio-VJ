@@ -37,7 +37,7 @@ public class PlayerController : MonoBehaviour
     private bool _desiredJump;
 
     private Animator _myAnimator;
-    private bool _hasKey;
+    private bool _isOverride;
     #endregion
 
     #region Unity methods
@@ -79,14 +79,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInputs()
     {
-        if (!_playerCombat.DodgeStance)
-        {
+        if (_isOverride) return;
+
+        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
             _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
-        } 
         else
-        {
             _movementInput = 0;
-        }
     }
 
     /// <summary>
@@ -188,6 +186,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void ApplyMovement()
     {
+        if (_isOverride) return;
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
@@ -234,5 +233,9 @@ public class PlayerController : MonoBehaviour
     {
         _inventoryController.RemoveItem(type, id);
     }
+
+    public Rigidbody2D Rigidbody => _rigidbody2D;
+
+    public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
     #endregion
 }

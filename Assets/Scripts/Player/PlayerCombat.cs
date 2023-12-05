@@ -8,6 +8,7 @@ public class PlayerCombat : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _fastAttackArea;
     [SerializeField] private GameObject _slowAttackArea;
+    [SerializeField] private PlayerController _playerController;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -121,23 +122,27 @@ public class PlayerCombat : MonoBehaviour
         if (_isAttacking) return;
 
         if (_timer - _attackPerformed > _maxTimeBetweenAttacks)
-            _currComboLength = 0;
+        {
+            _myAnimator.SetBool("isCombo", false);
+            //_currComboLength = 0;
+        }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
-            _currComboLength += 1;
-            print(_currComboLength);
+            /*_currComboLength += 1;
 
             if (_currComboLength > _maxComboLength)
             {
+                _myAnimator.SetBool("isCombo", false);
                 _attackBuffer.Clear();
                 _attackCdTimer = 0;
                 _currComboLength = 0;
                 return;
             }
+            */
 
             _isAttacking = true;
-            _attackPerformed = _timer;
+            _myAnimator.SetBool("isCombo", true);
 
             switch (attack)
             {
@@ -172,6 +177,13 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    private void MovingAttackStart()
+    {
+        _playerController.IsOverride = true;
+        _playerController.Rigidbody.velocity = new Vector2(10, 0) * transform.right;
+        Debug.Log("Override");
+    }
+
     /// <summary>
     /// Disables the attack area (animator method)
     /// </summary>
@@ -193,9 +205,24 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Method called when the attack animation is over (animator method)
     /// </summary>
-    private void AttackFinished()
+    private void AttackFinished(int isMoving)
+    {
+        _attackPerformed = _timer;
+        _isAttacking = false;
+
+        if (isMoving == 1) 
+            _playerController.IsOverride = false;
+    }
+
+    private void ComboFinished(int isMoving)
     {
         _isAttacking = false;
+        _attackBuffer.Clear();
+        _attackCdTimer = 0;
+        _myAnimator.SetBool("isCombo", false);
+
+        if (isMoving == 1)
+            _playerController.IsOverride = false;
     }
     #endregion
 
@@ -271,6 +298,11 @@ public class PlayerCombat : MonoBehaviour
     /// Returns wheter the player is dodging or not
     /// </summary>
     public bool IsDodging => _isDodging;
+
+    /// <summary>
+    /// Returns wheter the player is attacking or not
+    /// </summary>
+    public bool IsAttacking => _isAttacking;
     #endregion
 
 }
