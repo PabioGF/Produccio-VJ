@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject _fastAttackArea;
     [SerializeField] private GameObject _slowAttackArea;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private GameObject _bottlePrefab;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -37,7 +38,11 @@ public class PlayerCombat : MonoBehaviour
 
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
-    public enum ComboStates { Idle, F, Ff, Fs, Fff, Ffs, S, Sf, Ss, Sfs}
+
+    /// <summary>
+    /// Player combo states to keep track of the current attack playing. The f for fast and s for slow
+    /// </summary>
+    public enum ComboStates { Idle, F, Ff, S, Sf}
 
     private ComboStates _comboState;
     private DodgeType _dodgeType;
@@ -52,6 +57,7 @@ public class PlayerCombat : MonoBehaviour
 
         _playerInputActions.Player.FastAttack.performed += FastAttackInput;
         _playerInputActions.Player.SlowAttack.performed += SlowAttackInput;
+        _playerInputActions.Player.Throw.performed += ThrowBottle;
         _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
 
@@ -117,6 +123,18 @@ public class PlayerCombat : MonoBehaviour
         {
             if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.SlowAttack);
+        }
+    }
+
+    public void ThrowBottle(InputAction.CallbackContext context)
+    {
+        if (context.performed && !_dodgeStance && !_isDodging && !_isCombo)
+        {
+            if (_playerController.TryGetItem(InventoryItem.ItemType.Bottle, out InventoryItem bottleData))
+            {
+                Bottle bottle = (Bottle)bottleData;
+                bottle.Object.GetComponent<BottleScript>().Throw();
+            }
         }
     }
 

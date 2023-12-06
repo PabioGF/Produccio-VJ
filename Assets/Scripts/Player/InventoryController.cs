@@ -23,6 +23,21 @@ public class InventoryController : MonoBehaviour
         Debug.Log(_inventoryItems.Count);
     }
 
+    public bool TryGetItem(InventoryItem.ItemType type, out InventoryItem outItem)
+    {
+        foreach (InventoryItem item in _inventoryItems)
+        {
+            if (item.Type == type)
+            {
+                outItem = item;
+                return true;
+            }
+        }
+
+        outItem = null;
+        return false;
+    }
+
     public bool HasItem(InventoryItem.ItemType type)
     {
         foreach (InventoryItem item in _inventoryItems)

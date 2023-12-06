@@ -24,13 +24,11 @@ public class SceneInventoryItem : MonoBehaviour
         if (collision.TryGetComponent<PlayerController>(out var component))
         {
             _playerController = component;
-        }
-            
+        }        
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
-        Debug.Log("Exit");
         _playerController = null;
     }
 

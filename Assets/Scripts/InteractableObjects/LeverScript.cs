@@ -10,28 +10,8 @@ public class LeverScript : InteractableObject
     private bool _hasInteracted;
     #endregion
 
-
-    protected override void Awake()
-    {
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-    }
-
-    protected override void Interact(PlayerController playerController)
+    protected override void Interact()
     {
        _linkedTurret.SetActive(false);
-    }
-
-    /// <summary>
-    /// Checks if the player enters the lever trigger
-    /// </summary>
-    /// <param name="collision">Collision</param>
-    protected override void OnTriggerStay2D(Collider2D collision)
-    {
-        if (collision.TryGetComponent<PlayerController>(out var component) && _playerInputActions.Player.Interact.ReadValue<float>() == 1)
-        {
-            if (!_hasInteracted) Interact(component);
-            _hasInteracted = true;
-        }
     }
 }

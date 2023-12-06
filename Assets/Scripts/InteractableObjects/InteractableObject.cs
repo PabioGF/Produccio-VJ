@@ -3,16 +3,40 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public abstract class InteractableObject : MonoBehaviour
+public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private ObjectType type;
-    [SerializeField] protected int id;
 
     public enum ObjectType { Door, Lever }
     protected PlayerInputActions _playerInputActions;
+    protected PlayerController _playerController;
 
-    protected abstract void Awake();
-    protected abstract void Interact(PlayerController playerController);
+    protected virtual void Awake()
+    {
+        _playerInputActions = new PlayerInputActions();
+        _playerInputActions.Player.Enable();
+    }
+    protected virtual void Interact() { }
 
-    protected abstract void OnTriggerStay2D(Collider2D collision);
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.TryGetComponent<PlayerController>(out var component))
+        {
+            _playerController = component;
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        _playerController = null;
+    }
+
+    protected virtual void OnTriggerStay2D(Collider2D collision)
+    {
+        if (_playerInputActions.Player.Interact.ReadValue<float>() == 1 && _playerController != null)
+        {
+            Interact();
+        }
+    }
+
 }

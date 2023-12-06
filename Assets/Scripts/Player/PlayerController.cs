@@ -35,6 +35,7 @@ public class PlayerController : MonoBehaviour
     private bool _stopJump;
     private float _coyoteStart;
     private bool _desiredJump;
+    private bool _jumpHold;
 
     private Animator _myAnimator;
     private bool _isOverride;
@@ -79,13 +80,14 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInputs()
     {
-        Debug.Log(_playerCombat.IsAttacking);
         if (_isOverride) return;
 
         if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
             _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
         else
             _movementInput = 0;
+
+        _jumpHold = _playerInputActions.Player.Jump.ReadValue<float>() > 0;
     }
 
     /// <summary>
@@ -100,6 +102,8 @@ public class PlayerController : MonoBehaviour
         }
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        _myAnimator.SetBool("isGrounded", _isGrounded);
 
         // Raycast to check if the head is colliding with an obstacle
         RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
@@ -119,17 +123,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(0.2f, 0);
         }
 
-        _stopJump = centerRaycast;
-
-        if (_isGrounded && _desiredVelocity.y <= 0)
-        {
-            _desiredVelocity.y = -0.1f;
-        }
-        else
-        {
-            if (_stopJump) _desiredVelocity.y = Mathf.Min(0, _desiredVelocity.y);
-            _desiredVelocity.y = Mathf.MoveTowards(_desiredVelocity.y, -_maxFallSpeed, _fallSpeed * Time.fixedDeltaTime);
-        }
+        if (centerRaycast) _stopJump = true;
     }
 
     /// <summary>
@@ -168,7 +162,10 @@ public class PlayerController : MonoBehaviour
         if (_isGrounded)
         {
             _availableJumps = _maxJumps;
+            _stopJump = false;
         }
+
+        if (!_isGrounded && !_jumpHold) _stopJump = true;
 
         bool bufferedJump = _timer - _jumpPressed <= _bufferTime;
         bool canJump = _availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime;
@@ -179,7 +176,15 @@ public class PlayerController : MonoBehaviour
             _desiredJump = false;
         }
 
-        _myAnimator.SetBool("isGrounded", _isGrounded);
+        if (_isGrounded && _desiredVelocity.y <= 0)
+        {
+            _desiredVelocity.y = -0.1f;
+        }
+        else
+        {
+            if (_stopJump) _desiredVelocity.y = Mathf.Min(0, _desiredVelocity.y);
+            _desiredVelocity.y = Mathf.MoveTowards(_desiredVelocity.y, -_maxFallSpeed, _fallSpeed * Time.fixedDeltaTime);
+        }
     }
 
     /// <summary>
@@ -212,6 +217,18 @@ public class PlayerController : MonoBehaviour
     public void AddItem(InventoryItem item)
     {
         _inventoryController.AddItem(item);
+    }
+
+    public bool TryGetItem(InventoryItem.ItemType type, out InventoryItem outItem)
+    {
+        if (_inventoryController.TryGetItem(type, out InventoryItem item))
+        {
+            outItem = item;
+            return true;
+        }
+
+        outItem = null;
+        return false;
     }
 
     /// <summary>

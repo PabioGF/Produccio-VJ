@@ -89,6 +89,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Throw"",
+                    ""type"": ""Button"",
+                    ""id"": ""c9f77908-d7fc-43b7-a7d7-397acb320b86"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -333,6 +342,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4f591bf8-25a7-4881-b2c3-62caadb7a61d"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a19c8662-e8b2-491c-993b-452d8d6f145a"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Throw"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -348,6 +379,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_SlowAttack = m_Player.FindAction("SlowAttack", throwIfNotFound: true);
         m_Player_DodgeTrigger = m_Player.FindAction("DodgeTrigger", throwIfNotFound: true);
         m_Player_DodgeInput = m_Player.FindAction("Dodge Input", throwIfNotFound: true);
+        m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -416,6 +448,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_SlowAttack;
     private readonly InputAction m_Player_DodgeTrigger;
     private readonly InputAction m_Player_DodgeInput;
+    private readonly InputAction m_Player_Throw;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -427,6 +460,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @SlowAttack => m_Wrapper.m_Player_SlowAttack;
         public InputAction @DodgeTrigger => m_Wrapper.m_Player_DodgeTrigger;
         public InputAction @DodgeInput => m_Wrapper.m_Player_DodgeInput;
+        public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -457,6 +491,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DodgeInput.started += instance.OnDodgeInput;
             @DodgeInput.performed += instance.OnDodgeInput;
             @DodgeInput.canceled += instance.OnDodgeInput;
+            @Throw.started += instance.OnThrow;
+            @Throw.performed += instance.OnThrow;
+            @Throw.canceled += instance.OnThrow;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -482,6 +519,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @DodgeInput.started -= instance.OnDodgeInput;
             @DodgeInput.performed -= instance.OnDodgeInput;
             @DodgeInput.canceled -= instance.OnDodgeInput;
+            @Throw.started -= instance.OnThrow;
+            @Throw.performed -= instance.OnThrow;
+            @Throw.canceled -= instance.OnThrow;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -508,5 +548,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnSlowAttack(InputAction.CallbackContext context);
         void OnDodgeTrigger(InputAction.CallbackContext context);
         void OnDodgeInput(InputAction.CallbackContext context);
+        void OnThrow(InputAction.CallbackContext context);
     }
 }
