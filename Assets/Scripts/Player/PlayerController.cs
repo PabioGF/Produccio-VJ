@@ -219,9 +219,12 @@ public class PlayerController : MonoBehaviour
     /// <param name="type">The type of the object</param>
     /// <param name="id">The id of the object</param>
     /// <returns>Whether the object is in the inventory or not</returns>
-    public bool HasItem(InventoryItem.ItemType type, int id = 0)
+    public bool HasItem(InventoryItem.ItemType type, int id = -1)
     {
-        return _inventoryController.HasItem(type, id);
+        if (id == -1)
+            return _inventoryController.HasItem(type);
+        else
+            return _inventoryController.HasKey(id);
     }
 
     /// <summary>
@@ -229,9 +232,12 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     /// <param name="type">The type of the object</param>
     /// <param name="id">The id of the object</param>
-    public void RemoveItem(InventoryItem.ItemType type, int id = 0)
+    public void RemoveItem(InventoryItem.ItemType type, int id = -1)
     {
-        _inventoryController.RemoveItem(type, id);
+        if (id == -1)
+            _inventoryController.RemoveItem(type);
+        else
+            _inventoryController.RemoveKey(id);
     }
 
     public Rigidbody2D Rigidbody => _rigidbody2D;

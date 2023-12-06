@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 public class InventoryController : MonoBehaviour
 {
@@ -21,24 +23,53 @@ public class InventoryController : MonoBehaviour
         Debug.Log(_inventoryItems.Count);
     }
 
-    public bool HasItem(InventoryItem.ItemType type, int id)
+    public bool HasItem(InventoryItem.ItemType type)
     {
         foreach (InventoryItem item in _inventoryItems)
         {
-            if (item.GetItemType() == type && item.GetItemId() == id)
+            if (item.Type == type)
                 return true;
         }
         return false;
     }
 
-    public void RemoveItem(InventoryItem.ItemType type, int id)
+    public bool HasKey(int id)
     {
         foreach (InventoryItem item in _inventoryItems)
         {
-            if (item.GetItemType() == type && item.GetItemId() == id)
+            if (item.Type == InventoryItem.ItemType.Key)
+            {
+                Key key = (Key)item;
+                if (key.Id == id) return true;
+            }
+        }
+        return false;
+    }
+
+    public void RemoveItem(InventoryItem.ItemType type)
+    {
+        foreach (InventoryItem item in _inventoryItems)
+        {
+            if (item.Type == type)
             {
                 _inventoryItems.Remove(item);
                 return;
+            }
+        }
+    }
+
+    public void RemoveKey(int id)
+    {
+        foreach (InventoryItem item in _inventoryItems)
+        {
+            if (item.Type == InventoryItem.ItemType.Key)
+            {
+                Key key = (Key)item;
+                if (key.Id == id)
+                {
+                    _inventoryItems.Remove(item);
+                    return;
+                }
             }
         }
     }
