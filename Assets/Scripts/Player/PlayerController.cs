@@ -79,6 +79,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleInputs()
     {
+        Debug.Log(_playerCombat.IsAttacking);
         if (_isOverride) return;
 
         if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
