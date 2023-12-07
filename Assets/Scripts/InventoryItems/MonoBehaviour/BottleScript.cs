@@ -9,6 +9,7 @@ public class BottleScript : SceneInventoryItem
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Rigidbody2D _rigidbody;
     private bool _pickedUp;
+    private bool _isThrow;
 
     protected override void PickUp()
     {
@@ -24,12 +25,19 @@ public class BottleScript : SceneInventoryItem
         _throwSpeed = data.Speed;
     }
 
-    public void Throw()
-    {
-        gameObject.transform.position = _playerTransform.position + _playerTransform.right;
+    public void Throw(Vector2 direction)
+    { 
+        gameObject.transform.position = _playerTransform.position;
         gameObject.SetActive(true);
-        _rigidbody.velocity = new Vector2(_throwSpeed, 0) * _playerTransform.right;
+        _rigidbody.velocity = _throwSpeed * direction;
         _playerController.RemoveItem(InventoryItem.ItemType.Bottle);
+        _isThrow = true;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (!_isThrow) return;
+        Destroy(gameObject, 0.2f);
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)

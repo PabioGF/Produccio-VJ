@@ -132,8 +132,9 @@ public class PlayerCombat : MonoBehaviour
         {
             if (_playerController.TryGetItem(InventoryItem.ItemType.Bottle, out InventoryItem bottleData))
             {
+                Vector2 direction = _playerInputActions.Player.Aim.ReadValue<Vector2>();
                 Bottle bottle = (Bottle)bottleData;
-                bottle.Object.GetComponent<BottleScript>().Throw();
+                bottle.Object.GetComponent<BottleScript>().Throw(direction);
             }
         }
     }
