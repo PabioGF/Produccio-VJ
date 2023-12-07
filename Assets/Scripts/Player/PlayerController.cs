@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour
 
     private Animator _myAnimator;
     private bool _isOverride;
+    private bool _isAttackingDown;
     #endregion
 
     #region Unity methods
@@ -95,6 +96,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     private void HandleEnvironment()
     {
+        //Només entra si el jugador es deixa caure, per diferenciar de si ha saltat
         if (!Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground")) && _isGrounded)
         {
             _coyoteStart = _timer;
@@ -102,6 +104,12 @@ public class PlayerController : MonoBehaviour
         }
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+
+        if (_isAttackingDown && _isGrounded)
+        {
+            _isAttackingDown = false;
+            _playerCombat.EndDownAttack();
+        }
 
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
@@ -193,6 +201,8 @@ public class PlayerController : MonoBehaviour
     public void ApplyMovement()
     {
         if (_isOverride) return;
+
+        if (_playerCombat.IsCombo || _playerCombat.IsAttacking) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
@@ -261,5 +271,9 @@ public class PlayerController : MonoBehaviour
     public Rigidbody2D Rigidbody => _rigidbody2D;
 
     public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
+
+    public bool IsGrounded => _isGrounded;
+
+    public bool IsAttackingDown { set { _isAttackingDown = value; } }
     #endregion
 }

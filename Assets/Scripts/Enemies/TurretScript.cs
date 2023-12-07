@@ -37,7 +37,7 @@ public class TurretScript : MonoBehaviour
 
     private void CalculateDirection()
     {
-        if (_player.active)
+        if (_player.activeSelf)
         {
             _aimDirection = _player.transform.position - transform.position;
             float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
