@@ -338,7 +338,7 @@ public class PlayerCombat : MonoBehaviour
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(0, -12);
+        _playerController.Rigidbody.velocity = new Vector2(0, -15);
         _playerController.IsAttackingDown = true;
     }
 

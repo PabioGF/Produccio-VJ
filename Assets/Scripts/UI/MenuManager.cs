@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("AssetTest");
+        SceneManager.LoadScene("Prototip");
     }
 
     public void Exit()
