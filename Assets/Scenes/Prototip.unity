@@ -1945,6 +1945,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _bufferTime
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 7092583634002823034, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: m_Layer
       value: 8

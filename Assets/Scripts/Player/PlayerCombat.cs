@@ -9,7 +9,6 @@ public class PlayerCombat : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject[] _attackAreas;
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private GameObject _bottlePrefab;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -41,7 +40,7 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Player combo states to keep track of the current attack playing. The f for fast and s for slow
     /// </summary>
-    public enum ComboStates { Idle, F, Ff, S, Sf}
+    public enum ComboStates { Idle, F, Ff, Fff, S, Sf}
 
     private ComboStates _comboState;
     private DodgeType _dodgeType;
@@ -262,11 +261,25 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(15);
+                        MovingDownAttackStart(12);
                     }
                     break;
 
                 case ComboStates.Ff:
+                    if (attack == AttackTypes.FastAttack)
+                    {
+                        _myAnimator.SetTrigger("FastAttack");
+                        _comboState = ComboStates.Fff;
+                    }
+                    else if (attack == AttackTypes.SlowAttack)
+                    {
+                        _myAnimator.SetTrigger("SlowAttack");
+                        _isCombo = false;
+                        MovingDownAttackStart(12);
+                    }
+                    break;
+
+                case ComboStates.Fff:
                     if (attack == AttackTypes.FastAttack)
                     {
                         _isAttacking = false;
@@ -276,7 +289,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(15);
+                        MovingDownAttackStart(12);
                     }
                     break;
             }
@@ -325,7 +338,7 @@ public class PlayerCombat : MonoBehaviour
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(0, -velocity);
+        _playerController.Rigidbody.velocity = new Vector2(0, -12);
         _playerController.IsAttackingDown = true;
     }
 
@@ -352,15 +365,14 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void AttackFinished(int isMoving)
     {
-        Debug.Log("Finished");
-        _attackPerformed = _timer;
-        _isAttacking = false;  
-
         if (isMoving == 1)
             _playerController.IsOverride = false;
 
         if (!_isCombo)
             EndCombo();
+
+        _attackPerformed = _timer;
+        _isAttacking = false;          
     }
     #endregion
 

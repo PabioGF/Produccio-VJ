@@ -36,6 +36,7 @@ public class PlayerController : MonoBehaviour
     private float _coyoteStart;
     private bool _desiredJump;
     private bool _jumpHold;
+    private float _jumpPerformed;
 
     private Animator _myAnimator;
     private bool _isOverride;
@@ -97,7 +98,7 @@ public class PlayerController : MonoBehaviour
     private void HandleEnvironment()
     {
         //Només entra si el jugador es deixa caure, per diferenciar de si ha saltat
-        if (!Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground")) && _isGrounded)
+        if (!Physics2D.OverlapCircle(_groundCheck.transform.position, 0.05f, LayerMask.GetMask("Ground")) && _isGrounded)
         {
             _coyoteStart = _timer;
             _availableJumps -= 1;
@@ -173,26 +174,30 @@ public class PlayerController : MonoBehaviour
             _stopJump = false;
         }
 
-        if (!_isGrounded && !_jumpHold) _stopJump = true;
+        //TO DO: Un mínim d'altura abans de que pari el salt
+        //if (!_isGrounded && !_jumpHold) _stopJump = true;
 
         bool bufferedJump = _timer - _jumpPressed <= _bufferTime;
-        bool canJump = _availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime;
+        bool canJump = (_availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime) && !_playerCombat.IsAttacking;
 
-        if (bufferedJump && canJump && _desiredJump)
-        {
-            _desiredVelocity.y += _jumpForce;
-            _desiredJump = false;
-        }
-
-        if (_isGrounded && _desiredVelocity.y <= 0)
-        {
-            _desiredVelocity.y = -0.1f;
-        }
+        // Limits the gravity when the player is grounded
+        if (_isGrounded && _desiredVelocity.y <= 0) _desiredVelocity.y = -0.1f;
         else
         {
             if (_stopJump) _desiredVelocity.y = Mathf.Min(0, _desiredVelocity.y);
             _desiredVelocity.y = Mathf.MoveTowards(_desiredVelocity.y, -_maxFallSpeed, _fallSpeed * Time.fixedDeltaTime);
         }
+
+        // Jumps if the conditions are met
+        if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformed > 0.2f)
+        {
+            Debug.Log("Jump");
+            _jumpPerformed = _timer;
+            _desiredVelocity.y += _jumpForce;
+            _desiredJump = false;
+            _availableJumps -= 1;
+        }
+  
     }
 
     /// <summary>
@@ -202,7 +207,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (_playerCombat.IsCombo || _playerCombat.IsAttacking) _desiredVelocity.y = 0;
+        if (_playerCombat.IsAttacking) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
