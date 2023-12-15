@@ -3,7 +3,20 @@ using UnityEngine;
 public class ShooterIA : IAController
 {
     public GameObject balaPrefab;
-   
+    [SerializeField] private GameObject _highBullet;
+    [SerializeField] private GameObject _lowBullet;
+    [SerializeField] private float _fireRate;
+    [SerializeField] private float _upperBulletProbability;
+    [SerializeField] private GameObject _referencePoint;
+    [SerializeField] private GameObject _pointer;
+    [SerializeField] private float _bulletSpeed;
+
+    private Rigidbody2D _rigidbody;
+    private GameObject _player;
+    private bool _startShooting;
+    private bool _upperBullet;
+    private Vector2 _aimDirection;
+
 
     protected override void Start()
     {
@@ -17,23 +30,35 @@ public class ShooterIA : IAController
         myRB.velocity = myVelocity;
         if (hasDetected)
         {
-            Disparar();
+            CalculateDirection();
+            Shoot();
             myVelocity.x = 0;
         }
 
         myRB.velocity = myVelocity;
     }
-        
 
-    private void Disparar()
+    private void CalculateDirection()
     {
-        if (Time.time > tiempoActual)
-        {
-            GameObject bala = Instantiate(balaPrefab, transform.position, Quaternion.identity);
-            bala.GetComponent<Rigidbody2D>().velocity = new Vector2(direccion * 5.0f, 0f);
+        _aimDirection = _player.transform.position - transform.position;
+        float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
+        _referencePoint.GetComponent<Rigidbody2D>().rotation = angle;
 
-            //Frecuencia de disparo.
-            tiempoActual = Time.time + 1.0f;
-        }
+    }
+
+
+    private void Shoot()
+    {
+        if (!_startShooting) return;
+
+        _startShooting = false;
+        InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
+    }
+
+    private void SpawnBullet()
+    {
+        GameObject bullet = Random.Range(0f, 1f) > _upperBulletProbability ? _highBullet : _lowBullet;
+        GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
+        newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
 }

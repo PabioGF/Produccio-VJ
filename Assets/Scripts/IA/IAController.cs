@@ -44,12 +44,13 @@ public class IAController : MonoBehaviour
 
         if (VerificarLineaDeVision() || hasDetected)
         {
-
+            Debug.Log("Entro");
             hasDetected = true;
         }
 
         if (!hasDetected)
         {
+            Debug.Log(VerificarLineaDeVision());
             myVelocity = BasicMovement(myVelocity);
         }
 
@@ -67,15 +68,15 @@ public class IAController : MonoBehaviour
         Debug.Log("Rayo de visión lanzado.");
         if (hit.collider != null)
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green,1);
-            Debug.Log("dentro");
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
+ 
         }
         else
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red,1);
-            Debug.Log("fuera");
+            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
+         
         }
-        
+
 
         // Si el rayo no choca con ningún objeto, devuelve true.
         return hit.collider != null && hit.collider.CompareTag("Player");
