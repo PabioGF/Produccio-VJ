@@ -115,6 +115,7 @@ public class PlayerController : MonoBehaviour
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
         // Raycast to check if the head is colliding with an obstacle
+        /*
         RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f, Color.green);
         RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
@@ -133,6 +134,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if (centerRaycast) _stopJump = true;
+        */
     }
 
     /// <summary>
