@@ -188,7 +188,7 @@ MonoBehaviour:
   _jumpForce: 30
   _maxJumps: 1
   _bufferTime: 0.3
-  _fallSpeed: 80
+  _fallSpeed: 90
   _maxFallSpeed: 150
   _coyoteTime: 0.1
 --- !u!114 &5160320821678128178

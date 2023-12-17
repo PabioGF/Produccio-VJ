@@ -15,9 +15,9 @@ public class TurretScript : MonoBehaviour
 
     private Rigidbody2D _rigidbody;
     private GameObject _player;
-    private bool _startShooting;
     private bool _upperBullet;
     private Vector2 _aimDirection;
+    private bool _playerDetected;
     #endregion
 
     #region Unity methods
@@ -25,33 +25,21 @@ public class TurretScript : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.Find("Player");
-        _startShooting = true;
     }
 
     void Update()
     {
-        CalculateDirection();
-        Shoot();
+        if (_playerDetected) {
+            CalculateDirection();
+        }
     }
     #endregion
 
     private void CalculateDirection()
     {
-        if (_player.activeSelf)
-        {
-            _aimDirection = _player.transform.position - transform.position;
-            float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
-            _referencePoint.GetComponent<Rigidbody2D>().rotation = angle;
-        }
-        
-    }
-
-    private void Shoot()
-    {
-        if (!_startShooting) return;
-
-        _startShooting = false;
-        InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
+        _aimDirection = _player.transform.position - transform.position;
+        float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
+        _referencePoint.GetComponent<Rigidbody2D>().rotation = angle;        
     }
 
     private void SpawnBullet()
@@ -59,5 +47,23 @@ public class TurretScript : MonoBehaviour
         GameObject bullet = Random.Range(0f, 1f) > _upperBulletProbability ? _highBullet : _lowBullet;
         GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _playerDetected = true;
+            InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Player"))
+        {
+            _playerDetected = false;
+            CancelInvoke(nameof(SpawnBullet));
+        }
     }
 }
