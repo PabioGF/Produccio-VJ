@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour
         if (_isOverride) return;
 
         if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
-            _movementInput = _playerInputActions.Player.Move.ReadValue<float>();
+            _movementInput = _playerInputActions.Player.MoveHorizontal.ReadValue<float>();
         else
             _movementInput = 0;
 

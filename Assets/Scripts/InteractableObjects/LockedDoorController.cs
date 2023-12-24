@@ -3,17 +3,33 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
 
-public class DoorController : InteractableObject
+public class LockedDoorController : InteractableObject
 {
     [SerializeField] private Sprite _closedSprite;
     [SerializeField] private Sprite _openSprite;
+    [SerializeField] protected int id;
 
     private bool isOpen;
+    private bool isUnlocked;
     private bool _hasInteracted;
 
     protected override void Interact()
     {
-        ToggleDoor();
+        if (isUnlocked)
+        {
+            //ToggleDoor();
+        }
+        else
+        {
+            bool hasKey = _playerController.HasItem(InventoryItem.ItemType.Key, id);
+            _playerController.RemoveItem(InventoryItem.ItemType.Key, id);
+            Debug.Log(hasKey);
+            if (hasKey)
+            {
+                isUnlocked = true;
+                ToggleDoor();
+            }
+        }
     }
 
     private void ToggleDoor()
