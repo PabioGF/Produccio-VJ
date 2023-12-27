@@ -261,7 +261,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(12);
+                        MovingDownAttackStart(20);
                     }
                     break;
 
@@ -275,7 +275,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(12);
+                        MovingDownAttackStart(20);
                     }
                     break;
 
@@ -289,7 +289,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(12);
+                        MovingDownAttackStart(20);
                     }
                     break;
             }

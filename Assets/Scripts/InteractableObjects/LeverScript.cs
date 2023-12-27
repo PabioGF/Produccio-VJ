@@ -12,6 +12,6 @@ public class LeverScript : InteractableObject
 
     protected override void Interact()
     {
-       _linkedTurret.SetActive(false);
+       _linkedTurret.GetComponent<TurretScript>().DisarmTurret();
     }
 }

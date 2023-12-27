@@ -28,7 +28,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             ""id"": ""737e996b-4413-4806-a556-a1417da0a388"",
             ""actions"": [
                 {
-                    ""name"": ""Move"",
+                    ""name"": ""MoveHorizontal"",
                     ""type"": ""Value"",
                     ""id"": ""1faaba57-47d3-44e4-b059-724dbb8a0df4"",
                     ""expectedControlType"": ""Axis"",
@@ -107,6 +107,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""MoveVertical"",
+                    ""type"": ""Value"",
+                    ""id"": ""32bbcfc8-482b-46a1-a7e6-f07279ecaa69"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -117,7 +126,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -128,7 +137,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -139,7 +148,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -150,7 +159,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": true,
                     ""isPartOfComposite"": false
                 },
@@ -161,7 +170,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -172,7 +181,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Move"",
+                    ""action"": ""MoveHorizontal"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
@@ -428,6 +437,72 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""Aim"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""dbd2f02f-ab58-4cba-8e58-e4593e08fb31"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""f2daac9b-8b3a-4d61-8c18-7e0b8fdf5a04"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""1ab6dabd-3d15-4318-a4c9-8e7846fb75ef"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""1D Axis"",
+                    ""id"": ""70c6e6ae-ef7c-40c9-adce-200364af25fa"",
+                    ""path"": ""1DAxis"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""negative"",
+                    ""id"": ""01e40bf0-0e69-4823-82d4-f354a9ccfdeb"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""positive"",
+                    ""id"": ""be4a0135-dc58-4a87-83f5-e685675b1fcf"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveVertical"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -436,7 +511,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
 }");
         // Player
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
+        m_Player_MoveHorizontal = m_Player.FindAction("MoveHorizontal", throwIfNotFound: true);
         m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_FastAttack = m_Player.FindAction("FastAttack", throwIfNotFound: true);
@@ -445,6 +520,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_DodgeInput = m_Player.FindAction("Dodge Input", throwIfNotFound: true);
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
+        m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -506,7 +582,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     // Player
     private readonly InputActionMap m_Player;
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
-    private readonly InputAction m_Player_Move;
+    private readonly InputAction m_Player_MoveHorizontal;
     private readonly InputAction m_Player_Jump;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_FastAttack;
@@ -515,11 +591,12 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DodgeInput;
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_Aim;
+    private readonly InputAction m_Player_MoveVertical;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
         public PlayerActions(@PlayerInputActions wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
+        public InputAction @MoveHorizontal => m_Wrapper.m_Player_MoveHorizontal;
         public InputAction @Jump => m_Wrapper.m_Player_Jump;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @FastAttack => m_Wrapper.m_Player_FastAttack;
@@ -528,6 +605,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @DodgeInput => m_Wrapper.m_Player_DodgeInput;
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
+        public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -537,9 +615,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         {
             if (instance == null || m_Wrapper.m_PlayerActionsCallbackInterfaces.Contains(instance)) return;
             m_Wrapper.m_PlayerActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
+            @MoveHorizontal.started += instance.OnMoveHorizontal;
+            @MoveHorizontal.performed += instance.OnMoveHorizontal;
+            @MoveHorizontal.canceled += instance.OnMoveHorizontal;
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
@@ -564,13 +642,16 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Aim.started += instance.OnAim;
             @Aim.performed += instance.OnAim;
             @Aim.canceled += instance.OnAim;
+            @MoveVertical.started += instance.OnMoveVertical;
+            @MoveVertical.performed += instance.OnMoveVertical;
+            @MoveVertical.canceled += instance.OnMoveVertical;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
         {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
+            @MoveHorizontal.started -= instance.OnMoveHorizontal;
+            @MoveHorizontal.performed -= instance.OnMoveHorizontal;
+            @MoveHorizontal.canceled -= instance.OnMoveHorizontal;
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
@@ -595,6 +676,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @Aim.started -= instance.OnAim;
             @Aim.performed -= instance.OnAim;
             @Aim.canceled -= instance.OnAim;
+            @MoveVertical.started -= instance.OnMoveVertical;
+            @MoveVertical.performed -= instance.OnMoveVertical;
+            @MoveVertical.canceled -= instance.OnMoveVertical;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -614,7 +698,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     public PlayerActions @Player => new PlayerActions(this);
     public interface IPlayerActions
     {
-        void OnMove(InputAction.CallbackContext context);
+        void OnMoveHorizontal(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnFastAttack(InputAction.CallbackContext context);
@@ -623,5 +707,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnDodgeInput(InputAction.CallbackContext context);
         void OnThrow(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
+        void OnMoveVertical(InputAction.CallbackContext context);
     }
 }

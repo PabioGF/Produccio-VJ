@@ -7,30 +7,13 @@ public class DoorController : InteractableObject
 {
     [SerializeField] private Sprite _closedSprite;
     [SerializeField] private Sprite _openSprite;
-    [SerializeField] protected int id;
 
     private bool isOpen;
-    private bool isUnlocked;
     private bool _hasInteracted;
 
     protected override void Interact()
     {
-        Debug.Log("Interact");
-        if (isUnlocked)
-        {
-            //ToggleDoor();
-        }
-        else
-        {
-            bool hasKey = _playerController.HasItem(InventoryItem.ItemType.Key, id);
-            _playerController.RemoveItem(InventoryItem.ItemType.Key, id);
-            Debug.Log(hasKey);
-            if (hasKey)
-            {
-                isUnlocked = true;
-                ToggleDoor();
-            }
-        }
+        ToggleDoor();
     }
 
     private void ToggleDoor()
