@@ -80,8 +80,8 @@ public class NormalIA : IAController
         // Lógica para el ataque por arriba y aplicar daño al jugador
         if (lifeComponent != null)
         {
-            float damage = 10f; // Ajusta según tus necesidades
-            lifeComponent.ReceiveHit(damage, LifeComponent.AttackTypes.HighAttack);
+            //float damage = 10f; // Ajusta según tus necesidades
+            //lifeComponent.ReceiveHit(damage, LifeComponent.AttackTypes.HighAttack);
         }
     }
 
@@ -90,8 +90,8 @@ public class NormalIA : IAController
         // Lógica para el ataque por abajo y aplicar daño al jugador
         if (lifeComponent != null)
         {
-            float damage = 10f; // Ajusta según tus necesidades
-            lifeComponent.ReceiveHit(damage, LifeComponent.AttackTypes.LowAttack);
+            //float damage = 10f; // Ajusta según tus necesidades
+            //lifeComponent.ReceiveHit(damage, LifeComponent.AttackTypes.LowAttack);
         }
     }
 }
