@@ -44,13 +44,13 @@ public class IAController : MonoBehaviour
 
         if (VerificarLineaDeVision() || hasDetected)
         {
-            Debug.Log("Entro");
+            //Debug.Log("Entro");
             hasDetected = true;
         }
 
         if (!hasDetected)
         {
-            Debug.Log(VerificarLineaDeVision());
+            //Debug.Log(VerificarLineaDeVision());
             myVelocity = BasicMovement(myVelocity);
         }
 
@@ -62,10 +62,10 @@ public class IAController : MonoBehaviour
 
     private bool VerificarLineaDeVision()
     {
-        Debug.Log("hola");
+       // Debug.Log("hola");
         // Lanzamos un rayo desde el enemigo hacia el jugador.
         RaycastHit2D hit = Physics2D.Raycast(transform.position, jugador.position - transform.position, distanciaDisparo);
-        Debug.Log("Rayo de visión lanzado.");
+        //Debug.Log("Rayo de visión lanzado.");
         if (hit.collider != null)
         {
             Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
