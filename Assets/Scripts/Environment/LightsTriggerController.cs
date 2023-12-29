@@ -18,6 +18,7 @@ public class LightsTriggerController : MonoBehaviour
     {
         float timeElapsed = 0;
         Color color;
+        AudioManager.Instance.PlaySFX("LightSwitch");
 
         while (timeElapsed < _lightTransitionDuration)
         {
@@ -30,5 +31,6 @@ public class LightsTriggerController : MonoBehaviour
         color = lightArea.color;
         color.a = 0;
         lightArea.color = color;
+        gameObject.SetActive(false);
     }
 }

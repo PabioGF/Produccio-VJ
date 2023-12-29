@@ -7,8 +7,9 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     #region Variables
-    [SerializeField] GameObject _groundCheck;
-    [SerializeField] InventoryController _inventoryController;
+    [SerializeField] private GameObject _groundCheck;
+    [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private GameController _gameController;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -22,6 +23,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
+
+    [SerializeField] private float _respawnDelay;
 
     private PlayerCombat _playerCombat;
     private PlayerInputActions _playerInputActions;
@@ -41,11 +44,15 @@ public class PlayerController : MonoBehaviour
     private Animator _myAnimator;
     private bool _isOverride;
     private bool _isAttackingDown;
+
+    private bool _isDead; 
     #endregion
 
     #region Unity methods
     private void Awake()
     {
+        transform.position = CheckpointManager.Instance.SpawnPoint;
+
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
         _myAnimator = GetComponent<Animator>();
@@ -114,8 +121,8 @@ public class PlayerController : MonoBehaviour
 
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
+        /**
         // Raycast to check if the head is colliding with an obstacle
-        /*
         RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
         Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f, Color.green);
         RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
@@ -134,7 +141,8 @@ public class PlayerController : MonoBehaviour
         }
 
         if (centerRaycast) _stopJump = true;
-        */
+        **/
+        
     }
 
     /// <summary>
@@ -163,8 +171,8 @@ public class PlayerController : MonoBehaviour
 
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
-
     #region Jump
+
     /// <summary>
     /// Function that handles the executrion of the jump considering all the variables that are implied
     /// </summary>
@@ -193,7 +201,6 @@ public class PlayerController : MonoBehaviour
         // Jumps if the conditions are met
         if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformed > 0.2f)
         {
-            Debug.Log("Jump");
             _jumpPerformed = _timer;
             _desiredVelocity.y += _jumpForce;
             _desiredJump = false;
@@ -225,7 +232,7 @@ public class PlayerController : MonoBehaviour
         }
     }
     #endregion
-
+    
     #region Inventory
     /// <summary>
     /// Adds an item to the inventory
@@ -275,12 +282,35 @@ public class PlayerController : MonoBehaviour
             _inventoryController.RemoveKey(id);
     }
 
+    #region Spawn
+    private Vector3 _spawnPoint;
+    /// <summary>
+    /// Function called when the player dies
+    /// </summary>
+    public void Die()
+    {
+        ScenesController.Instance.ReloadScene();
+    }
+
+    /// <summary>
+    /// Sets a new spawn point
+    /// </summary>
+    /// <param name="newSpawnPoint">New spawn point to set</param>
+    public void SetSpawnPoint(Vector3 newSpawnPoint)
+    {
+        _spawnPoint = newSpawnPoint;
+    }
+    #endregion
+
     public Rigidbody2D Rigidbody => _rigidbody2D;
 
     public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
 
     public bool IsGrounded => _isGrounded;
 
+    public bool IsDead => _isDead;
+
     public bool IsAttackingDown { set { _isAttackingDown = value; } }
+    
     #endregion
 }

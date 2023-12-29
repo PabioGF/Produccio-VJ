@@ -12,6 +12,8 @@ public class PlayerLifeComponent : LifeComponent
     [SerializeField] private HitStopController _hitStopController;
     [SerializeField] private float _respawnDelay;
     [SerializeField] private float _hitStopDuration;
+
+    private Vector3 _respawnPosition;
     #endregion
 
     public override void ReceiveHit(float amount, AttackTypes attackType)
@@ -39,15 +41,9 @@ public class PlayerLifeComponent : LifeComponent
 
         base.ReceiveHit(amount);
         if (_isDead)
-            Invoke(nameof(Respawn), _respawnDelay);
-        
-    }
-
-    private void Respawn()
-    {
-        _isDead = false;
-        _parent.transform.position = new Vector3(-5, 0, 0);
-        _currentLife = _maxLife;
-        _parent.gameObject.SetActive(true);
+        {
+            PlayerController playerController = _parent.GetComponent<PlayerController>();
+            playerController.Die();
+        }  
     }
 }

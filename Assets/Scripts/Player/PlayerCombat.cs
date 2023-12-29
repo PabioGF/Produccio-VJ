@@ -150,7 +150,6 @@ public class PlayerCombat : MonoBehaviour
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
-            Debug.Log("Attack");
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
 

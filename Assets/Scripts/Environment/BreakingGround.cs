@@ -26,7 +26,9 @@ public class BreakingGround : MonoBehaviour
         {
             if (!_eventTrigger.activeSelf)
             {
+                AudioManager.Instance.PlaySFX("GroundBreak");
                 _ground.SetActive(false);
+                gameObject.SetActive(false);
             }
         }
     }
