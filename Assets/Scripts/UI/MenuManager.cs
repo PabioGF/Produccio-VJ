@@ -8,7 +8,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("Prototip");
+        SceneManager.LoadScene("Tutorial");
     }
 
     public void Exit()

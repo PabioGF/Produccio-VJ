@@ -9,9 +9,9 @@ public class HitStopController : MonoBehaviour
     {
         if (_timeStopped) return;
 
-       // Time.timeScale = timeChange;
-       // _timeStopped = true;
-       // StartCoroutine(RestoreTime(duration));
+        Time.timeScale = timeChange;
+        _timeStopped = true;
+        StartCoroutine(RestoreTime(duration));
     }
 
     IEnumerator RestoreTime(float offset)

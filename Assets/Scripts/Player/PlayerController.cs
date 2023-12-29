@@ -10,6 +10,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
     [SerializeField] private GameController _gameController;
+    [SerializeField] private PlayerInputActions _playerInputActions;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -24,10 +25,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
 
-    [SerializeField] private float _respawnDelay;
-
     private PlayerCombat _playerCombat;
-    private PlayerInputActions _playerInputActions;
     private Rigidbody2D _rigidbody2D;
     private int _availableJumps;
     private float _movementInput;
@@ -282,25 +280,14 @@ public class PlayerController : MonoBehaviour
             _inventoryController.RemoveKey(id);
     }
 
-    #region Spawn
-    private Vector3 _spawnPoint;
     /// <summary>
     /// Function called when the player dies
     /// </summary>
     public void Die()
     {
-        ScenesController.Instance.ReloadScene();
+        _playerInputActions.Player.Disable();
+        _playerCombat.Die();
     }
-
-    /// <summary>
-    /// Sets a new spawn point
-    /// </summary>
-    /// <param name="newSpawnPoint">New spawn point to set</param>
-    public void SetSpawnPoint(Vector3 newSpawnPoint)
-    {
-        _spawnPoint = newSpawnPoint;
-    }
-    #endregion
 
     public Rigidbody2D Rigidbody => _rigidbody2D;
 
@@ -311,6 +298,5 @@ public class PlayerController : MonoBehaviour
     public bool IsDead => _isDead;
 
     public bool IsAttackingDown { set { _isAttackingDown = value; } }
-    
     #endregion
 }

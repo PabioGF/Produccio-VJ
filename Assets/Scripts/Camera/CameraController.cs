@@ -25,17 +25,13 @@ public class CameraController : MonoBehaviour
     #endregion
 
     #region Unity Methods
-
-    private void Awake()
+    private void Start()
     {
         Vector3 newPositon = transform.position;
         newPositon = CheckpointManager.Instance.SpawnPoint;
         newPositon.z = transform.position.z;
         transform.position = newPositon;
-    }
-
-    private void Start()
-    {
+        
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
 

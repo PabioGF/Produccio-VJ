@@ -44,6 +44,7 @@ public class PlayerLifeComponent : LifeComponent
         {
             PlayerController playerController = _parent.GetComponent<PlayerController>();
             playerController.Die();
+            UIController.Instance.ShowDeathScreen();
         }  
     }
 }
