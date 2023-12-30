@@ -150,7 +150,6 @@ public class PlayerCombat : MonoBehaviour
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
-            Debug.Log("Attack");
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
 
@@ -247,7 +246,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(15);
+                        MovingDownAttackStart(50);
                     }
                     break;
 
@@ -261,7 +260,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(20);
+                        MovingDownAttackStart(50);
                     }
                     break;
 
@@ -275,7 +274,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(20);
+                        MovingDownAttackStart(50);
                     }
                     break;
 
@@ -289,7 +288,7 @@ public class PlayerCombat : MonoBehaviour
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isCombo = false;
-                        MovingDownAttackStart(20);
+                        MovingDownAttackStart(50);
                     }
                     break;
             }
@@ -338,7 +337,7 @@ public class PlayerCombat : MonoBehaviour
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(0, -15);
+        _playerController.Rigidbody.velocity = new Vector2(0, -30);
         _playerController.IsAttackingDown = true;
     }
 
@@ -432,6 +431,11 @@ public class PlayerCombat : MonoBehaviour
         Debug.Log("Dodged");
     }
     #endregion
+
+    public void Die()
+    {
+        _playerInputActions.Player.Disable();
+    }
 
     #region Getters
     /// <summary>
