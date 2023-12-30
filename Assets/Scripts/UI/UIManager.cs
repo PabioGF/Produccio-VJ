@@ -7,13 +7,33 @@ public class UIManager : MonoBehaviour
 {
     public GameObject PausePanel;
 
-    public void PauseMenu()
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            TogglePauseMenu();
+        }
+    }
+
+    public void TogglePauseMenu()
+    {
+        if (PausePanel.activeSelf)
+        {
+            ResumeGame();
+        }
+        else
+        {
+            PauseGame();
+        }
+    }
+
+    public void PauseGame()
     {
         Time.timeScale = 0;
         PausePanel.SetActive(true);
     }
 
-    public void Return()
+    public void ResumeGame()
     {
         Time.timeScale = 1;
         PausePanel.SetActive(false);
