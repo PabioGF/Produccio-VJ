@@ -158,7 +158,7 @@ Transform:
   m_GameObject: {fileID: 5180191103471191624}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -37.78, y: 1.82, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -192,7 +192,6 @@ MonoBehaviour:
   _fallSpeed: 90
   _maxFallSpeed: 150
   _coyoteTime: 0.1
-  _respawnDelay: 1
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -384,6 +383,14 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: 6bdeda7b-86e3-4b56-814d-0615c1c9b9e9
     m_ActionName: Player/Aim
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 32bbcfc8-482b-46a1-a7e6-f07279ecaa69
+    m_ActionName: Player/MoveVertical[/Keyboard/s,/Keyboard/w]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: ed002a93-adc4-4027-b775-165de1eae92e
+    m_ActionName: Player/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
