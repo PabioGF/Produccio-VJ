@@ -119,27 +119,28 @@ public class PlayerController : MonoBehaviour
 
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
-        /**
+        float raycastOffset = 1.5f;
+
         // Raycast to check if the head is colliding with an obstacle
-        RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f, Color.green);
-        RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up * 0.5f );
-        RaycastHit2D leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up * 0.5f, Color.red);
+        RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Floor"));
+        Debug.DrawRay(transform.position + new Vector3(0.4f, raycastOffset), Vector2.up * 0.5f, Color.green);
+        RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Floor"));
+        Debug.DrawRay(transform.position + new Vector3(0, raycastOffset), Vector2.up * 0.5f );
+        RaycastHit2D leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Floor"));
+        Debug.DrawRay(transform.position + new Vector3(-0.4f, raycastOffset), Vector2.up * 0.5f, Color.red);
 
         // Moves the player if its partially colliding
         if (rightRaycast && !centerRaycast)
         {
-            transform.position -= new Vector3 (0.2f, 0);
+            transform.position -= new Vector3 (0.3f, 0);
         }     
         else if (leftRaycast && !centerRaycast)
         {
-            transform.position += new Vector3(0.2f, 0);
+            transform.position += new Vector3(0.3f, 0);
         }
 
         if (centerRaycast) _stopJump = true;
-        **/
+        
         
     }
 
