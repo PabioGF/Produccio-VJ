@@ -11,17 +11,28 @@ public class CameraController : MonoBehaviour
 
     [Header("Camera Settings")]
 
-    [SerializeField] private float _damping;
+    [SerializeField] private float _maxDampingX;
+    [SerializeField] private float _minDampingX;
+    [SerializeField] private float _maxDampingY;
+    [SerializeField] private float _minDampingY;
+
+    [SerializeField] private float _dampTransitionTimeY;
 
     [Range (0f, 3f)]
     [SerializeField] private float _velocitySmoother;
 
     [SerializeField] private float _lookAheadMinDistance;
     [SerializeField] private float _lookAheadMaxDistance;
+    [SerializeField] private float _fallSpeedThreshold;
 
     private float _verticalOffset;
     private PlayerInputActions _playerInputActions;
     private float _lookAheadDesiredDistance;
+
+    private float _dampingX = 1f;
+    private float _dampingY;
+
+    private bool _yDampIsOff;
     #endregion
 
     #region Unity Methods
@@ -64,7 +75,10 @@ public class CameraController : MonoBehaviour
         desiredPosition.y += _verticalOffset;
 
         //Lerps to the desired position and applies it to the camera transform
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, _damping * Time.deltaTime);
+        float smoothedPositionX = Mathf.Lerp(transform.position.x, desiredPosition.x, _dampingX * Time.deltaTime);
+        float smoothedPositionY = Mathf.Lerp(transform.position.y, desiredPosition.y, _dampingY * Time.deltaTime);
+
+        Vector3 smoothedPosition = new(smoothedPositionX, smoothedPositionY, transform.position.z);
         transform.position = smoothedPosition;
     }
 
@@ -83,13 +97,17 @@ public class CameraController : MonoBehaviour
 
     private void LookDown()
     {
+        Debug.Log(_yDampIsOff);
         if (_playerController.IsGrounded)
         {
+            _dampingY = _minDampingY;
             _verticalOffset = 3;
         }
-        else
+        else if (_playerRb.velocity.y < _fallSpeedThreshold)
         {
+            _dampingY = -_playerRb.velocity.y;
             _verticalOffset = 0;
+            Debug.Log(_dampingY);
         }
     }
 }

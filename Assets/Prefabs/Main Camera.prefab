@@ -109,10 +109,15 @@ MonoBehaviour:
   _player: {fileID: 0}
   _playerRb: {fileID: 0}
   _playerController: {fileID: 0}
-  _damping: 1
+  _maxDampingX: 0
+  _minDampingX: 0
+  _maxDampingY: 60
+  _minDampingY: 0.5
+  _dampTransitionTimeY: 2
   _velocitySmoother: 1.5
   _lookAheadMinDistance: 1
-  _lookAheadMaxDistance: 12
+  _lookAheadMaxDistance: 18
+  _fallSpeedThreshold: -43
 --- !u!114 &7878262876742949282
 MonoBehaviour:
   m_ObjectHideFlags: 0

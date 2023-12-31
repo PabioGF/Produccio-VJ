@@ -6,7 +6,7 @@ public class CheckpointManager : MonoBehaviour
 {
     [HideInInspector] public static CheckpointManager Instance;
 
-    private Vector2 _spawnPoint = new Vector2(-38, 2);
+    [SerializeField] private Transform _spawnPoint;
 
     void Awake()
     {
@@ -23,8 +23,8 @@ public class CheckpointManager : MonoBehaviour
 
     public void SetSpawnPoint(Vector2 position)
     {
-        _spawnPoint = position;
+        _spawnPoint.position = position;
     }
 
-    public Vector2 SpawnPoint => _spawnPoint;
+    public Vector2 SpawnPoint => _spawnPoint.position;
 }
