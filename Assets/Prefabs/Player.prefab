@@ -182,6 +182,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _inventoryController: {fileID: 1742377338972371357}
+  _gameController: {fileID: 0}
   _maxSpeed: 15
   _acceleration: 100
   _airAcceleration: 75
@@ -191,6 +192,7 @@ MonoBehaviour:
   _fallSpeed: 90
   _maxFallSpeed: 150
   _coyoteTime: 0.1
+  _respawnDelay: 1
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -645,7 +647,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 5180191103471191624}
-  _maxLife: 2
+  _maxLife: 1
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
   _hitStopController: {fileID: 0}

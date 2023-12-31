@@ -116,6 +116,15 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""ed002a93-adc4-4027-b775-165de1eae92e"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -503,6 +512,28 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
                     ""action"": ""MoveVertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""67945bae-e902-4f18-90d3-dcc46e15f042"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0cac02a-b792-41f5-843b-bbd749c62612"",
+                    ""path"": ""<Gamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -521,6 +552,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         m_Player_Throw = m_Player.FindAction("Throw", throwIfNotFound: true);
         m_Player_Aim = m_Player.FindAction("Aim", throwIfNotFound: true);
         m_Player_MoveVertical = m_Player.FindAction("MoveVertical", throwIfNotFound: true);
+        m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -592,6 +624,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Throw;
     private readonly InputAction m_Player_Aim;
     private readonly InputAction m_Player_MoveVertical;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private @PlayerInputActions m_Wrapper;
@@ -606,6 +639,7 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         public InputAction @Throw => m_Wrapper.m_Player_Throw;
         public InputAction @Aim => m_Wrapper.m_Player_Aim;
         public InputAction @MoveVertical => m_Wrapper.m_Player_MoveVertical;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -645,6 +679,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MoveVertical.started += instance.OnMoveVertical;
             @MoveVertical.performed += instance.OnMoveVertical;
             @MoveVertical.canceled += instance.OnMoveVertical;
+            @Pause.started += instance.OnPause;
+            @Pause.performed += instance.OnPause;
+            @Pause.canceled += instance.OnPause;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -679,6 +716,9 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
             @MoveVertical.started -= instance.OnMoveVertical;
             @MoveVertical.performed -= instance.OnMoveVertical;
             @MoveVertical.canceled -= instance.OnMoveVertical;
+            @Pause.started -= instance.OnPause;
+            @Pause.performed -= instance.OnPause;
+            @Pause.canceled -= instance.OnPause;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -708,5 +748,6 @@ public partial class @PlayerInputActions: IInputActionCollection2, IDisposable
         void OnThrow(InputAction.CallbackContext context);
         void OnAim(InputAction.CallbackContext context);
         void OnMoveVertical(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

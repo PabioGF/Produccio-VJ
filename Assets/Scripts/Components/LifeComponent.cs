@@ -25,10 +25,6 @@ public class LifeComponent : MonoBehaviour
     {
         _currentLife -= amount;
 
-        if (_currentLife <= 0)
-        {
-            _isDead = true;
-            _parent.SetActive(false);
-        }
+        if (_currentLife <= 0) _isDead = true;
     }
 }
