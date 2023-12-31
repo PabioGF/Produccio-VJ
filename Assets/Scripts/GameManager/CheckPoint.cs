@@ -10,7 +10,7 @@ public class CheckPoint : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
-            CheckpointManager.Instance.SetSpawnPoint(transform.position);
+            LevelProgressController.Instance.SetSpawnPoint(transform.position);
         }
     }
 }

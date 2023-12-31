@@ -39,7 +39,7 @@ public class CameraController : MonoBehaviour
     private void Start()
     {
         Vector3 newPositon = transform.position;
-        newPositon = CheckpointManager.Instance.SpawnPoint;
+        newPositon = LevelProgressController.Instance.SpawnPoint;
         newPositon.z = transform.position.z;
         transform.position = newPositon;
         

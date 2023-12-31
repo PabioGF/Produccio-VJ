@@ -49,7 +49,7 @@ public class PlayerController : MonoBehaviour
     #region Unity methods
     private void Awake()
     {
-        transform.position = CheckpointManager.Instance.SpawnPoint;
+        transform.position = LevelProgressController.Instance.SpawnPoint;
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();

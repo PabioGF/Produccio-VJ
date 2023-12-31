@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6927160543275725125}
   - component: {fileID: 6899432435900072430}
   m_Layer: 0
-  m_Name: CheckpointManager
+  m_Name: LevelProgressManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -48,6 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59a7699112e6ff8468eec75d51c5ee18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _spawnPoint: {fileID: 0}
 --- !u!1 &4869730484284918245
 GameObject:
   m_ObjectHideFlags: 0
