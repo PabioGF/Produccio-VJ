@@ -105,7 +105,7 @@ public class CameraController : MonoBehaviour
         }
         else if (_playerRb.velocity.y < _fallSpeedThreshold)
         {
-            _dampingY = -_playerRb.velocity.y;
+            _dampingY = -_playerRb.velocity.y / 4;
             _verticalOffset = 0;
             Debug.Log(_dampingY);
         }

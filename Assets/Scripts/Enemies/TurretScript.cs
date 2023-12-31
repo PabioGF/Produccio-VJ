@@ -9,7 +9,7 @@ public class TurretScript : MonoBehaviour
     [SerializeField] private GameObject _lowBullet;
     [SerializeField] private float _fireRate;
     [SerializeField] private float _upperBulletProbability;
-    [SerializeField] private GameObject _referencePoint;
+    [SerializeField] private Rigidbody2D _referencePoint;
     [SerializeField] private GameObject _pointer;
     [SerializeField] private float _bulletSpeed;
 
@@ -42,6 +42,7 @@ public class TurretScript : MonoBehaviour
         // If the player enters the trigger, starts shooting at it
         if (collision.CompareTag("Player"))
         {
+            CalculateDirection();
             _playerDetected = true;
             InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
         }
@@ -67,7 +68,7 @@ public class TurretScript : MonoBehaviour
     {
         _aimDirection = _player.transform.position - transform.position;
         float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
-        _referencePoint.GetComponent<Rigidbody2D>().rotation = angle;        
+        _referencePoint.rotation = angle;        
     }
 
     /// <summary>
