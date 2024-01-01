@@ -23,5 +23,6 @@ public class LevelCompleted : MonoBehaviour
 
         LevelProgressController.Instance.LevelIndex += 1;
         LevelProgressController.Instance.IsCompleteScreen = true;
+        LevelProgressController.Instance.HasSpawnPoint = false;
     }
 }

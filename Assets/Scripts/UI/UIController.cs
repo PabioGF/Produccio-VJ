@@ -9,8 +9,6 @@ using Unity.VisualScripting;
 public class UIController : MonoBehaviour
 {
     #region Global Variables
-    [SerializeField] private GameController _gameController;
-
     public static UIController Instance;
     private PlayerInputActions _playerInputActions;
     #endregion
@@ -49,6 +47,8 @@ public class UIController : MonoBehaviour
             _isPaused = true;
             pausePanel.SetActive(true);
             Time.timeScale = 0;
+
+            Debug.Log(_selectedOptionPause == null);
 
             EventSystem.current.SetSelectedGameObject(_selectedOptionPause);
         }
