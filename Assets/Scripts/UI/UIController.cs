@@ -9,6 +9,8 @@ using Unity.VisualScripting;
 public class UIController : MonoBehaviour
 {
     #region Global Variables
+    [SerializeField] private GameController _gameController;
+
     public static UIController Instance;
     private PlayerInputActions _playerInputActions;
     #endregion
@@ -75,6 +77,11 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void SaveGame()
+    {
+        GameController.Instance.SaveProgress();
+    }
+
     /// <summary>
     /// Exits the game
     /// </summary>
@@ -133,6 +140,12 @@ public class UIController : MonoBehaviour
     public void LoadNextLevel()
     {
         ScenesController.Instance.LoadNextScene();
+    }
+
+    public void SaveAndExit()
+    {
+        SaveGame();
+        GoMainMenu();
     }
     #endregion
 }

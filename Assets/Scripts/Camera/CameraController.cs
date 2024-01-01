@@ -97,7 +97,6 @@ public class CameraController : MonoBehaviour
 
     private void LookDown()
     {
-        Debug.Log(_yDampIsOff);
         if (_playerController.IsGrounded)
         {
             _dampingY = _minDampingY;
@@ -107,7 +106,6 @@ public class CameraController : MonoBehaviour
         {
             _dampingY = -_playerRb.velocity.y / 4;
             _verticalOffset = 0;
-            Debug.Log(_dampingY);
         }
     }
 }

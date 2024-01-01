@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private GameController _gameController;
     [SerializeField] private PlayerInputActions _playerInputActions;
 
     [Header("Movement settings")]
@@ -49,8 +48,6 @@ public class PlayerController : MonoBehaviour
     #region Unity methods
     private void Awake()
     {
-        transform.position = LevelProgressController.Instance.SpawnPoint;
-
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
         _myAnimator = GetComponent<Animator>();
@@ -65,6 +62,11 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         _playerInputActions.Player.Jump.performed -= JumpInput;
+    }
+
+    private void Start()
+    {
+        transform.position = LevelProgressController.Instance.SpawnPoint;
     }
 
     void Update()

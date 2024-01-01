@@ -5,12 +5,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 public static class SaveSystem
 {
     private static string progressPath = Application.persistentDataPath + "/progress.save"; 
-    public static void SaveProgress (LevelProgressController checkpointManager)
+    public static void SaveProgress (LevelProgressController levelProgressController)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
         FileStream stream = new FileStream(progressPath, FileMode.Create);
-        ProgressData data = new ProgressData(checkpointManager);
+        ProgressData data = new ProgressData(levelProgressController);
+        Debug.Log("Level Index Saved: " + data.LevelIndex);
+        Debug.Log("Spawn Point Saved: " + levelProgressController.SpawnPoint);
 
         formatter.Serialize(stream, data);
         stream.Close();

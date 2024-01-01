@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Projectile
   - Interact
+  - Spawn
   layers:
   - Default
   - TransparentFX

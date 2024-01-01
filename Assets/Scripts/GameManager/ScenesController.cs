@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,13 +39,15 @@ public class ScenesController : MonoBehaviour
         Time.timeScale = 1;
     }
 
-
     /// <summary>
     /// Loads the scene with the given build index
     /// </summary>
     /// <param name="index">Scene build index</param>
     public void LoadSceneByIndex(int index)
     {
+        _currentLevelIndex = index;
+        LevelProgressController.Instance.LevelIndex = _currentLevelIndex;
+
         SceneManager.LoadScene(index);
     }
 
