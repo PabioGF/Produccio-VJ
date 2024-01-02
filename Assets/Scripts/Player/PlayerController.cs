@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
+        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking && !_playerCombat.IsDodging)
             _movementInput = _playerInputActions.Player.MoveHorizontal.ReadValue<float>();
         else
             _movementInput = 0;
@@ -282,6 +282,7 @@ public class PlayerController : MonoBehaviour
         else
             _inventoryController.RemoveKey(id);
     }
+    #endregion
 
     /// <summary>
     /// Function called when the player dies
@@ -301,5 +302,5 @@ public class PlayerController : MonoBehaviour
     public bool IsDead => _isDead;
 
     public bool IsAttackingDown { set { _isAttackingDown = value; } }
-    #endregion
+    
 }
