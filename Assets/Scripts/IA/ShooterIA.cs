@@ -7,20 +7,22 @@ public class ShooterIA : IAController
     [SerializeField] private GameObject _lowBullet;
     [SerializeField] private float _fireRate;
     [SerializeField] private float _upperBulletProbability;
-    [SerializeField] private GameObject _referencePoint;
+    [SerializeField] private Rigidbody2D _referencePoint;
     [SerializeField] private GameObject _pointer;
     [SerializeField] private float _bulletSpeed;
 
     private Rigidbody2D _rigidbody;
     private GameObject _player;
-    private bool _startShooting;
     private bool _upperBullet;
     private Vector2 _aimDirection;
+    private bool _playerDetected;
+    private bool _isDisarmed;
 
 
     protected override void Start()
     {
         base.Start();
+        _player = GameObject.Find("Player");
     }
 
     protected override void Update()
@@ -30,9 +32,15 @@ public class ShooterIA : IAController
         myRB.velocity = myVelocity;
         if (hasDetected)
         {
+           
             CalculateDirection();
-            Shoot();
+            InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
+            // Shoot();
             myVelocity.x = 0;
+        }
+        else
+        {
+            CancelInvoke(nameof(SpawnBullet));
         }
 
         myRB.velocity = myVelocity;
@@ -42,22 +50,22 @@ public class ShooterIA : IAController
     {
         _aimDirection = _player.transform.position - transform.position;
         float angle = Mathf.Atan2(_aimDirection.y, _aimDirection.x) * Mathf.Rad2Deg;
-        _referencePoint.GetComponent<Rigidbody2D>().rotation = angle;
-
+        _referencePoint.rotation = angle;
     }
 
 
-    private void Shoot()
+  /* private void Shoot()
     {
         if (!_startShooting) return;
 
         _startShooting = false;
         InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
-    }
+    }*/
 
     private void SpawnBullet()
     {
-        GameObject bullet = Random.Range(0f, 1f) > _upperBulletProbability ? _highBullet : _lowBullet;
+        
+        GameObject bullet = Random.value > _upperBulletProbability ? _highBullet : _lowBullet;
         GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
