@@ -66,7 +66,10 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        transform.position = LevelProgressController.Instance.SpawnPoint;
+        if (LevelProgressController.Instance.HasSpawnPoint)
+        {
+            transform.position = LevelProgressController.Instance.SpawnPoint;
+        }
     }
 
     void Update()
@@ -203,7 +206,7 @@ public class PlayerController : MonoBehaviour
         if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformed > 0.2f)
         {
             _jumpPerformed = _timer;
-            _desiredVelocity.y += _jumpForce;
+            _desiredVelocity.y = _jumpForce;
             _desiredJump = false;
             _availableJumps -= 1;
         }

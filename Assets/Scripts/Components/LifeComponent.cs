@@ -12,7 +12,11 @@ public class LifeComponent : MonoBehaviour
 
     protected float _currentLife;
     protected bool _isDead;
-    public enum AttackTypes { DefaultAttack, HighAttack, LowAttack }
+    public enum AttackTypes { 
+        DefaultAttack = 0, 
+        HighAttack = 1, 
+        LowAttack = 2 
+    }
     #endregion
 
     #region Unity methods

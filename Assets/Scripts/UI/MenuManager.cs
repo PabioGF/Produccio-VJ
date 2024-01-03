@@ -15,7 +15,7 @@ public class MenuManager : MonoBehaviour
 
     public void StartGame()
     {
-        ScenesController.Instance.CurrentLevelIndex = 1;
+        LevelProgressController.Instance.HasSpawnPoint = false;
         ScenesController.Instance.LoadSceneByIndex(1);
     }
 

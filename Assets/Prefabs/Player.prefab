@@ -182,7 +182,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _inventoryController: {fileID: 1742377338972371357}
-  _gameController: {fileID: 0}
   _maxSpeed: 15
   _acceleration: 100
   _airAcceleration: 75
@@ -213,8 +212,7 @@ MonoBehaviour:
   _attackCd: 0.3
   _maxTimeBetweenAttacks: 0.2
   _maxComboLength: 3
-  _dodgeDuration: 0.5
-  _dodgeCd: 1
+  _dodgeCd: 0
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -574,7 +572,7 @@ GameObject:
   - component: {fileID: 8515079538127497808}
   - component: {fileID: 4719653573109154232}
   - component: {fileID: 3573265447690019017}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -654,11 +652,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 5180191103471191624}
-  _maxLife: 1
+  _maxLife: 10000
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
   _hitStopController: {fileID: 0}
-  _respawnDelay: 2
   _hitStopDuration: 0.1
 --- !u!1 &7092583634002823034
 GameObject:

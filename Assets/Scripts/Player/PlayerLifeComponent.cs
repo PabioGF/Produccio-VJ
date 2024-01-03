@@ -10,10 +10,7 @@ public class PlayerLifeComponent : LifeComponent
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private HitStopController _hitStopController;
-    [SerializeField] private float _respawnDelay;
     [SerializeField] private float _hitStopDuration;
-
-    private Vector3 _respawnPosition;
     #endregion
 
     public override void ReceiveHit(float amount, AttackTypes attackType)
