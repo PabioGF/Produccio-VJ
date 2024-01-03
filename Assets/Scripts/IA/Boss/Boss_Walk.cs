@@ -7,6 +7,7 @@ public class Boss_Walk : StateMachineBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _meleeAttackRange;
     [SerializeField] private float _shootRange;
+    [SerializeField] private float _minPlayerDistance;
 
     private Transform _player;
     private Rigidbody2D _bossRb;
@@ -16,7 +17,7 @@ public class Boss_Walk : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _player = GameObject.FindGameObjectWithTag("Player").transform;
-        _bossRb = animator.GetComponent<Rigidbody2D>(); 
+        _bossRb = animator.GetComponent<Rigidbody2D>();
         _bossController = animator.GetComponent<BossController>();
     }
 
@@ -24,6 +25,11 @@ public class Boss_Walk : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         Move();
+
+        if ((_bossRb.position.x < _bossController.leftPositionLimit || _bossRb.position.x > _bossController.rightPositionLimit) && _bossController.CanJump)
+        {
+            animator.SetTrigger("Jump");
+        }
 
         if (Vector2.Distance(_player.position, _bossRb.position) <= _meleeAttackRange && _bossController.CanAttack)
         {
@@ -41,11 +47,14 @@ public class Boss_Walk : StateMachineBehaviour
     {
         animator.ResetTrigger("Attack");
         animator.ResetTrigger("Shoot");
+        animator.ResetTrigger("Jump");
     }
 
     private void Move()
     {
         _bossController.LookAtPlayer();
+
+        if (Vector2.Distance(_player.position, _bossRb.position) < _minPlayerDistance) return;
 
         Vector2 target = new(_player.position.x, _bossRb.position.y);
         Vector2 newPosition = Vector2.MoveTowards(_bossRb.position, target, _speed * Time.fixedDeltaTime);

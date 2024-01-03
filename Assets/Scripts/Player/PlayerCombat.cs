@@ -17,7 +17,6 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private int _maxComboLength;
 
     [Header("Dodge settings")]
-    [SerializeField] private float _dodgeDuration;
     [SerializeField] private float _dodgeCd;
 
     private PlayerInputActions _playerInputActions;
@@ -381,8 +380,12 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void HandleDodge()
     {
+        if (!_playerController.IsGrounded) return;
+
         if (_playerInputActions.Player.DodgeTrigger.ReadValue<float>() == 1) _dodgeStance = true;
         else _dodgeStance = false;
+
+        _myAnimator.SetBool("isDodging", _dodgeStance);
 
         if (_dodgeStance)
         {
@@ -412,7 +415,16 @@ public class PlayerCombat : MonoBehaviour
         _dodgeCdTimer = 0;
         _isDodging = true;
         _dodgeType = dodgeType;
-        Invoke(nameof(StopDodge), _dodgeDuration);
+
+        switch (dodgeType)
+        {
+            case DodgeType.LowDodge:
+                _myAnimator.SetTrigger("DodgeDown");
+                break;
+            case DodgeType.HighDodge:
+                _myAnimator.SetTrigger("DodgeUp");
+                break;
+        }
     }
 
     /// <summary>
