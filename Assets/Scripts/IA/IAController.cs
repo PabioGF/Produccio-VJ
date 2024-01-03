@@ -88,7 +88,17 @@ public class IAController : MonoBehaviour
         bool leftFootColliding = CheckFeetColliding(leftFoot);
         bool rightFootColliding = CheckFeetColliding(rightFoot);
 
-        if (!leftFootColliding || !rightFootColliding)
+        if (!leftFootColliding)
+        {
+            CaminaDerecha();
+            ReiniciarTemporizador();
+        }
+        else if (!rightFootColliding)
+        {
+            CaminaIzquierda();
+            ReiniciarTemporizador();
+        }
+        else if (tiempoActual <= 0f)
         {
             CambiarDireccion();
             ReiniciarTemporizador();
@@ -98,14 +108,19 @@ public class IAController : MonoBehaviour
 
         tiempoActual -= Time.deltaTime;
 
-        if (tiempoActual <= 0f)
-        {
-            CambiarDireccion();
-            ReiniciarTemporizador();
-        }
 
         return myVelocity;
     }
+
+    private void CaminaDerecha()
+    {
+        direccion = 1;
+    }
+    private void CaminaIzquierda()
+    {
+        direccion = -1;
+    }
+
 
     private bool CheckFeetColliding(Transform feet)
     {
