@@ -26,6 +26,7 @@ public class BossController : MonoBehaviour
     [Header("Special Attack Parameters")]
     [SerializeField] private float _minSeparation;
     [SerializeField] private float _maxSeparation;
+    [SerializeField] private float _slashInBetweenTime;
 
     [Header("Cooldowns")]
     [SerializeField] private float _meleeAttackCd;
@@ -203,6 +204,7 @@ public class BossController : MonoBehaviour
             _hasFallenRight = true;
         }
         _rigidbody.velocity = new Vector2(0, -50);
+        LookAtPlayer();
 
         if (_phase > 0 /*&& Random.value >= 0.3*/) _animator.SetTrigger("Special");
 
@@ -239,9 +241,13 @@ public class BossController : MonoBehaviour
             float separation = Random.Range(_minSeparation, _maxSeparation);
             if (_hasFallenRight) separation *= -1;
 
-            Vector2 newPos = area.transform.position;
+            Vector2 newPos = transform.position;
+            newPos.y += 5;
             newPos.x += separation + _currentOffset;
             area.transform.position = newPos;
+
+            if (Random.value >= 0.5) area.transform.eulerAngles = new Vector3(0, 0, 180);
+            else area.transform.eulerAngles = new Vector3(0, 0, 0);
 
             _currentOffset += separation;
 
@@ -257,13 +263,18 @@ public class BossController : MonoBehaviour
 
     private IEnumerator AnimateSlashes()
     {
-        int i = 0;
         foreach (GameObject area in _specialHitAreas)
         {
-            if (Random.value >= 0.5) area.transform.eulerAngles = new Vector3(0, 0, 180);
-            else area.transform.eulerAngles = new Vector3(0, 0, 0);
+            area.GetComponent<Animator>().SetTrigger("Appear");
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        foreach (GameObject area in _specialHitAreas)
+        {
             area.GetComponent<Animator>().SetTrigger("Slash");
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(_slashInBetweenTime);
         }
     }
     #endregion

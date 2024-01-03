@@ -48,8 +48,6 @@ public class UIController : MonoBehaviour
             pausePanel.SetActive(true);
             Time.timeScale = 0;
 
-            Debug.Log(_selectedOptionPause == null);
-
             EventSystem.current.SetSelectedGameObject(_selectedOptionPause);
         }
         else
