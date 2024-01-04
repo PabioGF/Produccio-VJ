@@ -146,4 +146,17 @@ public class UIController : MonoBehaviour
         GoMainMenu();
     }
     #endregion
+
+    #region Game Ended Screen
+    [Header("End Game Screen")]
+    [SerializeField] private GameObject _endGameScreen;
+    [SerializeField] private GameObject _selectedOptionEnd;
+    public void GameEnded()
+    {
+        _endGameScreen.SetActive(true);
+        Time.timeScale = 0;
+
+        EventSystem.current.SetSelectedGameObject(_selectedOptionEnd);
+    }
+    #endregion
 }

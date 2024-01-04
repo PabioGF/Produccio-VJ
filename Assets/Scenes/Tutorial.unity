@@ -129801,8 +129801,12 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 534006967670521123, guid: 3c46b8e6da413f449aa6acd752d04fcb, type: 3}
       propertyPath: type
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 534006967670521123, guid: 3c46b8e6da413f449aa6acd752d04fcb, type: 3}
+      propertyPath: _linkedObject
+      value: 
+      objectReference: {fileID: 746402543}
     - target: {fileID: 534006967670521123, guid: 3c46b8e6da413f449aa6acd752d04fcb, type: 3}
       propertyPath: _linkedTurret
       value: 

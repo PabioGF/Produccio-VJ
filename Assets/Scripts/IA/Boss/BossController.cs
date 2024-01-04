@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private GameObject _jumpHitbox;
     [SerializeField] private GameObject[] _specialHitAreas;
+    [SerializeField] private GameObject _endDoor;
 
     [Header("Melee Attack Parameters")]
     [SerializeField] private float _attackRange;
@@ -294,6 +295,7 @@ public class BossController : MonoBehaviour
     private void DisableBoss()
     {
         gameObject.SetActive(false);
+        _endDoor.SetActive(false);
     }
     #endregion
 
