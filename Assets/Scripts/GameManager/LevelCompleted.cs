@@ -9,7 +9,7 @@ public class LevelCompleted : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (_hasEntered) return;
+        if (_hasEntered || !collision.CompareTag("Player")) return;
 
         _hasEntered = true;
 
