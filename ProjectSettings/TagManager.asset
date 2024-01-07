@@ -8,6 +8,7 @@ TagManager:
   - Ground
   - Projectile
   - Interact
+  - Spawn
   layers:
   - Default
   - TransparentFX
@@ -18,8 +19,8 @@ TagManager:
   - Ground
   - Bottle
   - Player
-  - 
-  - 
+  - Roof
+  - PlayerHurtbox
   - 
   - 
   - 

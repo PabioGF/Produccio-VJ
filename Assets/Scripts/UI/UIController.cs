@@ -75,6 +75,11 @@ public class UIController : MonoBehaviour
         SceneManager.LoadScene("Menu");
     }
 
+    public void SaveGame()
+    {
+        GameController.Instance.SaveProgress();
+    }
+
     /// <summary>
     /// Exits the game
     /// </summary>
@@ -133,6 +138,25 @@ public class UIController : MonoBehaviour
     public void LoadNextLevel()
     {
         ScenesController.Instance.LoadNextScene();
+    }
+
+    public void SaveAndExit()
+    {
+        SaveGame();
+        GoMainMenu();
+    }
+    #endregion
+
+    #region Game Ended Screen
+    [Header("End Game Screen")]
+    [SerializeField] private GameObject _endGameScreen;
+    [SerializeField] private GameObject _selectedOptionEnd;
+    public void GameEnded()
+    {
+        _endGameScreen.SetActive(true);
+        Time.timeScale = 0;
+
+        EventSystem.current.SetSelectedGameObject(_selectedOptionEnd);
     }
     #endregion
 }

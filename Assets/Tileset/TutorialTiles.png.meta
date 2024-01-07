@@ -48521,28 +48521,51 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape:
-      - - {x: 6, y: 8}
-        - {x: 6, y: 6}
-        - {x: 4, y: 6}
-        - {x: 4, y: 4}
-        - {x: 2, y: 4}
-        - {x: 2, y: 2}
-        - {x: 0, y: 2}
-        - {x: 0, y: 0}
-        - {x: -2, y: 0}
-        - {x: -2, y: -2}
-        - {x: -4, y: -2}
+      - - {x: 4, y: 0}
+        - {x: 4, y: -2}
+        - {x: 0.000030517578, y: -1.999939}
+        - {x: 0, y: -4}
         - {x: -4, y: -4}
-        - {x: -6, y: -4}
-        - {x: -6, y: -6}
+        - {x: -4, y: -6}
         - {x: -8, y: -6}
+        - {x: -8, y: -8}
+        - {x: 8, y: -8}
+        - {x: 8, y: 0}
+      tessellationDetail: 0
+      bones: []
+      spriteID: b65cc27ef19d81c4181f4209304fceb8
+      internalID: 1242940542
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TutorialTiles_2289
+      rect:
+        serializedVersion: 2
+        x: 272
+        y: 696
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape:
+      - - {x: 4, y: 8}
+        - {x: 4, y: 6}
+        - {x: 0, y: 6}
+        - {x: 0, y: 4}
+        - {x: -4, y: 4}
+        - {x: -4, y: 2}
+        - {x: -8, y: 2}
         - {x: -8, y: -8}
         - {x: 8, y: -8}
         - {x: 8, y: 8}
       tessellationDetail: 0
       bones: []
-      spriteID: b65cc27ef19d81c4181f4209304fceb8
-      internalID: 1242940542
+      spriteID: 44841ea58083f294193de8dd97038c92
+      internalID: -1907551040
       vertices: []
       indices: 
       edges: []
@@ -49992,6 +50015,7 @@ TextureImporter:
       TutorialTiles_2286: -197565552
       TutorialTiles_2287: -705617366
       TutorialTiles_2288: 1242940542
+      TutorialTiles_2289: -1907551040
       TutorialTiles_229: -1358362873
       TutorialTiles_23: -784813310
       TutorialTiles_230: -1056694512

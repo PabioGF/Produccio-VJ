@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private GameController _gameController;
     [SerializeField] private PlayerInputActions _playerInputActions;
 
     [Header("Movement settings")]
@@ -49,8 +48,6 @@ public class PlayerController : MonoBehaviour
     #region Unity methods
     private void Awake()
     {
-        transform.position = CheckpointManager.Instance.SpawnPoint;
-
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
         _myAnimator = GetComponent<Animator>();
@@ -65,6 +62,14 @@ public class PlayerController : MonoBehaviour
     private void OnDestroy()
     {
         _playerInputActions.Player.Jump.performed -= JumpInput;
+    }
+
+    private void Start()
+    {
+        if (LevelProgressController.Instance.HasSpawnPoint)
+        {
+            transform.position = LevelProgressController.Instance.SpawnPoint;
+        }
     }
 
     void Update()
@@ -89,7 +94,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking)
+        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking && !_playerCombat.IsDodging)
             _movementInput = _playerInputActions.Player.MoveHorizontal.ReadValue<float>();
         else
             _movementInput = 0;
@@ -119,27 +124,28 @@ public class PlayerController : MonoBehaviour
 
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
-        /**
+        float raycastOffset = 1.3f;
+
         // Raycast to check if the head is colliding with an obstacle
-        RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(0.1f, 0.5f), Vector2.up * 0.5f, Color.green);
-        RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(-0.1f, 0.5f), Vector2.up * 0.5f );
-        RaycastHit2D leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up, 0.5f, LayerMask.GetMask("Ground"));
-        Debug.DrawRay(transform.position + new Vector3(-0.3f, 0.5f), Vector2.up * 0.5f, Color.red);
+        RaycastHit2D rightRaycast = Physics2D.Raycast(transform.position + new Vector3(0.1f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Roof"));
+        Debug.DrawRay(transform.position + new Vector3(0.4f, raycastOffset), Vector2.up * 0.5f, Color.green);
+        RaycastHit2D centerRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.1f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Roof"));
+        Debug.DrawRay(transform.position + new Vector3(0, raycastOffset), Vector2.up * 0.5f );
+        RaycastHit2D leftRaycast = Physics2D.Raycast(transform.position + new Vector3(-0.3f, raycastOffset), Vector2.up, 0.5f, LayerMask.GetMask("Roof"));
+        Debug.DrawRay(transform.position + new Vector3(-0.4f, raycastOffset), Vector2.up * 0.5f, Color.red);
 
         // Moves the player if its partially colliding
         if (rightRaycast && !centerRaycast)
         {
-            transform.position -= new Vector3 (0.2f, 0);
+            transform.position -= new Vector3 (0.3f, 0);
         }     
         else if (leftRaycast && !centerRaycast)
         {
-            transform.position += new Vector3(0.2f, 0);
+            transform.position += new Vector3(0.3f, 0);
         }
 
         if (centerRaycast) _stopJump = true;
-        **/
+        
         
     }
 
@@ -200,7 +206,7 @@ public class PlayerController : MonoBehaviour
         if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformed > 0.2f)
         {
             _jumpPerformed = _timer;
-            _desiredVelocity.y += _jumpForce;
+            _desiredVelocity.y = _jumpForce;
             _desiredJump = false;
             _availableJumps -= 1;
         }
@@ -279,6 +285,7 @@ public class PlayerController : MonoBehaviour
         else
             _inventoryController.RemoveKey(id);
     }
+    #endregion
 
     /// <summary>
     /// Function called when the player dies
@@ -298,5 +305,5 @@ public class PlayerController : MonoBehaviour
     public bool IsDead => _isDead;
 
     public bool IsAttackingDown { set { _isAttackingDown = value; } }
-    #endregion
+    
 }

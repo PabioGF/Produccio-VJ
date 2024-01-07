@@ -147,7 +147,7 @@ public class NormalIA : IAController
         lowTrigger.SetActive(true);
 
         // Desactivar el trigger después de un tiempo
-        Invoke("DesactivarLowTrigger", tiempoEntreAtaques);
+        //Invoke("DesactivarLowTrigger", tiempoEntreAtaques);
     }
 
     private void DesactivarLowTrigger()
@@ -160,7 +160,7 @@ public class NormalIA : IAController
         highTrigger.SetActive(true);
 
      
-        Invoke("DesactivarHighTrigger", tiempoEntreAtaques);
+       // Invoke("DesactivarHighTrigger", tiempoEntreAtaques);
     }
 
     private void DesactivarHighTrigger()
