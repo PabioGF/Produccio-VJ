@@ -8,6 +8,8 @@ public class BossLifeComponent : LifeComponent
     {
         base.ReceiveHit(amount, attackType);
 
+        if (_currentLife < _maxLife / 2) _parent.GetComponent<BossController>().EnterSecondPhase();
+
         if (_isDead) _parent.GetComponent<BossController>().Die();
     }
 }

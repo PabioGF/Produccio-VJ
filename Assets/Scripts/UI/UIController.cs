@@ -48,8 +48,6 @@ public class UIController : MonoBehaviour
             pausePanel.SetActive(true);
             Time.timeScale = 0;
 
-            Debug.Log(_selectedOptionPause == null);
-
             EventSystem.current.SetSelectedGameObject(_selectedOptionPause);
         }
         else
@@ -146,6 +144,19 @@ public class UIController : MonoBehaviour
     {
         SaveGame();
         GoMainMenu();
+    }
+    #endregion
+
+    #region Game Ended Screen
+    [Header("End Game Screen")]
+    [SerializeField] private GameObject _endGameScreen;
+    [SerializeField] private GameObject _selectedOptionEnd;
+    public void GameEnded()
+    {
+        _endGameScreen.SetActive(true);
+        Time.timeScale = 0;
+
+        EventSystem.current.SetSelectedGameObject(_selectedOptionEnd);
     }
     #endregion
 }

@@ -19,6 +19,7 @@ public class Boss_Walk : StateMachineBehaviour
         _player = GameObject.FindGameObjectWithTag("Player").transform;
         _bossRb = animator.GetComponent<Rigidbody2D>();
         _bossController = animator.GetComponent<BossController>();
+        _bossController.DisableJumpHitbox();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -33,12 +34,12 @@ public class Boss_Walk : StateMachineBehaviour
 
         if (Vector2.Distance(_player.position, _bossRb.position) <= _meleeAttackRange && _bossController.CanAttack)
         {
-            _bossController.Attack();
+            _bossController.BeginCombo();
         }
 
         if (Vector2.Distance(_player.position, _bossRb.position) >= _shootRange && _bossController.CanShoot)
         {
-            _bossController.Shoot();
+            _bossController.StartShooting();
         }
     }
 

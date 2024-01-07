@@ -117,7 +117,7 @@ MonoBehaviour:
   _velocitySmoother: 1.5
   _lookAheadMinDistance: 1
   _lookAheadMaxDistance: 18
-  _fallSpeedThreshold: -43
+  _fallSpeedThreshold: -29
 --- !u!114 &7878262876742949282
 MonoBehaviour:
   m_ObjectHideFlags: 0

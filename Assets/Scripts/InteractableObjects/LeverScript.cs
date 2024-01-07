@@ -5,13 +5,27 @@ using UnityEngine;
 public class LeverScript : InteractableObject
 {
     #region Global Variables
-    [SerializeField] private GameObject _linkedTurret;
+    [SerializeField] private GameObject _linkedObject;
+    [SerializeField] private LinkedObjectType _objectType;
+    private enum LinkedObjectType
+    {
+        turret = 0,
+        ground = 1
+    } 
 
-    private bool _hasInteracted;
     #endregion
 
     protected override void Interact()
     {
-       _linkedTurret.GetComponent<TurretScript>().DisarmTurret();
+        switch (_objectType)
+        { 
+            case LinkedObjectType.turret:
+                _linkedObject.GetComponent<TurretScript>().DisarmTurret();
+                break;
+            case LinkedObjectType.ground:
+                _linkedObject.GetComponent<Animator>().SetTrigger("Move");
+                break;
+        }
+
     }
 }

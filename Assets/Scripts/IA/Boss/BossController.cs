@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BossController : MonoBehaviour
@@ -10,6 +11,23 @@ public class BossController : MonoBehaviour
 
     [SerializeField] private Transform _player;
     [SerializeField] private GameObject _groundCheck;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private GameObject _jumpHitbox;
+    [SerializeField] private GameObject[] _specialHitAreas;
+    [SerializeField] private GameObject _endDoor;
+
+    [Header("Melee Attack Parameters")]
+    [SerializeField] private float _attackRange;
+    [SerializeField] private float _attackDamage;
+
+    [Header("Ranged Attack parameters")]
+    [SerializeField] private GameObject _highBullet;
+    [SerializeField] private GameObject _lowBullet;
+
+    [Header("Special Attack Parameters")]
+    [SerializeField] private float _minSeparation;
+    [SerializeField] private float _maxSeparation;
+    [SerializeField] private float _slashInBetweenTime;
 
     [Header("Cooldowns")]
     [SerializeField] private float _meleeAttackCd;
@@ -23,6 +41,10 @@ public class BossController : MonoBehaviour
     private bool _canShoot;
     private bool _canJump;
     private bool _isGrounded;
+    private bool _isJumping;
+
+    private bool _hasFallenRight;
+    private int _phase;
     #endregion
 
     #region Unity Methods
@@ -37,12 +59,19 @@ public class BossController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
+        _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.2f, LayerMask.GetMask("Ground"));
         _animator.SetBool("IsGrounded", _isGrounded);
-        if (_isGrounded )
+        if (_isGrounded && !_isJumping)
         {
             _rigidbody.velocity = Vector3.zero;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_attackPoint == null) return;
+        
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
     }
     #endregion
 
@@ -63,16 +92,34 @@ public class BossController : MonoBehaviour
         }
     }
 
+    public void EnterSecondPhase()
+    {
+        _phase = 1;
+        _animator.SetInteger("Phase", _phase);
+    }
+
     #region Melee Attacks
     /// <summary>
     /// Triggers the melee attack animation
     /// </summary>
-    public void Attack()
+    public void BeginCombo()
     {
         Debug.Log("Attack");
         _animator.SetTrigger("Attack");
         _canAttack = false;
         Invoke(nameof(ResetMeleeAttack), _meleeAttackCd);
+    }
+
+    private void PerformAttack(int type)
+    {
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("PlayerHurtbox"));
+
+        if (playerCollider != null)
+        {
+            LifeComponent.AttackTypes attackType = (LifeComponent.AttackTypes) type;
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
+            Debug.Log(playerCollider.name + " has been hit");
+        }    
     }
 
     /// <summary>
@@ -86,13 +133,36 @@ public class BossController : MonoBehaviour
 
     #region Ranged Attacks
     /// <summary>
-    /// Triggers the ranged attack animation
+    /// Triggers the shoot animation
     /// </summary>
-    public void Shoot()
+    public void StartShooting()
     {
-        Debug.Log("Shoot");
         _animator.SetTrigger("Shoot");
         _canShoot = false;
+    }
+
+    /// <summary>
+    /// Shoots a random type of bullet to the player
+    /// </summary>
+    private void Shoot()
+    {
+        if (Random.value >= 0.5)
+        {
+            GameObject bullet = Instantiate(_highBullet, _attackPoint.transform.position, Quaternion.identity);
+            bullet.GetComponent<BulletScript>().SetDirection(transform.right);
+        }
+        else
+        {
+            GameObject bullet = Instantiate(_lowBullet, _attackPoint.transform.position, Quaternion.identity);
+            bullet.GetComponent<BulletScript>().SetDirection(transform.right);
+        }
+    }
+
+    /// <summary>
+    /// Invokes the ranged attack reset
+    /// </summary>
+    private void StopShooting()
+    {
         Invoke(nameof(ResetRangedAttack), _rangedAttackCd);
     }
    
@@ -111,9 +181,10 @@ public class BossController : MonoBehaviour
     /// </summary>
     public void Jump()
     {
-        Debug.Log("Jump");
+        _isJumping = true;
         _canJump = false;
         _rigidbody.velocity = new Vector2(0, 50);
+        _jumpHitbox.SetActive(true);
     }
 
     /// <summary>
@@ -121,18 +192,35 @@ public class BossController : MonoBehaviour
     /// </summary>
     public void Fall()
     {
+        _isJumping = false;
+
         if (Random.value >= 0.5)
         {
-            Debug.Log("Left");
             _rigidbody.MovePosition(new Vector2(-15, _rigidbody.position.y));
+            _hasFallenRight = false;
         }
         else
         {
-            Debug.Log("Right");
             _rigidbody.MovePosition(new Vector2(20, _rigidbody.position.y));
+            _hasFallenRight = true;
         }
         _rigidbody.velocity = new Vector2(0, -50);
+        LookAtPlayer();
+
+        if (_phase > 0 /*&& Random.value >= 0.3*/) _animator.SetTrigger("Special");
+
         Invoke(nameof(ResetJump), _jumpCd);
+    }
+
+    /// <summary>
+    /// Disables the jump hitbox
+    /// </summary>
+    public void DisableJumpHitbox()
+    {
+        if (_jumpHitbox.activeSelf)
+        {
+            _jumpHitbox.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -141,6 +229,54 @@ public class BossController : MonoBehaviour
     private void ResetJump()
     {
         _canJump = true;
+    }
+    #endregion
+
+    #region Special Attack
+    private void SpecialAttackSetup()
+    {
+        float _currentOffset = 0;
+
+        foreach (GameObject area in _specialHitAreas) 
+        {
+            float separation = Random.Range(_minSeparation, _maxSeparation);
+            if (_hasFallenRight) separation *= -1;
+
+            Vector2 newPos = transform.position;
+            newPos.y += 5;
+            newPos.x += separation + _currentOffset;
+            area.transform.position = newPos;
+
+            if (Random.value >= 0.5) area.transform.eulerAngles = new Vector3(0, 0, 180);
+            else area.transform.eulerAngles = new Vector3(0, 0, 0);
+
+            _currentOffset += separation;
+
+            Debug.Log("Separation: " + separation);
+            Debug.Log("Current offset: " + _currentOffset);
+        }
+    }
+
+    private void AnimateSlashesTrigger()
+    {
+        StartCoroutine(AnimateSlashes());
+    }
+
+    private IEnumerator AnimateSlashes()
+    {
+        foreach (GameObject area in _specialHitAreas)
+        {
+            area.GetComponent<Animator>().SetTrigger("Appear");
+            yield return new WaitForSeconds(0.05f);
+        }
+
+        yield return new WaitForSeconds(1);
+
+        foreach (GameObject area in _specialHitAreas)
+        {
+            area.GetComponent<Animator>().SetTrigger("Slash");
+            yield return new WaitForSeconds(_slashInBetweenTime);
+        }
     }
     #endregion
 
@@ -159,8 +295,8 @@ public class BossController : MonoBehaviour
     private void DisableBoss()
     {
         gameObject.SetActive(false);
+        _endDoor.SetActive(false);
     }
-
     #endregion
 
     public bool CanAttack { get { return _canAttack; } }
