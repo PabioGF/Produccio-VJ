@@ -3,14 +3,14 @@ using UnityEngine;
 public class NormalIA : IAController
 {
     public float distanciaParada = 1.0f;
-    public float tiempoEntreAtaques = 2.0f;
+    public float tiempoEntreCombos = 5.0f;
+    private float tiempoUltimoCombo;
     public GameObject lowTrigger;
     public GameObject highTrigger;
     private float tiempoActivos = 0.5f;
 
     private Animator myAnimator;
     private LifeComponent lifeComponent;
-    private float tiempoUltimoAtaque;
     private int contPunch;
 
     protected override void Start()
@@ -18,7 +18,7 @@ public class NormalIA : IAController
         base.Start();
         myAnimator = GetComponent<Animator>();
         lifeComponent = GetComponent<LifeComponent>();
-        tiempoUltimoAtaque = -tiempoEntreAtaques;
+        tiempoUltimoCombo = -tiempoEntreCombos;
         contPunch = 0;
     }
 
@@ -56,9 +56,14 @@ public class NormalIA : IAController
 
     private void Pegar()
     {
-        if (Time.time - tiempoUltimoAtaque >= tiempoEntreAtaques)
+        // Calcular el tiempo transcurrido desde el último combo
+        float tiempoDesdeUltimoCombo = Time.time - tiempoUltimoCombo;
+
+        // Realizar combo si ha pasado el tiempo requerido
+        if (tiempoDesdeUltimoCombo >= tiempoEntreCombos)
         {
-            int ataqueAleatorio = 3;//Random.Range(1, 4);
+            int ataqueAleatorio = 2; //Random.Range(1, 4);
+            Debug.Log(ataqueAleatorio);
             switch (ataqueAleatorio)
             {
                 case 1:
@@ -72,11 +77,7 @@ public class NormalIA : IAController
                     break;
             }
             
-           // tiempoUltimoAtaque = Time.time;
-
-        }
-
-
+        }   
             
     }
 
@@ -113,6 +114,7 @@ public class NormalIA : IAController
         if(contPunch == 3)
         {
             myAnimator.SetTrigger("stopPunch");
+            tiempoUltimoCombo = Time.time;
         }
     }
 
@@ -132,6 +134,7 @@ public class NormalIA : IAController
         if (contPunch == 3)
         {
             myAnimator.SetTrigger("stopPunch");
+
         }
     }
 

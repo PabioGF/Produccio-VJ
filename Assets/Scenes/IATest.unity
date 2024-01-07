@@ -590,7 +590,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 942383339766095506, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -4.64
+      value: 1.67
       objectReference: {fileID: 0}
     - target: {fileID: 942383339766095506, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1982,7 +1982,7 @@ MonoBehaviour:
   leftFoot: {fileID: 1372386990}
   rightFoot: {fileID: 1444083968}
   distanciaParada: 1
-  tiempoEntreAtaques: 2
+  tiempoEntreCombos: 5
   lowTrigger: {fileID: 0}
   highTrigger: {fileID: 0}
 --- !u!1001 &8849021989272125596
@@ -2043,7 +2043,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9079628943148725425, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
