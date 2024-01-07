@@ -30110,10 +30110,6 @@ PrefabInstance:
       value: NormalEnemy
       objectReference: {fileID: 0}
     - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: myRB
-      value: 
-      objectReference: {fileID: 1451735120}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 431081169}
@@ -30165,11 +30161,6 @@ PrefabInstance:
 --- !u!4 &1451735119 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6852081472265349281, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-  m_PrefabInstance: {fileID: 1451735118}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1451735120 stripped
-Rigidbody2D:
-  m_CorrespondingSourceObject: {fileID: 240527700948679000, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
   m_PrefabInstance: {fileID: 1451735118}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1483064350

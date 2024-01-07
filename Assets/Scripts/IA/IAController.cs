@@ -25,6 +25,9 @@ public class IAController : MonoBehaviour
     public int radioDeteccionSuelo;
 
     public Transform leftFoot, rightFoot;
+    private bool _isHit;
+    private float _lastTimeHit;
+
 
     protected virtual void Start()
     {
@@ -55,6 +58,11 @@ public class IAController : MonoBehaviour
         }
 
         myRB.velocity = myVelocity;
+
+        if (Time.time - _lastTimeHit > 0.4)
+        {
+            ResetMovement();
+        }
 
     }
 
@@ -137,6 +145,19 @@ public class IAController : MonoBehaviour
     private void CambiarDireccion()
     {
         direccion *= -1;
+    }
+
+    public void GetHit()
+    {
+        _isHit = true;
+        myRB.gravityScale = 0;
+        myRB.velocity = new(0, 0);
+        _lastTimeHit = Time.time;
+    }
+
+    private void ResetMovement()
+    {
+        myRB.gravityScale = 3;
     }
 
 }

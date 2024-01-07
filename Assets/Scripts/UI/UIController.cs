@@ -5,10 +5,12 @@ using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
+using TMPro;
 
 public class UIController : MonoBehaviour
 {
     #region Global Variables
+    [SerializeField] private GameObject _statsPanel;
     public static UIController Instance;
     private PlayerInputActions _playerInputActions;
     #endregion
@@ -19,6 +21,7 @@ public class UIController : MonoBehaviour
         Instance = this;
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
+        _statsPanel.SetActive(true);
         _playerInputActions.Player.Pause.performed += TogglePause;
 
         _playerInputActions.Player.Interact.performed += HideDeathScreen;
@@ -27,6 +30,22 @@ public class UIController : MonoBehaviour
     private void OnDestroy()
     {
         _playerInputActions.Player.Pause.performed -= TogglePause;
+    }
+    #endregion
+
+    #region Stats Interface
+    [Header("Stats Panel")]
+    [SerializeField] private TextMeshProUGUI _lifeText;
+    [SerializeField] private TextMeshProUGUI _bottlesText;
+
+    public void SetLife(float life)
+    {
+        _lifeText.text = life.ToString();
+    }
+
+    public void SetBottles(float bottles)
+    {
+        _bottlesText.text = bottles.ToString();
     }
     #endregion
 
@@ -127,6 +146,7 @@ public class UIController : MonoBehaviour
     public void LevelCompleted()
     {
         _levelCompleteScreen.SetActive(true);
+        _statsPanel.SetActive(false);
         Time.timeScale = 0;
 
         EventSystem.current.SetSelectedGameObject(_selectedOptionCompleted);

@@ -19,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Dodge settings")]
     [SerializeField] private float _dodgeCd;
 
+    private PlayerAttackComponent[] _attackComponents;
     private PlayerInputActions _playerInputActions;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
@@ -57,6 +58,7 @@ public class PlayerCombat : MonoBehaviour
         _playerInputActions.Player.Throw.performed += ThrowBottle;
         _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
+        _attackComponents = new PlayerAttackComponent[3];
     }
 
     private void OnDestroy()
@@ -67,9 +69,12 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
+        int i = 0;
         foreach(GameObject attackArea in _attackAreas)
         {
             attackArea.SetActive(false);
+            _attackComponents[i] = attackArea.GetComponent<PlayerAttackComponent>();
+            i++;
         }
         _comboState = ComboStates.Idle;
     }
@@ -308,6 +313,22 @@ public class PlayerCombat : MonoBehaviour
         _attackBuffer.Clear();
     }
 
+    private void SendEnemiesFly()
+    {
+        foreach (PlayerAttackComponent attack in _attackComponents)
+        {
+            attack.AttackType = PlayerAttackComponent.PlayerAttackTypes.upwardsForceAttack;
+        }
+    }
+
+    private void SendEnemiesDown()
+    {
+        foreach (PlayerAttackComponent attack in _attackComponents)
+        {
+            attack.AttackType = PlayerAttackComponent.PlayerAttackTypes.downwardsForceAttack;
+        }
+    }
+
     /// <summary>
     /// Enables the attack area (animator method)
     /// </summary>
@@ -363,6 +384,11 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void AttackFinished(int isMoving)
     {
+        foreach (PlayerAttackComponent attack in _attackComponents)
+        {
+            attack.AttackType = PlayerAttackComponent.PlayerAttackTypes.defaultAttack;
+        }
+
         if (isMoving == 1)
             _playerController.IsOverride = false;
 

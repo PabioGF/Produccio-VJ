@@ -116,7 +116,7 @@ public class BossController : MonoBehaviour
 
         if (playerCollider != null)
         {
-            LifeComponent.AttackTypes attackType = (LifeComponent.AttackTypes) type;
+            PlayerLifeComponent.AttackTypes attackType = (PlayerLifeComponent.AttackTypes) type;
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
             Debug.Log(playerCollider.name + " has been hit");
         }    

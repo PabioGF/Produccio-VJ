@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class BossLifeComponent : LifeComponent
 {
-    public override void ReceiveHit(float amount, AttackTypes attackType = AttackTypes.DefaultAttack)
+    public override void ReceiveHit(float amount)
     {
-        base.ReceiveHit(amount, attackType);
+        base.ReceiveHit(amount);
 
         if (_currentLife < _maxLife / 2) _parent.GetComponent<BossController>().EnterSecondPhase();
 
