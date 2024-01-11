@@ -12,4 +12,5 @@ public class BossLifeComponent : LifeComponent
 
         if (_isDead) _parent.GetComponent<BossController>().Die();
     }
+
 }

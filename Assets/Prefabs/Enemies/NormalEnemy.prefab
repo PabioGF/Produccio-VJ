@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 1912526690816389345}
   - component: {fileID: 240527700948679000}
   - component: {fileID: 633524417441701615}
-  - component: {fileID: 6761040259534138878}
   - component: {fileID: 6157194604111591697}
+  - component: {fileID: 6648277589926451404}
   - component: {fileID: 8203532647511212095}
   m_Layer: 2
   m_Name: NormalEnemy
@@ -143,23 +143,9 @@ MonoBehaviour:
   leftFoot: {fileID: 621157944012127408}
   rightFoot: {fileID: 614159449260577715}
   distanciaParada: 1.7
-  tiempoEntreAtaques: 2
+  tiempoEntreCombos: 5
   lowTrigger: {fileID: 9121420976471208567}
   highTrigger: {fileID: 5081947028883065537}
---- !u!114 &6761040259534138878
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451018218054530674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ff61ba8bae5c854584352769a08c596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 451018218054530674}
-  _maxLife: 5
 --- !u!95 &6157194604111591697
 Animator:
   serializedVersion: 5
@@ -181,6 +167,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &6648277589926451404
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 451018218054530674}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6c587d16550784e81ad690223f3683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 451018218054530674}
+  _maxLife: 6
 --- !u!70 &8203532647511212095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
