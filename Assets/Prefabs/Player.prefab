@@ -91,6 +91,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
+  _movingForceUp: 0
+  _movingForceDown: 0
+  AttackType: 0
 --- !u!1 &2849764760861387094
 GameObject:
   m_ObjectHideFlags: 0
@@ -189,7 +192,7 @@ MonoBehaviour:
   _maxJumps: 1
   _bufferTime: 0.3
   _fallSpeed: 90
-  _maxFallSpeed: 150
+  _maxFallSpeed: 50
   _coyoteTime: 0.1
 --- !u!114 &5160320821678128178
 MonoBehaviour:
@@ -652,7 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 5180191103471191624}
-  _maxLife: 10000
+  _maxLife: 10
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
   _hitStopController: {fileID: 0}
@@ -792,6 +795,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _movingForceUp: 50
+  _movingForceDown: 150
+  AttackType: 0
 --- !u!1 &9216886434159617761
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,3 +897,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
+  _movingForceUp: 0
+  _movingForceDown: 0
+  AttackType: 0

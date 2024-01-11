@@ -84453,17 +84453,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fa11a45690b5f8f4b947373cff936c27, type: 3}
---- !u!114 &418601895 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6376361907425506288, guid: fa11a45690b5f8f4b947373cff936c27, type: 3}
-  m_PrefabInstance: {fileID: 418601894}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37ec57953c98f1646b82d2f92cbad52a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &418601896 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: -754035716436276154, guid: fa11a45690b5f8f4b947373cff936c27, type: 3}
@@ -140245,14 +140234,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
-      propertyPath: _maxFallSpeed
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 6838906068520528515, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
-      propertyPath: _gameController
-      value: 
-      objectReference: {fileID: 418601895}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

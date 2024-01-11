@@ -5,8 +5,7 @@ using UnityEngine;
 public class EnemyAttackComponent : MonoBehaviour
 {
     [SerializeField] private float _damage;
-    //Preguntar si aixo esta be
-    [SerializeField] private LifeComponent.AttackTypes _attackType;
+    [SerializeField] private PlayerLifeComponent.AttackTypes _attackType;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,7 +14,7 @@ public class EnemyAttackComponent : MonoBehaviour
             life.ReceiveHit(_damage, _attackType);
         }
     }
-    private void SetAttackType(LifeComponent.AttackTypes attackType)
+    private void SetAttackType(PlayerLifeComponent.AttackTypes attackType)
     {
         _attackType = attackType;
     }

@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem.XR;
 using UnityEngine.UI;
 
-public class PlayerLifeComponent : LifeComponent
+public class PlayerLifeComponent : MonoBehaviour
 {
     #region Variables
     [Header("Specific fields")]
@@ -11,9 +12,28 @@ public class PlayerLifeComponent : LifeComponent
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private HitStopController _hitStopController;
     [SerializeField] private float _hitStopDuration;
+
+    [SerializeField] protected GameObject _parent;
+    [SerializeField] protected float _maxLife;
+
+    protected float _currentLife;
+    protected bool _isDead;
+
+    public enum AttackTypes
+    {
+        DefaultAttack = 0,
+        HighAttack = 1,
+        LowAttack = 2
+    }
     #endregion
 
-    public override void ReceiveHit(float amount, AttackTypes attackType)
+    private void Start()
+    {
+        _currentLife = _maxLife;
+        UIController.Instance.SetLife(_currentLife);
+    }
+
+    public void ReceiveHit(float amount, AttackTypes attackType)
     {
         if (_playerCombat.IsDodging)
         {
@@ -36,7 +56,10 @@ public class PlayerLifeComponent : LifeComponent
             return;
         }
 
-        base.ReceiveHit(amount);
+        _currentLife -= amount;
+        if (_currentLife <= 0) _isDead = true;
+
+        UIController.Instance.SetLife(_currentLife);
         if (_isDead)
         {
             PlayerController playerController = _parent.GetComponent<PlayerController>();
