@@ -11,6 +11,7 @@ public class ShooterIA : IAController
     [SerializeField] private GameObject _pointer;
     [SerializeField] private float _bulletSpeed;
 
+    private Animator myAnimator;
     private Rigidbody2D _rigidbody;
     private GameObject _player;
     private bool _upperBullet;
@@ -22,6 +23,7 @@ public class ShooterIA : IAController
     protected override void Start()
     {
         base.Start();
+        myAnimator = GetComponent<Animator>();
         _player = GameObject.Find("Player");
     }
 
@@ -33,14 +35,16 @@ public class ShooterIA : IAController
         if (hasDetected)
         {
            
-            CalculateDirection();
-            InvokeRepeating(nameof(SpawnBullet), 0, _fireRate);
+
             // Shoot();
             myVelocity.x = 0;
+            myAnimator.SetBool("stopMovement", true);
+            myAnimator.SetTrigger("shoot");
         }
         else
         {
             CancelInvoke(nameof(SpawnBullet));
+            myAnimator.SetBool("stopMovement", false);
         }
 
         myRB.velocity = myVelocity;
@@ -68,5 +72,12 @@ public class ShooterIA : IAController
         GameObject bullet = Random.value > _upperBulletProbability ? _highBullet : _lowBullet;
         GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
+    }
+
+    private void Shoot()
+    {
+        CalculateDirection();
+        SpawnBullet();
+
     }
 }

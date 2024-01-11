@@ -62,8 +62,8 @@ public class NormalIA : IAController
         // Realizar combo si ha pasado el tiempo requerido
         if (tiempoDesdeUltimoCombo >= tiempoEntreCombos)
         {
-            int ataqueAleatorio = 2; //Random.Range(1, 4);
-            Debug.Log(ataqueAleatorio);
+            int ataqueAleatorio = 2;//Random.Range(1, 4);
+           
             switch (ataqueAleatorio)
             {
                 case 1:
@@ -76,73 +76,93 @@ public class NormalIA : IAController
                     Combo3();
                     break;
             }
+
             
-        }   
-            
+        }
+       
+
     }
 
 
     private void Combo1()
     {
         //puñetazo, puñetazo, puñetazo
-        Debug.Log(contPunch);
-        if (contPunch == 0)
+        switch (contPunch)
         {
-            myAnimator.SetTrigger("doPunch");
+            case 1:
+                myAnimator.SetTrigger("doPunch");
+                break;
+            case 2:
+                myAnimator.SetTrigger("doPunch");
+                break;
+            case 3:
+                myAnimator.SetTrigger("doPunch");
+                tiempoUltimoCombo = Time.time;
+
+
+                break;
         }
-        
-        if(contPunch == 3)
-        {
-            myAnimator.SetTrigger("stopPunch");
-        }
-        
+
     }
 
     private void Combo2()
     {
-        //puñetazo, puñetazo, patada
-        if (contPunch == 0)
-        {
-            myAnimator.SetTrigger("doPunch");
-        }
-        
-        if (contPunch == 2)
-        {
-            myAnimator.SetTrigger("doKick");
 
-        }
-        if(contPunch == 3)
+        //puñetazo, puñetazo, patada
+
+        switch (contPunch)
         {
-            myAnimator.SetTrigger("stopPunch");
-            tiempoUltimoCombo = Time.time;
+            case 1:
+                myAnimator.SetTrigger("doPunch");
+                break;
+            case 2:
+                myAnimator.SetTrigger("doPunch");
+                break;
+            case 3:
+                myAnimator.SetTrigger("doKick");
+                tiempoUltimoCombo = Time.time;
+
+
+                break;
         }
     }
 
     private void Combo3()
     {
-        //patada, patada, puñetazo
-        if (contPunch == 0)
-        {
-            myAnimator.SetTrigger("doKick");
-        }
 
-        if (contPunch == 2)
-        {
-            myAnimator.SetTrigger("doPunch");
 
-        }
-        if (contPunch == 3)
-        {
-            myAnimator.SetTrigger("stopPunch");
 
+        switch (contPunch)
+        {
+            case 1:
+                myAnimator.SetTrigger("doKick");
+                break;
+            case 2:
+                myAnimator.SetTrigger("doKick");
+                
+                break;
+            case 3:
+                myAnimator.SetTrigger("doPunch");
+                tiempoUltimoCombo = Time.time;
+                
+                
+                break;
         }
+        //patada, patada, puñetazo, patada
+
+
     }
 
 
     private void CountPunch()
     {
+       
         contPunch++;
-        
+        if(contPunch > 3)
+        {
+            contPunch = 0;
+        }
+        Debug.Log(contPunch);
     }
 
     private void setLowTrigger()
@@ -156,18 +176,20 @@ public class NormalIA : IAController
     private void DesactivarLowTrigger()
     {
         lowTrigger.SetActive(false);
+        myAnimator.SetTrigger("stopPunch");
     }
 
     private void setHighTrigger()
     {
         highTrigger.SetActive(true);
+        myAnimator.SetTrigger("stopPunch");
 
-     
-       // Invoke("DesactivarHighTrigger", tiempoEntreAtaques);
+        // Invoke("DesactivarHighTrigger", tiempoEntreAtaques);
     }
 
     private void DesactivarHighTrigger()
     {
         highTrigger.SetActive(false);
     }
+
 }
