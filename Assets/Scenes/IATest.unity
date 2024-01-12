@@ -382,6 +382,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 0
+  _movingForceUp: 0
+  _movingForceDown: 0
+  AttackType: 0
 --- !u!1 &265574511
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1153,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!61 &963221928
 BoxCollider2D:
   m_ObjectHideFlags: 0
