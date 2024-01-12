@@ -132,10 +132,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 517a0c200db399c438a1d9899a7f09d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 2
+  velocidadMovimiento: 4
   puntoInicialX: 0
   puntoFinalX: 0
-  distanciaDeteccion: 5
+  distanciaDeteccion: 10
   player: {fileID: 0}
   tiempoCambioDireccion: 3
   myRB: {fileID: 240527700948679000}
