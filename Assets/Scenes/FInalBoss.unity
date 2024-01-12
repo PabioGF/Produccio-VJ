@@ -4765,6 +4765,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1534049362}
     - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _maxSeparation
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _minSeparation
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: rightPositionLimit
       value: 18.5
       objectReference: {fileID: 0}

@@ -10,7 +10,6 @@ public class LifeComponent : MonoBehaviour
     [SerializeField] protected GameObject _parent;
     [SerializeField] protected float _maxLife;
 
-    private IAController _controller;
     protected float _currentLife;
     protected bool _isDead;
     #endregion
@@ -19,12 +18,12 @@ public class LifeComponent : MonoBehaviour
     protected virtual void Start()
     {
         _currentLife = _maxLife;
-        _controller = GetComponent<IAController>();
     }
     #endregion
     public virtual void ReceiveHit(float amount)
     {
-        _controller.GetHit();
+        Debug.LogWarning("Boss hit");
+
         _currentLife -= amount;
 
         if (_currentLife <= 0)
@@ -34,13 +33,13 @@ public class LifeComponent : MonoBehaviour
         }
     }
 
-    public void SendFlyingUp(float force)
+    public virtual void SendFlyingUp(float force)
     {
-        _parent.GetComponent<Rigidbody2D>().AddForce(new(0, force) ,ForceMode2D.Impulse);
+       
     }
 
-    public void SendFlyingDown(float force)
+    public virtual void SendFlyingDown(float force)
     {
-        _parent.GetComponent<Rigidbody2D>().AddForce(new(0, -force), ForceMode2D.Impulse);
+       
     }
 }

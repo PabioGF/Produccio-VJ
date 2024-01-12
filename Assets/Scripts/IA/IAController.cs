@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class IAController : MonoBehaviour
@@ -27,6 +28,7 @@ public class IAController : MonoBehaviour
     public Transform leftFoot, rightFoot;
     private bool _isHit;
     private float _lastTimeHit;
+    private bool _isFlipped;
 
 
     protected virtual void Start()
@@ -44,6 +46,7 @@ public class IAController : MonoBehaviour
     protected virtual void Update()
     {
         myVelocity = myRB.velocity;
+        LookAtPlayer();
 
         if (VerificarLineaDeVision() || hasDetected)
         {
@@ -129,6 +132,19 @@ public class IAController : MonoBehaviour
         direccion = -1;
     }
 
+    public void LookAtPlayer()
+    {
+        if (transform.position.x < player.transform.position.x && !_isFlipped)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            _isFlipped = true;
+        }
+        else if (transform.position.x > player.transform.position.x && _isFlipped)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _isFlipped = false;
+        }
+    }
 
     private bool CheckFeetColliding(Transform feet)
     {
