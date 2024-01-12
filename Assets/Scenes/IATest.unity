@@ -762,6 +762,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooter
       objectReference: {fileID: 0}
+    - target: {fileID: 4609108240381488255, guid: e7e5497c6316e694e9f6dfd9188e4432, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -943,32 +947,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a0e60f2b81a1604f98519fc94e80cc5, type: 3}
---- !u!1 &736150694 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9079628943148725425, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
-  m_PrefabInstance: {fileID: 8849021989272125596}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &736150695
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 736150694}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f29e82c9104482e478a422b6668dc626, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &902375527
 GameObject:
   m_ObjectHideFlags: 0
@@ -1862,17 +1840,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Shooter
       objectReference: {fileID: 0}
-    - target: {fileID: 9079628943148725425, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9079628943148725425, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 736150695}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
