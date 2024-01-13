@@ -40,8 +40,6 @@ public class PlayerController : MonoBehaviour
 
     private Animator _myAnimator;
     private bool _isOverride;
-    private bool _isAttackingDown;
-
     private bool _isDead; 
     #endregion
 
@@ -115,12 +113,6 @@ public class PlayerController : MonoBehaviour
         }
 
         _isGrounded = Physics2D.OverlapCircle(_groundCheck.transform.position, 0.1f, LayerMask.GetMask("Ground"));
-
-        if (_isAttackingDown && _isGrounded)
-        {
-            _isAttackingDown = false;
-            _playerCombat.EndDownAttack();
-        }
 
         _myAnimator.SetBool("isGrounded", _isGrounded);
 
@@ -302,8 +294,5 @@ public class PlayerController : MonoBehaviour
 
     public bool IsGrounded => _isGrounded;
 
-    public bool IsDead => _isDead;
-
-    public bool IsAttackingDown { set { _isAttackingDown = value; } }
-    
+    public bool IsDead => _isDead;    
 }

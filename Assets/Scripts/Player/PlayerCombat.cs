@@ -303,6 +303,11 @@ public class PlayerCombat : MonoBehaviour
     {
         _attackAreas[2].SetActive(false);
         AttackFinished(1);
+
+        if (_playerController.IsGrounded)
+        {
+
+        }
     }
 
     private void EndCombo()
@@ -347,18 +352,27 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    private void MovingSideAttackStart(int velocity)
+    public void UnstopabbleAttackBegin()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), true);
+    }
+
+    public void UnstopabbleAttackEnd()
+    {
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), false);
+    }
+
+    public void MovingSideAttackStart(int velocity)
     {
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(velocity, 0) * transform.right;
     }
 
-    private void MovingDownAttackStart(int velocity)
+    public void MovingDownAttackStart(int velocity)
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(0, -30);
-        _playerController.IsAttackingDown = true;
     }
 
     /// <summary>
@@ -382,7 +396,7 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Method called when the attack animation is over (animator method)
     /// </summary>
-    private void AttackFinished(int isMoving)
+    public void AttackFinished(int isMoving)
     {
         foreach (PlayerAttackComponent attack in _attackComponents)
         {

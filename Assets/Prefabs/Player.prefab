@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5474290537355464678}
   - component: {fileID: 4220680565338823471}
   - component: {fileID: 2318361503859980189}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: SlowAttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,8 +91,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 2
-  _movingForceUp: 0
-  _movingForceDown: 0
+  _movingForceUp: 50
+  _movingForceDown: 100
   AttackType: 0
 --- !u!1 &2849764760861387094
 GameObject:
@@ -103,7 +103,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 668350209096963149}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Collisions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -575,7 +575,7 @@ GameObject:
   - component: {fileID: 8515079538127497808}
   - component: {fileID: 4719653573109154232}
   - component: {fileID: 3573265447690019017}
-  m_Layer: 10
+  m_Layer: 8
   m_Name: Hurtbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -715,7 +715,7 @@ GameObject:
   - component: {fileID: 8285716040168945687}
   - component: {fileID: 360344718509005982}
   - component: {fileID: 3183382154455112320}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: FastAttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -809,7 +809,7 @@ GameObject:
   - component: {fileID: 1789773650026525191}
   - component: {fileID: 6220835956182264082}
   - component: {fileID: 1346498008636022742}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: DownAttackArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}

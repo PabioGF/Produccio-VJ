@@ -22,8 +22,6 @@ public class LifeComponent : MonoBehaviour
     #endregion
     public virtual void ReceiveHit(float amount)
     {
-        Debug.LogWarning("Boss hit");
-
         _currentLife -= amount;
 
         if (_currentLife <= 0)
