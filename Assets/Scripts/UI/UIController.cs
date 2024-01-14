@@ -23,13 +23,14 @@ public class UIController : MonoBehaviour
         _playerInputActions.Player.Enable();
         _statsPanel.SetActive(true);
         _playerInputActions.Player.Pause.performed += TogglePause;
-
         _playerInputActions.Player.Interact.performed += HideDeathScreen;
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         _playerInputActions.Player.Pause.performed -= TogglePause;
+        _playerInputActions.Player.Interact.performed -= HideDeathScreen;
+        _playerInputActions.Disable();
     }
     #endregion
 

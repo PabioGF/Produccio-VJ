@@ -57,9 +57,10 @@ public class PlayerController : MonoBehaviour
         if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         _playerInputActions.Player.Jump.performed -= JumpInput;
+        _playerInputActions.Player.Disable();
     }
 
     private void Start()

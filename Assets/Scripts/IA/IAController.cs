@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using static UnityEditor.Experimental.GraphView.GraphView;
 
 
 public class IAController : MonoBehaviour
@@ -80,15 +79,13 @@ public class IAController : MonoBehaviour
         if (hit.collider != null)
         {
             Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
- 
         }
         else
         {
             Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
-         
         }
 
-
+        
         // Si el rayo no choca con ningún objeto, devuelve true.
         return hit.collider != null && hit.collider.CompareTag("Player");
     }

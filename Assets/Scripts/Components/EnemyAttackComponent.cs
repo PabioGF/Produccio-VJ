@@ -12,6 +12,7 @@ public class EnemyAttackComponent : MonoBehaviour
     {
         if (collision.TryGetComponent<PlayerLifeComponent>(out var life))
         {
+            Debug.Log(collision.gameObject.name);
             life.ReceiveHit(_damage, _attackType);
         }
     }

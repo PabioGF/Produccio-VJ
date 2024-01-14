@@ -9,12 +9,16 @@ public class PlayerCombat : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject[] _attackAreas;
     [SerializeField] private PlayerController _playerController;
+    [SerializeField] private GameObject _feet;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
     [SerializeField] private float _attackCd;
     [SerializeField] private float _maxTimeBetweenAttacks;
     [SerializeField] private int _maxComboLength;
+    [SerializeField] private float _fallExplosionRange;
+    [SerializeField] private float _fallExplosionDamage;
+    [SerializeField] private float _fallExplosionPushForce;
 
     [Header("Dodge settings")]
     [SerializeField] private float _dodgeCd;
@@ -61,10 +65,11 @@ public class PlayerCombat : MonoBehaviour
         _attackComponents = new PlayerAttackComponent[3];
     }
 
-    private void OnDestroy()
+    private void OnDisable()
     {
         _playerInputActions.Player.FastAttack.performed -= FastAttackInput;
         _playerInputActions.Player.SlowAttack.performed -= SlowAttackInput;
+        _playerInputActions.Player.Disable();
     }
 
     void Start()
@@ -306,7 +311,17 @@ public class PlayerCombat : MonoBehaviour
 
         if (_playerController.IsGrounded)
         {
+            Collider2D[] enemiesColliders = Physics2D.OverlapCircleAll(_feet.transform.position, _fallExplosionRange, LayerMask.GetMask("Ignore Raycast"));
 
+            foreach (Collider2D collider in enemiesColliders)
+            {
+                if (collider.TryGetComponent<LifeComponent>(out var life))
+                {
+                    life.ReceiveHit(_fallExplosionDamage);
+                    float force = collider.transform.position.x > gameObject.transform.position.x ? _fallExplosionPushForce : -_fallExplosionPushForce;
+                    life.SendFlyingOutwards(force);
+                }
+            }
         }
     }
 
@@ -487,6 +502,13 @@ public class PlayerCombat : MonoBehaviour
     public void Die()
     {
         _playerInputActions.Player.Disable();
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (_feet == null) return;
+
+        Gizmos.DrawWireSphere(_feet.transform.position, _fallExplosionRange);
     }
 
     #region Getters

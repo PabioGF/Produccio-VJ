@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 8203532647511212095}
   m_Layer: 2
   m_Name: NormalEnemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
-  _maxLife: 6
+  _maxLife: 5
 --- !u!70 &8203532647511212095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -368,7 +368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713e6533dd9df924e848134a14099db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 1
   _attackType: 1
 --- !u!1 &9121420976471208567
 GameObject:
@@ -460,5 +460,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 713e6533dd9df924e848134a14099db0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 0
+  _damage: 1
   _attackType: 2

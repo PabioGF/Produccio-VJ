@@ -40,4 +40,9 @@ public class LifeComponent : MonoBehaviour
     {
        
     }
+
+    public virtual void SendFlyingOutwards(float force)
+    {
+
+    }
 }

@@ -7,12 +7,19 @@ public class SceneInventoryItem : MonoBehaviour
     protected PlayerInputActions _playerInputActions;
     protected PlayerController _playerController;
 
+    #region Unity Methods
     protected virtual void Awake()
     {
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
     }
-    
+
+    private void OnDisable()
+    {
+        _playerInputActions.Player.Disable();
+    }
+    #endregion
+
     protected virtual void PickUp()
     {
         gameObject.SetActive(false);

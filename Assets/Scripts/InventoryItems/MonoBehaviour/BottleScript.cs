@@ -29,6 +29,8 @@ public class BottleScript : SceneInventoryItem
     { 
         gameObject.transform.position = _playerTransform.position;
         gameObject.SetActive(true);
+        if (direction == Vector2.zero)
+            direction = _playerTransform.right;
         _rigidbody.velocity = _throwSpeed * direction;
         _playerController.RemoveItem(InventoryItem.ItemType.Bottle);
         _isThrow = true;
@@ -37,7 +39,16 @@ public class BottleScript : SceneInventoryItem
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (!_isThrow) return;
-        Destroy(gameObject, 0.2f);
+
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            if (collision.gameObject.TryGetComponent<LifeComponent>(out var life))
+            {
+                life.ReceiveHit(_damage);
+            }
+        }
+
+        Destroy(gameObject, 0.1f);
     }
 
     protected override void OnTriggerExit2D(Collider2D collision)

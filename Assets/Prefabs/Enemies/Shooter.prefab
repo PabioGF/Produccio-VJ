@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4380129257016360922}
   m_Layer: 2
   m_Name: Shooter
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,7 +413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 9079628943148725425}
-  _maxLife: 4
+  _maxLife: 3
 --- !u!95 &4380129257016360922
 Animator:
   serializedVersion: 5

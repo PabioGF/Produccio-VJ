@@ -31,4 +31,9 @@ public class EnemyLifeComponent : LifeComponent
     {
         _parent.GetComponent<Rigidbody2D>().AddForce(new(0, -force), ForceMode2D.Impulse);
     }
+
+    public override void SendFlyingOutwards(float force)
+    {
+        _parent.GetComponent<Rigidbody2D>().AddForce(new(force, Mathf.Abs(force) / 2), ForceMode2D.Impulse);
+    }
 }

@@ -112,7 +112,7 @@ public class BossController : MonoBehaviour
 
     private void PerformAttack(int type)
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("PlayerHurtbox"));
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("Player"));
 
         if (playerCollider != null)
         {

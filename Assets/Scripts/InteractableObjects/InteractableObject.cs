@@ -16,6 +16,12 @@ public class InteractableObject : MonoBehaviour
         _playerInputActions = new PlayerInputActions();
         _playerInputActions.Player.Enable();
     }
+
+    private void OnDisable()
+    {
+        _playerInputActions.Player.Disable();
+    }
+
     protected virtual void Interact() { }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)

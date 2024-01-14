@@ -11,7 +11,6 @@ public class TurretScript : MonoBehaviour
     [SerializeField] private float _upperBulletProbability;
     [SerializeField] private Rigidbody2D _referencePoint;
     [SerializeField] private GameObject _pointer;
-    [SerializeField] private float _bulletSpeed;
 
     private Rigidbody2D _rigidbody;
     private GameObject _player;
