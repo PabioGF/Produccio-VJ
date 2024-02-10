@@ -189,9 +189,8 @@ MonoBehaviour:
   _lowBullet: {fileID: 2941671906316021625, guid: c42c3a6aa7d535343827f7b1d75d7ab2, type: 3}
   _fireRate: 3
   _upperBulletProbability: 0.5
-  _referencePoint: {fileID: 7411556761908215857}
+  _referencePoint: {fileID: 6206330329560708232}
   _pointer: {fileID: 1596627818560971666}
-  _bulletSpeed: 5
 --- !u!50 &3436838674230660831
 Rigidbody2D:
   serializedVersion: 4

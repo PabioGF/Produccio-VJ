@@ -3037,6 +3037,18 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 431081169}
+    - target: {fileID: 5361087554082182580, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
+      propertyPath: _lowBullet
+      value: 
+      objectReference: {fileID: 2941671906316021625, guid: 7be91bfefcbd04e4d8e3b00c05fccfa2, type: 3}
+    - target: {fileID: 5361087554082182580, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
+      propertyPath: balaPrefab
+      value: 
+      objectReference: {fileID: 2941671906316021625, guid: 6160cc42f1cfa254ca2ff08f8de6f6b2, type: 3}
+    - target: {fileID: 5361087554082182580, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
+      propertyPath: _highBullet
+      value: 
+      objectReference: {fileID: 2941671906316021625, guid: 6160cc42f1cfa254ca2ff08f8de6f6b2, type: 3}
     - target: {fileID: 8227042814899455584, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -154.3295
