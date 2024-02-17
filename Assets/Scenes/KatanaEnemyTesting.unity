@@ -492,34 +492,6 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1232747692}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _attackPoint
-      value: 
-      objectReference: {fileID: 817199462}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _attackRange
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _attackDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _minPlayerDistance
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _detectionExtraTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: _velocityMultiplier
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 633524417441701615, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      propertyPath: velocidadMovimiento
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 6852081472265349281, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
       propertyPath: m_LocalPosition.x
       value: 10.46
@@ -561,46 +533,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 5081947028883065537, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-    - {fileID: 9121420976471208567, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6852081472265349281, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 817199462}
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
---- !u!1 &817199461
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 817199462}
-  m_Layer: 2
-  m_Name: Attack Point
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &817199462
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 817199461}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.62, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 909630934}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &872971371
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -658,11 +594,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8cdcb08d7a12ecc4d92e7fa68bd22986, type: 3}
---- !u!4 &909630934 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6852081472265349281, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
-  m_PrefabInstance: {fileID: 805455629}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1193678569
 PrefabInstance:
   m_ObjectHideFlags: 0

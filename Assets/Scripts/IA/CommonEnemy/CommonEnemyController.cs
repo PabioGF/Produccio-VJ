@@ -2,13 +2,13 @@ using UnityEngine;
 
 public class CommonEnemyController : IAController
 {
+    [Header("Common Enemy Params")]
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _minPlayerDistance;
     public float tiempoEntreCombos = 5.0f;
     
-    private Animator myAnimator;
     private float tiempoUltimoCombo;
 
     protected override void Start()
@@ -28,7 +28,6 @@ public class CommonEnemyController : IAController
     public override void EnemyBasicMovement()
     {
         base.EnemyBasicMovement();
-        Vector3 myVelocity = base.myVelocity;
         
         if (hasDetected)
         {
@@ -40,8 +39,11 @@ public class CommonEnemyController : IAController
         myRB.velocity = myVelocity;
     }
 
+    #region Attack
+
     public void Attack()
     {
+        StandStill();
         myAnimator.SetInteger("Combo", Random.Range(0, 3));
         myAnimator.SetTrigger("Attack");
     }
@@ -58,8 +60,15 @@ public class CommonEnemyController : IAController
         }
     }
 
-    /*
+    public void StandStill()
+    {
+        Vector3 velocity = myRB.velocity;
+        velocity.x = 0;
+        myRB.velocity = velocity;
+    }
+    #endregion
 
+    /*
     private void Pegar()
     {
         // Calcular el tiempo transcurrido desde el último combo
@@ -82,11 +91,7 @@ public class CommonEnemyController : IAController
                     Combo3();
                     break;
             }
-
-            
         }
-       
-
     }
 
 
@@ -104,11 +109,8 @@ public class CommonEnemyController : IAController
             case 3:
                 myAnimator.SetTrigger("doPunch");
                 tiempoUltimoCombo = Time.time;
-
-
                 break;
         }
-
     }
 
     private void Combo2()

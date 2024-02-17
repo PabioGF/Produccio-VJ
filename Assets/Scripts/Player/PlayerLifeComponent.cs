@@ -37,8 +37,8 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         if (_playerCombat.IsDodging)
         {
-            if ((attackType == AttackTypes.HighAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.HighDodge) ||
-            (attackType == AttackTypes.LowAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.LowDodge) ||
+            if ((attackType == AttackTypes.HighAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.LowDodge) ||
+            (attackType == AttackTypes.LowAttack && _playerCombat.GetDodgeType == PlayerCombat.DodgeType.HighDodge) ||
             attackType == AttackTypes.DefaultAttack)
             {
                 _playerCombat.OnDodge();

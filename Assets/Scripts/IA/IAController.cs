@@ -8,25 +8,28 @@ public class IAController : MonoBehaviour
     [SerializeField] protected Transform _player;
     [SerializeField] private Transform leftFoot, rightFoot;
 
-    [Header("Shared enemy params")]
-    [SerializeField] protected float velocidadMovimiento;
-    [SerializeField] private float distanciaDeteccion;
-    [SerializeField] float tiempoCambioDireccion;
+    [Header("Shared Enemy Params")]
+    [SerializeField] private float tiempoCambioDireccion;
     [SerializeField] private float _detectionExtraTime;
     [SerializeField] private float _velocityMultiplier;
+    [SerializeField] protected float velocidadMovimiento;
+    [SerializeField] protected float _detectionDistance;
 
     protected float tiempoActual;
-    protected float distanciaDisparo = 10.0f;
     protected int direccion = 1;
     protected bool hasDetected = false;
     protected Vector3 myVelocity;
+    protected bool _isAttacking;
+    protected bool _isFlying;
 
     protected Rigidbody2D myRB;
+    protected Animator myAnimator;
     private float _detectionTimer;
     private bool _isHit;
     private float _lastTimeHit;
     private bool _isFlipped;
-
+    private bool _isGrounded;
+    
     protected virtual void Start()
     {
         ReiniciarTemporizador();
@@ -39,24 +42,34 @@ public class IAController : MonoBehaviour
         LookAtPlayer();
         DetectPlayer();
         IdleMove();
+    }
 
+    private void Update()
+    {
         if (Time.time - _lastTimeHit > 0.4)
         {
             ResetMovement();
         }
+        IsGrounded();
+    }
+
+    private void IsGrounded()
+    {
+        _isGrounded = CheckFeetColliding(leftFoot) || CheckFeetColliding(rightFoot);
+        myAnimator.SetBool("IsGrounded", _isGrounded);
     }
 
     private void DetectPlayer()
     {
         // Lanzamos un rayo desde el enemigo hacia el jugador.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _player.position - transform.position, distanciaDisparo);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, _player.position - transform.position, _detectionDistance);
         if (hit.collider != null)
         {
             Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * hit.distance, Color.green);
         }
         else
         {
-            Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * distanciaDisparo, Color.red);
+            Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * _detectionDistance, Color.red);
         }
 
         // Si el rayo no choca con ningún objeto, devuelve true.
@@ -113,8 +126,7 @@ public class IAController : MonoBehaviour
 
     private bool CheckFeetColliding(Transform feet)
     {
-        Collider2D collider = Physics2D.OverlapCircle(feet.position, 0.2f, LayerMask.GetMask("Ground"));
-        return collider != null;
+        return Physics2D.OverlapCircle(feet.position, 0.1f, LayerMask.GetMask("Ground"));
     }
 
     private void ReiniciarTemporizador()
@@ -145,4 +157,6 @@ public class IAController : MonoBehaviour
         return Mathf.Abs(transform.position.x - _player.position.x);
     }
 
+    public bool IsAttacking {  get { return _isAttacking; } set { _isAttacking = value; } }
+    public bool IsFlying { get { return _isFlying; } set { _isFlying = value; } }
 }
