@@ -5,138 +5,106 @@ using UnityEngine;
 
 public class IAController : MonoBehaviour
 {
-    public float velocidadMovimiento = 2.0f;
-    public float puntoInicialX;
-    public float puntoFinalX;
-    public float distanciaDeteccion = 5.0f;
-    public GameObject player;
-    protected Transform jugador;
-    public float tiempoCambioDireccion = 3.0f;
+    [SerializeField] protected Transform _player;
+    [SerializeField] private Transform leftFoot, rightFoot;
+
+    [Header("Shared enemy params")]
+    [SerializeField] protected float velocidadMovimiento;
+    [SerializeField] private float distanciaDeteccion;
+    [SerializeField] float tiempoCambioDireccion;
+    [SerializeField] private float _detectionExtraTime;
+    [SerializeField] private float _velocityMultiplier;
+
     protected float tiempoActual;
     protected float distanciaDisparo = 10.0f;
-
     protected int direccion = 1;
-
-    public Rigidbody2D myRB;
     protected bool hasDetected = false;
-  
     protected Vector3 myVelocity;
 
-    public int radioDeteccionSuelo;
-
-    public Transform leftFoot, rightFoot;
+    protected Rigidbody2D myRB;
+    private float _detectionTimer;
     private bool _isHit;
     private float _lastTimeHit;
     private bool _isFlipped;
 
-
     protected virtual void Start()
     {
-        //Posición inicial del enemigo.
-       // transform.position = new Vector3(puntoInicialX, transform.position.y, transform.position.z);
-        jugador = player.transform;
         ReiniciarTemporizador();
         hasDetected = false;
-
         myRB = GetComponent<Rigidbody2D>();
-        
     }
-
-    protected virtual void Update()
+    public virtual void EnemyBasicMovement()
     {
         myVelocity = myRB.velocity;
         LookAtPlayer();
-
-        if (VerificarLineaDeVision() || hasDetected)
-        {
-            //Debug.Log("Entro");
-            hasDetected = true;
-        }
-
-        if (!hasDetected)
-        {
-            //Debug.Log(VerificarLineaDeVision());
-            myVelocity = BasicMovement(myVelocity);
-        }
-
-        myRB.velocity = myVelocity;
+        DetectPlayer();
+        IdleMove();
 
         if (Time.time - _lastTimeHit > 0.4)
         {
             ResetMovement();
         }
-
     }
 
-
-
-    private bool VerificarLineaDeVision()
+    private void DetectPlayer()
     {
-       // Debug.Log("hola");
         // Lanzamos un rayo desde el enemigo hacia el jugador.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, jugador.position - transform.position, distanciaDisparo);
-        //Debug.Log("Rayo de visión lanzado.");
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, _player.position - transform.position, distanciaDisparo);
         if (hit.collider != null)
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * hit.distance, Color.green);
+            Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * hit.distance, Color.green);
         }
         else
         {
-            Debug.DrawRay(transform.position, (jugador.position - transform.position).normalized * distanciaDisparo, Color.red);
+            Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * distanciaDisparo, Color.red);
         }
 
-        
         // Si el rayo no choca con ningún objeto, devuelve true.
-        return hit.collider != null && hit.collider.CompareTag("Player");
+        if (hit.collider != null && hit.collider.CompareTag("Player") && !hasDetected)
+        {
+            hasDetected = true;
+            velocidadMovimiento *= _velocityMultiplier;
+        }
+
+        // Stops chasing the player if it has not been detectend during the established time
+        if ((hit.collider == null || !hit.collider.CompareTag("Player")) && hasDetected)
+        {
+            _detectionTimer += Time.deltaTime;
+            if (_detectionTimer > _detectionExtraTime)
+            {
+                hasDetected = false;
+                velocidadMovimiento /= _velocityMultiplier;
+                _detectionTimer = 0;
+            }
+        }
     }
 
-    private Vector3 BasicMovement(Vector3 myVelocity)
+    private void IdleMove()
     {
+        if (hasDetected) return;
 
         bool leftFootColliding = CheckFeetColliding(leftFoot);
         bool rightFootColliding = CheckFeetColliding(rightFoot);
 
-        if (!leftFootColliding)
-        {
-            CaminaDerecha();
-            ReiniciarTemporizador();
-        }
-        else if (!rightFootColliding)
-        {
-            CaminaIzquierda();
-            ReiniciarTemporizador();
-        }
-        else if (tiempoActual <= 0f)
+        if (!leftFootColliding || !rightFootColliding || tiempoActual <= 0f)
         {
             CambiarDireccion();
             ReiniciarTemporizador();
         }
 
         myVelocity.x = velocidadMovimiento * direccion;
-
         tiempoActual -= Time.deltaTime;
-
-
-        return myVelocity;
-    }
-
-    private void CaminaDerecha()
-    {
-        direccion = 1;
-    }
-    private void CaminaIzquierda()
-    {
-        direccion = -1;
+        myRB.velocity = myVelocity;
     }
 
     public void LookAtPlayer()
     {
-        if (transform.position.x < player.transform.position.x && !_isFlipped)
+        if (transform.position.x < _player.transform.position.x && !_isFlipped)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
             _isFlipped = true;
         }
-        else if (transform.position.x > player.transform.position.x && _isFlipped)
+        else if (transform.position.x > _player.transform.position.x && _isFlipped)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
             _isFlipped = false;
@@ -147,7 +115,6 @@ public class IAController : MonoBehaviour
     {
         Collider2D collider = Physics2D.OverlapCircle(feet.position, 0.2f, LayerMask.GetMask("Ground"));
         return collider != null;
-        
     }
 
     private void ReiniciarTemporizador()
@@ -171,6 +138,11 @@ public class IAController : MonoBehaviour
     private void ResetMovement()
     {
         myRB.gravityScale = 3;
+    }
+
+    public float DistanceToPlayer()
+    {
+        return Mathf.Abs(transform.position.x - _player.position.x);
     }
 
 }

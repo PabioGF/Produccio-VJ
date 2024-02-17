@@ -1,58 +1,64 @@
 using UnityEngine;
 
-public class NormalIA : IAController
+public class CommonEnemyController : IAController
 {
-    public float distanciaParada = 1.0f;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackRange;
+    [SerializeField] private float _attackDamage;
+    [SerializeField] private float _minPlayerDistance;
     public float tiempoEntreCombos = 5.0f;
-    private float tiempoUltimoCombo;
-    public GameObject lowTrigger;
-    public GameObject highTrigger;
-    private float tiempoActivos = 0.5f;
-
+    
     private Animator myAnimator;
-    private LifeComponent lifeComponent;
-    private int contPunch;
+    private float tiempoUltimoCombo;
 
     protected override void Start()
     {
         base.Start();
         myAnimator = GetComponent<Animator>();
-        lifeComponent = GetComponent<LifeComponent>();
         tiempoUltimoCombo = -tiempoEntreCombos;
-        contPunch = 0;
     }
 
-    protected override void Update()
+    private void OnDrawGizmosSelected()
     {
-        base.Update();
+        if (_attackPoint == null) return;
+
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+    }
+
+    public override void EnemyBasicMovement()
+    {
+        base.EnemyBasicMovement();
         Vector3 myVelocity = base.myVelocity;
         
         if (hasDetected)
         {
-
-            float distanciaAlJugadorX = Mathf.Abs(transform.position.x - jugador.position.x);
-
-            
-            if (distanciaAlJugadorX <= distanciaParada)
-            {
-                //Debug.Log("Dist:" + distanciaAlJugadorX);
-                myVelocity.x = 0f;
-                myAnimator.SetBool("stopMovement", true);
-                Pegar();
-            }
-            else
-            {
-                contPunch = 0;
-                Vector3 direccionJugador = (jugador.position - transform.position).normalized;
-                myVelocity.x = velocidadMovimiento * direccionJugador.x;
-                myAnimator.SetBool("stopMovement", false);
-            }
-
+            if (DistanceToPlayer() <= _minPlayerDistance) return;
+            Vector3 direction = (_player.position - transform.position).normalized;
+            myVelocity.x = velocidadMovimiento * direction.x;
         }
 
         myRB.velocity = myVelocity;
     }
 
+    public void Attack()
+    {
+        myAnimator.SetInteger("Combo", Random.Range(0, 3));
+        myAnimator.SetTrigger("Attack");
+    }
+
+    private void PerformAttack(int type)
+    {
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("Player"));
+
+        if (playerCollider != null)
+        {
+            PlayerLifeComponent.AttackTypes attackType = (PlayerLifeComponent.AttackTypes)type;
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
+            Debug.Log(playerCollider.name + " has been hit");
+        }
+    }
+
+    /*
 
     private void Pegar()
     {
@@ -191,5 +197,6 @@ public class NormalIA : IAController
     {
         highTrigger.SetActive(false);
     }
+    */
 
 }

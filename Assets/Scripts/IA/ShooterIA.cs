@@ -27,9 +27,9 @@ public class ShooterIA : IAController
         _player = GameObject.Find("Player");
     }
 
-    protected override void Update()
+    public override void EnemyBasicMovement()
     {
-        base.Update();
+        base.EnemyBasicMovement();
         Vector3 myVelocity = base.myVelocity;
         myRB.velocity = myVelocity;
         if (hasDetected)
