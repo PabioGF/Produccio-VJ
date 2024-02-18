@@ -33,5 +33,5 @@ public class PlayerAttackComponent : MonoBehaviour
         }
     }
 
-    public float Damage { get { return _damage; } set {  _damage = value; } }
+    public float Damage { get { return _damage; } set { _damage = value; } }
 }

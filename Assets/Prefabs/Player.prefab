@@ -219,6 +219,7 @@ MonoBehaviour:
   _fallExplosionRange: 2
   _fallExplosionDamage: 1
   _fallExplosionPushForce: 20
+  _comboTime: 0.5
   _dodgeCd: 0
 --- !u!114 &2404716407726379280
 MonoBehaviour:
