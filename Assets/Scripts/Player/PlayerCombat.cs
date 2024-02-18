@@ -19,6 +19,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionRange;
     [SerializeField] private float _fallExplosionDamage;
     [SerializeField] private float _fallExplosionPushForce;
+    [SerializeField] private float _comboTime;
 
     [Header("Dodge settings")]
     [SerializeField] private float _dodgeCd;
@@ -31,6 +32,8 @@ public class PlayerCombat : MonoBehaviour
     private int _currComboLength;
     private float _attackPerformed;
     private float _timer;
+    private bool _isComboAnimation;
+    private int _damageMultiplier;
     private bool _isCombo;
 
     private bool _dodgeStance;
@@ -74,6 +77,7 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
+        _damageMultiplier = 1;
         int i = 0;
         foreach(GameObject attackArea in _attackAreas)
         {
@@ -131,7 +135,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void ThrowBottle(InputAction.CallbackContext context)
     {
-        if (context.performed && !_dodgeStance && !_isDodging && !_isCombo)
+        if (context.performed && !_dodgeStance && !_isDodging && !_isComboAnimation)
         {
             if (_playerController.TryGetItem(InventoryItem.ItemType.Bottle, out InventoryItem bottleData))
             {
@@ -149,16 +153,24 @@ public class PlayerCombat : MonoBehaviour
     {
         if (_isAttacking) return;
 
-        if (_timer - _attackPerformed > _maxTimeBetweenAttacks && _isCombo)
+        if (_timer - _attackPerformed > _maxTimeBetweenAttacks && _isComboAnimation)
         {
             _myAnimator.SetBool("isCombo", false);
-            _isCombo = false;
+            _isComboAnimation = false;
             _comboState = ComboStates.Idle;
             _attackCdTimer = 0;
         }
 
+        if (_timer - _attackPerformed > _comboTime && _isCombo)
+        {
+            _isCombo = false;
+            _damageMultiplier = 1;
+            UIController.Instance.SetMultiplier(_damageMultiplier);
+        }
+
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
+            _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
 
@@ -168,7 +180,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void HandleCombos(AttackTypes attack)
     {
-        _isCombo = true;
+        _isComboAnimation = true;
 
         if (_playerController.IsGrounded)
         {
@@ -196,7 +208,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                     }
                     break;
 
@@ -204,12 +216,12 @@ public class PlayerCombat : MonoBehaviour
                     if (attack == AttackTypes.FastAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                     }
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                     }
                     break;
 
@@ -222,7 +234,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                     }
                     break;
 
@@ -235,7 +247,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                     }
                     break;
 
@@ -254,7 +266,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
@@ -268,7 +280,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
@@ -282,7 +294,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
@@ -296,7 +308,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.SlowAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isCombo = false;
+                        _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
@@ -359,9 +371,11 @@ public class PlayerCombat : MonoBehaviour
         switch (attackType)
         {
             case AttackTypes.FastAttack:
+                _attackComponents[0].Damage = _damageMultiplier;
                 _attackAreas[0].SetActive(true);
                 break;
             case AttackTypes.SlowAttack:
+                _attackComponents[1].Damage = _damageMultiplier;
                 _attackAreas[1].SetActive(true);
                 break;
         }
@@ -385,6 +399,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void MovingDownAttackStart(int velocity)
     {
+        _attackComponents[2].Damage = _damageMultiplier;
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(0, -30);
@@ -421,7 +436,7 @@ public class PlayerCombat : MonoBehaviour
         if (isMoving == 1)
             _playerController.IsOverride = false;
 
-        if (!_isCombo)
+        if (!_isComboAnimation)
             EndCombo();
 
         _attackPerformed = _timer;
@@ -466,7 +481,6 @@ public class PlayerCombat : MonoBehaviour
     /// <param name="dodgeType">The dodge type</param>
     private void ExecuteDodge(DodgeType dodgeType)
     {
-        Debug.Log("Dodging");
         _dodgeCdTimer = 0;
         _isDodging = true;
         _dodgeType = dodgeType;
@@ -496,6 +510,8 @@ public class PlayerCombat : MonoBehaviour
     public void OnDodge()
     {
         Debug.Log("Dodged");
+        _damageMultiplier += _damageMultiplier;
+        UIController.Instance.SetMultiplier(_damageMultiplier);
     }
     #endregion
 
@@ -535,7 +551,7 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Returns wheter the player is doing a combo or not
     /// </summary>
-    public bool IsCombo => _isCombo;
+    public bool IsCombo => _isComboAnimation;
     #endregion
 
 }

@@ -25,7 +25,7 @@ Transform:
   m_GameObject: {fileID: 348627891419059755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.33, y: -1.61, z: 0}
+  m_LocalPosition: {x: 0.6, y: -1.965, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -56,7 +56,7 @@ Transform:
   m_GameObject: {fileID: 975667591381973461}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.27, y: -1.64, z: 0}
+  m_LocalPosition: {x: -0.31, y: -1.965, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -382,22 +382,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2712b48cf0812ce4ca125ae73c96db3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocidadMovimiento: 2
-  puntoInicialX: 0
-  puntoFinalX: 0
-  distanciaDeteccion: 5
-  player: {fileID: 0}
-  tiempoCambioDireccion: 3
-  myRB: {fileID: 848655472467194041}
-  radioDeteccionSuelo: 0
+  _player: {fileID: 0}
   leftFoot: {fileID: 8016048925861890010}
   rightFoot: {fileID: 3873727659237531460}
-  balaPrefab: {fileID: 2941671906316021625, guid: c42c3a6aa7d535343827f7b1d75d7ab2, type: 3}
+  tiempoCambioDireccion: 3
+  _detectionExtraTime: 2
+  _velocityMultiplier: 1
+  velocidadMovimiento: 4
+  _detectionDistance: 20
+  _attackRange: 20
   _highBullet: {fileID: 2941671906316021625, guid: 04b4684e3cec532438f7bc2e4a7f1d33, type: 3}
   _lowBullet: {fileID: 2941671906316021625, guid: c42c3a6aa7d535343827f7b1d75d7ab2, type: 3}
-  _fireRate: 3
   _upperBulletProbability: 0.5
-  _referencePoint: {fileID: 3911911628909448846}
   _pointer: {fileID: 1958296773575935271}
   _bulletSpeed: 5
 --- !u!114 &6938676086496065350

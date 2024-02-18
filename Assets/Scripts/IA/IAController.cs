@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class IAController : MonoBehaviour
 {
+    #region Global Variables
     [SerializeField] protected Transform _player;
     [SerializeField] private Transform leftFoot, rightFoot;
 
@@ -14,6 +15,7 @@ public class IAController : MonoBehaviour
     [SerializeField] private float _velocityMultiplier;
     [SerializeField] protected float velocidadMovimiento;
     [SerializeField] protected float _detectionDistance;
+    [SerializeField] protected float _attackRange;
 
     protected float tiempoActual;
     protected int direccion = 1;
@@ -29,28 +31,31 @@ public class IAController : MonoBehaviour
     private float _lastTimeHit;
     private bool _isFlipped;
     private bool _isGrounded;
-    
+    #endregion
+
+    #region Unity Methods
     protected virtual void Start()
     {
         ReiniciarTemporizador();
         hasDetected = false;
         myRB = GetComponent<Rigidbody2D>();
     }
-    public virtual void EnemyBasicMovement()
-    {
-        myVelocity = myRB.velocity;
-        LookAtPlayer();
-        DetectPlayer();
-        IdleMove();
-    }
-
-    private void Update()
+    
+    protected virtual void Update()
     {
         if (Time.time - _lastTimeHit > 0.4)
         {
             ResetMovement();
         }
         IsGrounded();
+    }
+    #endregion
+    public virtual void EnemyBasicMovement()
+    {
+        myVelocity = myRB.velocity;
+        LookAtPlayer();
+        DetectPlayer();
+        IdleMove();
     }
 
     private void IsGrounded()
@@ -150,6 +155,13 @@ public class IAController : MonoBehaviour
     private void ResetMovement()
     {
         myRB.gravityScale = 3;
+    }
+
+    public void StandStill()
+    {
+        Vector3 velocity = myRB.velocity;
+        velocity.x = 0;
+        myRB.velocity = velocity;
     }
 
     public float DistanceToPlayer()

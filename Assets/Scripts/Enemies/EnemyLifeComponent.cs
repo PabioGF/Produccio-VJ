@@ -28,7 +28,7 @@ public class EnemyLifeComponent : LifeComponent
 
     public override void SendFlyingUp(float force)
     {
-        if (_controller.IsAttacking) return;
+        if (_controller.IsAttacking || _controller.IsFlying) return;
 
         _rigidbody.AddForce(new(0, force), ForceMode2D.Impulse);
         _animator.SetTrigger("GoFlying");
@@ -36,14 +36,13 @@ public class EnemyLifeComponent : LifeComponent
 
     public override void SendFlyingDown(float force)
     {
-        if (_controller.IsAttacking) return;
+        if (_controller.IsAttacking || !_controller.IsFlying) return;
         _parent.GetComponent<Rigidbody2D>().AddForce(new(0, -force), ForceMode2D.Impulse);
-        _animator.SetTrigger("GoFlying");
     }
 
     public override void SendFlyingOutwards(float force)
     {
-        if (_controller.IsAttacking) return;
+        if (_controller.IsAttacking || _controller.IsFlying) return;
         _parent.GetComponent<Rigidbody2D>().AddForce(new(force, Mathf.Abs(force) / 2), ForceMode2D.Impulse);
         _animator.SetTrigger("GoFlying");
     }

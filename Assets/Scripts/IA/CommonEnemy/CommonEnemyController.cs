@@ -4,7 +4,6 @@ public class CommonEnemyController : IAController
 {
     [Header("Common Enemy Params")]
     [SerializeField] private Transform _attackPoint;
-    [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDamage;
     [SerializeField] private float _minPlayerDistance;
     public float tiempoEntreCombos = 5.0f;
@@ -28,15 +27,13 @@ public class CommonEnemyController : IAController
     public override void EnemyBasicMovement()
     {
         base.EnemyBasicMovement();
-        
-        if (hasDetected)
-        {
-            if (DistanceToPlayer() <= _minPlayerDistance) return;
-            Vector3 direction = (_player.position - transform.position).normalized;
-            myVelocity.x = velocidadMovimiento * direction.x;
-        }
 
-        myRB.velocity = myVelocity;
+        if (!hasDetected) return;
+        if (DistanceToPlayer() <= _minPlayerDistance) return;
+
+        Vector3 direction = (_player.position - transform.position).normalized;
+        myVelocity.x = velocidadMovimiento * direction.x;
+        myRB.velocity = myVelocity; 
     }
 
     #region Attack
@@ -58,13 +55,6 @@ public class CommonEnemyController : IAController
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
             Debug.Log(playerCollider.name + " has been hit");
         }
-    }
-
-    public void StandStill()
-    {
-        Vector3 velocity = myRB.velocity;
-        velocity.x = 0;
-        myRB.velocity = velocity;
     }
     #endregion
 

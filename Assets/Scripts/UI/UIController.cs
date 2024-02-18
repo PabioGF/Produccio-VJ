@@ -37,11 +37,17 @@ public class UIController : MonoBehaviour
     #region Stats Interface
     [Header("Stats Panel")]
     [SerializeField] private TextMeshProUGUI _lifeText;
+    [SerializeField] private TextMeshProUGUI _multiplierText;
     [SerializeField] private TextMeshProUGUI _bottlesText;
 
     public void SetLife(float life)
     {
         _lifeText.text = life.ToString();
+    }
+
+    public void SetMultiplier(int multiplier)
+    {
+        _multiplierText.text = multiplier.ToString();
     }
 
     public void SetBottles(float bottles)
