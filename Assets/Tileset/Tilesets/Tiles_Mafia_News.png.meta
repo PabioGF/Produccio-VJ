@@ -1,0 +1,3537 @@
+fileFormatVersion: 2
+guid: 1c8ebf3dde3dd4e3590dd2cc3c591a67
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_0
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 787
+        width: 336
+        height: 192
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9996621df5b64f6aba9b37780d71b72
+      internalID: -88537783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_1
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 953
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8bf09f68b87324a5aa9a7c2121ef6775
+      internalID: -1576293269
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_2
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 953
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52d279f21f17f4d9486f4f6b3e1eb493
+      internalID: 1841293607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_3
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 953
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8ca3cad5ff8bb42d69c1f819c8f480a4
+      internalID: -612836651
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_4
+      rect:
+        serializedVersion: 2
+        x: 1188
+        y: 961
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d44fa3b2c2ab84f3db8f60a3c6cc1e65
+      internalID: 139399136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_5
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 961
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3eed813bf2a5d4c0b8db2940a4348cf1
+      internalID: -2138974867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_6
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 953
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba6358873685945cb977d974d1d0e776
+      internalID: 1578462214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_7
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 953
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 154ee2ae6bfaf4009931bfc20c17eb66
+      internalID: 377086846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_8
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 953
+        width: 28
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 460c77c0e0ce246c88332498fcc78079
+      internalID: 355954397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_9
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 953
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4480005f66a3437b82fd25328664e9f
+      internalID: 35198723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_10
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 953
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4a71aa63bca8f4031a93a885e33fd7cc
+      internalID: 2139714228
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_11
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 953
+        width: 27
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca62135efda90447d8b02f41abc85d56
+      internalID: 865094456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_12
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 953
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ca5cf897488457b9aebb057bb8d9c9
+      internalID: -219084785
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_13
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 953
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d1021d1d54b0242b7838308a16ae6890
+      internalID: -913424274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_14
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 896
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 07f642c51aa8f437cb0a3ba927b39d5e
+      internalID: 964019103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_15
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 896
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba127cb149296491bb7df5c5e471137a
+      internalID: -174345158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_16
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 896
+        width: 17
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec43d736c9c8346dfa121fa0e476255f
+      internalID: 1244681255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_17
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 904
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd503a02868b7404e8aa86caf767d88b
+      internalID: 733601086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_18
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 904
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d765d6936560645618c3e2837318cbc7
+      internalID: -2105283219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_19
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 904
+        width: 30
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9350c69710f33472f9958cb31e9b0a92
+      internalID: 1315561070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_20
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 904
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 449bdfb16c4a641939a92aa3707307df
+      internalID: 651124290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_21
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 904
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31932cca22bdb47eeac6e7e15b7cc8c2
+      internalID: -697065658
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_22
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 896
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3be11de0886524f8892867222b1190a5
+      internalID: -243128515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_23
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 896
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45d72eb29f3e14decb5bbb955852ad1a
+      internalID: 1724449380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_24
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 896
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b748ce125e03646a2bf6a52c3ed59846
+      internalID: 10776131
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_25
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 896
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ef88948166334560b7b8c422e22e451
+      internalID: -594203601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_26
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 896
+        width: 27
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2f10a3a65a6a451fb5c16fa46c83653
+      internalID: -587106949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_27
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 896
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eeb772d59ab042f0984e46e6e3c4eba
+      internalID: -1200238488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_28
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 896
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73acc7d784d5245839b98ccf495d02c9
+      internalID: -857482192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_29
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 896
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f620ad2f5365341af8f941e5a8006f46
+      internalID: 1794337111
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_30
+      rect:
+        serializedVersion: 2
+        x: 1056
+        y: 851
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dcb6fa2f9a184d36a8e47e582d4210f
+      internalID: 1394594307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_31
+      rect:
+        serializedVersion: 2
+        x: 1099
+        y: 851
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7940469766a8d4c7ab3b83ea0d19df70
+      internalID: -858620185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_32
+      rect:
+        serializedVersion: 2
+        x: 1142
+        y: 851
+        width: 17
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 896a87166d2c64aa8abdaf6a19365fa5
+      internalID: 1056205239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_33
+      rect:
+        serializedVersion: 2
+        x: 1185
+        y: 859
+        width: 17
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a729ffd462e324892a7f39c60b9eef33
+      internalID: -1593994786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_34
+      rect:
+        serializedVersion: 2
+        x: 1225
+        y: 859
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c739743933a8246e59022ee5cbdf2fe6
+      internalID: -1218016622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_35
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 859
+        width: 30
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26c6ec970075340fa99ef71e8ca2ba7e
+      internalID: -219025728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_36
+      rect:
+        serializedVersion: 2
+        x: 1311
+        y: 859
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad875656892a2467290b584d8af1d9b7
+      internalID: -2075931912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_37
+      rect:
+        serializedVersion: 2
+        x: 1354
+        y: 859
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b95abf62303048acbf71df3a3fbf829
+      internalID: -1764450258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_38
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 851
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5bd2e3888f45a44a49f215e84eb48adf
+      internalID: 1054566729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_39
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 851
+        width: 25
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 53dd972ad72c64da092cb7f73b9bf1be
+      internalID: 328893551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_40
+      rect:
+        serializedVersion: 2
+        x: 1477
+        y: 851
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d166cde461d294ff49e15d83404e27fa
+      internalID: 300136527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_41
+      rect:
+        serializedVersion: 2
+        x: 1520
+        y: 851
+        width: 27
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5be4e218cd0048c9ac4e7751923375a
+      internalID: 560444040
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_42
+      rect:
+        serializedVersion: 2
+        x: 1563
+        y: 851
+        width: 27
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9d8a0f62f8cb464291ddc7821f7f84c
+      internalID: 1188500621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_43
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 851
+        width: 27
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 457b11e14889b42d1bd45a450550443a
+      internalID: -935198867
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_44
+      rect:
+        serializedVersion: 2
+        x: 1651
+        y: 851
+        width: 28
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0aaf7de4cc1884e9e8ae3d526a7e9208
+      internalID: 1599326572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_45
+      rect:
+        serializedVersion: 2
+        x: 1694
+        y: 851
+        width: 28
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4c4e4c94f5d4c62b34006b3f202af8
+      internalID: 1569668968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_46
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 824
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d801a7cd79e6847109b845f07e53706c
+      internalID: -1501112103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_47
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 824
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05bb77f15d6c54dd188d999c61df48ff
+      internalID: -1427532010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_48
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 824
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2656795304cac4307881c4d3aa425819
+      internalID: -1266277541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_49
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 805
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5771cea104f214a4f9259f1ce64ee2ae
+      internalID: -564762732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_50
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 805
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a1bf69147fb6432ea7b576a7d058b20
+      internalID: -1868751388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_51
+      rect:
+        serializedVersion: 2
+        x: 1483
+        y: 824
+        width: 30
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fbf5357644fef4316a549c3f8bc97f88
+      internalID: -2080016783
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_52
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 808
+        width: 22
+        height: 33
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4120789dab9e8446280dd671243ff705
+      internalID: -716859754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_53
+      rect:
+        serializedVersion: 2
+        x: 1566
+        y: 808
+        width: 16
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e3ea0f2b539d4eb8bd08734876dc581
+      internalID: -1129462528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_54
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 824
+        width: 19
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814db12516e6a49e1a05feb739ddd4b7
+      internalID: 839348935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_55
+      rect:
+        serializedVersion: 2
+        x: 1654
+        y: 806
+        width: 30
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 455fd579f61124a6a9df87b5b6496d30
+      internalID: -1591997606
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_56
+      rect:
+        serializedVersion: 2
+        x: 1692
+        y: 809
+        width: 38
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 425552a430d904148a9328bb822b9c4f
+      internalID: -584688817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_57
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 768
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b3179906a993408a88cf0873b469d7c
+      internalID: -559298503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_58
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 768
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea537d40ff16f4c7fa8d076b3dcaba6a
+      internalID: 1907930913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_59
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 768
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2e8619ee55c1426cb93b17dae86d6d1
+      internalID: -181623705
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_60
+      rect:
+        serializedVersion: 2
+        x: 40
+        y: 730
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e325ab9b71c4646da9f6328a9dbb1ae0
+      internalID: -1733499294
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_61
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 732
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7b9def167ef24297b57a28dea7b6c01
+      internalID: 908977588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_62
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 722
+        width: 60
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6798cb7c4c994fe2be6ba68c3a1eafc
+      internalID: -634737752
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_63
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 728
+        width: 60
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd128178658754e118b0c2b18a43cb4b
+      internalID: -1281462260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_64
+      rect:
+        serializedVersion: 2
+        x: 1054
+        y: 722
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe10114fbb604594b13c0697797fc13
+      internalID: 460148144
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_65
+      rect:
+        serializedVersion: 2
+        x: 1096
+        y: 722
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6bc897a82e03a4f5b851f83837371385
+      internalID: -66178168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_66
+      rect:
+        serializedVersion: 2
+        x: 1139
+        y: 722
+        width: 22
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27967249b7c8642549d1142502d1a570
+      internalID: -76700043
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_67
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 549
+        width: 96
+        height: 144
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7725ebaf08443dc8f8a2acd7e4fb55
+      internalID: -1946941514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_68
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 616
+        width: 25
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fdd103245dfc441e685f427a1339c9c5
+      internalID: 1450856985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_69
+      rect:
+        serializedVersion: 2
+        x: 1047
+        y: 594
+        width: 71
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed758efb61e1a400fbd24a2441244b23
+      internalID: -590445193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_70
+      rect:
+        serializedVersion: 2
+        x: 1059
+        y: 652
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fcb1aa48ad724ca8baef13c9f9ffb84
+      internalID: 1040016054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_71
+      rect:
+        serializedVersion: 2
+        x: 1091
+        y: 655
+        width: 86
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00c8b243fce964652995d449287d2f84
+      internalID: -519983777
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_72
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 636
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ecd31ca3707447ffa11fc5fc4b68b89
+      internalID: -572454178
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_73
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 636
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d6d48d2ac9da4324bfcb0750a94f888
+      internalID: 1048588239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_74
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 636
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a585374116bcd4997bb0cae1c163f6c2
+      internalID: 1999304188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_75
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 636
+        width: 33
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fedbdc2ead4304369809b36eee043b49
+      internalID: 1537272530
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_76
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 636
+        width: 41
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3ec249439a1264b11bc8176e349e062c
+      internalID: 10529016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_77
+      rect:
+        serializedVersion: 2
+        x: 1609
+        y: 636
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df723db81d9b54ccf8f8cf2a69eadf3b
+      internalID: -289816531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_78
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 666
+        width: 41
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dc7bcfd1eacfa4b898e85d68dcd4fa07
+      internalID: 96256935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_79
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 550
+        width: 16
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e38c151302cab46c394744f924e738a8
+      internalID: -474671621
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_80
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 614
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee7d91af162304e829cca0ddb8d50533
+      internalID: 552410446
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_81
+      rect:
+        serializedVersion: 2
+        x: 1823
+        y: 632
+        width: 30
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf062c5858024fd1bcb659418cf877e
+      internalID: 1967265764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_82
+      rect:
+        serializedVersion: 2
+        x: 45
+        y: 593
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a77e08ea8159498a83736652148f59d
+      internalID: -1445108813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_83
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 594
+        width: 67
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8edc7467e917643ea859f54c3458d876
+      internalID: 1836074631
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_84
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 594
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c7c1658628ea4ff98dcebc0c1f254e1
+      internalID: -1957374854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_85
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 594
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a26a980898a422eb181ab75db1ce2c
+      internalID: 1820185403
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_86
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 594
+        width: 40
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b335360a6484644baef6dfaca75be3
+      internalID: -132459137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_87
+      rect:
+        serializedVersion: 2
+        x: 1526
+        y: 594
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb39388859b9d410ead852a41413d170
+      internalID: -694420707
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_88
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 594
+        width: 41
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d504dda6dfd0b4853b954e0718b244a7
+      internalID: -1178287974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_89
+      rect:
+        serializedVersion: 2
+        x: 1611
+        y: 594
+        width: 27
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9edbe30262ca540abbd763a1c98b6082
+      internalID: -1765579168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_90
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 502
+        width: 41
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fcd672c2e745644a5bed32a1d131dc84
+      internalID: -952893599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_91
+      rect:
+        serializedVersion: 2
+        x: 1732
+        y: 502
+        width: 41
+        height: 130
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a65805e572f0249e6b6917eb15d5703d
+      internalID: -79304806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_92
+      rect:
+        serializedVersion: 2
+        x: 1818
+        y: 594
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d116e30dfb8de4e35b53c7a2e611670c
+      internalID: 574613009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_93
+      rect:
+        serializedVersion: 2
+        x: 1866
+        y: 594
+        width: 30
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26ccb8719e69446beac42633029287b5
+      internalID: 929674149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_94
+      rect:
+        serializedVersion: 2
+        x: 1909
+        y: 594
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9cefe978e0324e3db6a0a61e3018546
+      internalID: 797718820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_95
+      rect:
+        serializedVersion: 2
+        x: 1952
+        y: 594
+        width: 27
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f20e83663ce34287977cc87d5cb0187
+      internalID: -2037576560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_96
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 558
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce0486c49788b49ebaa9f1d3c7d0aa07
+      internalID: 1624643230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_97
+      rect:
+        serializedVersion: 2
+        x: 1051
+        y: 508
+        width: 73
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f8b0673810b6e4667a109c8412aedb6a
+      internalID: -778869256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_98
+      rect:
+        serializedVersion: 2
+        x: 1137
+        y: 551
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b8506fa019944b95b3e923c6d3aac29
+      internalID: 775664337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_99
+      rect:
+        serializedVersion: 2
+        x: 1174
+        y: 507
+        width: 33
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e9e2e8874d3e34f1fbfb79045c4f254a
+      internalID: -520675756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_100
+      rect:
+        serializedVersion: 2
+        x: 1223
+        y: 508
+        width: 22
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f7f5613cc4434ee4a80aa373504308a
+      internalID: 783959091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_101
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 551
+        width: 83
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 770e6d993b26e4f66a98e9cb8c24b79a
+      internalID: 2009993902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_102
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 551
+        width: 83
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df44772a905df4e2ba531427bd32d3ab
+      internalID: 624088612
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_103
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 551
+        width: 84
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9f5a79f429f741bd86e36b6fcb5d1e3
+      internalID: -643272635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_104
+      rect:
+        serializedVersion: 2
+        x: 1847
+        y: 551
+        width: 54
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10a22ecdea43d4949be0bce22361c0c1
+      internalID: -69584172
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_105
+      rect:
+        serializedVersion: 2
+        x: 1914
+        y: 556
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16e1965db2f0a409f8da0aa179f14a78
+      internalID: -961812454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_106
+      rect:
+        serializedVersion: 2
+        x: 1957
+        y: 556
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1622154034f0d41639854af6aa3e590c
+      internalID: 1381885995
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_107
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 465
+        width: 80
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6582be6a9942483988ada7b95e5bf35
+      internalID: -4527416
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_108
+      rect:
+        serializedVersion: 2
+        x: 169
+        y: 465
+        width: 80
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17d1905990db440348873132818a9cfc
+      internalID: 82828984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_109
+      rect:
+        serializedVersion: 2
+        x: 317
+        y: 34
+        width: 932
+        height: 512
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 631f91d4c33c34c29a7f9bdfb71723cd
+      internalID: 993405804
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_110
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 508
+        width: 83
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 411de168605994f9399868fc0f0a8dde
+      internalID: 315101573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_111
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 508
+        width: 83
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f86292e86a3544f3b7121269cb37fb1
+      internalID: 1372511214
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_112
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 508
+        width: 84
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: defee3aa86fac451dab78a67f7188418
+      internalID: -2103797697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_113
+      rect:
+        serializedVersion: 2
+        x: 1821
+        y: 532
+        width: 34
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 938326880a5a448cc8a6f73cfde1c921
+      internalID: -1727003914
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_114
+      rect:
+        serializedVersion: 2
+        x: 1869
+        y: 516
+        width: 24
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6dd4d8deb8d32443da17ddf1604d18b0
+      internalID: -1977425590
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_115
+      rect:
+        serializedVersion: 2
+        x: 1911
+        y: 516
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4554fe884b66d4d558db731991094f94
+      internalID: -411062104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_116
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 465
+        width: 6
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e04fc30883416421abbaf75de3cf0db1
+      internalID: -1035521246
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_117
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 465
+        width: 32
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e572583b895814c6a929452ea74483fd
+      internalID: -668313898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_118
+      rect:
+        serializedVersion: 2
+        x: 265
+        y: 519
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74e76bfb0f1754e9aa7e0aff05aa0b09
+      internalID: -1662420527
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_119
+      rect:
+        serializedVersion: 2
+        x: 1263
+        y: 481
+        width: 35
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a3552483483d4cb8b52413f83accf6a
+      internalID: -1173597096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_120
+      rect:
+        serializedVersion: 2
+        x: 1308
+        y: 481
+        width: 22
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fef0fbf003bf419f91edd6aa803e4bf
+      internalID: 302243333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_121
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 465
+        width: 78
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb2b364290c7344e0b57413243aedeca
+      internalID: -1050881470
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_122
+      rect:
+        serializedVersion: 2
+        x: 1475
+        y: 465
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bef956d3d6cd7436d9e347be85df7817
+      internalID: -217430013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_123
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 470
+        width: 78
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01cdd7793feb14f1fbfceb8741a52a1a
+      internalID: -1361600116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_124
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 470
+        width: 41
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd5303332b2394b0ea875e34c96ae0b3
+      internalID: -2053452495
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_125
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 467
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b7226c978055d49f5b654f01988ec8b7
+      internalID: 1290806767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_126
+      rect:
+        serializedVersion: 2
+        x: 251
+        y: 320
+        width: 89
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bac759c8b0f3848fa9dada88b940f321
+      internalID: -741402515
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_127
+      rect:
+        serializedVersion: 2
+        x: 1236
+        y: 438
+        width: 17
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25dfafdd2234b49bcafbc166bc5265b0
+      internalID: 1561384511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_128
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 377
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49a5ff633e56f47d39fc1299a94a7f9a
+      internalID: -708679534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_129
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 375
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274b6a625abcc481abf21b86ccb8b47d
+      internalID: 2037364361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_130
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 374
+        width: 40
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d72f7d807b4dc4fc79bf01a8e62da8fb
+      internalID: 2140282339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_131
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 374
+        width: 83
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44c78ff431eeb4d17b94d65e7b15afed
+      internalID: 749620267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_132
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 160
+        width: 285
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06dfe331b90ea4cc1988a91122ba562b
+      internalID: -2141994636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_133
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 293
+        width: 40
+        height: 65
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a2c9af4ac3414e77bd239b748e3f160
+      internalID: 286876546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_134
+      rect:
+        serializedVersion: 2
+        x: 1445
+        y: 301
+        width: 19
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27943786f1c454b849f3e09e18ed9014
+      internalID: -1523200256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_135
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 256
+        width: 35
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd68fbdcddc92452597b7e5042f73faf
+      internalID: 1974813481
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_136
+      rect:
+        serializedVersion: 2
+        x: 1440
+        y: 250
+        width: 14
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a49e5bf32d4bb43b0a106470860e63de
+      internalID: -124345384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_137
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 224
+        width: 35
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 927ecb056da8047708da09be0a340882
+      internalID: 888197659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_138
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 208
+        width: 35
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ddd7b4ddf044298bfe200d0d6c18ff
+      internalID: 513977531
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_139
+      rect:
+        serializedVersion: 2
+        x: 1394
+        y: 181
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6257a17b12847d2899d5fbd0dd8b8e
+      internalID: -1336248163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_140
+      rect:
+        serializedVersion: 2
+        x: 1437
+        y: 181
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffc00336cc31941ed9a2d59cf77b2224
+      internalID: 503450793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_141
+      rect:
+        serializedVersion: 2
+        x: 1480
+        y: 181
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd1feba4797e04a978fef236a1b1167a
+      internalID: 46928313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_142
+      rect:
+        serializedVersion: 2
+        x: 1523
+        y: 181
+        width: 25
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c8d46ccf3f4794055b999a61a90f039b
+      internalID: 972277636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_143
+      rect:
+        serializedVersion: 2
+        x: 12
+        y: 15
+        width: 285
+        height: 143
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10f2d0429c9b048bb8249f1ab58f12e4
+      internalID: 1080103720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_144
+      rect:
+        serializedVersion: 2
+        x: 1399
+        y: 138
+        width: 30
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32d1594542b9f442d887979d230aeaa0
+      internalID: 1649684656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_145
+      rect:
+        serializedVersion: 2
+        x: 1442
+        y: 138
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ec48274dd0e343c5b21d1d2099f7397
+      internalID: 643055462
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_146
+      rect:
+        serializedVersion: 2
+        x: 1485
+        y: 138
+        width: 14
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a7631bd4228b4b33ae764c15049f4c1
+      internalID: 2066175790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_147
+      rect:
+        serializedVersion: 2
+        x: 1525
+        y: 138
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c87152e002f43458492170b6ca1c83
+      internalID: -133195239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_148
+      rect:
+        serializedVersion: 2
+        x: 1568
+        y: 138
+        width: 20
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9bd4fa3368f94bf39e3b8c135baaa71
+      internalID: -32235195
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_149
+      rect:
+        serializedVersion: 2
+        x: 1389
+        y: 79
+        width: 40
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4aae466830c544b4db14bedb97d10cc0
+      internalID: 417931559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_150
+      rect:
+        serializedVersion: 2
+        x: 1432
+        y: 79
+        width: 83
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f140dd148f234c9faa8b6f33eab2bdd
+      internalID: 1067648927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_151
+      rect:
+        serializedVersion: 2
+        x: 1518
+        y: 79
+        width: 40
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fab1af1ac7e7e4419bba8f2563be74f5
+      internalID: 1820810644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_152
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 79
+        width: 84
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5802d2f18640e452db1c5a9d25d8eb7e
+      internalID: -998534310
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_153
+      rect:
+        serializedVersion: 2
+        x: 1646
+        y: 79
+        width: 41
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1adf1aac7ce7a4cc2ac6b65e46834184
+      internalID: 1980595620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Tiles_Mafia_News_154
+      rect:
+        serializedVersion: 2
+        x: 1689
+        y: 79
+        width: 84
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd4666f75dfc44d84a54743b5db671d8
+      internalID: -182775080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Tiles_Mafia_News_0: -88537783
+      Tiles_Mafia_News_1: -1576293269
+      Tiles_Mafia_News_10: 2139714228
+      Tiles_Mafia_News_100: 783959091
+      Tiles_Mafia_News_101: 2009993902
+      Tiles_Mafia_News_102: 624088612
+      Tiles_Mafia_News_103: -643272635
+      Tiles_Mafia_News_104: -69584172
+      Tiles_Mafia_News_105: -961812454
+      Tiles_Mafia_News_106: 1381885995
+      Tiles_Mafia_News_107: -4527416
+      Tiles_Mafia_News_108: 82828984
+      Tiles_Mafia_News_109: 993405804
+      Tiles_Mafia_News_11: 865094456
+      Tiles_Mafia_News_110: 315101573
+      Tiles_Mafia_News_111: 1372511214
+      Tiles_Mafia_News_112: -2103797697
+      Tiles_Mafia_News_113: -1727003914
+      Tiles_Mafia_News_114: -1977425590
+      Tiles_Mafia_News_115: -411062104
+      Tiles_Mafia_News_116: -1035521246
+      Tiles_Mafia_News_117: -668313898
+      Tiles_Mafia_News_118: -1662420527
+      Tiles_Mafia_News_119: -1173597096
+      Tiles_Mafia_News_12: -219084785
+      Tiles_Mafia_News_120: 302243333
+      Tiles_Mafia_News_121: -1050881470
+      Tiles_Mafia_News_122: -217430013
+      Tiles_Mafia_News_123: -1361600116
+      Tiles_Mafia_News_124: -2053452495
+      Tiles_Mafia_News_125: 1290806767
+      Tiles_Mafia_News_126: -741402515
+      Tiles_Mafia_News_127: 1561384511
+      Tiles_Mafia_News_128: -708679534
+      Tiles_Mafia_News_129: 2037364361
+      Tiles_Mafia_News_13: -913424274
+      Tiles_Mafia_News_130: 2140282339
+      Tiles_Mafia_News_131: 749620267
+      Tiles_Mafia_News_132: -2141994636
+      Tiles_Mafia_News_133: 286876546
+      Tiles_Mafia_News_134: -1523200256
+      Tiles_Mafia_News_135: 1974813481
+      Tiles_Mafia_News_136: -124345384
+      Tiles_Mafia_News_137: 888197659
+      Tiles_Mafia_News_138: 513977531
+      Tiles_Mafia_News_139: -1336248163
+      Tiles_Mafia_News_14: 964019103
+      Tiles_Mafia_News_140: 503450793
+      Tiles_Mafia_News_141: 46928313
+      Tiles_Mafia_News_142: 972277636
+      Tiles_Mafia_News_143: 1080103720
+      Tiles_Mafia_News_144: 1649684656
+      Tiles_Mafia_News_145: 643055462
+      Tiles_Mafia_News_146: 2066175790
+      Tiles_Mafia_News_147: -133195239
+      Tiles_Mafia_News_148: -32235195
+      Tiles_Mafia_News_149: 417931559
+      Tiles_Mafia_News_15: -174345158
+      Tiles_Mafia_News_150: 1067648927
+      Tiles_Mafia_News_151: 1820810644
+      Tiles_Mafia_News_152: -998534310
+      Tiles_Mafia_News_153: 1980595620
+      Tiles_Mafia_News_154: -182775080
+      Tiles_Mafia_News_16: 1244681255
+      Tiles_Mafia_News_17: 733601086
+      Tiles_Mafia_News_18: -2105283219
+      Tiles_Mafia_News_19: 1315561070
+      Tiles_Mafia_News_2: 1841293607
+      Tiles_Mafia_News_20: 651124290
+      Tiles_Mafia_News_21: -697065658
+      Tiles_Mafia_News_22: -243128515
+      Tiles_Mafia_News_23: 1724449380
+      Tiles_Mafia_News_24: 10776131
+      Tiles_Mafia_News_25: -594203601
+      Tiles_Mafia_News_26: -587106949
+      Tiles_Mafia_News_27: -1200238488
+      Tiles_Mafia_News_28: -857482192
+      Tiles_Mafia_News_29: 1794337111
+      Tiles_Mafia_News_3: -612836651
+      Tiles_Mafia_News_30: 1394594307
+      Tiles_Mafia_News_31: -858620185
+      Tiles_Mafia_News_32: 1056205239
+      Tiles_Mafia_News_33: -1593994786
+      Tiles_Mafia_News_34: -1218016622
+      Tiles_Mafia_News_35: -219025728
+      Tiles_Mafia_News_36: -2075931912
+      Tiles_Mafia_News_37: -1764450258
+      Tiles_Mafia_News_38: 1054566729
+      Tiles_Mafia_News_39: 328893551
+      Tiles_Mafia_News_4: 139399136
+      Tiles_Mafia_News_40: 300136527
+      Tiles_Mafia_News_41: 560444040
+      Tiles_Mafia_News_42: 1188500621
+      Tiles_Mafia_News_43: -935198867
+      Tiles_Mafia_News_44: 1599326572
+      Tiles_Mafia_News_45: 1569668968
+      Tiles_Mafia_News_46: -1501112103
+      Tiles_Mafia_News_47: -1427532010
+      Tiles_Mafia_News_48: -1266277541
+      Tiles_Mafia_News_49: -564762732
+      Tiles_Mafia_News_5: -2138974867
+      Tiles_Mafia_News_50: -1868751388
+      Tiles_Mafia_News_51: -2080016783
+      Tiles_Mafia_News_52: -716859754
+      Tiles_Mafia_News_53: -1129462528
+      Tiles_Mafia_News_54: 839348935
+      Tiles_Mafia_News_55: -1591997606
+      Tiles_Mafia_News_56: -584688817
+      Tiles_Mafia_News_57: -559298503
+      Tiles_Mafia_News_58: 1907930913
+      Tiles_Mafia_News_59: -181623705
+      Tiles_Mafia_News_6: 1578462214
+      Tiles_Mafia_News_60: -1733499294
+      Tiles_Mafia_News_61: 908977588
+      Tiles_Mafia_News_62: -634737752
+      Tiles_Mafia_News_63: -1281462260
+      Tiles_Mafia_News_64: 460148144
+      Tiles_Mafia_News_65: -66178168
+      Tiles_Mafia_News_66: -76700043
+      Tiles_Mafia_News_67: -1946941514
+      Tiles_Mafia_News_68: 1450856985
+      Tiles_Mafia_News_69: -590445193
+      Tiles_Mafia_News_7: 377086846
+      Tiles_Mafia_News_70: 1040016054
+      Tiles_Mafia_News_71: -519983777
+      Tiles_Mafia_News_72: -572454178
+      Tiles_Mafia_News_73: 1048588239
+      Tiles_Mafia_News_74: 1999304188
+      Tiles_Mafia_News_75: 1537272530
+      Tiles_Mafia_News_76: 10529016
+      Tiles_Mafia_News_77: -289816531
+      Tiles_Mafia_News_78: 96256935
+      Tiles_Mafia_News_79: -474671621
+      Tiles_Mafia_News_8: 355954397
+      Tiles_Mafia_News_80: 552410446
+      Tiles_Mafia_News_81: 1967265764
+      Tiles_Mafia_News_82: -1445108813
+      Tiles_Mafia_News_83: 1836074631
+      Tiles_Mafia_News_84: -1957374854
+      Tiles_Mafia_News_85: 1820185403
+      Tiles_Mafia_News_86: -132459137
+      Tiles_Mafia_News_87: -694420707
+      Tiles_Mafia_News_88: -1178287974
+      Tiles_Mafia_News_89: -1765579168
+      Tiles_Mafia_News_9: 35198723
+      Tiles_Mafia_News_90: -952893599
+      Tiles_Mafia_News_91: -79304806
+      Tiles_Mafia_News_92: 574613009
+      Tiles_Mafia_News_93: 929674149
+      Tiles_Mafia_News_94: 797718820
+      Tiles_Mafia_News_95: -2037576560
+      Tiles_Mafia_News_96: 1624643230
+      Tiles_Mafia_News_97: -778869256
+      Tiles_Mafia_News_98: 775664337
+      Tiles_Mafia_News_99: -520675756
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

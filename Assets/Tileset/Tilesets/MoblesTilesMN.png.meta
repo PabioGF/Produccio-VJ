@@ -1,0 +1,3581 @@
+fileFormatVersion: 2
+guid: 369a04757efff4c8aad652942a0159a8
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: MoblesTilesMN_0
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 953
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ccc993ddf46e4ecaa373289027bbb16
+      internalID: 1853092601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_1
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 953
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 943bc4ce338c640d0acf72210199fce5
+      internalID: -1166394618
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_2
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 944
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6538dcdd0c4b14cb6b5e0c2835b9c08f
+      internalID: 2075042723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_3
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 944
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 417a82d29c15043f7b5d98234061830c
+      internalID: 1154187458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_4
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 944
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dbb4c088163504aeaa3caa811e53ae0f
+      internalID: 2042931179
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_5
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 944
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6493c63e217d44bbcb8c63508d4d009e
+      internalID: -251964472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_6
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 944
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0438e925ce0d4e578ba2b3967abc6d6
+      internalID: -506684698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_7
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 944
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c5e0bb3dde104826a4456b23e16b1b3
+      internalID: 728377406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_8
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 944
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72aab91c1bc0f4184ac39d2369f79957
+      internalID: -1528018888
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_9
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 944
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc8ef4c26a30c4e0987f4a6ec6e25d36
+      internalID: 116306212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_10
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 944
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2b381fc31c9ea41139c3595dd459eba8
+      internalID: -1516694559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_11
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 944
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e10c85ecbb1ca457eac71f76e9e801d6
+      internalID: 193159381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_12
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 944
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e845221085e294751bec36aaa4f2570c
+      internalID: 1143356721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_13
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 893
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6cecd5da88f1419e86f69d3006b95c3
+      internalID: -641735147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_14
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 893
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43a5d3d3594bb4aa8b281146b534d4ff
+      internalID: -698001062
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_15
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 893
+        width: 29
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 452070fb6cace4a5895b8a87083ba814
+      internalID: 2143477402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_16
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 893
+        width: 22
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1648855485bc4f38a72776f129013eb
+      internalID: -1790044154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_17
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 893
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ff076ae8c88244c1898c7174199d8cb
+      internalID: -1011834165
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_18
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 884
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c49ca9e7462c244f098e8a589cca82d7
+      internalID: 239465441
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_19
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 884
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 763d555d2c08845cf9142b5568b7d3fe
+      internalID: 1231137396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_20
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 884
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d2a1699525ba4151b709552cdd25347
+      internalID: 1393471745
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_21
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 884
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aaebe60a09f64e17a362ed0c69375ee
+      internalID: 687564862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_22
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 884
+        width: 25
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 931d0b0238ccf499e809012b88226104
+      internalID: 776311848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_23
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 884
+        width: 26
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 439eaf0062cb74b2fb28017624c8d084
+      internalID: -1653319389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_24
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 884
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00980b91cddcd48b498de1ec3e70bd7b
+      internalID: 193235387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_25
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 884
+        width: 26
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 610c0ea581ff34b5d8041cdfec56e301
+      internalID: -1459360343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_26
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 884
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4cc9c7ed6b6a941d69fb648a7bf8d018
+      internalID: 1120302059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_27
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 884
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c237544344b9d483b8865cd6ef128d04
+      internalID: 1549118473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_28
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 884
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cc413e2461bb4494e87d0f98ce800383
+      internalID: -27612368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_29
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 844
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22885097726d54c8fa06ba3d0e8a4dc6
+      internalID: 1485157438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_30
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 844
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2ce485bc01384ed5a07e0fda08283c0
+      internalID: -693404325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_31
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 844
+        width: 29
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7fe80bf037430451ead02273e716a240
+      internalID: 282803520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_32
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 844
+        width: 22
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c7b277715a3341e7b7dbd574dcba9f8
+      internalID: -1289368256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_33
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 844
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94968d7fc9dbe41029b74c0db84f0897
+      internalID: -162069552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_34
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 835
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45bb35c6ddcb4cac92db1346ce90490
+      internalID: -600706907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_35
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 835
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cc9048a47df44894bf5219627a56d31
+      internalID: -152285764
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_36
+      rect:
+        serializedVersion: 2
+        x: 466
+        y: 835
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f83566b9905eb49d0a98b88b76062355
+      internalID: 767406365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_37
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 835
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92919b8c1bb22400ea20acd608dc70cb
+      internalID: 487667890
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_38
+      rect:
+        serializedVersion: 2
+        x: 558
+        y: 835
+        width: 25
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c7665b171bcfb420a8671b567d9ec33f
+      internalID: -849636640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_39
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 835
+        width: 26
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595ee918c04fa465582ddbddeb73503e
+      internalID: -1767516686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_40
+      rect:
+        serializedVersion: 2
+        x: 652
+        y: 835
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45daadba1a6b2492288fffefab3d9716
+      internalID: 1106846589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_41
+      rect:
+        serializedVersion: 2
+        x: 698
+        y: 835
+        width: 26
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83718f68f56314e58aacf73f96d9651f
+      internalID: -2087990338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_42
+      rect:
+        serializedVersion: 2
+        x: 17
+        y: 835
+        width: 14
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03a380a4d2cf547dbae15659d6ba1a63
+      internalID: 1131967239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_43
+      rect:
+        serializedVersion: 2
+        x: 62
+        y: 835
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a2637501cf97c431ebe7e3df35abf713
+      internalID: -921353525
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_44
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 835
+        width: 15
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d77d64d094c304cd4a0d267f31c81988
+      internalID: 252764535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_45
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 807
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09521aec1430b484caf9fa81b22311ec
+      internalID: 278153622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_46
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 807
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d0b260bf753940cf90c13b87bb1bfbf
+      internalID: -149152325
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_47
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 807
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c86e1c16bf1b3472f8d8676430e2ee92
+      internalID: 133497383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_48
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 787
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 35b3af766173c40db9961109319c12f1
+      internalID: 2032218797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_49
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 787
+        width: 29
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0ca4b23a288847f4974f10bbd702135
+      internalID: -259828950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_50
+      rect:
+        serializedVersion: 2
+        x: 472
+        y: 807
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 128d722177ec54b3990446036bf4769d
+      internalID: -5291335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_51
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 790
+        width: 20
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3989a75a6bbc8451c80891aa571ed00a
+      internalID: 1491872184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_52
+      rect:
+        serializedVersion: 2
+        x: 560
+        y: 790
+        width: 15
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ab3ef98e698148a9915928c1e37c3d3
+      internalID: 1402219273
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_53
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 807
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13f8b95cc09c94a17afa5884d3eae50e
+      internalID: 1223030127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_54
+      rect:
+        serializedVersion: 2
+        x: 655
+        y: 787
+        width: 29
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04acd8df51b7d44adb26e87aaaae2d3e
+      internalID: 233323734
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_55
+      rect:
+        serializedVersion: 2
+        x: 695
+        y: 790
+        width: 37
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a8d9152b48a644ca84e4ea6be9b546d
+      internalID: -835561153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_56
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 747
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 619a29cc8c9444a5d9dbb18b49031acc
+      internalID: -1194642573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_57
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 747
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b63a8b7fd64645dc943935838ca3e2e
+      internalID: 292480749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_58
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 747
+        width: 20
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85f796c88f4a244db879049be964379d
+      internalID: 814514577
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_59
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 698
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8fab247cb153b498195e62e6ab3c2827
+      internalID: -1653505404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_60
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 698
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04323aab2427f4cdba5bed4858e2d145
+      internalID: 2069178104
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_61
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 698
+        width: 20
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 386f06d8ec814426bac6732f97a1ce0a
+      internalID: -54529633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_62
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 624
+        width: 14
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c87cda6449f64a6aab459531604641d
+      internalID: -561978162
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_63
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 626
+        width: 40
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e39ca2dd64c648a8bb035bd44ed8381
+      internalID: 1638724147
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_64
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 629
+        width: 46
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d2991308e937642e5a2e8264e30376ac
+      internalID: 1021877704
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_65
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 606
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac09a074a7e0c48088e1e3d8176519df
+      internalID: -1136293535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_66
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 606
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03888388215dd442f8c654953370923f
+      internalID: 434986050
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_67
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 606
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 37ec6f12517a04569a1840209c57b39c
+      internalID: -1912769250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_68
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 606
+        width: 31
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 250ac3f97bcaa4c328f9bd9a60ba0490
+      internalID: -903791303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_69
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 606
+        width: 40
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48161afb20c6445cab4caa8def84251f
+      internalID: -422713526
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_70
+      rect:
+        serializedVersion: 2
+        x: 606
+        y: 606
+        width: 32
+        height: 38
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41d8e5cba140462da6259c96e308363
+      internalID: 1819787395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_71
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 638
+        width: 40
+        height: 8
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c1cfaa2536f04734b108d5875c3663e
+      internalID: -2076705813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_72
+      rect:
+        serializedVersion: 2
+        x: 835
+        y: 601
+        width: 29
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3772546b024cf4d60bce55d9495a77ca
+      internalID: 1909517803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_73
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 561
+        width: 69
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1974d79a45ca24e0a9f41e3f183ac805
+      internalID: 1023803682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_74
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 561
+        width: 68
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5b7d3c553731046589c14ed8604eca73
+      internalID: 174760540
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_75
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 561
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9794f2bc43c294eb7b51253a1ad3863e
+      internalID: 55071939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_76
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 561
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72beca298ac81425d98f0108d89f778b
+      internalID: -1241317329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_77
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 561
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96fbef275a51b47ebb35dbb5ad0fe371
+      internalID: -1497315371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_78
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 561
+        width: 25
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2973241481a2d4fe193ac9700df0b16e
+      internalID: -238183729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_79
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 561
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9dd90f01391342778754f73c8e52844
+      internalID: -23905012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_80
+      rect:
+        serializedVersion: 2
+        x: 609
+        y: 561
+        width: 26
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 761ec116bddfe4e219db1733da943ea1
+      internalID: -1887149424
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_81
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 463
+        width: 40
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c856379759a9f4a4d827accbcb803bca
+      internalID: -1376254428
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_82
+      rect:
+        serializedVersion: 2
+        x: 738
+        y: 463
+        width: 40
+        height: 135
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1696efc5897940389c58bfaf4ad9137
+      internalID: 306476545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_83
+      rect:
+        serializedVersion: 2
+        x: 830
+        y: 561
+        width: 40
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90567e885432948b5a00da25e23853fe
+      internalID: 1288629247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_84
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 561
+        width: 29
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8831ffcef7c9845739d4f0bb1b1fd9ae
+      internalID: 269937385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_85
+      rect:
+        serializedVersion: 2
+        x: 927
+        y: 561
+        width: 26
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1734f120072de48048f2d0eecc74293f
+      internalID: -1228004283
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_86
+      rect:
+        serializedVersion: 2
+        x: 973
+        y: 561
+        width: 25
+        height: 31
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99904d49393a94f9cbdea477f7d4eacd
+      internalID: -1282292347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_87
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 469
+        width: 74
+        height: 83
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0dd04914dd334e939426cf7a73e54fe
+      internalID: 254208802
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_88
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 515
+        width: 28
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90a6158914c434dda8caff9014072585
+      internalID: -1776539753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_89
+      rect:
+        serializedVersion: 2
+        x: 143
+        y: 469
+        width: 31
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84b163703523c454fb78e2b14ee67bf8
+      internalID: -1028502940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_90
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 469
+        width: 20
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7e5898bcc7c45e191d5b131e34ef54
+      internalID: -1862751935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_91
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 515
+        width: 85
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94caddf3a3c6b48768ba3a4f9186cdf2
+      internalID: 1458822296
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_92
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 515
+        width: 86
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: debefc26fe3cb432b8230ebe7a8a2b86
+      internalID: -546420666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_93
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 515
+        width: 86
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 40ec1188feb76491a9ec9c21e7105331
+      internalID: -1611438401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_94
+      rect:
+        serializedVersion: 2
+        x: 861
+        y: 515
+        width: 54
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac247a23cdd37477d971e12aa46519ad
+      internalID: 2080524821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_95
+      rect:
+        serializedVersion: 2
+        x: 933
+        y: 521
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ffafa5d5fcbf9456c808696ddee00af6
+      internalID: 70153197
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_96
+      rect:
+        serializedVersion: 2
+        x: 978
+        y: 521
+        width: 15
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe532f186c520497fa6a0a2f9275b44e
+      internalID: 2124031647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_97
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 469
+        width: 85
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4373d83ba4ed845cdb797b546807b587
+      internalID: -1794745687
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_98
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 469
+        width: 86
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 92d754b2f454948d29958b95ce93e1e3
+      internalID: -1494529684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_99
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 469
+        width: 86
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2eac2c2b7af485290dc57130ff38e8
+      internalID: 487544363
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_100
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 495
+        width: 35
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c230125e880924d09a91abd27c398ccb
+      internalID: -1607119250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_101
+      rect:
+        serializedVersion: 2
+        x: 884
+        y: 478
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de57dc64cf57941d8a41faadda632caf
+      internalID: -1033188312
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_102
+      rect:
+        serializedVersion: 2
+        x: 930
+        y: 478
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf9b04f191b1747b9809b6c1f57e9bc0
+      internalID: 1602895332
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_103
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 469
+        width: 28
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 67b571d3c56774770b5696bdd2ac5de4
+      internalID: 1419582255
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_104
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 377
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0401f45a82d1c4c4c8ff3fd4fa4af1c5
+      internalID: 201208667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_105
+      rect:
+        serializedVersion: 2
+        x: 51
+        y: 377
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b73b9fe9900f5444dae024129acc1428
+      internalID: -686745506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_106
+      rect:
+        serializedVersion: 2
+        x: 237
+        y: 440
+        width: 34
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 748b0c0934ea545f9a667fd41395832b
+      internalID: 986307372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_107
+      rect:
+        serializedVersion: 2
+        x: 286
+        y: 440
+        width: 20
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54bb5b669910f4fd6aca0d0983734624
+      internalID: 460659646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_108
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 423
+        width: 80
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 837485de0bcaf491c97f93760e9cc97e
+      internalID: 188897316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_109
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 423
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9714517598064b4c87135339e25daa2
+      internalID: -2130742477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_110
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 429
+        width: 80
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 144ffc79ada1b41a7965a739f4ce3a2a
+      internalID: -734638013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_111
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 429
+        width: 40
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 88c7f709cafc64433914301df2addaf7
+      internalID: -1066214636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_112
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 426
+        width: 28
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5067244cb6f094690a03cb78982ee3f6
+      internalID: -1594094957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_113
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 426
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f458bcb5c26c407ca2f11595615cd50
+      internalID: 60824077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_114
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 426
+        width: 15
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6d13f442b9c84e278cdd4938c18af12
+      internalID: -206700417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_115
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 395
+        width: 28
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 734143ed5a0bb4ba18cd5d221caf7bf5
+      internalID: 187942634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_116
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 395
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0130eb1d02d046f49e415497e25605c
+      internalID: -1839100206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_117
+      rect:
+        serializedVersion: 2
+        x: 208
+        y: 395
+        width: 15
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84d77f0b0d8e746fd8c05b2e4584ed50
+      internalID: -1525576379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_118
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 332
+        width: 40
+        height: 34
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f43a3ccfe6adc4d438f25540308a2820
+      internalID: 647648385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_119
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 326
+        width: 40
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee87bbc66284f407e8d91e312bb6df69
+      internalID: -1634246572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_120
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 326
+        width: 86
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f932bd2634b14011a65fba4a3e1aeb3
+      internalID: 589705442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_121
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 286
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9967367d993934cd4b21a4ea5b21224b
+      internalID: 438946829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_122
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 303
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e3d961472aaa8412ab72cdf82fd716b7
+      internalID: -579128252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_123
+      rect:
+        serializedVersion: 2
+        x: 103
+        y: 303
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 051f64eb7da62411ead118b9fae703c5
+      internalID: -763122018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_124
+      rect:
+        serializedVersion: 2
+        x: 148
+        y: 303
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46d511858f795457f9cd9d4a5e225808
+      internalID: 492741474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_125
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 240
+        width: 40
+        height: 66
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7dc9368caf1294d05ad09c7868d3078c
+      internalID: 66418334
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_126
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 240
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 28c53425b380a453ea45a9c3414e5caf
+      internalID: 1842755251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_127
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 240
+        width: 34
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 71615e4a520dd412abb283a255695a3f
+      internalID: -438053559
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_128
+      rect:
+        serializedVersion: 2
+        x: 437
+        y: 263
+        width: 12
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 791fcb2d372fb4ca689c93d08b59ab13
+      internalID: -1982182306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_129
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 249
+        width: 8
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93b6af8cf8bd849bcbe3523917a91877
+      internalID: -1110555721
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_130
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 109
+        width: 16
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2320518bbe1f14ee0a416d9fa99ce507
+      internalID: 1315968115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_131
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 173
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72d9865065767428b846d9fcaa17da36
+      internalID: -471956240
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_132
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 190
+        width: 25
+        height: 55
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c209a09efd0b4d2db35bc602145e9cb
+      internalID: -539365506
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_133
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 200
+        width: 35
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eea88c12494404d849684586883bfff0
+      internalID: -1167799234
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_134
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 194
+        width: 11
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22e8b8cf00b2b4c9e8691776beb01275
+      internalID: -360362457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_135
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 166
+        width: 35
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1df58f5fefd2431581068ca2bc95648
+      internalID: 239013511
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_136
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 148
+        width: 34
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d602045deafd34a69b324e3717c9e334
+      internalID: -1277488853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_137
+      rect:
+        serializedVersion: 2
+        x: 41
+        y: 152
+        width: 21
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1847628f4415843af90d2e338b240571
+      internalID: -1589568742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_138
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 117
+        width: 50
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c48740ea4ab4489b17b55b16895afb
+      internalID: -1950988595
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_139
+      rect:
+        serializedVersion: 2
+        x: 377
+        y: 120
+        width: 26
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42301b8cc5eee4dd6989d223a244f0fd
+      internalID: 1339461964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_140
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 120
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f6612531f5ae4295b9304b7d4cc36b7
+      internalID: -369573008
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_141
+      rect:
+        serializedVersion: 2
+        x: 469
+        y: 120
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 93600b13dcc804f0aa5d7a312831db3c
+      internalID: 709105720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_142
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 120
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8c930158c289d4592b229a4748ba939f
+      internalID: 207763786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_143
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 24
+        width: 80
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d3837405312e14ef486b32fb34603bd9
+      internalID: 379522445
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_144
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 24
+        width: 80
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe67c6cf6b174761bb70311e29bb080
+      internalID: -1287078384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_145
+      rect:
+        serializedVersion: 2
+        x: 261
+        y: 78
+        width: 16
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2a65d6e1ad2284817b587e668e97fdc8
+      internalID: 1583126915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_146
+      rect:
+        serializedVersion: 2
+        x: 383
+        y: 74
+        width: 29
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b1366b84c92a4e36a599c165238fa49
+      internalID: -1892745352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_147
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 74
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ced229e682d94b9abaf3b345d6ba828
+      internalID: -378679093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_148
+      rect:
+        serializedVersion: 2
+        x: 475
+        y: 74
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d05633aa483bf4fb3910b0aabb057020
+      internalID: 926949801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_149
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 74
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3c21fbf3166e4773b546b167241d5ba
+      internalID: -1025461753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_150
+      rect:
+        serializedVersion: 2
+        x: 563
+        y: 74
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 755bf0bd9c8cf4299ba1ac61e36ce2b3
+      internalID: -295445607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_151
+      rect:
+        serializedVersion: 2
+        x: 372
+        y: 11
+        width: 40
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44f3b0e36a3f2460b8dfd1542a054033
+      internalID: 1632605327
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_152
+      rect:
+        serializedVersion: 2
+        x: 417
+        y: 11
+        width: 86
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed6891efe848348beaa454393be6bb01
+      internalID: 1064939389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_153
+      rect:
+        serializedVersion: 2
+        x: 509
+        y: 11
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3fd564f804564e95b401129d8e8339d
+      internalID: -1924918442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_154
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 11
+        width: 86
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3452fd551eece4640ba7848c91df140e
+      internalID: -575164417
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_155
+      rect:
+        serializedVersion: 2
+        x: 646
+        y: 11
+        width: 40
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 013be7f7deac7441daeaa624e8e71fd3
+      internalID: 1722192682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: MoblesTilesMN_156
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 11
+        width: 86
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dedbac3a8d71c48a7b12682e9b9ea98d
+      internalID: 36689819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      MoblesTilesMN_0: 1853092601
+      MoblesTilesMN_1: -1166394618
+      MoblesTilesMN_10: -1516694559
+      MoblesTilesMN_100: -1607119250
+      MoblesTilesMN_101: -1033188312
+      MoblesTilesMN_102: 1602895332
+      MoblesTilesMN_103: 1419582255
+      MoblesTilesMN_104: 201208667
+      MoblesTilesMN_105: -686745506
+      MoblesTilesMN_106: 986307372
+      MoblesTilesMN_107: 460659646
+      MoblesTilesMN_108: 188897316
+      MoblesTilesMN_109: -2130742477
+      MoblesTilesMN_11: 193159381
+      MoblesTilesMN_110: -734638013
+      MoblesTilesMN_111: -1066214636
+      MoblesTilesMN_112: -1594094957
+      MoblesTilesMN_113: 60824077
+      MoblesTilesMN_114: -206700417
+      MoblesTilesMN_115: 187942634
+      MoblesTilesMN_116: -1839100206
+      MoblesTilesMN_117: -1525576379
+      MoblesTilesMN_118: 647648385
+      MoblesTilesMN_119: -1634246572
+      MoblesTilesMN_12: 1143356721
+      MoblesTilesMN_120: 589705442
+      MoblesTilesMN_121: 438946829
+      MoblesTilesMN_122: -579128252
+      MoblesTilesMN_123: -763122018
+      MoblesTilesMN_124: 492741474
+      MoblesTilesMN_125: 66418334
+      MoblesTilesMN_126: 1842755251
+      MoblesTilesMN_127: -438053559
+      MoblesTilesMN_128: -1982182306
+      MoblesTilesMN_129: -1110555721
+      MoblesTilesMN_13: -641735147
+      MoblesTilesMN_130: 1315968115
+      MoblesTilesMN_131: -471956240
+      MoblesTilesMN_132: -539365506
+      MoblesTilesMN_133: -1167799234
+      MoblesTilesMN_134: -360362457
+      MoblesTilesMN_135: 239013511
+      MoblesTilesMN_136: -1277488853
+      MoblesTilesMN_137: -1589568742
+      MoblesTilesMN_138: -1950988595
+      MoblesTilesMN_139: 1339461964
+      MoblesTilesMN_14: -698001062
+      MoblesTilesMN_140: -369573008
+      MoblesTilesMN_141: 709105720
+      MoblesTilesMN_142: 207763786
+      MoblesTilesMN_143: 379522445
+      MoblesTilesMN_144: -1287078384
+      MoblesTilesMN_145: 1583126915
+      MoblesTilesMN_146: -1892745352
+      MoblesTilesMN_147: -378679093
+      MoblesTilesMN_148: 926949801
+      MoblesTilesMN_149: -1025461753
+      MoblesTilesMN_15: 2143477402
+      MoblesTilesMN_150: -295445607
+      MoblesTilesMN_151: 1632605327
+      MoblesTilesMN_152: 1064939389
+      MoblesTilesMN_153: -1924918442
+      MoblesTilesMN_154: -575164417
+      MoblesTilesMN_155: 1722192682
+      MoblesTilesMN_156: 36689819
+      MoblesTilesMN_16: -1790044154
+      MoblesTilesMN_17: -1011834165
+      MoblesTilesMN_18: 239465441
+      MoblesTilesMN_19: 1231137396
+      MoblesTilesMN_2: 2075042723
+      MoblesTilesMN_20: 1393471745
+      MoblesTilesMN_21: 687564862
+      MoblesTilesMN_22: 776311848
+      MoblesTilesMN_23: -1653319389
+      MoblesTilesMN_24: 193235387
+      MoblesTilesMN_25: -1459360343
+      MoblesTilesMN_26: 1120302059
+      MoblesTilesMN_27: 1549118473
+      MoblesTilesMN_28: -27612368
+      MoblesTilesMN_29: 1485157438
+      MoblesTilesMN_3: 1154187458
+      MoblesTilesMN_30: -693404325
+      MoblesTilesMN_31: 282803520
+      MoblesTilesMN_32: -1289368256
+      MoblesTilesMN_33: -162069552
+      MoblesTilesMN_34: -600706907
+      MoblesTilesMN_35: -152285764
+      MoblesTilesMN_36: 767406365
+      MoblesTilesMN_37: 487667890
+      MoblesTilesMN_38: -849636640
+      MoblesTilesMN_39: -1767516686
+      MoblesTilesMN_4: 2042931179
+      MoblesTilesMN_40: 1106846589
+      MoblesTilesMN_41: -2087990338
+      MoblesTilesMN_42: 1131967239
+      MoblesTilesMN_43: -921353525
+      MoblesTilesMN_44: 252764535
+      MoblesTilesMN_45: 278153622
+      MoblesTilesMN_46: -149152325
+      MoblesTilesMN_47: 133497383
+      MoblesTilesMN_48: 2032218797
+      MoblesTilesMN_49: -259828950
+      MoblesTilesMN_5: -251964472
+      MoblesTilesMN_50: -5291335
+      MoblesTilesMN_51: 1491872184
+      MoblesTilesMN_52: 1402219273
+      MoblesTilesMN_53: 1223030127
+      MoblesTilesMN_54: 233323734
+      MoblesTilesMN_55: -835561153
+      MoblesTilesMN_56: -1194642573
+      MoblesTilesMN_57: 292480749
+      MoblesTilesMN_58: 814514577
+      MoblesTilesMN_59: -1653505404
+      MoblesTilesMN_6: -506684698
+      MoblesTilesMN_60: 2069178104
+      MoblesTilesMN_61: -54529633
+      MoblesTilesMN_62: -561978162
+      MoblesTilesMN_63: 1638724147
+      MoblesTilesMN_64: 1021877704
+      MoblesTilesMN_65: -1136293535
+      MoblesTilesMN_66: 434986050
+      MoblesTilesMN_67: -1912769250
+      MoblesTilesMN_68: -903791303
+      MoblesTilesMN_69: -422713526
+      MoblesTilesMN_7: 728377406
+      MoblesTilesMN_70: 1819787395
+      MoblesTilesMN_71: -2076705813
+      MoblesTilesMN_72: 1909517803
+      MoblesTilesMN_73: 1023803682
+      MoblesTilesMN_74: 174760540
+      MoblesTilesMN_75: 55071939
+      MoblesTilesMN_76: -1241317329
+      MoblesTilesMN_77: -1497315371
+      MoblesTilesMN_78: -238183729
+      MoblesTilesMN_79: -23905012
+      MoblesTilesMN_8: -1528018888
+      MoblesTilesMN_80: -1887149424
+      MoblesTilesMN_81: -1376254428
+      MoblesTilesMN_82: 306476545
+      MoblesTilesMN_83: 1288629247
+      MoblesTilesMN_84: 269937385
+      MoblesTilesMN_85: -1228004283
+      MoblesTilesMN_86: -1282292347
+      MoblesTilesMN_87: 254208802
+      MoblesTilesMN_88: -1776539753
+      MoblesTilesMN_89: -1028502940
+      MoblesTilesMN_9: 116306212
+      MoblesTilesMN_90: -1862751935
+      MoblesTilesMN_91: 1458822296
+      MoblesTilesMN_92: -546420666
+      MoblesTilesMN_93: -1611438401
+      MoblesTilesMN_94: 2080524821
+      MoblesTilesMN_95: 70153197
+      MoblesTilesMN_96: 2124031647
+      MoblesTilesMN_97: -1794745687
+      MoblesTilesMN_98: -1494529684
+      MoblesTilesMN_99: 487544363
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
