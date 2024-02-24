@@ -10,14 +10,14 @@ public class LockedDoorController : InteractableObject
     [SerializeField] protected int id;
 
     private bool isOpen;
-    private bool isUnlocked;
+    private bool _isUnlocked;
     private bool _hasInteracted;
 
     protected override void Interact()
     {
-        if (isUnlocked)
+        if (_isUnlocked)
         {
-            //ToggleDoor();
+            ToggleDoor();
         }
         else
         {
@@ -26,7 +26,7 @@ public class LockedDoorController : InteractableObject
             Debug.Log(hasKey);
             if (hasKey)
             {
-                isUnlocked = true;
+                _isUnlocked = true;
                 ToggleDoor();
             }
         }
@@ -49,5 +49,10 @@ public class LockedDoorController : InteractableObject
             if (!_hasInteracted) Interact();
             _hasInteracted = true;
         }
+    }
+
+    public void UnlockDoor()
+    {
+        _isUnlocked = true;
     }
 }

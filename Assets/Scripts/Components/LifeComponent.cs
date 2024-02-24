@@ -45,4 +45,6 @@ public class LifeComponent : MonoBehaviour
     {
 
     }
+
+    public bool IsDead => _isDead;
 }
