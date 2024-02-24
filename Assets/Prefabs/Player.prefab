@@ -212,6 +212,7 @@ MonoBehaviour:
   - {fileID: 9216886434159617761}
   _playerController: {fileID: 6838906068520528515}
   _feet: {fileID: 6139601005165452146}
+  _sprite: {fileID: 7589495094095742432}
   _attackDuration: 0.1
   _attackCd: 0.3
   _maxTimeBetweenAttacks: 0.2

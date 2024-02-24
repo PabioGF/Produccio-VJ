@@ -33,7 +33,7 @@ public class ShooterEnemyController : IAController
         Debug.Log(hasDetected);
 
         // If the player is too far, gets closer
-        if (DistanceToPlayer() >= _attackRange)
+        if (DistanceToPlayer() >= _attackRadius)
         {
             Vector3 direction = (_player.position - transform.position).normalized;
             myVelocity.x = velocidadMovimiento * direction.x;

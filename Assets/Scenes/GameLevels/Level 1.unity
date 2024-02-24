@@ -23854,6 +23854,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 100706633621730510}
     - target: {fileID: 5160320821678128178, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+      propertyPath: _sprite
+      value: 
+      objectReference: {fileID: 606044590}
+    - target: {fileID: 5160320821678128178, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
       propertyPath: _hitAnimation
       value: 
       objectReference: {fileID: 431081176}
@@ -24346,6 +24350,10 @@ PrefabInstance:
       propertyPath: _highBullet
       value: 
       objectReference: {fileID: 2941671906316021625, guid: 6160cc42f1cfa254ca2ff08f8de6f6b2, type: 3}
+    - target: {fileID: 5361087554082182580, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
+      propertyPath: _enablingDistance
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 8227042814899455584, guid: 25413bd28580dbc4c9b505870260949a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -154.3295
@@ -24462,6 +24470,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 497664416}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &606044590 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7589495094095742432, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+  m_PrefabInstance: {fileID: 431081165}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &627190714
 PrefabInstance:
   m_ObjectHideFlags: 0

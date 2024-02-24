@@ -9,13 +9,17 @@ public class IAController : MonoBehaviour
     [SerializeField] protected Transform _player;
     [SerializeField] private Transform leftFoot, rightFoot;
 
-    [Header("Shared Enemy Params")]
+    [Header("Shared Enemy Movement Params")]
     [SerializeField] private float tiempoCambioDireccion;
     [SerializeField] private float _detectionExtraTime;
     [SerializeField] private float _velocityMultiplier;
     [SerializeField] protected float velocidadMovimiento;
+
+    [Header("Shared Enemy Combat Params")]
     [SerializeField] protected float _detectionDistance;
+    [SerializeField] protected float _attackRadius;
     [SerializeField] protected float _attackRange;
+    [SerializeField] private float _enablingDistance;
 
     protected float tiempoActual;
     protected int direccion = 1;
@@ -50,8 +54,17 @@ public class IAController : MonoBehaviour
         IsGrounded();
     }
     #endregion
+
+    public bool PlayerIsGone()
+    {
+        if (DistanceToPlayer() > _attackRange) return true;
+        else return false;
+    }
+
     public virtual void EnemyBasicMovement()
     {
+        if (DistanceToPlayer() > _enablingDistance) return;
+
         myVelocity = myRB.velocity;
         LookAtPlayer();
         DetectPlayer();
@@ -166,9 +179,10 @@ public class IAController : MonoBehaviour
 
     public float DistanceToPlayer()
     {
-        return Mathf.Abs(transform.position.x - _player.position.x);
+        return Vector2.Distance(_player.position, myRB.position);
     }
 
     public bool IsAttacking {  get { return _isAttacking; } set { _isAttacking = value; } }
     public bool IsFlying { get { return _isFlying; } set { _isFlying = value; } }
+    public float AttackRange => _attackRange;
 }

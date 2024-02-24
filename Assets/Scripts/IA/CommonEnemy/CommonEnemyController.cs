@@ -21,7 +21,7 @@ public class CommonEnemyController : IAController
     {
         if (_attackPoint == null) return;
 
-        Gizmos.DrawWireSphere(_attackPoint.position, _attackRange);
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRadius);
     }
 
     public override void EnemyBasicMovement()
@@ -47,7 +47,7 @@ public class CommonEnemyController : IAController
 
     private void PerformAttack(int type)
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("Player"));
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("Player"));
 
         if (playerCollider != null)
         {
