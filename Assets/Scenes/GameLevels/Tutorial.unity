@@ -17743,6 +17743,14 @@ PrefabInstance:
       value: Combat Explanation
       objectReference: {fileID: 0}
     - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -0.33
       objectReference: {fileID: 0}
@@ -101896,6 +101904,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platform Explanation
       objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6434174731624469317, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
       propertyPath: m_text
       value: Down + Interact to get through one-way platforms
@@ -140437,6 +140453,14 @@ PrefabInstance:
     - target: {fileID: 3567775933022407877, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
       propertyPath: m_Name
       value: Dodge Explanation
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 5452281520989736878, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6434174731624469317, guid: a02a283afea4815469cfa8ebd32b6ac7, type: 3}
       propertyPath: m_text
