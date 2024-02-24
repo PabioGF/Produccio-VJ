@@ -45,7 +45,9 @@ public class PlayerLifeComponent : MonoBehaviour
                 return;
             }
         }
-        
+
+        if (_playerCombat.IsInvulnerable) return;
+
         Debug.Log("Hit");
         _hitStopController.StopTime(0f, _hitStopDuration);
 
@@ -65,6 +67,8 @@ public class PlayerLifeComponent : MonoBehaviour
             PlayerController playerController = _parent.GetComponent<PlayerController>();
             playerController.Die();
             UIController.Instance.ShowDeathScreen();
-        }  
+        }
+
+        StartCoroutine(_playerCombat.ReceiveHit());
     }
 }

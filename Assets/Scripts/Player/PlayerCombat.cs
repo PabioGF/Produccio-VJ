@@ -10,6 +10,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private GameObject[] _attackAreas;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _feet;
+    [SerializeField] private SpriteRenderer _sprite;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -40,6 +41,7 @@ public class PlayerCombat : MonoBehaviour
     private bool _isDodging;
     private float _dodgeCdTimer;
     private Animator _myAnimator;
+    private bool _isInvulnerable;
 
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
@@ -516,6 +518,40 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
+    public IEnumerator ReceiveHit()
+    {
+        _isInvulnerable = true;
+
+        for (int i = 0; i < 4; i++)
+        {
+            Color initialColor = _sprite.material.color;
+            Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
+
+            float elapsedTime = 0f;
+            float fadeDuration = 0.15f;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                _sprite.material.color = Color.Lerp(initialColor, finalColor, elapsedTime / fadeDuration);
+                yield return null;
+            }
+
+            initialColor = _sprite.material.color;
+            finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 1f);
+            elapsedTime = 0f;
+
+            while (elapsedTime < fadeDuration)
+            {
+                elapsedTime += Time.deltaTime;
+                _sprite.material.color = Color.Lerp(initialColor, finalColor, elapsedTime / fadeDuration);
+                yield return null;
+            }
+        }
+
+        _isInvulnerable = false;
+    }
+
     public void Die()
     {
         _playerInputActions.Player.Disable();
@@ -553,6 +589,8 @@ public class PlayerCombat : MonoBehaviour
     /// Returns wheter the player is doing a combo or not
     /// </summary>
     public bool IsCombo => _isComboAnimation;
+
+    public bool IsInvulnerable => _isInvulnerable;
     #endregion
 
 }
