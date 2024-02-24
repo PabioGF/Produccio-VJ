@@ -60,6 +60,7 @@ public class UIController : MonoBehaviour
     [Header ("Pause Menu")]
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject _selectedOptionPause;
+    [SerializeField] private GameObject _comboList;
     private bool _isPaused;
 
     /// <summary>
@@ -90,6 +91,18 @@ public class UIController : MonoBehaviour
         _isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+    }
+
+    public void EnterComboList()
+    {
+        pausePanel.SetActive(false);
+        _comboList.SetActive(true);
+    }
+
+    public void ExitComboList()
+    {
+        pausePanel.SetActive(true);
+        _comboList.SetActive(false);
     }
 
     /// <summary>
