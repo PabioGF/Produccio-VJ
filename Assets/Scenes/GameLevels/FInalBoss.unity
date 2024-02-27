@@ -4354,6 +4354,14 @@ PrefabInstance:
       propertyPath: _endDoor
       value: 
       objectReference: {fileID: 1534049362}
+    - target: {fileID: 7542059205843437619, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_Size.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7542059205843437619, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_Size.y
+      value: 4.375
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
