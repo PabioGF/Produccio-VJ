@@ -5,6 +5,7 @@ public class CommonEnemyController : IAController
     [Header("Common Enemy Params")]
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private float _attackDamage;
+    [SerializeField] protected float _attackRadius;
     [SerializeField] private float _minPlayerDistance;
     public float tiempoEntreCombos = 5.0f;
     

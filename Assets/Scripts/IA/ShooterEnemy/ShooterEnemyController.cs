@@ -33,8 +33,9 @@ public class ShooterEnemyController : IAController
         Debug.Log(hasDetected);
 
         // If the player is too far, gets closer
-        if (DistanceToPlayer() >= _attackRadius)
+        if (DistanceToPlayer() >= _attackRange)
         {
+            Debug.Log("Far");
             Vector3 direction = (_player.position - transform.position).normalized;
             myVelocity.x = velocidadMovimiento * direction.x;
             myRB.velocity = myVelocity;
@@ -42,6 +43,7 @@ public class ShooterEnemyController : IAController
         // If it is within the range, shoots
         else
         {
+            Debug.Log("Close");
             myVelocity.x = 0;
             myAnimator.SetTrigger("Shoot");
             myRB.velocity = myVelocity;
