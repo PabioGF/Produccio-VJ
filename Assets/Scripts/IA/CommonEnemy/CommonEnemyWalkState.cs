@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CommonEnemyWalkState : StateMachineBehaviour
 {
-    [SerializeField] private float _attackDistance;
-
     private CommonEnemyController _enemyController;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -19,7 +17,7 @@ public class CommonEnemyWalkState : StateMachineBehaviour
     {
         Move();
 
-        if (_enemyController.DistanceToPlayer() < _attackDistance)
+        if (_enemyController.DistanceToPlayer() < _enemyController.AttackRange)
         {
             _enemyController.Attack();
         }

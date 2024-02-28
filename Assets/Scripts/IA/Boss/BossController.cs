@@ -204,7 +204,7 @@ public class BossController : MonoBehaviour
             _rigidbody.MovePosition(new Vector2(20, _rigidbody.position.y));
             _hasFallenRight = true;
         }
-        _rigidbody.velocity = new Vector2(0, -50);
+        _rigidbody.velocity = new Vector2(0, -10);
         LookAtPlayer();
 
         if (_phase > 0 /*&& Random.value >= 0.3*/) _animator.SetTrigger("Special");
