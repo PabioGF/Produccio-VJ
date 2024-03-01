@@ -154,7 +154,7 @@ public class PlayerController : MonoBehaviour
         else
         {
             float acceleration = _isGrounded ? _acceleration : _airAcceleration; 
-            _desiredVelocity.x = _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
+            _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
         }
 
         if (_desiredVelocity.x < 0)

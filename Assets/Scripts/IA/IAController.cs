@@ -17,7 +17,6 @@ public class IAController : MonoBehaviour
 
     [Header("Shared Enemy Combat Params")]
     [SerializeField] protected float _detectionDistance;
-    [SerializeField] protected float _attackRadius;
     [SerializeField] protected float _attackRange;
     [SerializeField] private float _enablingDistance;
 
