@@ -163,10 +163,24 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Shows the level complete screen
     /// </summary>
-    public void LevelCompleted()
+    public IEnumerator LevelCompleted()
     {
         _levelCompleteScreen.SetActive(true);
         _statsPanel.SetActive(false);
+
+        float timeElapsed = 0;
+        CanvasGroup group = _levelCompleteScreen.GetComponent<CanvasGroup>();
+        //AudioManager.Instance.PlaySFX("LightSwitch");
+
+        float duration = 0.5f;
+        while (timeElapsed < duration)
+        {
+            group.alpha = Mathf.Lerp(0, 1, timeElapsed / duration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        group.alpha = 1;
+
         Time.timeScale = 0;
 
         EventSystem.current.SetSelectedGameObject(_selectedOptionCompleted);
