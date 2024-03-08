@@ -103,7 +103,7 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Method called when the fastAttack button is pressed
     /// </summary>
-    public void FastAttackInput()
+    public void HandleFastAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
         if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
@@ -116,7 +116,7 @@ public class PlayerCombat : MonoBehaviour
     /// <summary>
     /// Method called when the slowAttack button is pressed
     /// </summary>
-    public void SlowAttackInput()
+    public void HandleSlowAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
         if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
@@ -126,7 +126,7 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
-    public void ThrowBottleInput()
+    public void HandleThrowBottleInput()
     {
         if (!_dodgeStance && !_isDodging && !_isComboAnimation)
         {
@@ -446,6 +446,12 @@ public class PlayerCombat : MonoBehaviour
     {
         if (!_playerController.IsGrounded) return;
 
+        if (PlayerInputsManager.Instance.ReadDodgeTriggerValue() == 1) _dodgeStance = true;
+        else _dodgeStance = false;
+
+        _myAnimator.SetBool("isDodging", _dodgeStance);
+        Debug.Log("dodge buttons pressed: " + _dodgeStance);
+
         if (_dodgeStance)
         {
             float dodgeDirection = PlayerInputsManager.Instance.ReadVerticalInput();
@@ -462,15 +468,6 @@ public class PlayerCombat : MonoBehaviour
                 }
             }
         }
-    }
-
-    public void DodgeInput(bool buttonPressed)
-    {
-        if (buttonPressed) _dodgeStance = true;
-        else _dodgeStance = false;
-
-        _myAnimator.SetBool("isDodging", _dodgeStance);
-        Debug.Log("dodge buttons pressed: " + buttonPressed);
     }
     
     /// <summary>

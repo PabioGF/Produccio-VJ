@@ -12,7 +12,6 @@ public class UIController : MonoBehaviour
     #region Global Variables
     [SerializeField] private GameObject _statsPanel;
     public static UIController Instance;
-    // private PlayerInputActions _playerInputActions;
     #endregion
 
     #region Unity Methods
@@ -22,18 +21,11 @@ public class UIController : MonoBehaviour
         {
             Instance = this;
         }
-        //_playerInputActions = new PlayerInputActions();
-        //_playerInputActions.Player.Enable();
         _statsPanel.SetActive(true);
-        // _playerInputActions.Player.Pause.performed += TogglePause;
-        //_playerInputActions.Player.Interact.performed += HideDeathScreen;
     }
 
     private void OnDisable()
     {
-        //_playerInputActions.Player.Pause.performed -= TogglePause;
-        // _playerInputActions.Player.Interact.performed -= HideDeathScreen;
-        // _playerInputActions.Disable();
     }
     #endregion
 
@@ -70,7 +62,7 @@ public class UIController : MonoBehaviour
     /// Pauses / unpauses the game
     /// </summary>
     /// <param name="context">InputAction</param>
-    public void TogglePause(InputAction.CallbackContext context)
+    public void HandlePauseInput()
     {
         if (!_isPaused)
         {
