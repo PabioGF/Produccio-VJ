@@ -977,9 +977,12 @@ MonoBehaviour:
   _velocityMultiplier: 1
   velocidadMovimiento: 4
   _detectionDistance: 15
-  _attackRange: 10
+  _attackRange: 4
   _enablingDistance: 40
   minPlayerDistance: 10
+  _attackPoint: {fileID: 1415322719}
+  _attackDamage: 1
+  _attackRadius: 1.5
 --- !u!1 &606222639
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,7 +992,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606222640}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: right (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1450,7 +1453,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1044445175}
-  m_Layer: 2
+  m_Layer: 0
   m_Name: left (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1483,6 +1486,10 @@ PrefabInstance:
     - target: {fileID: 2728069132200657348, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       propertyPath: m_Name
       value: KatanaEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 2728069132200657348, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5845461059301738146, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1533,6 +1540,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 5845461059301738146, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       insertIndex: -1
       addedObject: {fileID: 606222640}
+    - targetCorrespondingSourceObject: {fileID: 5845461059301738146, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1415322719}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2728069132200657348, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       insertIndex: -1
@@ -1555,6 +1565,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 621157944012127408, guid: d9166900eaa95834aa1fad15ae284541, type: 3}
   m_PrefabInstance: {fileID: 3539126905541644095}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1415322718
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1415322719}
+  m_Layer: 0
+  m_Name: Attack Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415322719
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1415322718}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -3.63, y: 0.21, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 556755531}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1442284938 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5180191103471191624, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}

@@ -1,37 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-/*
-private bool _isHit;
-private float _lastTimeHit;
-
-protected override void Update()
-{
-    base.Update();
-    if (Time.time - _lastTimeHit > 0.4)
-    {
-        ResetMovement();
-    }
-}
-
-public override void GetHit()
-{
-    _isHit = true;
-    myRB.gravityScale = 0;
-    myRB.velocity = new(0,0);
-    _lastTimeHit = Time.time;
-}
-
-
-private void ResetMovement()
-{
-    myRB.gravityScale = 3;
-}
-*/
 public class RangeEnemyController : IAController
 {
     [Header("Range Enemy Params")]
     [SerializeField] private float minPlayerDistance;
+    [SerializeField] private Transform _attackPoint;
+    [SerializeField] private float _attackDamage;
+    [SerializeField] protected float _attackRadius;
     private void Start()
     {
         base.Start();
@@ -48,5 +24,22 @@ public class RangeEnemyController : IAController
         Vector3 direction = (_player.position - transform.position).normalized;
         myVelocity.x = velocidadMovimiento * direction.x;
         myRB.velocity = myVelocity;
+    }
+
+    public void Attack()
+    {
+        StandStill();
+        myAnimator.SetTrigger("attack");
+    }
+    private void PerformAttack(int type)
+    {
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("Player"));
+
+        if (playerCollider != null)
+        {
+            PlayerLifeComponent.AttackTypes attackType = (PlayerLifeComponent.AttackTypes)type;
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
+            Debug.Log(playerCollider.name + " has been hit");
+        }
     }
 }
