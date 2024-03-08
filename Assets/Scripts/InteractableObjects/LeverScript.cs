@@ -17,6 +17,7 @@ public class LeverScript : InteractableObject
 
     protected override void Interact()
     {
+        base.Interact();
         switch (_objectType)
         { 
             case LinkedObjectType.turret:

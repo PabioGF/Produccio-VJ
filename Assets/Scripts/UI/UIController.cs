@@ -12,25 +12,28 @@ public class UIController : MonoBehaviour
     #region Global Variables
     [SerializeField] private GameObject _statsPanel;
     public static UIController Instance;
-    private PlayerInputActions _playerInputActions;
+    // private PlayerInputActions _playerInputActions;
     #endregion
 
     #region Unity Methods
     private void Awake()
     {
-        Instance = this;
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        //_playerInputActions = new PlayerInputActions();
+        //_playerInputActions.Player.Enable();
         _statsPanel.SetActive(true);
-        _playerInputActions.Player.Pause.performed += TogglePause;
-        _playerInputActions.Player.Interact.performed += HideDeathScreen;
+        // _playerInputActions.Player.Pause.performed += TogglePause;
+        //_playerInputActions.Player.Interact.performed += HideDeathScreen;
     }
 
     private void OnDisable()
     {
-        _playerInputActions.Player.Pause.performed -= TogglePause;
-        _playerInputActions.Player.Interact.performed -= HideDeathScreen;
-        _playerInputActions.Disable();
+        //_playerInputActions.Player.Pause.performed -= TogglePause;
+        // _playerInputActions.Player.Interact.performed -= HideDeathScreen;
+        // _playerInputActions.Disable();
     }
     #endregion
 

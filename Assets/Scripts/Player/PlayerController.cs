@@ -9,7 +9,6 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private PlayerInputActions _playerInputActions;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -23,6 +22,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
+
+    public bool DesiredInteraction { get; set; }
 
     private PlayerCombat _playerCombat;
     private Rigidbody2D _rigidbody2D;
@@ -49,18 +50,12 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
         _myAnimator = GetComponent<Animator>();
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-
-        _playerInputActions.Player.Jump.performed += JumpInput;
 
         if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
     }
 
     private void OnDisable()
     {
-        _playerInputActions.Player.Jump.performed -= JumpInput;
-        _playerInputActions.Player.Disable();
     }
 
     private void Start()
@@ -94,11 +89,10 @@ public class PlayerController : MonoBehaviour
         if (_isOverride) return;
 
         if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking && !_playerCombat.IsDodging)
-            _movementInput = _playerInputActions.Player.MoveHorizontal.ReadValue<float>();
+            _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
         else
             _movementInput = 0;
 
-        _jumpHold = _playerInputActions.Player.Jump.ReadValue<float>() > 0;
     }
 
     /// <summary>
@@ -220,13 +214,10 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Function that executes then the jump button is pressed and lets the script know
     /// </summary>
-    public void JumpInput(InputAction.CallbackContext context)
+    public void HandleJumpInput()
     {
-        if (context.performed) 
-        {
-            _jumpPressed = _timer;
-            _desiredJump = true;
-        }
+        _jumpPressed = _timer;
+        _desiredJump = true; 
     }
     #endregion
     
@@ -285,7 +276,6 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        _playerInputActions.Player.Disable();
         _playerCombat.Die();
     }
 

@@ -132686,6 +132686,79 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!1 &2039100016
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2039100018}
+  - component: {fileID: 2039100017}
+  m_Layer: 0
+  m_Name: PlayerInputs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2039100017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039100016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab23f851d6ca7c143baf89a35d7d004f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputActionMap:
+    m_Name: Input
+    m_Id: b4af6c57-2eb0-43b8-bdce-ddc056acd6f6
+    m_Asset: {fileID: 0}
+    m_Actions:
+    - m_Name: "INPUTASSET \x01ActionTreeItem\x02{\"m_Name\":\"MoveHorizontal\",\"m_Type\":0,\"m_ExpectedControlType\":\"Axis\",\"m_Id\":\"1faaba57-47d3-44e4-b059-724dbb8a0df4\",\"m_Processors\":\"\",\"m_Interactions\":\"\",\"m_SingletonActionBindings\":[],\"m_Flags\":1}\x17\x01CompositeBindingTreeItem\x02{\"m_Name\":\"1D
+        Axis\",\"m_Id\":\"785424f0-63d3-4da6-b53a-a0ce754eef13\",\"m_Path\":\"1DAxis\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":4}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"negative\",\"m_Id\":\"ac724d5c-c57e-44d1-b242-6ce4dd9f9112\",\"m_Path\":\"<Keyboard>/a\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"positive\",\"m_Id\":\"eba0b522-1dc7-478c-aad6-9ce3dc1176cf\",\"m_Path\":\"<Keyboard>/d\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01CompositeBindingTreeItem\x02{\"m_Name\":\"1D
+        Axis\",\"m_Id\":\"fad2f616-c2fc-4b6c-ab96-5f83e3d4bb24\",\"m_Path\":\"1DAxis\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":4}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"negative\",\"m_Id\":\"8d52307c-ea1c-40cc-afff-a00d146001ee\",\"m_Path\":\"<Gamepad>/leftStick/left\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"positive\",\"m_Id\":\"f9d31820-0e6f-437c-bb62-d8978ba4f81d\",\"m_Path\":\"<Gamepad>/leftStick/right\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x04"
+      m_Type: 1
+      m_ExpectedControlType: Button
+      m_Id: 5d929317-cb2d-4eef-b2a4-c923ab7bc288
+      m_Processors: 
+      m_Interactions: 
+      m_SingletonActionBindings: []
+      m_Flags: 0
+    m_Bindings:
+    - m_Name: 
+      m_Id: edd47197-5ede-424c-9503-8790780523fe
+      m_Path: 
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: "INPUTASSET \x01ActionTreeItem\x02{\"m_Name\":\"MoveHorizontal\",\"m_Type\":0,\"m_ExpectedControlType\":\"Axis\",\"m_Id\":\"1faaba57-47d3-44e4-b059-724dbb8a0df4\",\"m_Processors\":\"\",\"m_Interactions\":\"\",\"m_SingletonActionBindings\":[],\"m_Flags\":1}\x17\x01CompositeBindingTreeItem\x02{\"m_Name\":\"1D
+        Axis\",\"m_Id\":\"785424f0-63d3-4da6-b53a-a0ce754eef13\",\"m_Path\":\"1DAxis\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":4}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"negative\",\"m_Id\":\"ac724d5c-c57e-44d1-b242-6ce4dd9f9112\",\"m_Path\":\"<Keyboard>/a\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"positive\",\"m_Id\":\"eba0b522-1dc7-478c-aad6-9ce3dc1176cf\",\"m_Path\":\"<Keyboard>/d\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01CompositeBindingTreeItem\x02{\"m_Name\":\"1D
+        Axis\",\"m_Id\":\"fad2f616-c2fc-4b6c-ab96-5f83e3d4bb24\",\"m_Path\":\"1DAxis\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":4}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"negative\",\"m_Id\":\"8d52307c-ea1c-40cc-afff-a00d146001ee\",\"m_Path\":\"<Gamepad>/leftStick/left\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x01PartOfCompositeBindingTreeItem\x02{\"m_Name\":\"positive\",\"m_Id\":\"f9d31820-0e6f-437c-bb62-d8978ba4f81d\",\"m_Path\":\"<Gamepad>/leftStick/right\",\"m_Interactions\":\"\",\"m_Processors\":\"\",\"m_Groups\":\"\",\"m_Action\":\"MoveHorizontal\",\"m_Flags\":8}\x17\x04"
+      m_Flags: 0
+  _playerController: {fileID: 0}
+  _playerCombat: {fileID: 0}
+  _uiController: {fileID: 0}
+--- !u!4 &2039100018
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2039100016}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 132.99013, y: -12.048884, z: 3.959111}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &2081874939
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -132925,3 +132998,4 @@ SceneRoots:
   - {fileID: 840039293}
   - {fileID: 63298741}
   - {fileID: 1752726620}
+  - {fileID: 2039100018}

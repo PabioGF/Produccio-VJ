@@ -8,21 +8,12 @@ public class InteractableObject : MonoBehaviour
     [SerializeField] private ObjectType type;
 
     public enum ObjectType { Door, LockedDoor, Lever, Elevator }
-    protected PlayerInputActions _playerInputActions;
     protected PlayerController _playerController;
 
-    protected virtual void Awake()
+    protected virtual void Interact() 
     {
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
+        _playerController.DesiredInteraction = false;
     }
-
-    private void OnDisable()
-    {
-        _playerInputActions.Player.Disable();
-    }
-
-    protected virtual void Interact() { }
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
@@ -39,7 +30,7 @@ public class InteractableObject : MonoBehaviour
 
     protected virtual void OnTriggerStay2D(Collider2D collision)
     {
-        if (_playerInputActions.Player.Interact.ReadValue<float>() == 1 && _playerController != null)
+        if (_playerController != null && _playerController.DesiredInteraction)
         {
             Interact();
         }

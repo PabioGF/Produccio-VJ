@@ -15,6 +15,7 @@ public class LockedDoorController : InteractableObject
 
     protected override void Interact()
     {
+        base.Interact();
         if (_isUnlocked)
         {
             ToggleDoor();
@@ -38,17 +39,6 @@ public class LockedDoorController : InteractableObject
         GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
         GetComponent<Collider2D>().enabled = isOpen;
         isOpen = !isOpen;
-    }
-
-    protected override void OnTriggerStay2D(Collider2D collision)
-    {
-        if (_playerInputActions.Player.Interact.ReadValue<float>() == 0) _hasInteracted = false;
-
-        if (_playerInputActions.Player.Interact.ReadValue<float>() == 1 && _playerController != null)
-        {
-            if (!_hasInteracted) Interact();
-            _hasInteracted = true;
-        }
     }
 
     public void UnlockDoor()
