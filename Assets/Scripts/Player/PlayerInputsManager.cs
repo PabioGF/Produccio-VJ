@@ -10,7 +10,6 @@ public class PlayerInputsManager : MonoBehaviour
     [Header("Scripts References")]
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private PlayerCombat _playerCombat;
-    [SerializeField] private UIController _uiController;
 
     [Header("Input Actions")]
     [SerializeField] private InputAction _horizontalInput;
@@ -87,7 +86,7 @@ public class PlayerInputsManager : MonoBehaviour
         if (context.performed)
         {
             _playerController.DesiredInteraction = true;
-            _uiController.HideDeathScreen();
+            UIController.Instance.HideDeathScreen();
         }
     }
 
@@ -119,7 +118,7 @@ public class PlayerInputsManager : MonoBehaviour
     {
         if (context.performed)
         {
-            _uiController.HandlePauseInput();
+            UIController.Instance.HandlePauseInput();
         }
     }
 
