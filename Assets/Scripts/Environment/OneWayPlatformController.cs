@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class OneWayPlatformController : InteractableObject
 {
-    private BoxCollider2D _boxCollider;
+    [SerializeField] private BoxCollider2D _boxCollider;
     private bool _enableChange;
 
     // Start is called before the first frame update
     void Awake()
     {
-        _boxCollider = GetComponent<BoxCollider2D>();
         _enableChange = true;
     }
 
     protected override void Interact()
     {
+        Debug.Log("Platform interact");
         base.Interact();
         _enableChange = false;
         _boxCollider.enabled = false;

@@ -62,6 +62,8 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_currentLife <= 0) _isDead = true;
 
         UIController.Instance.SetLife(_currentLife);
+
+        // Shows the death screen if the player is dead
         if (_isDead)
         {
             PlayerController playerController = _parent.GetComponent<PlayerController>();
@@ -69,6 +71,6 @@ public class PlayerLifeComponent : MonoBehaviour
             UIController.Instance.ShowDeathScreen();
         }
 
-        StartCoroutine(_playerCombat.ReceiveHit());
+        StartCoroutine(_playerCombat.HitVisualFeedback());
     }
 }

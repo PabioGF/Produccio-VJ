@@ -276,7 +276,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void Die()
     {
-        _playerCombat.Die();
+        PlayerInputsManager.Instance.DisableControls();
     }
 
     public Rigidbody2D Rigidbody => _rigidbody2D;

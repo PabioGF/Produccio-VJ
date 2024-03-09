@@ -43,30 +43,13 @@ public class PlayerInputsManager : MonoBehaviour
 
     private void OnEnable()
     {
-        _horizontalInput.Enable();
-        _verticalInput.Enable();
-        _jump.Enable();
-        _interact.Enable();
-        _fastAttack.Enable();
-        _slowAttack.Enable();
-        _dodgeTrigger.Enable();
-        _throw.Enable();
-        _pause.Enable();
-
-        _jump.performed += JumpInput;
+        EnableControls();
     }
 
     private void OnDisable()
     {
-        _horizontalInput.Disable();
-        _verticalInput.Disable();
-        _jump.Disable();
+        DisableControls();
         _interact.Disable();
-        _fastAttack.Disable();
-        _slowAttack.Disable();
-        _dodgeTrigger.Disable();
-        _throw.Disable();
-        _pause.Disable();
 
         _jump.performed -= JumpInput;
         _interact.performed -= InteractInput;
@@ -75,7 +58,6 @@ public class PlayerInputsManager : MonoBehaviour
         _throw.performed -= ThrowInput;
         _pause.performed -= PauseInput;
     }
-
     
     public float ReadHorizontalInput()
     {
@@ -105,6 +87,7 @@ public class PlayerInputsManager : MonoBehaviour
         if (context.performed)
         {
             _playerController.DesiredInteraction = true;
+            _uiController.HideDeathScreen();
         }
     }
 
@@ -138,5 +121,30 @@ public class PlayerInputsManager : MonoBehaviour
         {
             _uiController.HandlePauseInput();
         }
+    }
+
+    public void EnableControls()
+    {
+        _horizontalInput.Enable();
+        _verticalInput.Enable();
+        _jump.Enable();
+        _interact.Enable();
+        _fastAttack.Enable();
+        _slowAttack.Enable();
+        _dodgeTrigger.Enable();
+        _throw.Enable();
+        _pause.Enable();
+    }
+
+    public void DisableControls()
+    {
+        _horizontalInput.Disable();
+        _verticalInput.Disable();
+        _jump.Disable();
+        _fastAttack.Disable();
+        _slowAttack.Disable();
+        _dodgeTrigger.Disable();
+        _throw.Disable();
+        _pause.Disable();
     }
 }

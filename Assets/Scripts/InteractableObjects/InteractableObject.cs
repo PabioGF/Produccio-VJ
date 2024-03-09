@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private ObjectType type;
 
-    public enum ObjectType { Door, LockedDoor, Lever, Elevator }
+    public enum ObjectType { Door, LockedDoor, Lever, Elevator, Platform }
     protected PlayerController _playerController;
 
     protected virtual void Interact() 

@@ -140,8 +140,7 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Reloads the game after dying
     /// </summary>
-    /// <param name="context">InputAction</param>
-    public void HideDeathScreen(InputAction.CallbackContext context)
+    public void HideDeathScreen()
     {
         if (!_isDeathScreen) return;
 

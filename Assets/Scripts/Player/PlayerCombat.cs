@@ -450,7 +450,6 @@ public class PlayerCombat : MonoBehaviour
         else _dodgeStance = false;
 
         _myAnimator.SetBool("isDodging", _dodgeStance);
-        Debug.Log("dodge buttons pressed: " + _dodgeStance);
 
         if (_dodgeStance)
         {
@@ -510,7 +509,7 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
-    public IEnumerator ReceiveHit()
+    public IEnumerator HitVisualFeedback()
     {
         _isInvulnerable = true;
 
@@ -542,11 +541,6 @@ public class PlayerCombat : MonoBehaviour
         }
 
         _isInvulnerable = false;
-    }
-
-    public void Die()
-    {
-        //_playerInputActions.Player.Disable();
     }
 
     private void OnDrawGizmosSelected()
