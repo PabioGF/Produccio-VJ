@@ -504,8 +504,11 @@ public class PlayerCombat : MonoBehaviour
     public void OnDodge()
     {
         Debug.Log("Dodged");
-        _damageMultiplier += _damageMultiplier;
-        UIController.Instance.SetMultiplier(_damageMultiplier);
+        if (_damageMultiplier < 16)
+        {
+            _damageMultiplier += _damageMultiplier;
+            UIController.Instance.SetMultiplier(_damageMultiplier);
+        }
     }
     #endregion
 

@@ -10,6 +10,5 @@ public class KeyScript : SceneInventoryItem
     protected override void PickUp()
     {
         _playerController.AddItem(new Key(_id));
-        base.PickUp();
     } 
 }
