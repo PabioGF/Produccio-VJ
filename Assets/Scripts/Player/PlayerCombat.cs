@@ -372,7 +372,7 @@ public class PlayerCombat : MonoBehaviour
                 _attackAreas[1].SetActive(true);
                 break;
         }
-        Debug.Log(_damageMultiplier);
+        //Debug.Log(_damageMultiplier);
     }
 
     public void UnstopabbleAttackBegin()

@@ -812,6 +812,7 @@ GameObject:
   - component: {fileID: 6545994133088754762}
   - component: {fileID: 6051454010929463881}
   - component: {fileID: 8252022106237106676}
+  - component: {fileID: 3759862054026671316}
   m_Layer: 5
   m_Name: LevelComplete
   m_TagString: Untagged
@@ -879,6 +880,18 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!225 &3759862054026671316
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1770738988349105527}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1915177848433460670
 GameObject:
   m_ObjectHideFlags: 0

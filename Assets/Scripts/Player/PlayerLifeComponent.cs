@@ -86,6 +86,8 @@ public class PlayerLifeComponent : MonoBehaviour
     public void Heal(int healingPoints)
     {
         _currentLife += healingPoints;
+        if (_currentLife > _maxLife) _currentLife = _maxLife;
+
         UIController.Instance.SetLife(_currentLife);
     }
 }

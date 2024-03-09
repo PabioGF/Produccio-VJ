@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour
 {
     [SerializeField] private ObjectType type;
 
-    public enum ObjectType { Door, LockedDoor, Lever, Elevator, Platform, HealingItem }
+    public enum ObjectType { Door, LockedDoor, Lever, Elevator, Platform, HealingItem, InventoryItem }
     protected PlayerController _playerController;
 
     protected virtual void Interact() 
@@ -17,14 +17,18 @@ public class InteractableObject : MonoBehaviour
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent<PlayerController>(out var component))
+        if (collision.TryGetComponent(out PlayerController component))
         {
             _playerController = component;
+            _playerController.CanInteract(true);
         }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
+        if (!collision.CompareTag("Player")) return;
+
+        _playerController.CanInteract(false);
         _playerController = null;
     }
 

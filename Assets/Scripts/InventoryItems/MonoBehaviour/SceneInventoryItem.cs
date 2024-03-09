@@ -7,9 +7,8 @@ public class SceneInventoryItem : InteractableObject
     protected override void Interact()
     {
         base.Interact();
-        gameObject.SetActive(false);
-        Destroy(gameObject);
         PickUp();
+        gameObject.SetActive(false); 
     }
 
     protected virtual void PickUp() { }

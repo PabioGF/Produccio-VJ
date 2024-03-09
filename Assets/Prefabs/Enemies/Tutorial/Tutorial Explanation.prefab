@@ -39,7 +39,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 200}
+  m_SizeDelta: {x: 20, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!223 &8593247280189508795
 Canvas:
@@ -216,7 +216,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.610363, y: -0.122403145}
+  m_Offset: {x: -0.17863703, y: -0.026464343}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -227,7 +227,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 27.19762, y: 8.099396}
+  m_Size: {x: 9.129132, y: 5.029351}
   m_EdgeRadius: 0
 --- !u!1 &3996409167043370037
 GameObject:
@@ -265,7 +265,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.02, y: 0.22}
-  m_SizeDelta: {x: 15, y: 4.5}
+  m_SizeDelta: {x: 7, y: 3}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3839719153663382289
 CanvasRenderer:
@@ -340,7 +340,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 14, y: 3.2}
+  m_SizeDelta: {x: 6, y: 2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1448677712301341545
 CanvasRenderer:
@@ -370,14 +370,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hold shift + W / A to dodge up / down
-
-
-    Red attacks are dodged up,
-    blue attacks are dodged down'
+  m_text: Down + Interact to get through one-way platforms
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 88db1692f821ca142ba0dad664c00cc5, type: 2}
+  m_sharedMaterial: {fileID: -516555155376560319, guid: 88db1692f821ca142ba0dad664c00cc5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -401,15 +397,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 0.7
-  m_fontSizeBase: 0.7
+  m_fontSize: 0.6
+  m_fontSizeBase: 0.6
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

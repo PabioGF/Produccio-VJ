@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private CanvasGroup _interactionIndicator;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -54,10 +55,6 @@ public class PlayerController : MonoBehaviour
         if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
     }
 
-    private void OnDisable()
-    {
-    }
-
     private void Start()
     {
         if (LevelProgressController.Instance.HasSpawnPoint)
@@ -81,6 +78,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Inputs
     /// <summary>
     /// Function that gets the player movement inputs
     /// </summary>
@@ -95,6 +93,16 @@ public class PlayerController : MonoBehaviour
 
     }
 
+    /// <summary>
+    /// Function called when the player dies
+    /// </summary>
+    public void Die()
+    {
+        PlayerInputsManager.Instance.DisableControls();
+    }
+    #endregion
+
+    #region Movement
     /// <summary>
     /// Function that handles with the external conditions that affect the player movement
     /// </summary>
@@ -162,8 +170,9 @@ public class PlayerController : MonoBehaviour
 
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
-    #region Jump
+    #endregion
 
+    #region Jump
     /// <summary>
     /// Function that handles the executrion of the jump considering all the variables that are implied
     /// </summary>
@@ -271,19 +280,28 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// Function called when the player dies
-    /// </summary>
-    public void Die()
+    #region UI
+    public void CanInteract(bool can)
     {
-        PlayerInputsManager.Instance.DisableControls();
+        if (can)
+        {
+            _interactionIndicator.alpha = 1;
+        }
+        else
+        {
+            _interactionIndicator.alpha = 0;    
+        }
     }
+    
+    #endregion
 
+    #region Getters / Setters
     public Rigidbody2D Rigidbody => _rigidbody2D;
 
     public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
 
     public bool IsGrounded => _isGrounded;
 
-    public bool IsDead => _isDead;    
+    public bool IsDead => _isDead;
+    #endregion
 }

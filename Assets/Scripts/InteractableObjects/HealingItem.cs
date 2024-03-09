@@ -13,6 +13,7 @@ public class HealingScript : InteractableObject
         if (_playerController.TryGetComponent(out PlayerLifeComponent lifeComponent))
         {
             lifeComponent.Heal(_healingPoints);
+            gameObject.SetActive(false);
         }
     }
 }
