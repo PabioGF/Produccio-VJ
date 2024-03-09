@@ -98,7 +98,7 @@ GameObject:
   - component: {fileID: 3436838674230660831}
   - component: {fileID: 6133581867814015419}
   - component: {fileID: 7636496584748783295}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Turret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -297,7 +297,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 22
+  m_Radius: 18
 --- !u!1 &7411556761908215857
 GameObject:
   m_ObjectHideFlags: 0

@@ -337,7 +337,7 @@ MonoBehaviour:
   _maxSpeed: 15
   _acceleration: 100
   _airAcceleration: 75
-  _jumpForce: 30
+  _jumpForce: 26
   _maxJumps: 1
   _bufferTime: 0.3
   _fallSpeed: 90

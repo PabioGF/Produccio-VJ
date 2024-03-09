@@ -28,4 +28,14 @@ public class OneWayPlatformController : InteractableObject
         _boxCollider.enabled = true;
         _enableChange = true;
     }
+
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        // Doesn't show up the interact button
+        if (collision.TryGetComponent(out PlayerController component))
+        {
+            _playerController = component;
+        }
+    }
 }
