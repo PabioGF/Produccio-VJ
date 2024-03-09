@@ -15,7 +15,8 @@ public class OneWayPlatformController : InteractableObject
 
     protected override void Interact()
     {
-        Debug.Log("Platform interact");
+        if (PlayerInputsManager.Instance.ReadVerticalInput() != -1f) return;
+
         base.Interact();
         _enableChange = false;
         _boxCollider.enabled = false;
