@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,6 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private CanvasGroup _interactionIndicator;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -23,6 +23,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
+
+    [Header("VFX")]
+    [SerializeField] private GameObject _interactionIndicator;
+    [SerializeField] private Sprite[] _interactionSprites;
 
     public bool DesiredInteraction { get; set; }
 
@@ -162,10 +166,12 @@ public class PlayerController : MonoBehaviour
         if (_desiredVelocity.x < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
         } 
         else if (_desiredVelocity.x > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
@@ -285,14 +291,23 @@ public class PlayerController : MonoBehaviour
     {
         if (can)
         {
-            _interactionIndicator.alpha = 1;
+            switch (PlayerInputsManager.Instance.InputDevice)
+            {
+                case PlayerInputsManager.InputDevices.Keyboard:
+                    _interactionIndicator.GetComponent<SpriteRenderer>().sprite = _interactionSprites[0];
+                    break;
+
+                case PlayerInputsManager.InputDevices.Controller:
+                    _interactionIndicator.GetComponent<SpriteRenderer>().sprite = _interactionSprites[1];
+                    break;
+            }
+            _interactionIndicator.SetActive(true);
         }
         else
         {
-            _interactionIndicator.alpha = 0;    
+            _interactionIndicator.SetActive(false);
         }
     }
-    
     #endregion
 
     #region Getters / Setters
