@@ -5,13 +5,11 @@ using UnityEngine;
 
 public class LockedDoorController : InteractableObject
 {
-    [SerializeField] private Sprite _closedSprite;
-    [SerializeField] private Sprite _openSprite;
+    [SerializeField] private Sprite[] _sprites;
     [SerializeField] protected int id;
 
-    private bool isOpen;
+    private bool _isOpen;
     private bool _isUnlocked;
-    private bool _hasInteracted;
 
     protected override void Interact()
     {
@@ -35,10 +33,9 @@ public class LockedDoorController : InteractableObject
 
     private void ToggleDoor()
     {
-        Debug.Log("Open/Close");
-        GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
-        GetComponent<Collider2D>().enabled = isOpen;
-        isOpen = !isOpen;
+        GetComponent<SpriteRenderer>().sprite = _isOpen ? _sprites[0] : _sprites[1];
+        GetComponent<Collider2D>().enabled = _isOpen;
+        _isOpen = !_isOpen;
     }
 
     public void UnlockDoor()
