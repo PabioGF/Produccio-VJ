@@ -22,13 +22,15 @@ public class PlayerInputsManager : MonoBehaviour
     [SerializeField] private InputAction _throw;
     [SerializeField] private InputAction _pause;
 
+    public InputDevices InputDevice { get; private set; }
+    public enum InputDevices { Keyboard, Controller };
+
     private void Awake()
     {
         if (Instance == null)
         {
             Instance = this;
         }
-
 
         // Actions subscribing
         _jump.performed += JumpInput;
@@ -38,6 +40,27 @@ public class PlayerInputsManager : MonoBehaviour
         _throw.performed += ThrowInput;
         _pause.performed += PauseInput;
 
+        InputSystem.onActionChange += InputSystem_onActionChange;
+    }
+
+    private void InputSystem_onActionChange(object obj, InputActionChange change)
+    {
+        if (change == InputActionChange.ActionPerformed)
+        {
+            InputAction lastInputAction = (InputAction)obj;
+            InputDevice lastInputDevice = lastInputAction.activeControl.device;
+
+            if (lastInputDevice.name.Equals("Keyboard") || lastInputDevice.name.Equals("Mouse"))
+            {
+                Debug.Log("Keyboard");
+                InputDevice = InputDevices.Keyboard;
+            }
+            else
+            {
+                Debug.Log("Controller");
+                InputDevice = InputDevices.Controller;
+            }
+        }
     }
 
     private void OnEnable()
