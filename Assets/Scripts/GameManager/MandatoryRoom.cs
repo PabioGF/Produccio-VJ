@@ -30,6 +30,7 @@ public class MandatoryRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if (_playerIsInside) return;
         if (collision.CompareTag("Player"))
         {
             _playerIsInside = true;

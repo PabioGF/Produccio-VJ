@@ -10,9 +10,9 @@ public class TurretScript : MonoBehaviour
     [SerializeField] private Rigidbody2D _referencePoint;
     [SerializeField] private GameObject _bulletSpawnPoint;
 
+    private Animator _animator;
     private Rigidbody2D _rigidbody;
     private GameObject _player;
-    private bool _upperBullet;
     private Vector2 _aimDirection;
     private bool _playerDetected;
     private bool _isDisarmed;
@@ -21,6 +21,7 @@ public class TurretScript : MonoBehaviour
     #region Unity methods
     void Start()
     {
+        _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.Find("Player");
     }
@@ -73,6 +74,7 @@ public class TurretScript : MonoBehaviour
     /// </summary>
     private void SpawnBullet()
     {
+        _animator.SetTrigger("Shoot");
         GameObject newBullet = Instantiate(_bullet, _bulletSpawnPoint.transform.position, _bulletSpawnPoint.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
@@ -85,5 +87,6 @@ public class TurretScript : MonoBehaviour
         _isDisarmed = true;
         _playerDetected = false;
         CancelInvoke(nameof(SpawnBullet));
+        _animator.SetTrigger("Disarm");
     }
 }

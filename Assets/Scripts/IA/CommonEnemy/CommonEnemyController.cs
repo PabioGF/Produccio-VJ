@@ -27,7 +27,12 @@ public class CommonEnemyController : IAController
         base.EnemyBasicMovement();
 
         if (!hasDetected) return;
-        if (DistanceToPlayer() <= _minPlayerDistance) return;
+        if (DistanceToPlayer() <= _minPlayerDistance)
+        {
+            myVelocity.x = 0;
+            myRB.velocity = myVelocity;
+            return;
+        }
 
         Vector3 direction = (_player.position - transform.position).normalized;
         myVelocity.x = velocidadMovimiento * direction.x;
