@@ -9,13 +9,10 @@ public class CommonEnemyController : IAController
     [SerializeField] private float _minPlayerDistance;
     public float tiempoEntreCombos = 5.0f;
     
-    private float tiempoUltimoCombo;
-
     protected override void Start()
     {
         base.Start();
         myAnimator = GetComponent<Animator>();
-        tiempoUltimoCombo = -tiempoEntreCombos;
     }
 
     private void OnDrawGizmosSelected()
@@ -58,138 +55,4 @@ public class CommonEnemyController : IAController
         }
     }
     #endregion
-
-    /*
-    private void Pegar()
-    {
-        // Calcular el tiempo transcurrido desde el último combo
-        float tiempoDesdeUltimoCombo = Time.time - tiempoUltimoCombo;
-
-        // Realizar combo si ha pasado el tiempo requerido
-        if (tiempoDesdeUltimoCombo >= tiempoEntreCombos)
-        {
-            int ataqueAleatorio = 2;//Random.Range(1, 4);
-           
-            switch (ataqueAleatorio)
-            {
-                case 1:
-                    Combo1();
-                    break;
-                case 2:
-                    Combo2();
-                    break;
-                case 3:
-                    Combo3();
-                    break;
-            }
-        }
-    }
-
-
-    private void Combo1()
-    {
-        //puñetazo, puñetazo, puñetazo
-        switch (contPunch)
-        {
-            case 1:
-                myAnimator.SetTrigger("doPunch");
-                break;
-            case 2:
-                myAnimator.SetTrigger("doPunch");
-                break;
-            case 3:
-                myAnimator.SetTrigger("doPunch");
-                tiempoUltimoCombo = Time.time;
-                break;
-        }
-    }
-
-    private void Combo2()
-    {
-
-        //puñetazo, puñetazo, patada
-
-        switch (contPunch)
-        {
-            case 1:
-                myAnimator.SetTrigger("doPunch");
-                break;
-            case 2:
-                myAnimator.SetTrigger("doPunch");
-                break;
-            case 3:
-                myAnimator.SetTrigger("doKick");
-                tiempoUltimoCombo = Time.time;
-
-
-                break;
-        }
-    }
-
-    private void Combo3()
-    {
-
-
-
-        switch (contPunch)
-        {
-            case 1:
-                myAnimator.SetTrigger("doKick");
-                break;
-            case 2:
-                myAnimator.SetTrigger("doKick");
-                
-                break;
-            case 3:
-                myAnimator.SetTrigger("doPunch");
-                tiempoUltimoCombo = Time.time;
-                
-                
-                break;
-        }
-        //patada, patada, puñetazo, patada
-
-
-    }
-
-
-    private void CountPunch()
-    {
-       
-        contPunch++;
-        if(contPunch > 3)
-        {
-            contPunch = 0;
-        }
-        Debug.Log(contPunch);
-    }
-
-    private void setLowTrigger()
-    {
-        lowTrigger.SetActive(true);
-
-        // Desactivar el trigger después de un tiempo
-        //Invoke("DesactivarLowTrigger", tiempoEntreAtaques);
-    }
-
-    private void DesactivarLowTrigger()
-    {
-        lowTrigger.SetActive(false);
-        myAnimator.SetTrigger("stopPunch");
-    }
-
-    private void setHighTrigger()
-    {
-        highTrigger.SetActive(true);
-        myAnimator.SetTrigger("stopPunch");
-
-        // Invoke("DesactivarHighTrigger", tiempoEntreAtaques);
-    }
-
-    private void DesactivarHighTrigger()
-    {
-        highTrigger.SetActive(false);
-    }
-    */
-
 }

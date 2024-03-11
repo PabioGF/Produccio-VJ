@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &385154533092787707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942068743465955684}
+  m_Layer: 0
+  m_Name: Bullet Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &942068743465955684
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 385154533092787707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.048, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4056268755535245160}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1596627818560971666
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,7 +42,7 @@ GameObject:
   - component: {fileID: 4056268755535245160}
   - component: {fileID: 7935135467462727906}
   m_Layer: 0
-  m_Name: Pointer
+  m_Name: Turret Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,10 +57,11 @@ Transform:
   m_GameObject: {fileID: 1596627818560971666}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1, y: 0, z: 0}
+  m_LocalPosition: {x: 0.4375, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 942068743465955684}
   m_Father: {fileID: 6331174834547177021}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7935135467462727906
@@ -72,9 +104,9 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.990566, g: 0, b: 0.074199215, a: 1}
+  m_SortingOrder: 1
+  m_Sprite: {fileID: 21300000, guid: 6e0048a96002eb044aa93204a7836f14, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -162,10 +194,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: db750325989564987a34393247d883b4, type: 3}
-  m_Color: {r: 0.07058823, g: 1, b: 0.124326006, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 764f071c60f000d4f88f97d310f45296, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
@@ -185,12 +217,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81be2488d461d9c40a85b40510c38617, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _highBullet: {fileID: 2941671906316021625, guid: 04b4684e3cec532438f7bc2e4a7f1d33, type: 3}
-  _lowBullet: {fileID: 2941671906316021625, guid: c42c3a6aa7d535343827f7b1d75d7ab2, type: 3}
+  _bullet: {fileID: 2941671906316021625, guid: 04b4684e3cec532438f7bc2e4a7f1d33, type: 3}
   _fireRate: 3
-  _upperBulletProbability: 0.5
-  _referencePoint: {fileID: 6206330329560708232}
-  _pointer: {fileID: 1596627818560971666}
+  _referencePoint: {fileID: 1501994420469854457}
+  _bulletSpawnPoint: {fileID: 385154533092787707}
 --- !u!50 &3436838674230660831
 Rigidbody2D:
   serializedVersion: 4
@@ -307,9 +337,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6331174834547177021}
-  - component: {fileID: 6206330329560708232}
+  - component: {fileID: 1501994420469854457}
   m_Layer: 0
-  m_Name: ReferencePoint
+  m_Name: Reference Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -324,14 +354,14 @@ Transform:
   m_GameObject: {fileID: 7411556761908215857}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -0.496, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4056268755535245160}
   m_Father: {fileID: 904789017574266482}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!50 &6206330329560708232
+--- !u!50 &1501994420469854457
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0

@@ -7,6 +7,13 @@ public class LeverScript : InteractableObject
     #region Global Variables
     [SerializeField] private GameObject _linkedObject;
     [SerializeField] private LinkedObjectType _objectType;
+
+    private Animator _animator;
+
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
     private enum LinkedObjectType
     {
         turret = 0,
@@ -18,6 +25,8 @@ public class LeverScript : InteractableObject
     protected override void Interact()
     {
         base.Interact();
+        _animator.SetTrigger("Toggle");
+
         switch (_objectType)
         { 
             case LinkedObjectType.turret:

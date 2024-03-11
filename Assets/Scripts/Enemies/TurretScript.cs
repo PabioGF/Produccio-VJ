@@ -5,12 +5,10 @@ using UnityEngine;
 public class TurretScript : MonoBehaviour
 {
     #region Variables
-    [SerializeField] private GameObject _highBullet;
-    [SerializeField] private GameObject _lowBullet;
+    [SerializeField] private GameObject _bullet;
     [SerializeField] private float _fireRate;
-    [SerializeField] private float _upperBulletProbability;
     [SerializeField] private Rigidbody2D _referencePoint;
-    [SerializeField] private GameObject _pointer;
+    [SerializeField] private GameObject _bulletSpawnPoint;
 
     private Rigidbody2D _rigidbody;
     private GameObject _player;
@@ -75,8 +73,7 @@ public class TurretScript : MonoBehaviour
     /// </summary>
     private void SpawnBullet()
     {
-        GameObject bullet = Random.value > _upperBulletProbability ? _highBullet : _lowBullet;
-        GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
+        GameObject newBullet = Instantiate(_bullet, _bulletSpawnPoint.transform.position, _bulletSpawnPoint.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
 
