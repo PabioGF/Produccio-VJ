@@ -6,6 +6,6 @@ using UnityEngine.InputSystem;
 public abstract class InventoryItem
 {
     protected ItemType _type;
-    public enum ItemType { Key, Shield, Bottle }
+    public enum ItemType { Key, Bottle, Shield }
     public ItemType Type => _type;
 }

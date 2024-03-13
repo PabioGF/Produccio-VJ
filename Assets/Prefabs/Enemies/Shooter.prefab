@@ -390,7 +390,6 @@ MonoBehaviour:
   _velocityMultiplier: 1
   velocidadMovimiento: 4
   _detectionDistance: 20
-  _attackRadius: 0
   _attackRange: 20
   _enablingDistance: 40
   _highBullet: {fileID: 2941671906316021625, guid: 04b4684e3cec532438f7bc2e4a7f1d33, type: 3}

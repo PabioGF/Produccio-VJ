@@ -12,25 +12,20 @@ public class UIController : MonoBehaviour
     #region Global Variables
     [SerializeField] private GameObject _statsPanel;
     public static UIController Instance;
-    private PlayerInputActions _playerInputActions;
     #endregion
 
     #region Unity Methods
     private void Awake()
     {
-        Instance = this;
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
+        if (Instance == null)
+        {
+            Instance = this;
+        }
         _statsPanel.SetActive(true);
-        _playerInputActions.Player.Pause.performed += TogglePause;
-        _playerInputActions.Player.Interact.performed += HideDeathScreen;
     }
 
     private void OnDisable()
     {
-        _playerInputActions.Player.Pause.performed -= TogglePause;
-        _playerInputActions.Player.Interact.performed -= HideDeathScreen;
-        _playerInputActions.Disable();
     }
     #endregion
 
@@ -67,7 +62,7 @@ public class UIController : MonoBehaviour
     /// Pauses / unpauses the game
     /// </summary>
     /// <param name="context">InputAction</param>
-    public void TogglePause(InputAction.CallbackContext context)
+    public void HandlePauseInput()
     {
         if (!_isPaused)
         {
@@ -145,8 +140,7 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Reloads the game after dying
     /// </summary>
-    /// <param name="context">InputAction</param>
-    public void HideDeathScreen(InputAction.CallbackContext context)
+    public void HideDeathScreen()
     {
         if (!_isDeathScreen) return;
 

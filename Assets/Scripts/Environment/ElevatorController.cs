@@ -9,6 +9,7 @@ public class ElevatorController : InteractableObject
 
     protected override void Interact()
     {
+        base.Interact();
         if (_hasInteracted) return;
 
         _hasInteracted = true;

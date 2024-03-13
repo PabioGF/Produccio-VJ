@@ -14,6 +14,8 @@ public class IAController : MonoBehaviour
     [SerializeField] private float _detectionExtraTime;
     [SerializeField] private float _velocityMultiplier;
     [SerializeField] protected float velocidadMovimiento;
+    [SerializeField] protected bool _limitedMovement;
+    [SerializeField] protected float _maxPosition, _minPosition;
 
     [Header("Shared Enemy Combat Params")]
     [SerializeField] protected float _detectionDistance;
@@ -34,6 +36,7 @@ public class IAController : MonoBehaviour
     private float _lastTimeHit;
     private bool _isFlipped;
     private bool _isGrounded;
+    private bool _canChangeDirection;
     #endregion
 
     #region Unity Methods
@@ -42,6 +45,7 @@ public class IAController : MonoBehaviour
         ReiniciarTemporizador();
         hasDetected = false;
         myRB = GetComponent<Rigidbody2D>();
+        _canChangeDirection = true;
     }
     
     protected virtual void Update()
@@ -116,7 +120,8 @@ public class IAController : MonoBehaviour
         bool leftFootColliding = CheckFeetColliding(leftFoot);
         bool rightFootColliding = CheckFeetColliding(rightFoot);
 
-        if (!leftFootColliding || !rightFootColliding || tiempoActual <= 0f)
+
+        if (_canChangeDirection && (!leftFootColliding || !rightFootColliding || tiempoActual <= 0f || CheckMovementLimits()))
         {
             CambiarDireccion();
             ReiniciarTemporizador();
@@ -125,6 +130,17 @@ public class IAController : MonoBehaviour
         myVelocity.x = velocidadMovimiento * direccion;
         tiempoActual -= Time.deltaTime;
         myRB.velocity = myVelocity;
+    }
+
+    private void ResetDirectionChange()
+    {
+        _canChangeDirection = true;
+    }
+
+    private bool CheckMovementLimits()
+    {
+        if (!_limitedMovement) return false;
+        return transform.position.x >= _maxPosition || transform.position.x <= _minPosition;
     }
 
     public void LookAtPlayer()
@@ -154,6 +170,8 @@ public class IAController : MonoBehaviour
     private void CambiarDireccion()
     {
         direccion *= -1;
+        _canChangeDirection = false;
+        Invoke(nameof(ResetDirectionChange), 0.5f);
     }
 
     public void GetHit()

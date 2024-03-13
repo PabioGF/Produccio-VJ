@@ -26,7 +26,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float _fallSpeedThreshold;
 
     private float _verticalOffset;
-    private PlayerInputActions _playerInputActions;
     private float _lookAheadDesiredDistance;
 
     private float _dampingX = 1f;
@@ -43,9 +42,6 @@ public class CameraController : MonoBehaviour
         newPositon.z = transform.position.z;
         transform.position = newPositon;
         
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-
         if (_player == null)
         {
             Debug.LogError("[CameraController] La referència a Jugador és null");
@@ -88,7 +84,7 @@ public class CameraController : MonoBehaviour
     private void HandleLookahead()
     {
         float playerVelocity = Mathf.Abs(_playerRb.velocity.x) * _velocitySmoother;
-        float lookAheadOffset = _playerInputActions.Player.MoveHorizontal.ReadValue<float>() != 0 ? Mathf.Min(playerVelocity, _lookAheadMaxDistance) : Mathf.Max(playerVelocity, _lookAheadMinDistance);
+        float lookAheadOffset = PlayerInputsManager.Instance.ReadHorizontalInput() != 0 ? Mathf.Min(playerVelocity, _lookAheadMaxDistance) : Mathf.Max(playerVelocity, _lookAheadMinDistance);
 
         //Set its value to minimum 1 in case it manages to get below in certain situations
         if (lookAheadOffset < 1) lookAheadOffset = 1;
