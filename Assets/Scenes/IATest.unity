@@ -977,12 +977,13 @@ MonoBehaviour:
   _velocityMultiplier: 1
   velocidadMovimiento: 4
   _detectionDistance: 15
-  _attackRange: 4
+  _attackRange: 5
   _enablingDistance: 40
-  minPlayerDistance: 10
+  minPlayerDistance: 5
   _attackPoint: {fileID: 1415322719}
   _attackDamage: 1
   _attackRadius: 1.5
+  tiempoEntreCombos: 5
 --- !u!1 &606222639
 GameObject:
   m_ObjectHideFlags: 0
@@ -992,7 +993,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606222640}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: right (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1453,7 +1454,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1044445175}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: left (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1489,7 +1490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2728069132200657348, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       propertyPath: m_Layer
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 2728069132200657348, guid: a74058c4ae04542d6a5cc62300e36c12, type: 3}
       propertyPath: m_IsActive
@@ -1578,7 +1579,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1415322719}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Attack Point
   m_TagString: Untagged
   m_Icon: {fileID: 0}

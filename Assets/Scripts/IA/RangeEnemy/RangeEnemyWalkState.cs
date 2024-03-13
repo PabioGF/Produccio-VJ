@@ -19,6 +19,7 @@ public class RangeEnemyWalkState : StateMachineBehaviour
 
         if (_enemyController.DistanceToPlayer() < _enemyController.AttackRange)
         {
+            
             _enemyController.Attack();
         }
     }
@@ -31,6 +32,7 @@ public class RangeEnemyWalkState : StateMachineBehaviour
 
     private void Move()
     {
+
         _enemyController.EnemyBasicMovement();
     }
 }
