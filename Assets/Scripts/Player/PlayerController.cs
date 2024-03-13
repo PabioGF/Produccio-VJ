@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,7 +10,6 @@ public class PlayerController : MonoBehaviour
     #region Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
-    [SerializeField] private PlayerInputActions _playerInputActions;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -23,6 +23,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _fallSpeed;
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
+
+    [Header("VFX")]
+    [SerializeField] private GameObject _interactionIndicator;
+    [SerializeField] private Sprite[] _interactionSprites;
+
+    public bool DesiredInteraction { get; set; }
 
     private PlayerCombat _playerCombat;
     private Rigidbody2D _rigidbody2D;
@@ -49,18 +55,8 @@ public class PlayerController : MonoBehaviour
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _playerCombat = GetComponent<PlayerCombat>();
         _myAnimator = GetComponent<Animator>();
-        _playerInputActions = new PlayerInputActions();
-        _playerInputActions.Player.Enable();
-
-        _playerInputActions.Player.Jump.performed += JumpInput;
 
         if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
-    }
-
-    private void OnDisable()
-    {
-        _playerInputActions.Player.Jump.performed -= JumpInput;
-        _playerInputActions.Player.Disable();
     }
 
     private void Start()
@@ -86,6 +82,7 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
+    #region Inputs
     /// <summary>
     /// Function that gets the player movement inputs
     /// </summary>
@@ -94,13 +91,22 @@ public class PlayerController : MonoBehaviour
         if (_isOverride) return;
 
         if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking && !_playerCombat.IsDodging)
-            _movementInput = _playerInputActions.Player.MoveHorizontal.ReadValue<float>();
+            _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
         else
             _movementInput = 0;
 
-        _jumpHold = _playerInputActions.Player.Jump.ReadValue<float>() > 0;
     }
 
+    /// <summary>
+    /// Function called when the player dies
+    /// </summary>
+    public void Die()
+    {
+        PlayerInputsManager.Instance.DisableControls();
+    }
+    #endregion
+
+    #region Movement
     /// <summary>
     /// Function that handles with the external conditions that affect the player movement
     /// </summary>
@@ -160,16 +166,19 @@ public class PlayerController : MonoBehaviour
         if (_desiredVelocity.x < 0)
         {
             transform.eulerAngles = new Vector3(0, 180, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
         } 
         else if (_desiredVelocity.x > 0)
         {
             transform.eulerAngles = new Vector3(0, 0, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
         }
 
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
-    #region Jump
+    #endregion
 
+    #region Jump
     /// <summary>
     /// Function that handles the executrion of the jump considering all the variables that are implied
     /// </summary>
@@ -220,13 +229,10 @@ public class PlayerController : MonoBehaviour
     /// <summary>
     /// Function that executes then the jump button is pressed and lets the script know
     /// </summary>
-    public void JumpInput(InputAction.CallbackContext context)
+    public void HandleJumpInput()
     {
-        if (context.performed) 
-        {
-            _jumpPressed = _timer;
-            _desiredJump = true;
-        }
+        _jumpPressed = _timer;
+        _desiredJump = true; 
     }
     #endregion
     
@@ -280,20 +286,37 @@ public class PlayerController : MonoBehaviour
     }
     #endregion
 
-    /// <summary>
-    /// Function called when the player dies
-    /// </summary>
-    public void Die()
+    #region UI
+    public void CanInteract(bool can)
     {
-        _playerInputActions.Player.Disable();
-        _playerCombat.Die();
-    }
+        if (can)
+        {
+            switch (PlayerInputsManager.Instance.InputDevice)
+            {
+                case PlayerInputsManager.InputDevices.Keyboard:
+                    _interactionIndicator.GetComponent<SpriteRenderer>().sprite = _interactionSprites[0];
+                    break;
 
+                case PlayerInputsManager.InputDevices.Controller:
+                    _interactionIndicator.GetComponent<SpriteRenderer>().sprite = _interactionSprites[1];
+                    break;
+            }
+            _interactionIndicator.SetActive(true);
+        }
+        else
+        {
+            _interactionIndicator.SetActive(false);
+        }
+    }
+    #endregion
+
+    #region Getters / Setters
     public Rigidbody2D Rigidbody => _rigidbody2D;
 
     public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
 
     public bool IsGrounded => _isGrounded;
 
-    public bool IsDead => _isDead;    
+    public bool IsDead => _isDead;
+    #endregion
 }

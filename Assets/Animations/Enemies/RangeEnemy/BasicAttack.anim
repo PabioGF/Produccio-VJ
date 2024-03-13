@@ -22,15 +22,15 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
-    - time: 0.16666667
+    - time: 0.31666666
       value: {fileID: 21300000, guid: ff0283febcf732f4da49c1a334fa3d3d, type: 3}
-    - time: 0.28333333
-      value: {fileID: 21300000, guid: 5edb32aee929af14b8352d3a839b937f, type: 3}
     - time: 0.35
       value: {fileID: 21300000, guid: fc565263b51cf7b4ead2da352dd58ab4, type: 3}
-    - time: 0.4
-      value: {fileID: 21300000, guid: ac4e2f66ea27d6a4ca243a23474ae14e, type: 3}
-    - time: 0.45
+    - time: 0.38333333
+      value: {fileID: 21300000, guid: 5edb32aee929af14b8352d3a839b937f, type: 3}
+    - time: 0.46666667
+      value: {fileID: 21300000, guid: c552b99a21d339f45b665a5da25dbdca, type: 3}
+    - time: 0.5833333
       value: {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
     - time: 1
       value: {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
@@ -58,9 +58,9 @@ AnimationClip:
     pptrCurveMapping:
     - {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
     - {fileID: 21300000, guid: ff0283febcf732f4da49c1a334fa3d3d, type: 3}
-    - {fileID: 21300000, guid: 5edb32aee929af14b8352d3a839b937f, type: 3}
     - {fileID: 21300000, guid: fc565263b51cf7b4ead2da352dd58ab4, type: 3}
-    - {fileID: 21300000, guid: ac4e2f66ea27d6a4ca243a23474ae14e, type: 3}
+    - {fileID: 21300000, guid: 5edb32aee929af14b8352d3a839b937f, type: 3}
+    - {fileID: 21300000, guid: c552b99a21d339f45b665a5da25dbdca, type: 3}
     - {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
     - {fileID: 21300000, guid: 52f13a7f3439c9d419fec3490b12827e, type: 3}
   m_AnimationClipSettings:
@@ -94,4 +94,11 @@ AnimationClip:
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
+    messageOptions: 0
+  - time: 1
+    functionName: CambiaAtaque
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
     messageOptions: 0
