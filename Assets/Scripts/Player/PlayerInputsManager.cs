@@ -25,6 +25,8 @@ public class PlayerInputsManager : MonoBehaviour
     public InputDevices InputDevice { get; private set; }
     public enum InputDevices { Keyboard, Controller };
 
+    private int _interactionFramesCounter;
+
     private void Awake()
     {
         if (Instance == null)
@@ -41,6 +43,11 @@ public class PlayerInputsManager : MonoBehaviour
         _pause.performed += PauseInput;
 
         InputSystem.onActionChange += InputSystem_onActionChange;
+    }
+
+    private void Update()
+    {
+        ManageInteraction();
     }
 
     private void InputSystem_onActionChange(object obj, InputActionChange change)
@@ -79,6 +86,22 @@ public class PlayerInputsManager : MonoBehaviour
         _slowAttack.performed -= SlowAttackInput;
         _throw.performed -= ThrowInput;
         _pause.performed -= PauseInput;
+    }
+
+    private void ManageInteraction()
+    {
+        if (_playerController.DesiredInteraction)
+        {
+            _interactionFramesCounter++;
+            if (_interactionFramesCounter > 10)
+            {
+                _playerController.DesiredInteraction = false;
+            }
+        }
+        else
+        {
+            _interactionFramesCounter = 0;
+        }
     }
     
     public float ReadHorizontalInput()

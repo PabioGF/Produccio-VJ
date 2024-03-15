@@ -45,7 +45,7 @@ Camera:
   m_Enabled: 1
   serializedVersion: 2
   m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 0}
+  m_BackGroundColor: {r: 0.24705884, g: 0.20784315, b: 0.31764707, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
   m_FOVAxisMode: 0
@@ -112,7 +112,7 @@ MonoBehaviour:
   _maxDampingX: 0
   _minDampingX: 0
   _maxDampingY: 60
-  _minDampingY: 0.5
+  _minDampingY: 1
   _dampTransitionTimeY: 2
   _velocitySmoother: 1.5
   _lookAheadMinDistance: 1

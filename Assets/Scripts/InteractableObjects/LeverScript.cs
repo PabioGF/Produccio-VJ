@@ -9,6 +9,7 @@ public class LeverScript : InteractableObject
     [SerializeField] private LinkedObjectType _objectType;
 
     private Animator _animator;
+    private bool _toggled;
 
     private void Awake()
     {
@@ -37,5 +38,29 @@ public class LeverScript : InteractableObject
                 break;
         }
 
+        _playerController.CanInteract(false);
+        _playerController = null;
+        _toggled = true;
+    }
+
+    protected override void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (_toggled) return;
+
+        if (collision.TryGetComponent(out PlayerController component))
+        {
+            _playerController = component;
+            _playerController.CanInteract(true);
+        }
+    }
+
+    protected override void OnTriggerExit2D(Collider2D collision)
+    {
+        if (_toggled) return;
+
+        if (!collision.CompareTag("Player")) return;
+
+        _playerController.CanInteract(false);
+        _playerController = null;
     }
 }
