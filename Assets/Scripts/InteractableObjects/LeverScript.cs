@@ -38,6 +38,8 @@ public class LeverScript : InteractableObject
                 break;
         }
 
+        _playerController.CanInteract(false);
+        _playerController = null;
         _toggled = true;
     }
 
