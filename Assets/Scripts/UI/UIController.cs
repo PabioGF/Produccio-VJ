@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
 {
     #region Global Variables
     [SerializeField] private GameObject _statsPanel;
+    [SerializeField] private float _fadeInDuration;
     public static UIController Instance;
     #endregion
 
@@ -126,6 +127,7 @@ public class UIController : MonoBehaviour
     #region Death Screen
     [Header ("Death Screen")]
     [SerializeField] private GameObject _deathScreen;
+    [SerializeField] private GameObject _selectedOptionDeath;
     private bool _isDeathScreen;
 
     /// <summary>
@@ -135,6 +137,11 @@ public class UIController : MonoBehaviour
     {
         _isDeathScreen = true;
         _deathScreen.SetActive(true);
+        _statsPanel.SetActive(false);
+
+        StartCoroutine(FadeInScreen(_deathScreen.GetComponent<CanvasGroup>()));
+
+        EventSystem.current.SetSelectedGameObject(_selectedOptionDeath);
     }
 
     /// <summary>
@@ -157,25 +164,12 @@ public class UIController : MonoBehaviour
     /// <summary>
     /// Shows the level complete screen
     /// </summary>
-    public IEnumerator LevelCompleted()
+    public void LevelCompleted()
     {
         _levelCompleteScreen.SetActive(true);
         _statsPanel.SetActive(false);
 
-        float timeElapsed = 0;
-        CanvasGroup group = _levelCompleteScreen.GetComponent<CanvasGroup>();
-        //AudioManager.Instance.PlaySFX("LightSwitch");
-
-        float duration = 0.5f;
-        while (timeElapsed < duration)
-        {
-            group.alpha = Mathf.Lerp(0, 1, timeElapsed / duration);
-            timeElapsed += Time.deltaTime;
-            yield return null;
-        }
-        group.alpha = 1;
-
-        Time.timeScale = 0;
+        StartCoroutine(FadeInScreen(_levelCompleteScreen.GetComponent<CanvasGroup>()));
 
         EventSystem.current.SetSelectedGameObject(_selectedOptionCompleted);
     }
@@ -207,4 +201,19 @@ public class UIController : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(_selectedOptionEnd);
     }
     #endregion
+
+    private IEnumerator FadeInScreen(CanvasGroup screen)
+    {
+        float timeElapsed = 0;
+
+        while (timeElapsed < _fadeInDuration)
+        {
+            screen.alpha = Mathf.Lerp(0, 1, timeElapsed / _fadeInDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        screen.alpha = 1;
+
+        Time.timeScale = 0;
+    }
 }

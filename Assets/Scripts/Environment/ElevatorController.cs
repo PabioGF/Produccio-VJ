@@ -21,7 +21,7 @@ public class ElevatorController : InteractableObject
 
     private void CompleteLevel()
     {
-        StartCoroutine(UIController.Instance.LevelCompleted());
+        UIController.Instance.LevelCompleted();
 
         Debug.Log("Level complete previous index: " + ScenesController.Instance.CurrentLevelIndex);
 
