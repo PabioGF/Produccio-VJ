@@ -84,7 +84,6 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         HandleTimers();
-        HandleDodge();
         ExecuteAttack();
     }
     #endregion
@@ -439,65 +438,6 @@ public class PlayerCombat : MonoBehaviour
     #endregion
 
     #region Dodge
-    /// <summary>
-    /// Handles the dodge logic when holding the dodge trigger buttond and moving to the upper or lower direction axis
-    /// </summary>
-    private void HandleDodge()
-    {
-        if (!_playerController.IsGrounded) return;
-
-        if (PlayerInputsManager.Instance.ReadDodgeTriggerValue() == 1) _dodgeStance = true;
-        else _dodgeStance = false;
-
-        _myAnimator.SetBool("isDodging", _dodgeStance);
-
-        if (_dodgeStance)
-        {
-            float dodgeDirection = PlayerInputsManager.Instance.ReadVerticalInput();
-
-            if (_dodgeCdTimer > _dodgeCd)
-            {
-                if (dodgeDirection == 1)
-                {
-                    ExecuteDodge(DodgeType.HighDodge);
-                }
-                if (dodgeDirection == -1)
-                {
-                    ExecuteDodge(DodgeType.LowDodge);
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    /// Executes the dodge action
-    /// </summary>
-    /// <param name="dodgeType">The dodge type</param>
-    private void ExecuteDodge(DodgeType dodgeType)
-    {
-        _dodgeCdTimer = 0;
-        _isDodging = true;
-        _dodgeType = dodgeType;
-
-        switch (dodgeType)
-        {
-            case DodgeType.LowDodge:
-                _myAnimator.SetTrigger("DodgeDown");
-                break;
-            case DodgeType.HighDodge:
-                _myAnimator.SetTrigger("DodgeUp");
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Stops the dodge action
-    /// </summary>
-    public void StopDodge()
-    {
-        _isDodging = false;
-    }
-
     /// <summary>
     /// Method called when the player successfully dodges an attack
     /// </summary>

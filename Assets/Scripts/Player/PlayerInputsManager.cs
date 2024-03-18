@@ -18,7 +18,7 @@ public class PlayerInputsManager : MonoBehaviour
     [SerializeField] private InputAction _interact;
     [SerializeField] private InputAction _fastAttack;
     [SerializeField] private InputAction _slowAttack;
-    [SerializeField] private InputAction _dodgeTrigger;
+    [SerializeField] private InputAction _dash;
     [SerializeField] private InputAction _throw;
     [SerializeField] private InputAction _pause;
 
@@ -35,6 +35,7 @@ public class PlayerInputsManager : MonoBehaviour
         }
 
         // Actions subscribing
+        _dash.performed += DashInput;
         _jump.performed += JumpInput;
         _interact.performed += InteractInput;
         _fastAttack.performed += FastAttackInput;
@@ -80,6 +81,7 @@ public class PlayerInputsManager : MonoBehaviour
         DisableControls();
         _interact.Disable();
 
+        _dash.performed -= DashInput;
         _jump.performed -= JumpInput;
         _interact.performed -= InteractInput;
         _fastAttack.performed -= FastAttackInput;
@@ -114,9 +116,12 @@ public class PlayerInputsManager : MonoBehaviour
         return _verticalInput.ReadValue<float>();
     }
 
-    public float ReadDodgeTriggerValue()
+    public void DashInput(InputAction.CallbackContext context)
     {
-        return _dodgeTrigger.ReadValue<float>();
+        if (context.performed)
+        {
+            _playerController.HandleDashInput();
+        }
     }
 
     public void JumpInput(InputAction.CallbackContext context)
@@ -132,7 +137,6 @@ public class PlayerInputsManager : MonoBehaviour
         if (context.performed)
         {
             _playerController.DesiredInteraction = true;
-            UIController.Instance.HideDeathScreen();
         }
     }
 
@@ -176,7 +180,7 @@ public class PlayerInputsManager : MonoBehaviour
         _interact.Enable();
         _fastAttack.Enable();
         _slowAttack.Enable();
-        _dodgeTrigger.Enable();
+        _dash.Enable();
         _throw.Enable();
         _pause.Enable();
     }
@@ -188,7 +192,7 @@ public class PlayerInputsManager : MonoBehaviour
         _jump.Disable();
         _fastAttack.Disable();
         _slowAttack.Disable();
-        _dodgeTrigger.Disable();
+        _dash.Disable();
         _throw.Disable();
         _pause.Disable();
     }
