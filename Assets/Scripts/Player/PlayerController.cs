@@ -7,9 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Variables
+    #region Global Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private GameObject _hitbox;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -176,6 +177,7 @@ public class PlayerController : MonoBehaviour
                 // Ends the dash
                 _isDashing = false;
                 _desiredVelocity.x = _maxSpeed * _dashDirection;
+                _hitbox.SetActive(true);
             }
         }
         else
@@ -213,14 +215,13 @@ public class PlayerController : MonoBehaviour
             // If it can, dashed towards the direction the player is inputting
             if (_timer - _dashPerformedTime > _dashCd)
             {
-                Debug.Log("Dash");
                 _dashPerformedTime = _timer;
                 _isDashing = true;
 
                 if (_movementInput == 0) _dashDirection = transform.right.x;
                 else _dashDirection = _movementInput;
 
-                Debug.Log(_dashDirection);
+                _hitbox.SetActive(false);
             }
         }
     }

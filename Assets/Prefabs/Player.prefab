@@ -210,8 +210,95 @@ Transform:
   - {fileID: 8285716040168945687}
   - {fileID: 5474290537355464678}
   - {fileID: 1789773650026525191}
+  - {fileID: 8866786550273443486}
   m_Father: {fileID: 942383339766095506}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3286404743851591409
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8866786550273443486}
+  - component: {fileID: 6058480158865233575}
+  - component: {fileID: 7047572143278136663}
+  m_Layer: 10
+  m_Name: Hitbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8866786550273443486
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286404743851591409}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 668350209096963149}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!70 &6058480158865233575
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286404743851591409}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_Size: {x: 0.7, y: 3.27}
+  m_Direction: 0
+--- !u!114 &7047572143278136663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3286404743851591409}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95ff9c087a175cf45b2b866f2a7cccb2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerCombat: {fileID: 5160320821678128178}
+  _playerController: {fileID: 6838906068520528515}
+  _hitStopController: {fileID: 0}
+  _hitStopDuration: 0.2
+  _parent: {fileID: 5180191103471191624}
+  _maxLife: 5
 --- !u!1 &5180191103471191624
 GameObject:
   m_ObjectHideFlags: 0
@@ -223,7 +310,6 @@ GameObject:
   - component: {fileID: 942383339766095506}
   - component: {fileID: 6838906068520528515}
   - component: {fileID: 5160320821678128178}
-  - component: {fileID: 2404716407726379280}
   - component: {fileID: 7522392117402914908}
   - component: {fileID: 1831358464902730382}
   - component: {fileID: 1162993274704312679}
@@ -270,15 +356,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _inventoryController: {fileID: 1742377338972371357}
+  _hitbox: {fileID: 3286404743851591409}
   _maxSpeed: 15
   _acceleration: 100
   _airAcceleration: 75
-  _jumpForce: 26
+  _jumpForce: 30
   _maxJumps: 1
   _bufferTime: 0.3
   _fallSpeed: 90
   _maxFallSpeed: 50
   _coyoteTime: 0.1
+  _dashCd: 1
+  _dashSpeed: 40
+  _dashDuration: 0.2
   _interactionIndicator: {fileID: 1524150193022436047}
   _interactionSprites:
   - {fileID: 21300000, guid: 7e6777f686c4c474f869b54f15e63c20, type: 3}
@@ -302,6 +392,7 @@ MonoBehaviour:
   _playerController: {fileID: 6838906068520528515}
   _feet: {fileID: 6139601005165452146}
   _sprite: {fileID: 7589495094095742432}
+  _hitbox: {fileID: 3286404743851591409}
   _attackDuration: 0.1
   _attackCd: 0.3
   _maxTimeBetweenAttacks: 0.2
@@ -311,24 +402,6 @@ MonoBehaviour:
   _fallExplosionPushForce: 50
   _comboTime: 0.5
   _dodgeCd: 0
---- !u!114 &2404716407726379280
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5180191103471191624}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 95ff9c087a175cf45b2b866f2a7cccb2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _playerCombat: {fileID: 5160320821678128178}
-  _playerController: {fileID: 6838906068520528515}
-  _hitStopController: {fileID: 0}
-  _hitStopDuration: 0.1
-  _parent: {fileID: 5180191103471191624}
-  _maxLife: 5
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -534,6 +607,30 @@ MonoBehaviour:
       m_Groups: 
       m_Action: Horizontal Input
       m_Flags: 8
+    - m_Name: 1D Axis
+      m_Id: eca5bbdb-0141-4513-b396-83c96587a2be
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: b4cdd25b-492d-4c55-b5ef-5dcec41a2ea1
+      m_Path: <Gamepad>/dpad/left
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 98939db5-de1d-4297-b32f-b96dd70b9448
+      m_Path: <Gamepad>/dpad/right
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Horizontal Input
+      m_Flags: 8
     m_Flags: 0
   _verticalInput:
     m_Name: Vertical Input
@@ -586,6 +683,30 @@ MonoBehaviour:
     - m_Name: positive
       m_Id: 6273b2bf-c758-471d-a057-99fee0ffcd02
       m_Path: <Gamepad>/leftStick/up
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical Input
+      m_Flags: 8
+    - m_Name: 1D Axis
+      m_Id: c5d78252-7da9-4196-b7cd-fa9919c16893
+      m_Path: 1DAxis
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical Input
+      m_Flags: 4
+    - m_Name: negative
+      m_Id: a4fdb974-c99e-4728-ba6a-f0a815fce034
+      m_Path: <Gamepad>/dpad/down
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Vertical Input
+      m_Flags: 8
+    - m_Name: positive
+      m_Id: 1e04595a-3a05-4bc6-9553-13e4bf002737
+      m_Path: <Gamepad>/dpad/up
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -692,29 +813,29 @@ MonoBehaviour:
       m_Action: Slow Attack
       m_Flags: 0
     m_Flags: 0
-  _dodgeTrigger:
-    m_Name: Dodge Trigger
+  _dash:
+    m_Name: Dash
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 536fb194-f78d-4a8d-907e-14c24e014863
+    m_Id: f2ef071e-5717-4399-bcfd-69daef21b863
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings:
     - m_Name: 
-      m_Id: d719d2a3-5887-4696-8f77-d01ecb4d357a
+      m_Id: 6ff1b4d6-9845-40bb-a7a1-1d28ab403896
       m_Path: <Keyboard>/shift
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Dodge Trigger
+      m_Action: Dash
       m_Flags: 0
     - m_Name: 
-      m_Id: 099c082b-8091-4e16-b4f5-16dd4164495b
-      m_Path: <Gamepad>/leftShoulder
+      m_Id: b80e3cc7-f401-4f70-adf0-157f6b8a8d72
+      m_Path: <Gamepad>/rightTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 
-      m_Action: Dodge Trigger
+      m_Action: Dash
       m_Flags: 0
     m_Flags: 0
   _throw:

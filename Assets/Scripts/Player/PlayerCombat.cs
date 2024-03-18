@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _feet;
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private GameObject _hitbox;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -371,17 +372,16 @@ public class PlayerCombat : MonoBehaviour
                 _attackAreas[1].SetActive(true);
                 break;
         }
-        //Debug.Log(_damageMultiplier);
     }
 
     public void UnstopabbleAttackBegin()
     {
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), true);
+        _hitbox.SetActive(false);
     }
 
     public void UnstopabbleAttackEnd()
-    {
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), false);
+    { 
+        _hitbox.SetActive(true);
     }
 
     public void MovingSideAttackStart(int velocity)
@@ -437,32 +437,24 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
-    #region Dodge
-    /// <summary>
-    /// Method called when the player successfully dodges an attack
-    /// </summary>
-    public void OnDodge()
-    {
-        Debug.Log("Dodged");
-        if (_damageMultiplier < 16)
-        {
-            _damageMultiplier += _damageMultiplier;
-            UIController.Instance.SetMultiplier(_damageMultiplier);
-        }
-    }
-    #endregion
-
-    public IEnumerator HitVisualFeedback()
+    #region Hit
+    public void GetHit()
     {
         _isInvulnerable = true;
+        _hitbox.SetActive(false);
 
-        for (int i = 0; i < 4; i++)
+        StartCoroutine(HitVisualFeedback());
+    }
+
+    private IEnumerator HitVisualFeedback()
+    {
+        for (int i = 0; i < 6; i++)
         {
             Color initialColor = _sprite.material.color;
             Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
 
             float elapsedTime = 0f;
-            float fadeDuration = 0.15f;
+            float fadeDuration = 0.25f;
 
             while (elapsedTime < fadeDuration)
             {
@@ -484,7 +476,9 @@ public class PlayerCombat : MonoBehaviour
         }
 
         _isInvulnerable = false;
+        _hitbox.SetActive(true);
     }
+    #endregion
 
     private void OnDrawGizmosSelected()
     {
