@@ -26,7 +26,8 @@ public class PlayerController : MonoBehaviour
 
     [Header("Dash Settings")]
     [SerializeField] private float _dashCd;
-    [SerializeField] private float _dashForce;
+    [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _dashDuration;
 
     [Header("VFX")]
     [SerializeField] private GameObject _interactionIndicator;
@@ -57,6 +58,8 @@ public class PlayerController : MonoBehaviour
     // Dash
     private bool _desiredDash;
     private float _dashPerformedTime;
+    private bool _isDashing;
+    private float _dashDirection;
     #endregion
 
     #region Unity methods
@@ -86,6 +89,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         HorizontalMovement();
+        Dash();
         HandleEnvironment();
         Jump();
         ApplyMovement();
@@ -161,21 +165,17 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void HorizontalMovement()
     {
-        if (_desiredDash && !_playerCombat.IsAttacking)
+        if (_isDashing)
         {
-            _desiredDash = false;
-
-            // If it can, dashed towards the direction the player is inputting
-            if (_timer - _dashPerformedTime > _dashCd)
+            if (_timer - _dashPerformedTime < _dashDuration)
             {
-                Debug.Log("Dash");
-                _dashPerformedTime = _timer;
-
-                float direction = _movementInput;
-                if (direction == 0) direction = transform.right.x;
-
-                _desiredVelocity.x = _dashForce * direction;
-                Debug.Log(direction);
+                _desiredVelocity.x = _dashSpeed * _dashDirection;
+            }
+            else
+            {
+                // Ends the dash
+                _isDashing = false;
+                _desiredVelocity.x = _maxSpeed * _dashDirection;
             }
         }
         else
@@ -204,9 +204,29 @@ public class PlayerController : MonoBehaviour
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
+    private void Dash()
+    {
+        if (_desiredDash && !_playerCombat.IsAttacking)
+        {
+            _desiredDash = false;
+
+            // If it can, dashed towards the direction the player is inputting
+            if (_timer - _dashPerformedTime > _dashCd)
+            {
+                Debug.Log("Dash");
+                _dashPerformedTime = _timer;
+                _isDashing = true;
+
+                if (_movementInput == 0) _dashDirection = transform.right.x;
+                else _dashDirection = _movementInput;
+
+                Debug.Log(_dashDirection);
+            }
+        }
+    }
+
     public void HandleDashInput()
     {
-        Debug.Log("Dash input");
         _desiredDash = true;
     }
     #endregion
@@ -222,9 +242,6 @@ public class PlayerController : MonoBehaviour
             _availableJumps = _maxJumps;
             _stopJump = false;
         }
-
-        //TO DO: Un mínim d'altura abans de que pari el salt
-        //if (!_isGrounded && !_jumpHold) _stopJump = true;
 
         bool bufferedJump = _timer - _jumpPressedTime <= _bufferTime;
         bool canJump = (_availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime) && !_playerCombat.IsAttacking;
@@ -255,7 +272,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (_playerCombat.IsAttacking) _desiredVelocity.y = 0;
+        if (_playerCombat.IsAttacking || _isDashing) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
