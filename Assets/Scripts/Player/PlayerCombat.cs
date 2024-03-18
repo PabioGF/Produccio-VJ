@@ -23,23 +23,16 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionPushForce;
     [SerializeField] private float _comboTime;
 
-    [Header("Dodge settings")]
-    [SerializeField] private float _dodgeCd;
-
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
     private float _attackCdTimer;
-    private int _currComboLength;
     private float _attackPerformed;
     private float _timer;
     private bool _isComboAnimation;
     private int _damageMultiplier;
     private bool _isCombo;
 
-    private bool _dodgeStance;
-    private bool _isDodging;
-    private float _dodgeCdTimer;
     private Animator _myAnimator;
     private bool _isInvulnerable;
 
@@ -95,7 +88,6 @@ public class PlayerCombat : MonoBehaviour
     private void HandleTimers()
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
-        if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
         _timer += Time.deltaTime;
     }
 
@@ -106,7 +98,7 @@ public class PlayerCombat : MonoBehaviour
     public void HandleFastAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd)
         {
             if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.FastAttack);
@@ -119,7 +111,7 @@ public class PlayerCombat : MonoBehaviour
     public void HandleSlowAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd)
         {
             if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.SlowAttack);
@@ -128,7 +120,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void HandleThrowBottleInput()
     {
-        if (!_dodgeStance && !_isDodging && !_isComboAnimation)
+        if (!_isComboAnimation)
         {
             if (_playerController.TryGetItem(InventoryItem.ItemType.Bottle, out InventoryItem bottleData))
             {
@@ -489,19 +481,9 @@ public class PlayerCombat : MonoBehaviour
 
     #region Getters
     /// <summary>
-    /// Returns the dodgeStance bool
-    /// </summary>
-    public bool DodgeStance => _dodgeStance;
-
-    /// <summary>
     /// Returns the dodge type
     /// </summary>
     public DodgeType GetDodgeType => _dodgeType;
-
-    /// <summary>
-    /// Returns wheter the player is dodging or not
-    /// </summary>
-    public bool IsDodging => _isDodging;
 
     /// <summary>
     /// Returns wheter the player is attacking or not
