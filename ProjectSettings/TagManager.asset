@@ -22,7 +22,7 @@ TagManager:
   - Bottle
   - Player
   - Roof
-  - PlayerHurtbox
+  - PlayerHitbox
   - Enemies
   - 
   - 

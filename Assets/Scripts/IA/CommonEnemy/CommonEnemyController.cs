@@ -50,7 +50,7 @@ public class CommonEnemyController : IAController
 
     private void PerformAttack(int type)
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("Player"));
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("PlayerHitbox"));
 
         if (playerCollider != null)
         {
