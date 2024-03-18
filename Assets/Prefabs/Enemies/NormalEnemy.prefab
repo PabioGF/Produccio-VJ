@@ -139,12 +139,15 @@ MonoBehaviour:
   _detectionExtraTime: 3
   _velocityMultiplier: 2
   velocidadMovimiento: 4
+  _limitedMovement: 0
+  _maxPosition: 0
+  _minPosition: 0
   _detectionDistance: 15
-  _attackRadius: 1.5
   _attackRange: 3
   _enablingDistance: 40
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
+  _attackRadius: 1.5
   _minPlayerDistance: 3
   tiempoEntreCombos: 5
 --- !u!95 &6157194604111591697
@@ -181,7 +184,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
-  _maxLife: 20
+  _maxLife: 10
 --- !u!70 &8203532647511212095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -391,4 +394,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _attackType: 0

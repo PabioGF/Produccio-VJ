@@ -296,7 +296,7 @@ MonoBehaviour:
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
   _hitStopController: {fileID: 0}
-  _hitStopDuration: 0.2
+  _hitStopDuration: 0.25
   _parent: {fileID: 5180191103471191624}
   _maxLife: 5
 --- !u!1 &5180191103471191624
@@ -401,7 +401,6 @@ MonoBehaviour:
   _fallExplosionDamage: 1
   _fallExplosionPushForce: 50
   _comboTime: 0.5
-  _dodgeCd: 0
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -1239,7 +1238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdf7fb6f1d39d404e8f8465f8351d21c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 1
+  _damage: 2
   _movingForceUp: 0
   _movingForceDown: 0
   AttackType: 0

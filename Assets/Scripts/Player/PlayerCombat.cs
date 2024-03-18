@@ -315,8 +315,10 @@ public class PlayerCombat : MonoBehaviour
                 if (collider.TryGetComponent<LifeComponent>(out var life))
                 {
                     life.ReceiveHit(_fallExplosionDamage);
+                    /*
                     float force = collider.transform.position.x > gameObject.transform.position.x ? _fallExplosionPushForce : -_fallExplosionPushForce;
                     life.SendFlyingOutwards(force);
+                    */
                 }
             }
         }
