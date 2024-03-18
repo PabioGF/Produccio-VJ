@@ -8,8 +8,20 @@ public class BottleScript : SceneInventoryItem
     [SerializeField] private float _throwSpeed;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Rigidbody2D _rigidbody;
+    //[SerializeField] private AudioClip _disappearSound;
+
     private bool _isPickedUp;
     private bool _isThrown;
+    //private AudioSource _audioSource;
+
+    /*private void Start()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
+    }*/
 
     protected override void PickUp()
     {
@@ -69,4 +81,6 @@ public class BottleScript : SceneInventoryItem
         if (_isThrown) return;
         base.OnTriggerExit2D(collision);
     }
+
+
 }
