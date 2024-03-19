@@ -178,6 +178,7 @@ public class PlayerController : MonoBehaviour
                 _isDashing = false;
                 _desiredVelocity.x = _maxSpeed * _dashDirection;
                 _hitbox.enabled = true;
+                _myAnimator.SetBool("isDashing", false);
             }
         }
         else
@@ -222,6 +223,8 @@ public class PlayerController : MonoBehaviour
                 else _dashDirection = _movementInput;
 
                 _hitbox.enabled = false;
+
+                _myAnimator.SetBool("isDashing", true);
             }
         }
     }
