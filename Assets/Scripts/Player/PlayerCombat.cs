@@ -30,11 +30,11 @@ public class PlayerCombat : MonoBehaviour
     private float _attackPerformed;
     private float _timer;
     private bool _isComboAnimation;
-    private int _damageMultiplier;
     private bool _isCombo;
 
     private Animator _myAnimator;
     private bool _isInvulnerable;
+    private int _currComboLength;
 
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
@@ -64,7 +64,6 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        _damageMultiplier = 1;
         int i = 0;
         foreach(GameObject attackArea in _attackAreas)
         {
@@ -149,8 +148,7 @@ public class PlayerCombat : MonoBehaviour
         if (_timer - _attackPerformed > _comboTime && _isCombo)
         {
             _isCombo = false;
-            _damageMultiplier = 1;
-            UIController.Instance.SetMultiplier(_damageMultiplier);
+            _currComboLength = 0;
         }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
@@ -158,6 +156,7 @@ public class PlayerCombat : MonoBehaviour
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
+            _currComboLength++;
 
             HandleCombos(attack);
         }
@@ -358,11 +357,9 @@ public class PlayerCombat : MonoBehaviour
         switch (attackType)
         {
             case AttackTypes.FastAttack:
-                _attackComponents[0].Damage = _damageMultiplier;
                 _attackAreas[0].SetActive(true);
                 break;
             case AttackTypes.SlowAttack:
-                _attackComponents[1].Damage = _damageMultiplier;
                 _attackAreas[1].SetActive(true);
                 break;
         }
@@ -386,7 +383,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void MovingDownAttackStart(int velocity)
     {
-        _attackComponents[2].Damage = _damageMultiplier;
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(0, -30);
@@ -496,8 +492,8 @@ public class PlayerCombat : MonoBehaviour
     /// Returns wheter the player is doing a combo or not
     /// </summary>
     public bool IsCombo => _isComboAnimation;
-
     public bool IsInvulnerable => _isInvulnerable;
+    public int CurrComboLength => _currComboLength;
     #endregion
 
 }

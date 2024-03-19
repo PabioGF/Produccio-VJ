@@ -6,11 +6,20 @@ public class GameController : MonoBehaviour
 {
     [HideInInspector] public static GameController Instance;
     [SerializeField] private HitStopController _hitStopController;
+
+    private int _score;
+
     private void Awake()
     {
         Instance = this;
     }
 
+    private void Update()
+    {
+        Debug.Log(_score);
+    }
+
+    #region Data Persistance
     public void SaveProgress()
     {
         SaveSystem.SaveProgress(LevelProgressController.Instance);
@@ -32,9 +41,26 @@ public class GameController : MonoBehaviour
 
         ScenesController.Instance.LoadSceneByIndex(data.LevelIndex);
     }
+    #endregion
+
+    #region Score
+    public void AddScore(int score)
+    {
+        _score += score;
+        UIController.Instance.SetScore(_score);
+    }
+
+    public void SubstractScore(int score)
+    {
+        _score -= score;
+        UIController.Instance.SetScore(_score);
+    }
+    #endregion
 
     public void StopTime(float timeChange, float duration)
     {
         _hitStopController.StopTime(timeChange, duration);
     }
+
+
 }
