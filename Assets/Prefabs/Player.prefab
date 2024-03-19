@@ -295,7 +295,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
-  _hitStopController: {fileID: 0}
   _hitStopDuration: 0.25
   _parent: {fileID: 5180191103471191624}
   _maxLife: 5
@@ -356,7 +355,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _groundCheck: {fileID: 6139601005165452146}
   _inventoryController: {fileID: 1742377338972371357}
-  _hitbox: {fileID: 3286404743851591409}
+  _hitbox: {fileID: 6058480158865233575}
   _maxSpeed: 15
   _acceleration: 100
   _airAcceleration: 75
@@ -392,7 +391,7 @@ MonoBehaviour:
   _playerController: {fileID: 6838906068520528515}
   _feet: {fileID: 6139601005165452146}
   _sprite: {fileID: 7589495094095742432}
-  _hitbox: {fileID: 3286404743851591409}
+  _hitbox: {fileID: 6058480158865233575}
   _attackDuration: 0.1
   _attackCd: 0.3
   _maxTimeBetweenAttacks: 0.2

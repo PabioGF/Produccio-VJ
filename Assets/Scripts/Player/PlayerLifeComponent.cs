@@ -10,7 +10,6 @@ public class PlayerLifeComponent : MonoBehaviour
     [Header("Specific fields")]
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private PlayerController _playerController;
-    [SerializeField] private HitStopController _hitStopController;
     [SerializeField] private float _hitStopDuration;
 
     [SerializeField] protected GameObject _parent;
@@ -32,7 +31,7 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_playerCombat.IsInvulnerable) return;
 
         Debug.Log("Hit");
-        _hitStopController.StopTime(0f, _hitStopDuration);
+        GameController.Instance.StopTime(0f, _hitStopDuration);
 
         // If the player has a shield, removes it instead of taking the damage and stops
         if (_playerController.HasItem(InventoryItem.ItemType.Shield))

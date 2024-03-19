@@ -11,7 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _feet;
     [SerializeField] private SpriteRenderer _sprite;
-    [SerializeField] private GameObject _hitbox;
+    [SerializeField] private Collider2D _hitbox;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -370,12 +370,12 @@ public class PlayerCombat : MonoBehaviour
 
     public void UnstopabbleAttackBegin()
     {
-        _hitbox.SetActive(false);
+        _hitbox.enabled = false;
     }
 
     public void UnstopabbleAttackEnd()
-    { 
-        _hitbox.SetActive(true);
+    {
+        _hitbox.enabled = true;
     }
 
     public void MovingSideAttackStart(int velocity)
@@ -435,7 +435,7 @@ public class PlayerCombat : MonoBehaviour
     public void GetHit()
     {
         _isInvulnerable = true;
-        _hitbox.SetActive(false);
+        _hitbox.enabled = false;
 
         StartCoroutine(HitVisualFeedback());
     }
@@ -470,7 +470,7 @@ public class PlayerCombat : MonoBehaviour
         }
 
         _isInvulnerable = false;
-        _hitbox.SetActive(true);
+        _hitbox.enabled = true;
     }
     #endregion
 

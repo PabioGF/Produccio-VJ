@@ -10,10 +10,13 @@ public class HealingScript : InteractableObject
     {
         base.Interact();
 
-        if (_playerController.TryGetComponent(out PlayerLifeComponent lifeComponent))
+        PlayerLifeComponent lifeComponent = _playerController.GetComponentInChildren<PlayerLifeComponent>();
+
+        if (lifeComponent != null)
         {
             lifeComponent.Heal(_healingPoints);
             gameObject.SetActive(false);
         }
+        
     }
 }

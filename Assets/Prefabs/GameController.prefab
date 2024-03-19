@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37ec57953c98f1646b82d2f92cbad52a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _levelProgressController: {fileID: 0}
+  _hitStopController: {fileID: -754035716436276154}
 --- !u!114 &-754035716436276154
 MonoBehaviour:
   m_ObjectHideFlags: 0

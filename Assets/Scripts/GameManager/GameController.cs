@@ -5,6 +5,7 @@ using UnityEngine;
 public class GameController : MonoBehaviour
 {
     [HideInInspector] public static GameController Instance;
+    [SerializeField] private HitStopController _hitStopController;
     private void Awake()
     {
         Instance = this;
@@ -30,5 +31,10 @@ public class GameController : MonoBehaviour
         }
 
         ScenesController.Instance.LoadSceneByIndex(data.LevelIndex);
+    }
+
+    public void StopTime(float timeChange, float duration)
+    {
+        _hitStopController.StopTime(timeChange, duration);
     }
 }
