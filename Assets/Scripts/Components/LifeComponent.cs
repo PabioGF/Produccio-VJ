@@ -27,7 +27,6 @@ public class LifeComponent : MonoBehaviour
         if (_currentLife <= 0)
         {
             _isDead = true;
-            gameObject.SetActive(false);
         }
     }
 

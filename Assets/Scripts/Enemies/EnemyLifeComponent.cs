@@ -15,15 +15,20 @@ public class EnemyLifeComponent : LifeComponent
     protected override void Start()
     {
         base.Start();
-        _controller = GetComponent<IAController>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        _controller = GetComponentInParent<IAController>();
+        _rigidbody = GetComponentInParent<Rigidbody2D>();
+        _animator = GetComponentInParent<Animator>();
     }
     #endregion
     public override void ReceiveHit(float amount)
     {
         _controller.GetHit();
         base.ReceiveHit(amount);
+
+        if (_isDead)
+        {
+            _parent.gameObject.SetActive(false);
+        }
     }
 
     public override void SendFlyingUp(float force)
