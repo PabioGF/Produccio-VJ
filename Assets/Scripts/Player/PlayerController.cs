@@ -117,7 +117,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (!_playerCombat.IsAttacking)
+        if (!_playerCombat.IsAttacking && !_playerCombat.IsParrying)
         {
             _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
             /*
@@ -234,11 +234,11 @@ public class PlayerController : MonoBehaviour
 
     private void Dash()
     {
-        if (_desiredDash && !_playerCombat.IsAttacking)
+        if (_desiredDash && !_playerCombat.IsAttacking && !_playerCombat.IsParrying)
         {
             _desiredDash = false;
 
-            // If it can, dashed towards the direction the player is inputting
+            // If it can, dashes towards the direction the player is inputting
             if (_timer - _dashPerformedTime > _dashCd)
             {
                 _dashPerformedTime = _timer;
@@ -395,11 +395,9 @@ public class PlayerController : MonoBehaviour
 
     #region Getters / Setters
     public Rigidbody2D Rigidbody => _rigidbody2D;
-
     public bool IsOverride { get { return _isOverride; } set { _isOverride = value; } }
-
     public bool IsGrounded => _isGrounded;
-
     public bool IsDead => _isDead;
+    public bool IsDashing => _isDashing;
     #endregion
 }

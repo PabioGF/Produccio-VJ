@@ -31,6 +31,8 @@ public class PlayerCombat : MonoBehaviour
     private float _timer;
     private bool _isComboAnimation;
     private bool _isCombo;
+    private bool _isParrying;
+    private bool _deflect;
 
     private Animator _myAnimator;
     private bool _isInvulnerable;
@@ -427,6 +429,27 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
+    #region Parry
+    public void HandleParryInput()
+    {
+        if (_isAttacking || _playerController.IsDashing || !_playerController.IsGrounded) return;
+
+        Debug.Log("Parry");
+        _myAnimator.SetTrigger("Parry");
+        _isParrying = true;
+    }
+
+    private void EnableDeflect()
+    {
+        _deflect = true;
+    }
+
+    private void DisableDeflect()
+    {
+        _deflect = false;
+    }
+    #endregion
+
     #region Hit
     public void GetHit()
     {
@@ -494,6 +517,8 @@ public class PlayerCombat : MonoBehaviour
     public bool IsCombo => _isComboAnimation;
     public bool IsInvulnerable => _isInvulnerable;
     public int CurrComboLength => _currComboLength;
+    public bool IsParrying { get { return _isParrying; } set { _isParrying = value; } }
+    public bool Deflect { get { return _deflect; } set { _deflect = value; } }
     #endregion
 
 }

@@ -19,6 +19,7 @@ public class PlayerInputsManager : MonoBehaviour
     [SerializeField] private InputAction _fastAttack;
     [SerializeField] private InputAction _slowAttack;
     [SerializeField] private InputAction _dash;
+    [SerializeField] private InputAction _parry;
     [SerializeField] private InputAction _throw;
     [SerializeField] private InputAction _pause;
 
@@ -40,6 +41,7 @@ public class PlayerInputsManager : MonoBehaviour
         _interact.performed += InteractInput;
         _fastAttack.performed += FastAttackInput;
         _slowAttack.performed += SlowAttackInput;
+        _parry.performed += ParryInput;
         _throw.performed += ThrowInput;
         _pause.performed += PauseInput;
 
@@ -60,12 +62,10 @@ public class PlayerInputsManager : MonoBehaviour
 
             if (lastInputDevice.name.Equals("Keyboard") || lastInputDevice.name.Equals("Mouse"))
             {
-                Debug.Log("Keyboard");
                 InputDevice = InputDevices.Keyboard;
             }
             else
             {
-                Debug.Log("Controller");
                 InputDevice = InputDevices.Controller;
             }
         }
@@ -83,6 +83,7 @@ public class PlayerInputsManager : MonoBehaviour
 
         _dash.performed -= DashInput;
         _jump.performed -= JumpInput;
+        _parry.performed -= ParryInput;
         _interact.performed -= InteractInput;
         _fastAttack.performed -= FastAttackInput;
         _slowAttack.performed -= SlowAttackInput;
@@ -121,6 +122,14 @@ public class PlayerInputsManager : MonoBehaviour
         if (context.performed)
         {
             _playerController.HandleDashInput();
+        }
+    }
+
+    public void ParryInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            _playerCombat.HandleParryInput();
         }
     }
 
@@ -181,6 +190,7 @@ public class PlayerInputsManager : MonoBehaviour
         _fastAttack.Enable();
         _slowAttack.Enable();
         _dash.Enable();
+        _parry.Enable();
         _throw.Enable();
         _pause.Enable();
     }
@@ -193,6 +203,7 @@ public class PlayerInputsManager : MonoBehaviour
         _fastAttack.Disable();
         _slowAttack.Disable();
         _dash.Disable();
+        _parry.Disable();
         _throw.Disable();
         _pause.Disable();
     }
