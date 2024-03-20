@@ -439,6 +439,12 @@ public class PlayerCombat : MonoBehaviour
         _isParrying = true;
     }
 
+    public void OnDeflect()
+    {
+        _myAnimator.SetTrigger("Counter");
+        _hitbox.enabled = false;
+    }
+
     private void EnableDeflect()
     {
         _deflect = true;
@@ -519,6 +525,7 @@ public class PlayerCombat : MonoBehaviour
     public int CurrComboLength => _currComboLength;
     public bool IsParrying { get { return _isParrying; } set { _isParrying = value; } }
     public bool Deflect { get { return _deflect; } set { _deflect = value; } }
+    public Collider2D Hitbox => _hitbox;
     #endregion
 
 }

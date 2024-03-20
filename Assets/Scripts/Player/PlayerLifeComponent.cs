@@ -27,6 +27,13 @@ public class PlayerLifeComponent : MonoBehaviour
 
     public void ReceiveHit(float amount)
     {
+        // If the player is deflecting, counter attacks
+        if (_playerCombat.Deflect)
+        {
+            _playerCombat.OnDeflect();
+            return;
+        }
+
         // If the player is invulnerable returns
         if (_playerCombat.IsInvulnerable) return;
 
