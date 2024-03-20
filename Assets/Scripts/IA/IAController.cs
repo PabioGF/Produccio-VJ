@@ -21,6 +21,7 @@ public class IAController : MonoBehaviour
     [SerializeField] protected float _detectionDistance;
     [SerializeField] protected float _attackRange;
     [SerializeField] private float _enablingDistance;
+    [SerializeField] protected int _scoreSubstractByHit;
 
     protected float tiempoActual;
     protected int direccion = 1;

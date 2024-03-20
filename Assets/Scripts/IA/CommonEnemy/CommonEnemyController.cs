@@ -56,6 +56,7 @@ public class CommonEnemyController : IAController
         {
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
             Debug.Log(playerCollider.name + " has been hit");
+            GameController.Instance.SubstractScore(_scoreSubstractByHit);
         }
     }
     #endregion

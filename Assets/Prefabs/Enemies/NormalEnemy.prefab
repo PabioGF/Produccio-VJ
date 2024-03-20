@@ -144,6 +144,7 @@ MonoBehaviour:
   _detectionDistance: 15
   _attackRange: 3
   _enablingDistance: 40
+  _scoreSubstractByHit: 50
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
   _attackRadius: 1.5
@@ -380,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _scoreSubstractByContact: 20
 --- !u!114 &88265420274865627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -394,3 +396,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
   _maxLife: 10
+  _scoreAddWhenDead: 100
