@@ -7,9 +7,10 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    #region Variables
+    #region Global Variables
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private InventoryController _inventoryController;
+    [SerializeField] private Collider2D _hitbox;
 
     [Header("Movement settings")]
     [SerializeField] private float _maxSpeed;
@@ -24,6 +25,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _maxFallSpeed;
     [SerializeField] private float _coyoteTime;
 
+    [Header("Dash Settings")]
+    [SerializeField] private float _dashCd;
+    [SerializeField] private float _dashSpeed;
+    [SerializeField] private float _dashDuration;
+
     [Header("VFX")]
     [SerializeField] private GameObject _interactionIndicator;
     [SerializeField] private Sprite[] _interactionSprites;
@@ -32,21 +38,29 @@ public class PlayerController : MonoBehaviour
 
     private PlayerCombat _playerCombat;
     private Rigidbody2D _rigidbody2D;
-    private int _availableJumps;
+    private Animator _myAnimator;
+    private bool _isDead;
+
+    // Movement
     private float _movementInput;
     private Vector2 _desiredVelocity;
     private bool _isGrounded;
-    private float _jumpPressed;
-    private float _timer;
+    private bool _isOverride;
+
+    // Jump
+    private int _availableJumps;
+    private float _jumpPressedTime;
+    private float _jumpPerformedTime;
     private bool _stopJump;
     private float _coyoteStart;
     private bool _desiredJump;
-    private bool _jumpHold;
-    private float _jumpPerformed;
+    private float _timer;
 
-    private Animator _myAnimator;
-    private bool _isOverride;
-    private bool _isDead; 
+    // Dash
+    private bool _desiredDash;
+    private float _dashPerformedTime;
+    private bool _isDashing;
+    private float _dashDirection;
     #endregion
 
     #region Unity methods
@@ -76,6 +90,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         HorizontalMovement();
+        Dash();
         HandleEnvironment();
         Jump();
         ApplyMovement();
@@ -90,11 +105,10 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (!_playerCombat.DodgeStance && !_playerCombat.IsAttacking && !_playerCombat.IsDodging)
+        if (!_playerCombat.IsAttacking)
             _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
         else
             _movementInput = 0;
-
     }
 
     /// <summary>
@@ -143,8 +157,7 @@ public class PlayerController : MonoBehaviour
             transform.position += new Vector3(0.3f, 0);
         }
 
-        if (centerRaycast) _stopJump = true;
-        
+        if (centerRaycast) _stopJump = true;       
         
     }
 
@@ -153,28 +166,72 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void HorizontalMovement()
     {
-        if (_movementInput == 0)
+        if (_isDashing)
         {
-            _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, 0, _acceleration * Time.fixedDeltaTime);
-        } 
+            if (_timer - _dashPerformedTime < _dashDuration)
+            {
+                _desiredVelocity.x = _dashSpeed * _dashDirection;
+            }
+            else
+            {
+                // Ends the dash
+                _isDashing = false;
+                _desiredVelocity.x = _maxSpeed * _dashDirection;
+                _hitbox.enabled = true;
+                _myAnimator.SetBool("isDashing", false);
+            }
+        }
         else
         {
-            float acceleration = _isGrounded ? _acceleration : _airAcceleration; 
-            _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
-        }
+            if (_movementInput == 0)
+            {
+                _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, 0, _acceleration * Time.fixedDeltaTime);
+            }
+            else
+            {
+                float acceleration = _isGrounded ? _acceleration : _airAcceleration;
+                _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
+            }
 
-        if (_desiredVelocity.x < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-        } 
-        else if (_desiredVelocity.x > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+            if (_desiredVelocity.x < 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (_desiredVelocity.x > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
-
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
+    }
+
+    private void Dash()
+    {
+        if (_desiredDash && !_playerCombat.IsAttacking)
+        {
+            _desiredDash = false;
+
+            // If it can, dashed towards the direction the player is inputting
+            if (_timer - _dashPerformedTime > _dashCd)
+            {
+                _dashPerformedTime = _timer;
+                _isDashing = true;
+
+                if (_movementInput == 0) _dashDirection = transform.right.x;
+                else _dashDirection = _movementInput;
+
+                _hitbox.enabled = false;
+
+                _myAnimator.SetBool("isDashing", true);
+            }
+        }
+    }
+
+    public void HandleDashInput()
+    {
+        _desiredDash = true;
     }
     #endregion
 
@@ -190,10 +247,7 @@ public class PlayerController : MonoBehaviour
             _stopJump = false;
         }
 
-        //TO DO: Un mínim d'altura abans de que pari el salt
-        //if (!_isGrounded && !_jumpHold) _stopJump = true;
-
-        bool bufferedJump = _timer - _jumpPressed <= _bufferTime;
+        bool bufferedJump = _timer - _jumpPressedTime <= _bufferTime;
         bool canJump = (_availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime) && !_playerCombat.IsAttacking;
 
         // Limits the gravity when the player is grounded
@@ -205,9 +259,9 @@ public class PlayerController : MonoBehaviour
         }
 
         // Jumps if the conditions are met
-        if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformed > 0.2f)
+        if (bufferedJump && canJump && _desiredJump && _timer - _jumpPerformedTime > 0.2f)
         {
-            _jumpPerformed = _timer;
+            _jumpPerformedTime = _timer;
             _desiredVelocity.y = _jumpForce;
             _desiredJump = false;
             _availableJumps -= 1;
@@ -222,7 +276,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_isOverride) return;
 
-        if (_playerCombat.IsAttacking) _desiredVelocity.y = 0;
+        if (_playerCombat.IsAttacking || _isDashing) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
     }
 
@@ -231,7 +285,7 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void HandleJumpInput()
     {
-        _jumpPressed = _timer;
+        _jumpPressedTime = _timer;
         _desiredJump = true; 
     }
     #endregion

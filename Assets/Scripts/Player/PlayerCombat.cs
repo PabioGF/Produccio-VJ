@@ -11,6 +11,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private GameObject _feet;
     [SerializeField] private SpriteRenderer _sprite;
+    [SerializeField] private Collider2D _hitbox;
 
     [Header("Attack settings")]
     [SerializeField] private float _attackDuration;
@@ -22,25 +23,18 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionPushForce;
     [SerializeField] private float _comboTime;
 
-    [Header("Dodge settings")]
-    [SerializeField] private float _dodgeCd;
-
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
     private float _attackCdTimer;
-    private int _currComboLength;
     private float _attackPerformed;
     private float _timer;
     private bool _isComboAnimation;
-    private int _damageMultiplier;
     private bool _isCombo;
 
-    private bool _dodgeStance;
-    private bool _isDodging;
-    private float _dodgeCdTimer;
     private Animator _myAnimator;
     private bool _isInvulnerable;
+    private int _currComboLength;
 
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
@@ -70,7 +64,6 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        _damageMultiplier = 1;
         int i = 0;
         foreach(GameObject attackArea in _attackAreas)
         {
@@ -84,7 +77,6 @@ public class PlayerCombat : MonoBehaviour
     void Update()
     {
         HandleTimers();
-        HandleDodge();
         ExecuteAttack();
     }
     #endregion
@@ -95,7 +87,6 @@ public class PlayerCombat : MonoBehaviour
     private void HandleTimers()
     {
         if (!_isAttacking) _attackCdTimer += Time.deltaTime;
-        if (!_isDodging) _dodgeCdTimer += Time.deltaTime;
         _timer += Time.deltaTime;
     }
 
@@ -106,7 +97,7 @@ public class PlayerCombat : MonoBehaviour
     public void HandleFastAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd)
         {
             if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.FastAttack);
@@ -119,7 +110,7 @@ public class PlayerCombat : MonoBehaviour
     public void HandleSlowAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (!_dodgeStance && !_isDodging && _attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd)
         {
             if (_isAttacking) _attackBuffer.Clear();
             _attackBuffer.Enqueue(AttackTypes.SlowAttack);
@@ -128,7 +119,7 @@ public class PlayerCombat : MonoBehaviour
 
     public void HandleThrowBottleInput()
     {
-        if (!_dodgeStance && !_isDodging && !_isComboAnimation)
+        if (!_isComboAnimation)
         {
             if (_playerController.TryGetItem(InventoryItem.ItemType.Bottle, out InventoryItem bottleData))
             {
@@ -157,8 +148,7 @@ public class PlayerCombat : MonoBehaviour
         if (_timer - _attackPerformed > _comboTime && _isCombo)
         {
             _isCombo = false;
-            _damageMultiplier = 1;
-            UIController.Instance.SetMultiplier(_damageMultiplier);
+            _currComboLength = 0;
         }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
@@ -166,6 +156,7 @@ public class PlayerCombat : MonoBehaviour
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
+            _currComboLength++;
 
             HandleCombos(attack);
         }
@@ -323,8 +314,10 @@ public class PlayerCombat : MonoBehaviour
                 if (collider.TryGetComponent<LifeComponent>(out var life))
                 {
                     life.ReceiveHit(_fallExplosionDamage);
+                    /*
                     float force = collider.transform.position.x > gameObject.transform.position.x ? _fallExplosionPushForce : -_fallExplosionPushForce;
                     life.SendFlyingOutwards(force);
+                    */
                 }
             }
         }
@@ -364,25 +357,22 @@ public class PlayerCombat : MonoBehaviour
         switch (attackType)
         {
             case AttackTypes.FastAttack:
-                _attackComponents[0].Damage = _damageMultiplier;
                 _attackAreas[0].SetActive(true);
                 break;
             case AttackTypes.SlowAttack:
-                _attackComponents[1].Damage = _damageMultiplier;
                 _attackAreas[1].SetActive(true);
                 break;
         }
-        //Debug.Log(_damageMultiplier);
     }
 
     public void UnstopabbleAttackBegin()
     {
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), true);
+        _hitbox.enabled = false;
     }
 
     public void UnstopabbleAttackEnd()
     {
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ignore Raycast"), false);
+        _hitbox.enabled = true;
     }
 
     public void MovingSideAttackStart(int velocity)
@@ -393,7 +383,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void MovingDownAttackStart(int velocity)
     {
-        _attackComponents[2].Damage = _damageMultiplier;
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(0, -30);
@@ -438,91 +427,24 @@ public class PlayerCombat : MonoBehaviour
     }
     #endregion
 
-    #region Dodge
-    /// <summary>
-    /// Handles the dodge logic when holding the dodge trigger buttond and moving to the upper or lower direction axis
-    /// </summary>
-    private void HandleDodge()
-    {
-        if (!_playerController.IsGrounded) return;
-
-        if (PlayerInputsManager.Instance.ReadDodgeTriggerValue() == 1) _dodgeStance = true;
-        else _dodgeStance = false;
-
-        _myAnimator.SetBool("isDodging", _dodgeStance);
-
-        if (_dodgeStance)
-        {
-            float dodgeDirection = PlayerInputsManager.Instance.ReadVerticalInput();
-
-            if (_dodgeCdTimer > _dodgeCd)
-            {
-                if (dodgeDirection == 1)
-                {
-                    ExecuteDodge(DodgeType.HighDodge);
-                }
-                if (dodgeDirection == -1)
-                {
-                    ExecuteDodge(DodgeType.LowDodge);
-                }
-            }
-        }
-    }
-    
-    /// <summary>
-    /// Executes the dodge action
-    /// </summary>
-    /// <param name="dodgeType">The dodge type</param>
-    private void ExecuteDodge(DodgeType dodgeType)
-    {
-        _dodgeCdTimer = 0;
-        _isDodging = true;
-        _dodgeType = dodgeType;
-
-        switch (dodgeType)
-        {
-            case DodgeType.LowDodge:
-                _myAnimator.SetTrigger("DodgeDown");
-                break;
-            case DodgeType.HighDodge:
-                _myAnimator.SetTrigger("DodgeUp");
-                break;
-        }
-    }
-
-    /// <summary>
-    /// Stops the dodge action
-    /// </summary>
-    public void StopDodge()
-    {
-        _isDodging = false;
-    }
-
-    /// <summary>
-    /// Method called when the player successfully dodges an attack
-    /// </summary>
-    public void OnDodge()
-    {
-        Debug.Log("Dodged");
-        if (_damageMultiplier < 16)
-        {
-            _damageMultiplier += _damageMultiplier;
-            UIController.Instance.SetMultiplier(_damageMultiplier);
-        }
-    }
-    #endregion
-
-    public IEnumerator HitVisualFeedback()
+    #region Hit
+    public void GetHit()
     {
         _isInvulnerable = true;
+        _hitbox.enabled = false;
 
-        for (int i = 0; i < 4; i++)
+        StartCoroutine(HitVisualFeedback());
+    }
+
+    private IEnumerator HitVisualFeedback()
+    {
+        for (int i = 0; i < 6; i++)
         {
             Color initialColor = _sprite.material.color;
             Color finalColor = new Color(initialColor.r, initialColor.g, initialColor.b, 0f);
 
             float elapsedTime = 0f;
-            float fadeDuration = 0.15f;
+            float fadeDuration = 0.25f;
 
             while (elapsedTime < fadeDuration)
             {
@@ -544,7 +466,9 @@ public class PlayerCombat : MonoBehaviour
         }
 
         _isInvulnerable = false;
+        _hitbox.enabled = true;
     }
+    #endregion
 
     private void OnDrawGizmosSelected()
     {
@@ -555,19 +479,9 @@ public class PlayerCombat : MonoBehaviour
 
     #region Getters
     /// <summary>
-    /// Returns the dodgeStance bool
-    /// </summary>
-    public bool DodgeStance => _dodgeStance;
-
-    /// <summary>
     /// Returns the dodge type
     /// </summary>
     public DodgeType GetDodgeType => _dodgeType;
-
-    /// <summary>
-    /// Returns wheter the player is dodging or not
-    /// </summary>
-    public bool IsDodging => _isDodging;
 
     /// <summary>
     /// Returns wheter the player is attacking or not
@@ -578,8 +492,8 @@ public class PlayerCombat : MonoBehaviour
     /// Returns wheter the player is doing a combo or not
     /// </summary>
     public bool IsCombo => _isComboAnimation;
-
     public bool IsInvulnerable => _isInvulnerable;
+    public int CurrComboLength => _currComboLength;
     #endregion
 
 }

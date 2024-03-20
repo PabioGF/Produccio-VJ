@@ -41,8 +41,7 @@ public class RangeEnemyController : IAController
 
         if (playerCollider != null)
         {
-            PlayerLifeComponent.AttackTypes attackType = (PlayerLifeComponent.AttackTypes)type;
-            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, attackType);
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
             Debug.Log(playerCollider.name + " has been hit");
         }
     }

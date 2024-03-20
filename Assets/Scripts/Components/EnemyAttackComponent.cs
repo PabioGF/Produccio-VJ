@@ -6,18 +6,13 @@ using UnityEngine;
 public class EnemyAttackComponent : MonoBehaviour
 {
     [SerializeField] private float _damage;
-    [SerializeField] private PlayerLifeComponent.AttackTypes _attackType;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.TryGetComponent<PlayerLifeComponent>(out var life))
         {
             Debug.Log(collision.gameObject.name);
-            life.ReceiveHit(_damage, _attackType);
+            life.ReceiveHit(_damage);
         }
-    }
-    private void SetAttackType(PlayerLifeComponent.AttackTypes attackType)
-    {
-        _attackType = attackType;
     }
 }
