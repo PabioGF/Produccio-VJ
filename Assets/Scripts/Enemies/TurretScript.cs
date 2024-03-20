@@ -9,6 +9,8 @@ public class TurretScript : MonoBehaviour
     [SerializeField] private float _fireRate;
     [SerializeField] private Rigidbody2D _referencePoint;
     [SerializeField] private GameObject _bulletSpawnPoint;
+    [SerializeField] private AudioClip _shootSound;
+    [SerializeField] private AudioClip _disableSound;
 
     private Animator _animator;
     private Rigidbody2D _rigidbody;
@@ -16,6 +18,7 @@ public class TurretScript : MonoBehaviour
     private Vector2 _aimDirection;
     private bool _playerDetected;
     private bool _isDisarmed;
+    private AudioSource _audioSource;
     #endregion
 
     #region Unity methods
@@ -24,6 +27,11 @@ public class TurretScript : MonoBehaviour
         _animator = GetComponent<Animator>();
         _rigidbody = GetComponent<Rigidbody2D>();
         _player = GameObject.Find("Player");
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     void Update()
@@ -75,6 +83,10 @@ public class TurretScript : MonoBehaviour
     private void SpawnBullet()
     {
         _animator.SetTrigger("Shoot");
+        if (_shootSound != null)
+        {
+            _audioSource.PlayOneShot(_shootSound); 
+        }
         GameObject newBullet = Instantiate(_bullet, _bulletSpawnPoint.transform.position, _bulletSpawnPoint.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
     }
@@ -88,5 +100,10 @@ public class TurretScript : MonoBehaviour
         _playerDetected = false;
         CancelInvoke(nameof(SpawnBullet));
         _animator.SetTrigger("Disarm");
+
+        if (_disableSound != null)
+        {
+            _audioSource.PlayOneShot(_disableSound);
+        }
     }
 }
