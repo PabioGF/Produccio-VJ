@@ -23,12 +23,6 @@ public class ElevatorController : InteractableObject
     {
         UIController.Instance.LevelCompleted();
 
-        Debug.Log("Level complete previous index: " + ScenesController.Instance.CurrentLevelIndex);
-
-        ScenesController.Instance.CurrentLevelIndex += 1;
-
-        Debug.Log("Level complete after index: " + ScenesController.Instance.CurrentLevelIndex);
-
         LevelProgressController.Instance.LevelIndex += 1;
         LevelProgressController.Instance.IsCompleteScreen = true;
         LevelProgressController.Instance.HasSpawnPoint = false;

@@ -9,6 +9,7 @@ public class CheckPoint : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             LevelProgressController.Instance.SetSpawnPoint(transform.position);
+            LevelProgressController.Instance.Score = GameController.Instance.Score;
         }
     }
 }

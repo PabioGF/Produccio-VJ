@@ -118,16 +118,22 @@ public class PlayerController : MonoBehaviour
         if (_isOverride) return;
 
         if (!_playerCombat.IsAttacking)
+        {
             _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
-            if (_movementInput != 0 && _isGrounded)
-            {
-                if (_movementSound != null && !_audioSource.isPlaying)
+            /*
+                if (_movementInput != 0 && _isGrounded)
                 {
-                    _audioSource.PlayOneShot(_movementSound);
+                    if (_movementSound != null && !_audioSource.isPlaying)
+                    {
+                        _audioSource.PlayOneShot(_movementSound);
+                    }
                 }
-            }
+            */
+        }
         else
+        {
             _movementInput = 0;
+        }
     }
 
     /// <summary>

@@ -14,11 +14,6 @@ public class GameController : MonoBehaviour
         Instance = this;
     }
 
-    private void Update()
-    {
-        Debug.Log(_score);
-    }
-
     #region Data Persistance
     public void SaveProgress()
     {
@@ -29,6 +24,7 @@ public class GameController : MonoBehaviour
     {
         ProgressData data = SaveSystem.LoadProgress();
         LevelProgressController.Instance.LevelIndex = data.LevelIndex;
+        LevelProgressController.Instance.Score = data.Score;
         Debug.Log("Level Index Loaded: " + data.LevelIndex);
 
         if (!data.IsCompletedScreen)
@@ -50,6 +46,12 @@ public class GameController : MonoBehaviour
         UIController.Instance.SetScore(_score);
     }
 
+    public void SetScore(int score)
+    {
+        _score = score;
+        UIController.Instance.SetScore(_score);
+    }
+
     public void SubstractScore(int score)
     {
         _score -= score;
@@ -62,5 +64,5 @@ public class GameController : MonoBehaviour
         _hitStopController.StopTime(timeChange, duration);
     }
 
-
+    public int Score { get { return _score; } set { _score = value; } }
 }

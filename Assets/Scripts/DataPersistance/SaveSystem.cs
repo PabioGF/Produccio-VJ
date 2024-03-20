@@ -12,7 +12,7 @@ public static class SaveSystem
         FileStream stream = new FileStream(progressPath, FileMode.Create);
         ProgressData data = new ProgressData(levelProgressController);
         Debug.Log("Level Index Saved: " + data.LevelIndex);
-        Debug.Log("Spawn Point Saved: " + levelProgressController.SpawnPoint);
+        Debug.Log("Spawn Point Saved: " + data.SpawnPoint);
 
         formatter.Serialize(stream, data);
         stream.Close();
