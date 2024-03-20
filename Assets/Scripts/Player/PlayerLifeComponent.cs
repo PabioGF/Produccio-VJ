@@ -11,6 +11,7 @@ public class PlayerLifeComponent : MonoBehaviour
     [SerializeField] private PlayerCombat _playerCombat;
     [SerializeField] private PlayerController _playerController;
     [SerializeField] private float _hitStopDuration;
+    [SerializeField] int _scoreSubstractByHit;
 
     [SerializeField] protected GameObject _parent;
     [SerializeField] protected float _maxLife;
@@ -27,10 +28,16 @@ public class PlayerLifeComponent : MonoBehaviour
 
     public void ReceiveHit(float amount)
     {
+        // If the player is deflecting, counter attacks
+        if (_playerCombat.IsParrying)
+        {
+            _playerCombat.OnDeflect();
+            return;
+        }
+
         // If the player is invulnerable returns
         if (_playerCombat.IsInvulnerable) return;
 
-        Debug.Log("Hit");
         GameController.Instance.StopTime(0f, _hitStopDuration);
 
         // If the player has a shield, removes it instead of taking the damage and stops
@@ -44,6 +51,7 @@ public class PlayerLifeComponent : MonoBehaviour
         // Recieves the damage of the hit, updates the UI and checks if the player is dead
         _currentLife -= amount;
         UIController.Instance.SetLife(_currentLife);
+        GameController.Instance.SubstractScore(_scoreSubstractByHit);
         if (_currentLife <= 0) _isDead = true;
 
         // Shows the death screen if the player is dead

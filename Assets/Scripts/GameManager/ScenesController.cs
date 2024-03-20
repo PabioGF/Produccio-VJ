@@ -7,7 +7,6 @@ using UnityEngine.SceneManagement;
 public class ScenesController : MonoBehaviour
 {
     [HideInInspector] public static ScenesController Instance;
-    private int _currentLevelIndex;
 
     void Awake()
     {
@@ -45,11 +44,8 @@ public class ScenesController : MonoBehaviour
     /// <param name="index">Scene build index</param>
     public void LoadSceneByIndex(int index)
     {
-        _currentLevelIndex = index;
-        LevelProgressController.Instance.LevelIndex = _currentLevelIndex;
+        LevelProgressController.Instance.LevelIndex = index;
 
         SceneManager.LoadScene(index);
     }
-
-    public int CurrentLevelIndex { get { return _currentLevelIndex; } set { _currentLevelIndex = value; } }
 }

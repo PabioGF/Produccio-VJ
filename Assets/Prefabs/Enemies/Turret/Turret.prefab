@@ -222,6 +222,7 @@ MonoBehaviour:
   _fireRate: 2
   _referencePoint: {fileID: 1501994420469854457}
   _bulletSpawnPoint: {fileID: 385154533092787707}
+  _shootSound: {fileID: 8300000, guid: 1e82b232a55be4c9ea6333552f419180, type: 3}
 --- !u!50 &3436838674230660831
 Rigidbody2D:
   serializedVersion: 4

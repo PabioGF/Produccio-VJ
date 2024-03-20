@@ -16,7 +16,7 @@ public class MandatoryRoom : MonoBehaviour
         _enemiesLife = new List<LifeComponent>();
         foreach (var enemy in _enemies)
         {
-            _enemiesLife.Add(enemy.GetComponent<LifeComponent>());
+            _enemiesLife.Add(enemy.GetComponentInChildren<LifeComponent>());
         }
     }
 

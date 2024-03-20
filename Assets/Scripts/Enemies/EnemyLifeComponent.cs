@@ -5,7 +5,10 @@ using UnityEngine.InputSystem.XR;
 
 public class EnemyLifeComponent : LifeComponent
 {
-    #region Variables
+    #region Global Variables
+    [SerializeField]
+    private int _scoreAddWhenDead;
+
     private IAController _controller;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -15,15 +18,21 @@ public class EnemyLifeComponent : LifeComponent
     protected override void Start()
     {
         base.Start();
-        _controller = GetComponent<IAController>();
-        _rigidbody = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
+        _controller = GetComponentInParent<IAController>();
+        _rigidbody = GetComponentInParent<Rigidbody2D>();
+        _animator = GetComponentInParent<Animator>();
     }
     #endregion
     public override void ReceiveHit(float amount)
     {
         _controller.GetHit();
         base.ReceiveHit(amount);
+
+        if (_isDead)
+        {
+            GameController.Instance.AddScore(_scoreAddWhenDead);
+            _parent.gameObject.SetActive(false);
+        }
     }
 
     public override void SendFlyingUp(float force)

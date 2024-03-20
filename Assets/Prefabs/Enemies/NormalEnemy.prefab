@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 240527700948679000}
   - component: {fileID: 633524417441701615}
   - component: {fileID: 6157194604111591697}
-  - component: {fileID: 6648277589926451404}
   - component: {fileID: 8203532647511212095}
   m_Layer: 2
   m_Name: NormalEnemy
@@ -149,6 +148,7 @@ MonoBehaviour:
   _attackDamage: 1
   _attackRadius: 1.5
   _minPlayerDistance: 3
+  _moveSound: {fileID: 0}
   tiempoEntreCombos: 5
 --- !u!95 &6157194604111591697
 Animator:
@@ -171,20 +171,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &6648277589926451404
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 451018218054530674}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc6c587d16550784e81ad690223f3683, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _parent: {fileID: 451018218054530674}
-  _maxLife: 10
 --- !u!70 &8203532647511212095
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -218,7 +204,7 @@ CapsuleCollider2D:
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
-  m_Size: {x: 1.4375, y: 3.4375}
+  m_Size: {x: 0.6948242, y: 3.4375}
   m_Direction: 0
 --- !u!1 &1894467997683754075
 GameObject:
@@ -324,9 +310,10 @@ GameObject:
   - component: {fileID: 1151018012291744607}
   - component: {fileID: 5926431566518831302}
   - component: {fileID: 8276822210066820045}
-  m_Layer: 2
+  - component: {fileID: 88265420274865627}
+  m_Layer: 11
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -394,3 +381,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _scoreSubstractByContact: 20
+--- !u!114 &88265420274865627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8192445286836841721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc6c587d16550784e81ad690223f3683, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _parent: {fileID: 451018218054530674}
+  _maxLife: 10
+  _scoreAddWhenDead: 100

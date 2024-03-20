@@ -6,11 +6,14 @@ using UnityEngine;
 public class MandatoryDoor : InteractableObject
 {
     [SerializeField] private Sprite[] _sprites;
+    [SerializeField] private AudioClip _openSound;
+    [SerializeField] private AudioClip _closeSound;
 
     public bool RoomIsCompleted { get; set; }
     private bool _isOpen;
     private SpriteRenderer _spriteRenderer;
     private Collider2D _collider;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
@@ -18,6 +21,11 @@ public class MandatoryDoor : InteractableObject
         RoomIsCompleted = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
         _collider = GetComponent<Collider2D>();
+        _audioSource = GetComponent<AudioSource>(); 
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     #region Unity Methods
@@ -43,6 +51,15 @@ public class MandatoryDoor : InteractableObject
         _spriteRenderer.sprite = _isOpen ? _sprites[0] : _sprites[1];
         _collider.enabled = _isOpen;
         _isOpen = !_isOpen;
+
+        if (_isOpen && _openSound != null)
+        {
+            _audioSource.PlayOneShot(_openSound);
+        }
+        else if (!_isOpen && _closeSound != null)
+        {
+            _audioSource.PlayOneShot(_closeSound);
+        }
     }
 
 

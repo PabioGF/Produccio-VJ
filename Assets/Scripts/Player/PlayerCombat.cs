@@ -23,6 +23,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionPushForce;
     [SerializeField] private float _comboTime;
 
+    [Header("Parry")]
+    [SerializeField] private float _counterDamage;
+    [SerializeField] private float _counterRadius;
+
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
@@ -30,11 +34,13 @@ public class PlayerCombat : MonoBehaviour
     private float _attackPerformed;
     private float _timer;
     private bool _isComboAnimation;
-    private int _damageMultiplier;
     private bool _isCombo;
+    private bool _isParrying;
+    private bool _deflect;
 
     private Animator _myAnimator;
     private bool _isInvulnerable;
+    private int _currComboLength;
 
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
@@ -64,7 +70,6 @@ public class PlayerCombat : MonoBehaviour
 
     void Start()
     {
-        _damageMultiplier = 1;
         int i = 0;
         foreach(GameObject attackArea in _attackAreas)
         {
@@ -149,8 +154,7 @@ public class PlayerCombat : MonoBehaviour
         if (_timer - _attackPerformed > _comboTime && _isCombo)
         {
             _isCombo = false;
-            _damageMultiplier = 1;
-            UIController.Instance.SetMultiplier(_damageMultiplier);
+            _currComboLength = 0;
         }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
@@ -158,6 +162,7 @@ public class PlayerCombat : MonoBehaviour
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
+            _currComboLength++;
 
             HandleCombos(attack);
         }
@@ -358,11 +363,9 @@ public class PlayerCombat : MonoBehaviour
         switch (attackType)
         {
             case AttackTypes.FastAttack:
-                _attackComponents[0].Damage = _damageMultiplier;
                 _attackAreas[0].SetActive(true);
                 break;
             case AttackTypes.SlowAttack:
-                _attackComponents[1].Damage = _damageMultiplier;
                 _attackAreas[1].SetActive(true);
                 break;
         }
@@ -386,7 +389,6 @@ public class PlayerCombat : MonoBehaviour
 
     public void MovingDownAttackStart(int velocity)
     {
-        _attackComponents[2].Damage = _damageMultiplier;
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
         _playerController.Rigidbody.velocity = new Vector2(0, -30);
@@ -428,6 +430,46 @@ public class PlayerCombat : MonoBehaviour
 
         _attackPerformed = _timer;
         _isAttacking = false;          
+    }
+    #endregion
+
+    #region Parry
+    public void HandleParryInput()
+    {
+        if (_isAttacking || _playerController.IsDashing || !_playerController.IsGrounded) return;
+
+        Debug.Log("Parry");
+        _myAnimator.SetTrigger("Parry");
+        _isParrying = true;
+    }
+
+    public void OnDeflect()
+    {
+        _myAnimator.SetTrigger("Counter");
+        _hitbox.enabled = false;
+    }
+
+    private void PerformCounterAttack()
+    {
+        Collider2D[] enemiesCollider = Physics2D.OverlapCircleAll(transform.position, _counterRadius, LayerMask.GetMask("Enemies"));
+        
+        foreach (Collider2D enemy in enemiesCollider)
+        {
+            if (!enemy.CompareTag("Enemy Hitbox")) continue;
+
+            enemy.GetComponent<EnemyLifeComponent>().ReceiveHit(_counterDamage);
+            GameController.Instance.AddScore(50);
+        }     
+    }
+
+    private void EnableDeflect()
+    {
+        _deflect = true;
+    }
+
+    private void DisableDeflect()
+    {
+        _deflect = false;
     }
     #endregion
 
@@ -479,6 +521,7 @@ public class PlayerCombat : MonoBehaviour
         if (_feet == null) return;
 
         Gizmos.DrawWireSphere(_feet.transform.position, _fallExplosionRange);
+        Gizmos.DrawWireSphere(transform.position, _counterRadius);
     }
 
     #region Getters
@@ -496,8 +539,11 @@ public class PlayerCombat : MonoBehaviour
     /// Returns wheter the player is doing a combo or not
     /// </summary>
     public bool IsCombo => _isComboAnimation;
-
     public bool IsInvulnerable => _isInvulnerable;
+    public int CurrComboLength => _currComboLength;
+    public bool IsParrying { get { return _isParrying; } set { _isParrying = value; } }
+    public bool Deflect { get { return _deflect; } set { _deflect = value; } }
+    public Collider2D Hitbox => _hitbox;
     #endregion
 
 }

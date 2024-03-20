@@ -11,6 +11,7 @@ public class LevelProgressController : MonoBehaviour
     private int _levelIndex;
     private bool _isCompletedScreen;
     private bool _hasSpawnPoint;
+    private int _score;
 
     void Awake()
     {
@@ -34,14 +35,23 @@ public class LevelProgressController : MonoBehaviour
     {
         if (!_hasSpawnPoint)
         {
+            _score = 0;
             if (GameObject.FindGameObjectWithTag("Spawn") != null)
             {
                 _spawnPoint = GameObject.FindGameObjectWithTag("Spawn").transform.position;
                 _hasSpawnPoint = true;
             }
         }
+
+        // If it is not the menu scene, sets the current score
+        if (!scene.name.Equals("Menu"))
+        {
+            GameController.Instance.SetScore(_score);
+        }
+
         Debug.Log("Scene " + scene.name + " loaded");
         Debug.Log("Has spawn point: " + _hasSpawnPoint);
+        Debug.Log("Score: " + GameController.Instance.Score);
     }
 
     /// <summary>
@@ -58,4 +68,5 @@ public class LevelProgressController : MonoBehaviour
     public int LevelIndex { get { return _levelIndex; } set { _levelIndex = value; } }
     public bool IsCompleteScreen { get { return _isCompletedScreen; } set { _isCompletedScreen = value; } }
     public bool HasSpawnPoint { get { return _hasSpawnPoint; } set { _hasSpawnPoint = value; } }
+    public int Score { get { return _score; } set { _score = value; } }
 }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class EnemyAttackComponent : MonoBehaviour
 {
     [SerializeField] private float _damage;
+    [SerializeField] private int _scoreSubstractByContact;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -13,6 +14,7 @@ public class EnemyAttackComponent : MonoBehaviour
         {
             Debug.Log(collision.gameObject.name);
             life.ReceiveHit(_damage);
+            GameController.Instance.SubstractScore(_scoreSubstractByContact);
         }
     }
 }

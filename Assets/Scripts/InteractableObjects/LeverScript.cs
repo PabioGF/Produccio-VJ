@@ -7,13 +7,20 @@ public class LeverScript : InteractableObject
     #region Global Variables
     [SerializeField] private GameObject _linkedObject;
     [SerializeField] private LinkedObjectType _objectType;
+    [SerializeField] private AudioClip _toggleSound;
 
     private Animator _animator;
     private bool _toggled;
+    private AudioSource _audioSource;
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>(); // Inicializar el componente AudioSource
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
     private enum LinkedObjectType
     {
@@ -27,6 +34,11 @@ public class LeverScript : InteractableObject
     {
         base.Interact();
         _animator.SetTrigger("Toggle");
+
+        if (_toggleSound != null)
+        {
+            _audioSource.PlayOneShot(_toggleSound);
+        }
 
         switch (_objectType)
         { 
