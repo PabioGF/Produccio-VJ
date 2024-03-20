@@ -23,6 +23,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionPushForce;
     [SerializeField] private float _comboTime;
 
+    [Header("Parry")]
+    [SerializeField] private float _counterDamage;
+    [SerializeField] private float _counterRadius;
+
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
@@ -445,6 +449,19 @@ public class PlayerCombat : MonoBehaviour
         _hitbox.enabled = false;
     }
 
+    private void PerformCounterAttack()
+    {
+        Collider2D[] enemiesCollider = Physics2D.OverlapCircleAll(transform.position, _counterRadius, LayerMask.GetMask("Enemies"));
+        
+        foreach (Collider2D enemy in enemiesCollider)
+        {
+            if (!enemy.CompareTag("Enemy Hitbox")) continue;
+
+            enemy.GetComponent<EnemyLifeComponent>().ReceiveHit(_counterDamage);
+            GameController.Instance.AddScore(50);
+        }     
+    }
+
     private void EnableDeflect()
     {
         _deflect = true;
@@ -504,6 +521,7 @@ public class PlayerCombat : MonoBehaviour
         if (_feet == null) return;
 
         Gizmos.DrawWireSphere(_feet.transform.position, _fallExplosionRange);
+        Gizmos.DrawWireSphere(transform.position, _counterRadius);
     }
 
     #region Getters

@@ -31,7 +31,6 @@ public class DoorController : InteractableObject
 
     private void ToggleDoor()
     {
-        Debug.Log("Open/Close");
         GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
         GetComponent<Collider2D>().enabled = isOpen;
         isOpen = !isOpen;
