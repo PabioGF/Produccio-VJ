@@ -34,6 +34,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private GameObject _interactionIndicator;
     [SerializeField] private Sprite[] _interactionSprites;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip _jumpSound;
+    [SerializeField] private AudioClip _movementSound;
+
     public bool DesiredInteraction { get; set; }
 
     private PlayerCombat _playerCombat;
@@ -61,6 +65,8 @@ public class PlayerController : MonoBehaviour
     private float _dashPerformedTime;
     private bool _isDashing;
     private float _dashDirection;
+
+    private AudioSource _audioSource;
     #endregion
 
     #region Unity methods
@@ -71,6 +77,12 @@ public class PlayerController : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
 
         if (_groundCheck == null) Debug.LogError("[PlayerController] La refer�ncia a Ground Check �s null");
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void Start()
@@ -107,6 +119,13 @@ public class PlayerController : MonoBehaviour
 
         if (!_playerCombat.IsAttacking)
             _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
+            if (_movementInput != 0 && _isGrounded)
+            {
+                if (_movementSound != null && !_audioSource.isPlaying)
+                {
+                    _audioSource.PlayOneShot(_movementSound);
+                }
+            }
         else
             _movementInput = 0;
     }
@@ -286,7 +305,11 @@ public class PlayerController : MonoBehaviour
     public void HandleJumpInput()
     {
         _jumpPressedTime = _timer;
-        _desiredJump = true; 
+        _desiredJump = true;
+        if (_jumpSound != null)
+        {
+            _audioSource.PlayOneShot(_jumpSound);
+        }
     }
     #endregion
     

@@ -8,15 +8,22 @@ public class ShooterEnemyController : IAController
     [SerializeField] private float _upperBulletProbability;
     [SerializeField] private GameObject _pointer;
     [SerializeField] private float _bulletSpeed;
+    [SerializeField] private AudioClip _movementSound;
 
     private Rigidbody2D _rigidbody;
     private bool _upperBullet;
     private Vector2 _aimDirection;
+    private AudioSource _audioSource;
 
     protected override void Start()
     {
         base.Start();
         myAnimator = GetComponent<Animator>();
+        _audioSource = GetComponent<AudioSource>(); 
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     protected override void Update()
@@ -38,6 +45,11 @@ public class ShooterEnemyController : IAController
             Vector3 direction = (_player.position - transform.position).normalized;
             myVelocity.x = velocidadMovimiento * direction.x;
             myRB.velocity = myVelocity;
+
+            if (_movementSound != null && !_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(_movementSound);
+            }
         }
         // If it is within the range, shoots
         else

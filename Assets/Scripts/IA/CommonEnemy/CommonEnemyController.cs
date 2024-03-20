@@ -7,12 +7,22 @@ public class CommonEnemyController : IAController
     [SerializeField] private float _attackDamage;
     [SerializeField] protected float _attackRadius;
     [SerializeField] private float _minPlayerDistance;
+    [SerializeField] private AudioClip _moveSound;
+
+    private AudioSource _audioSource;
+
     public float tiempoEntreCombos = 5.0f;
     
     protected override void Start()
     {
         base.Start();
         myAnimator = GetComponent<Animator>();
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
 
     private void OnDrawGizmosSelected()
@@ -36,7 +46,12 @@ public class CommonEnemyController : IAController
 
         Vector3 direction = (_player.position - transform.position).normalized;
         myVelocity.x = velocidadMovimiento * direction.x;
-        myRB.velocity = myVelocity; 
+        myRB.velocity = myVelocity;
+
+        if (_moveSound != null && !_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_moveSound);
+        }
     }
 
     #region Attack
