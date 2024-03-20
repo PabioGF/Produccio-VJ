@@ -59,12 +59,6 @@ public class IAController : MonoBehaviour
     }
     #endregion
 
-    public bool PlayerIsGone()
-    {
-        if (DistanceToPlayer() > _attackRange) return true;
-        else return false;
-    }
-
     public virtual void EnemyBasicMovement()
     {
         if (DistanceToPlayer() > _enablingDistance) return;

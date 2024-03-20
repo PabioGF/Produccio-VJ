@@ -59,7 +59,7 @@ public class CommonEnemyController : IAController
     public void Attack()
     {
         StandStill();
-        myAnimator.SetInteger("Combo", Random.Range(0, 3));
+        myAnimator.SetInteger("Combo", Random.Range(0, 5));
         myAnimator.SetTrigger("Attack");
     }
 
