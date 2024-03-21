@@ -216,6 +216,13 @@ public class PlayerController : MonoBehaviour
             {
                 float acceleration = _isGrounded ? _acceleration : _airAcceleration;
                 _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
+                if (_movementInput != 0 && _isGrounded)
+                {
+                    if (_movementSound != null && !_audioSource.isPlaying)
+                    {
+                        _audioSource.PlayOneShot(_movementSound);
+                    }
+                }
             }
 
             if (_desiredVelocity.x < 0)
