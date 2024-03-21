@@ -15,13 +15,22 @@ public class PlayerLifeComponent : MonoBehaviour
 
     [SerializeField] protected GameObject _parent;
     [SerializeField] protected float _maxLife;
+    [SerializeField] private SpriteRenderer sprite;
 
     protected float _currentLife;
     protected bool _isDead;
-    #endregion
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip _healSound;
+    #endregion
+    private AudioSource _audioSource;
     private void Start()
     {
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
         _currentLife = _maxLife;
         UIController.Instance.SetLife(_currentLife);
     }
@@ -76,5 +85,19 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_currentLife > _maxLife) _currentLife = _maxLife;
 
         UIController.Instance.SetLife(_currentLife);
+        StartCoroutine(FlashGreen());
+        if (_healSound != null)
+        {
+            _audioSource.PlayOneShot(_healSound);
+        }
     }
+
+    public IEnumerator FlashGreen()
+    {
+        sprite.color = Color.green;
+        Debug.Log("Entro aqui" + sprite.color);
+        yield return new WaitForSeconds(0.5f);
+        sprite.color = Color.white;
+    }
+
 }
