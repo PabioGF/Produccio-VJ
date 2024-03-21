@@ -29,7 +29,7 @@ public class PlayerLifeComponent : MonoBehaviour
     public void ReceiveHit(float amount)
     {
         // If the player is deflecting, counter attacks
-        if (_playerCombat.IsParrying)
+        if (_playerCombat.Deflect)
         {
             _playerCombat.OnDeflect();
             return;
