@@ -112,13 +112,12 @@ public class BossController : MonoBehaviour
 
     private void PerformAttack(int type)
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("Player"));
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("PlayerHitbox"));
 
         if (playerCollider != null)
         {
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
-            Debug.Log(playerCollider.name + " has been hit");
-        }    
+        }
     }
 
     /// <summary>
@@ -294,7 +293,6 @@ public class BossController : MonoBehaviour
     private void DisableBoss()
     {
         gameObject.SetActive(false);
-        _endDoor.SetActive(false);
     }
     #endregion
 

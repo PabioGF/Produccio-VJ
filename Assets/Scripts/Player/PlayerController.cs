@@ -225,18 +225,19 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            if (_desiredVelocity.x < 0)
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            else if (_desiredVelocity.x > 0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
+            _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
         }
-        _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
+
+        if (_desiredVelocity.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (_desiredVelocity.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 
     private void Dash()
