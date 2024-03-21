@@ -457,7 +457,7 @@ public class PlayerCombat : MonoBehaviour
         {
             if (!enemy.CompareTag("Enemy Hitbox")) continue;
 
-            enemy.GetComponent<EnemyLifeComponent>().ReceiveHit(_counterDamage);
+            enemy.GetComponent<LifeComponent>().ReceiveHit(_counterDamage);
             GameController.Instance.AddScore(50);
         }     
     }
