@@ -144,11 +144,11 @@ MonoBehaviour:
   _detectionDistance: 15
   _attackRange: 3
   _enablingDistance: 40
-  _scoreSubstractByHit: 50
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
   _attackRadius: 1.5
   _minPlayerDistance: 3
+  _moveSound: {fileID: 0}
   tiempoEntreCombos: 5
 --- !u!95 &6157194604111591697
 Animator:
@@ -311,9 +311,9 @@ GameObject:
   - component: {fileID: 5926431566518831302}
   - component: {fileID: 8276822210066820045}
   - component: {fileID: 88265420274865627}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

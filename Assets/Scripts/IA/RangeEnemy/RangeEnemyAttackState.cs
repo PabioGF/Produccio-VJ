@@ -17,15 +17,6 @@ public class RangeEnemyAttackState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         _enemyController.StandStill();
-
-        if (_enemyController.PlayerIsGone())
-        {
-            animator.SetBool("PlayerGone", true);
-        }
-        else
-        {
-            animator.SetBool("PlayerGone", false);
-        }
     }
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine

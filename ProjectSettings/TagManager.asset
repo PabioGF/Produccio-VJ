@@ -11,6 +11,7 @@ TagManager:
   - Spawn
   - Roof
   - Wall
+  - Enemy Hitbox
   layers:
   - Default
   - TransparentFX

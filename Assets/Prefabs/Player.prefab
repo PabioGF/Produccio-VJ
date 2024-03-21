@@ -298,6 +298,7 @@ MonoBehaviour:
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
   _hitStopDuration: 0.25
+  _scoreSubstractByHit: 50
   _parent: {fileID: 5180191103471191624}
   _maxLife: 5
 --- !u!1 &5180191103471191624
@@ -374,6 +375,8 @@ MonoBehaviour:
   _interactionSprites:
   - {fileID: 21300000, guid: 7e6777f686c4c474f869b54f15e63c20, type: 3}
   - {fileID: 21300000, guid: 0994adfbb0cb0a540a4373ac9e16bc8f, type: 3}
+  _jumpSound: {fileID: 8300000, guid: 0f31b9cc7649c4bf1a4bafb3db206b8b, type: 3}
+  _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -402,6 +405,8 @@ MonoBehaviour:
   _fallExplosionDamage: 1
   _fallExplosionPushForce: 50
   _comboTime: 0.5
+  _counterDamage: 10
+  _counterRadius: 3
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -836,6 +841,31 @@ MonoBehaviour:
       m_Processors: 
       m_Groups: 
       m_Action: Dash
+      m_Flags: 0
+    m_Flags: 0
+  _parry:
+    m_Name: Parry
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: ae8a2a20-a829-4f97-9f12-d722f6c4736c
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 4cc114d3-de0e-4ffb-bf6f-38bea7c12ef9
+      m_Path: <Keyboard>/leftCtrl
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Parry
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 713ef072-b983-45c3-8758-6a63dbabe091
+      m_Path: <Gamepad>/leftShoulder
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Parry
       m_Flags: 0
     m_Flags: 0
   _throw:

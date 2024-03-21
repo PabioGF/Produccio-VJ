@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
+  _scoreSubstractByContact: 20
 --- !u!114 &4649511112239628356
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +62,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 9079628943148725425}
   _maxLife: 3
+  _scoreAddWhenDead: 50
 --- !u!70 &54351462183456319
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -451,6 +453,7 @@ MonoBehaviour:
   _upperBulletProbability: 0.5
   _pointer: {fileID: 1958296773575935271}
   _bulletSpeed: 5
+  _movementSound: {fileID: 0}
 --- !u!95 &4380129257016360922
 Animator:
   serializedVersion: 5

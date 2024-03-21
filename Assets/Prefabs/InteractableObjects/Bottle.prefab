@@ -177,7 +177,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6405166d7e6bc244b5b717dc90acd35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _damage: 3
+  type: 0
+  _damage: 10
   _throwSpeed: 50
   _playerTransform: {fileID: 0}
   _rigidbody: {fileID: 3674621935664875031}

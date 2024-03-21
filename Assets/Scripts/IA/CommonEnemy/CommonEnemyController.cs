@@ -59,7 +59,7 @@ public class CommonEnemyController : IAController
     public void Attack()
     {
         StandStill();
-        myAnimator.SetInteger("Combo", Random.Range(0, 3));
+        myAnimator.SetInteger("Combo", Random.Range(0, 5));
         myAnimator.SetTrigger("Attack");
     }
 
@@ -70,8 +70,6 @@ public class CommonEnemyController : IAController
         if (playerCollider != null)
         {
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
-            Debug.Log(playerCollider.name + " has been hit");
-            GameController.Instance.SubstractScore(_scoreSubstractByHit);
         }
     }
     #endregion
