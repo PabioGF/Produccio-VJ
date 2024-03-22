@@ -12,6 +12,11 @@ public class EnemyLifeComponent : LifeComponent
     private IAController _controller;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
+
+    [Header("Audio")]
+    [SerializeField] private AudioClip _punchSound;
+
+    private AudioSource _audioSource;
     #endregion
 
     #region Unity methods
@@ -21,12 +26,23 @@ public class EnemyLifeComponent : LifeComponent
         _controller = GetComponentInParent<IAController>();
         _rigidbody = GetComponentInParent<Rigidbody2D>();
         _animator = GetComponentInParent<Animator>();
+
+        _audioSource = GetComponent<AudioSource>();
+        if (_audioSource == null)
+        {
+            _audioSource = gameObject.AddComponent<AudioSource>();
+        }
     }
     #endregion
     public override void ReceiveHit(float amount)
     {
         _controller.GetHit();
         base.ReceiveHit(amount);
+
+        if (_punchSound != null)
+        {
+            _audioSource.PlayOneShot(_punchSound);
+        }
 
         if (_isDead)
         {

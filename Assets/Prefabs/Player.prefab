@@ -301,6 +301,8 @@ MonoBehaviour:
   _scoreSubstractByHit: 50
   _parent: {fileID: 5180191103471191624}
   _maxLife: 5
+  sprite: {fileID: 0}
+  _healSound: {fileID: 8300000, guid: ba66c6ba8f3f21b4098e6bf0cd60bc82, type: 3}
 --- !u!1 &5180191103471191624
 GameObject:
   m_ObjectHideFlags: 0

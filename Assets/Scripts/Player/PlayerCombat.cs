@@ -26,6 +26,7 @@ public class PlayerCombat : MonoBehaviour
     [Header("Parry")]
     [SerializeField] private float _counterDamage;
     [SerializeField] private float _counterRadius;
+    [SerializeField] private float _parryCd;
 
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
@@ -41,7 +42,7 @@ public class PlayerCombat : MonoBehaviour
     private Animator _myAnimator;
     private bool _isInvulnerable;
     private int _currComboLength;
-
+    private float _parryPerformedTime;
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { FastAttack, SlowAttack }
 
@@ -436,9 +437,9 @@ public class PlayerCombat : MonoBehaviour
     #region Parry
     public void HandleParryInput()
     {
-        if (_isAttacking || _playerController.IsDashing || !_playerController.IsGrounded) return;
+        if (_isAttacking || _playerController.IsDashing || !_playerController.IsGrounded || (_timer - _parryPerformedTime) < _parryCd) return;
 
-        Debug.Log("Parry");
+        _parryPerformedTime = _timer;
         _myAnimator.SetTrigger("Parry");
         _isParrying = true;
     }

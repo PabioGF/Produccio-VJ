@@ -227,6 +227,7 @@ public class PlayerController : MonoBehaviour
                         _audioSource.PlayOneShot(_movementSound);
                     }
                 }
+				_myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
             }
 
             if (_desiredVelocity.x < 0)
@@ -284,7 +285,7 @@ public class PlayerController : MonoBehaviour
         }
 
         bool bufferedJump = _timer - _jumpPressedTime <= _bufferTime;
-        bool canJump = (_availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime) && !_playerCombat.IsAttacking;
+        bool canJump = (_availableJumps > 0 || _timer - _coyoteStart <= _coyoteTime) && !_playerCombat.IsAttacking && !_playerCombat.IsParrying && !_isDashing;
 
         // Limits the gravity when the player is grounded
         if (_isGrounded && _desiredVelocity.y <= 0) _desiredVelocity.y = -0.1f;
@@ -301,6 +302,10 @@ public class PlayerController : MonoBehaviour
             _desiredVelocity.y = _jumpForce;
             _desiredJump = false;
             _availableJumps -= 1;
+            if (_jumpSound != null)
+            {
+                _audioSource.PlayOneShot(_jumpSound);
+            }
         }
   
     }
