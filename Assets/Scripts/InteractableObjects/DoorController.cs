@@ -9,6 +9,8 @@ public class DoorController : InteractableObject
     [SerializeField] private Sprite _openSprite;
     [SerializeField] private AudioClip _openSound;
     [SerializeField] private AudioClip _closeSound;
+    [SerializeField] private float _openVolume = 1.0f; 
+    [SerializeField] private float _closeVolume = 1.0f;
 
     private bool isOpen;
     private bool _hasInteracted;
@@ -37,11 +39,11 @@ public class DoorController : InteractableObject
 
         if (isOpen && _openSound != null)
         {
-            _audioSource.PlayOneShot(_openSound);
+            _audioSource.PlayOneShot(_openSound, _openVolume);
         }
         else if (!isOpen && _closeSound != null)
         {
-            _audioSource.PlayOneShot(_closeSound);
+            _audioSource.PlayOneShot(_closeSound, _closeVolume);
         }
     }
 }

@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _movementSound;
 
+    [Header("Audio Volumes")]
+    [SerializeField] private float _movementVolume = 1.0f;
+    [SerializeField] private float _jumpVolume = 1.0f;
+
     public bool DesiredInteraction { get; set; }
 
     private PlayerCombat _playerCombat;
@@ -120,19 +124,19 @@ public class PlayerController : MonoBehaviour
         if (!_playerCombat.IsAttacking && !_playerCombat.IsParrying)
         {
             _movementInput = PlayerInputsManager.Instance.ReadHorizontalInput();
-            /*
-                if (_movementInput != 0 && _isGrounded)
-                {
-                    if (_movementSound != null && !_audioSource.isPlaying)
-                    {
-                        _audioSource.PlayOneShot(_movementSound);
-                    }
-                }
-            */
+            
         }
         else
         {
             _movementInput = 0;
+        }
+
+        if (_movementInput != 0 && _isGrounded)
+        {
+            if (_movementSound != null && !_audioSource.isPlaying)
+            {
+                _audioSource.PlayOneShot(_movementSound, _movementVolume);
+            }
         }
     }
 
@@ -225,19 +229,18 @@ public class PlayerController : MonoBehaviour
                 }
             }
 
-            _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
+            if (_desiredVelocity.x < 0)
+            {
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
+            else if (_desiredVelocity.x > 0)
+            {
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+            }
         }
-
-        if (_desiredVelocity.x < 0)
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0);
-            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
-        else if (_desiredVelocity.x > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0);
-            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-        }
+        _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
 
     private void Dash()
@@ -322,7 +325,7 @@ public class PlayerController : MonoBehaviour
         _desiredJump = true;
         if (_jumpSound != null)
         {
-            _audioSource.PlayOneShot(_jumpSound);
+            _audioSource.PlayOneShot(_jumpSound, _jumpVolume);
         }
     }
     #endregion
