@@ -48,7 +48,7 @@ public class CommonEnemyController : IAController
         myVelocity.x = velocidadMovimiento * direction.x;
         myRB.velocity = myVelocity;
 
-        if (_moveSound != null && !_audioSource.isPlaying)
+        if (_moveSound != null && !_audioSource.isPlaying && Mathf.Abs(myVelocity.x) > 0.1f)
         {
             _audioSource.PlayOneShot(_moveSound);
         }

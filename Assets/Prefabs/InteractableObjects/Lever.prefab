@@ -103,6 +103,7 @@ MonoBehaviour:
   _linkedObject: {fileID: 0}
   _objectType: 0
   _toggleSound: {fileID: 8300000, guid: 1c80e4e408bd34bf2803a94fbfdf082a, type: 3}
+  _toggleVolume: 3
 --- !u!61 &6155399300441834870
 BoxCollider2D:
   m_ObjectHideFlags: 0

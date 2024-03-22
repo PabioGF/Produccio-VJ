@@ -177,6 +177,8 @@ MonoBehaviour:
   _openSprite: {fileID: 21300000, guid: e05f1cc5f0ecb244cade2b853abaddd7, type: 3}
   _openSound: {fileID: 8300000, guid: e68ed9c276c814e90898604f38047ebd, type: 3}
   _closeSound: {fileID: 8300000, guid: 6638215325ded4982aab93f412e6f38d, type: 3}
+  _openVolume: 1
+  _closeVolume: 5
 --- !u!61 &5042098903268026787
 BoxCollider2D:
   m_ObjectHideFlags: 0

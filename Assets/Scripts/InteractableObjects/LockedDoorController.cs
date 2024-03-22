@@ -8,6 +8,9 @@ public class LockedDoorController : InteractableObject
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] protected int id;
     [SerializeField] private AudioClip _openSound;
+    [SerializeField] private AudioClip _closeSound;
+    [SerializeField] private float _openVolume = 1.0f;
+    [SerializeField] private float _closeVolume = 1.0f;
 
     private bool _isOpen;
     private bool _isUnlocked;
@@ -50,7 +53,11 @@ public class LockedDoorController : InteractableObject
 
         if (_isOpen && _openSound != null)
         {
-            _audioSource.PlayOneShot(_openSound);
+            _audioSource.PlayOneShot(_openSound, _openVolume);
+        }
+        else if (!_isOpen && _closeSound != null) 
+        {
+            _audioSource.PlayOneShot(_closeSound, _closeVolume);
         }
     }
 

@@ -8,6 +8,7 @@ public class LeverScript : InteractableObject
     [SerializeField] private GameObject _linkedObject;
     [SerializeField] private LinkedObjectType _objectType;
     [SerializeField] private AudioClip _toggleSound;
+    [SerializeField] private float _toggleVolume = 1.0f;
 
     private Animator _animator;
     private bool _toggled;
@@ -16,7 +17,7 @@ public class LeverScript : InteractableObject
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _audioSource = GetComponent<AudioSource>(); // Inicializar el componente AudioSource
+        _audioSource = GetComponent<AudioSource>(); 
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
@@ -37,7 +38,7 @@ public class LeverScript : InteractableObject
 
         if (_toggleSound != null)
         {
-            _audioSource.PlayOneShot(_toggleSound);
+            _audioSource.PlayOneShot(_toggleSound, _toggleVolume);
         }
 
         switch (_objectType)
