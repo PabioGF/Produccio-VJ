@@ -160,6 +160,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
+            AudioManager.Instance.PlaySFX("Hit");
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
