@@ -142,7 +142,7 @@ MonoBehaviour:
   _maxPosition: 0
   _minPosition: 0
   _detectionDistance: 15
-  _attackRange: 0
+  _attackRange: 3
   _enablingDistance: 40
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
