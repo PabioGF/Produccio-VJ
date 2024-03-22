@@ -95,6 +95,9 @@ MonoBehaviour:
   _movingForceDown: 100
   _hitScore: 10
   _scoreHitMultiplier: 2
+  _impactSound: {fileID: 0}
+  _punchSound: {fileID: 0}
+  _impactSoundVolume: 1
   AttackType: 0
 --- !u!1 &1524150193022436047
 GameObject:
@@ -301,8 +304,9 @@ MonoBehaviour:
   _scoreSubstractByHit: 50
   _parent: {fileID: 5180191103471191624}
   _maxLife: 5
-  sprite: {fileID: 0}
+  sprite: {fileID: 7589495094095742432}
   _healSound: {fileID: 8300000, guid: ba66c6ba8f3f21b4098e6bf0cd60bc82, type: 3}
+  _healVolume: 1
 --- !u!1 &5180191103471191624
 GameObject:
   m_ObjectHideFlags: 0
@@ -379,6 +383,8 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 0994adfbb0cb0a540a4373ac9e16bc8f, type: 3}
   _jumpSound: {fileID: 8300000, guid: 0f31b9cc7649c4bf1a4bafb3db206b8b, type: 3}
   _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
+  _movementVolume: 1
+  _jumpVolume: 1
 --- !u!114 &5160320821678128178
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,6 +415,7 @@ MonoBehaviour:
   _comboTime: 0.5
   _counterDamage: 10
   _counterRadius: 3
+  _parryCd: 0
 --- !u!50 &7522392117402914908
 Rigidbody2D:
   serializedVersion: 4
@@ -1174,6 +1181,9 @@ MonoBehaviour:
   _movingForceDown: 150
   _hitScore: 10
   _scoreHitMultiplier: 2
+  _impactSound: {fileID: 0}
+  _punchSound: {fileID: 0}
+  _impactSoundVolume: 1
   AttackType: 0
 --- !u!1 &9216886434159617761
 GameObject:
@@ -1278,4 +1288,7 @@ MonoBehaviour:
   _movingForceDown: 0
   _hitScore: 10
   _scoreHitMultiplier: 2
+  _impactSound: {fileID: 0}
+  _punchSound: {fileID: 0}
+  _impactSoundVolume: 1
   AttackType: 0

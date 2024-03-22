@@ -12,7 +12,7 @@ public class CommonEnemyController : IAController
     private AudioSource _audioSource;
 
     public float tiempoEntreCombos = 5.0f;
-
+    
     protected override void Start()
     {
         base.Start();
@@ -48,7 +48,7 @@ public class CommonEnemyController : IAController
         myVelocity.x = velocidadMovimiento * direction.x;
         myRB.velocity = myVelocity;
 
-        if (_moveSound != null && !_audioSource.isPlaying)
+        if (_moveSound != null && !_audioSource.isPlaying && Mathf.Abs(myVelocity.x) > 0.1f)
         {
             _audioSource.PlayOneShot(_moveSound);
         }

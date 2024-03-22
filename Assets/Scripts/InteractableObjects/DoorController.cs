@@ -7,6 +7,10 @@ public class DoorController : InteractableObject
 {
     [SerializeField] private Sprite _closedSprite;
     [SerializeField] private Sprite _openSprite;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private SpriteRenderer _sprite;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip _openSound;
     [SerializeField] private AudioClip _closeSound;
     [SerializeField] private float _openVolume = 1.0f; 
@@ -33,8 +37,8 @@ public class DoorController : InteractableObject
 
     private void ToggleDoor()
     {
-        GetComponent<SpriteRenderer>().sprite = isOpen ? _closedSprite : _openSprite;
-        GetComponent<Collider2D>().enabled = isOpen;
+        _sprite.sprite = isOpen ? _closedSprite : _openSprite;
+        _collider.enabled = isOpen;
         isOpen = !isOpen;
 
         if (isOpen && _openSound != null)
