@@ -22,8 +22,10 @@ public class PlayerLifeComponent : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip _healSound;
-    #endregion
+    [SerializeField] private float _healVolume = 1.0f;
     private AudioSource _audioSource;
+    #endregion
+
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -88,7 +90,7 @@ public class PlayerLifeComponent : MonoBehaviour
         StartCoroutine(FlashGreen());
         if (_healSound != null)
         {
-            _audioSource.PlayOneShot(_healSound);
+            _audioSource.PlayOneShot(_healSound, _healVolume);
         }
     }
 
