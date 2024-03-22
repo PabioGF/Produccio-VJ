@@ -142,13 +142,13 @@ MonoBehaviour:
   _maxPosition: 0
   _minPosition: 0
   _detectionDistance: 15
-  _attackRange: 3
+  _attackRange: 0
   _enablingDistance: 40
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
   _attackRadius: 1.5
   _minPlayerDistance: 3
-  _moveSound: {fileID: 0}
+  _moveSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
   tiempoEntreCombos: 5
 --- !u!95 &6157194604111591697
 Animator:
@@ -395,6 +395,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
-  _maxLife: 10
+  _maxLife: 3
   _scoreAddWhenDead: 100
   _punchSound: {fileID: 8300000, guid: 950a9094d14c2e449bd96eefccffa020, type: 3}
