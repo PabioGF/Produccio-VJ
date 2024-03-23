@@ -6,6 +6,7 @@ public class LightsTriggerController : MonoBehaviour
 {
     [SerializeField] private float _lightTransitionDuration;
     [SerializeField] private SpriteRenderer _lightArea;
+    [SerializeField] private float _lightSwitchVolume;
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -18,7 +19,7 @@ public class LightsTriggerController : MonoBehaviour
     {
         float timeElapsed = 0;
         Color color;
-        AudioManager.Instance.PlaySFX("LightSwitch");
+        AudioManager.Instance.PlaySFX("LightSwitch", _lightSwitchVolume);
 
         while (timeElapsed < _lightTransitionDuration)
         {

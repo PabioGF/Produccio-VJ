@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 143606251727437046}
   - component: {fileID: 4649511112239628356}
   - component: {fileID: 54351462183456319}
-  m_Layer: 2
+  m_Layer: 11
   m_Name: Hitbox
-  m_TagString: Untagged
+  m_TagString: Enemy Hitbox
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -63,6 +63,8 @@ MonoBehaviour:
   _parent: {fileID: 9079628943148725425}
   _maxLife: 3
   _scoreAddWhenDead: 50
+  _punchSound: {fileID: 0}
+  _punchVolume: 0
 --- !u!70 &54351462183456319
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

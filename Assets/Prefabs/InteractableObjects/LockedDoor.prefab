@@ -257,6 +257,6 @@ MonoBehaviour:
   _collider: {fileID: 1534050049606060720}
   _sprite: {fileID: 7964587318617636347}
   _openSound: {fileID: 8300000, guid: 6d52f9588a2ce4d8c9b580db9e3d628a, type: 3}
-  _closeSound: {fileID: 0}
-  _openVolume: 1
-  _closeVolume: 1
+  _closeSound: {fileID: 8300000, guid: 6d52f9588a2ce4d8c9b580db9e3d628a, type: 3}
+  _openVolume: 0.4
+  _closeVolume: 0.3

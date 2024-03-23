@@ -100,6 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 6
   _id: 1
+  _pickupVolume: 3
 --- !u!61 &1092695082161207077
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -23061,6 +23061,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1931235778409045287, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_TagString
+      value: Enemy Hitbox
+      objectReference: {fileID: 0}
     - target: {fileID: 3455354017850067926, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.33
@@ -23105,6 +23109,10 @@ PrefabInstance:
       propertyPath: _player
       value: 
       objectReference: {fileID: 1913652960}
+    - target: {fileID: 8305705286880142955, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -57,12 +57,10 @@ public class BottleScript : SceneInventoryItem
     {
         if (!_isThrown) return;
 
-        if (collision.gameObject.CompareTag("Enemy"))
+
+        if (collision.gameObject.TryGetComponent<LifeComponent>(out var life))
         {
-            if (collision.gameObject.TryGetComponent<LifeComponent>(out var life))
-            {
-                life.ReceiveHit(_damage);
-            }
+            life.ReceiveHit(_damage);
         }
 
         Destroy(gameObject, 0.1f);

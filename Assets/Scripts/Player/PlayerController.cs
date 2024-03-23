@@ -328,10 +328,6 @@ public class PlayerController : MonoBehaviour
     {
         _jumpPressedTime = _timer;
         _desiredJump = true;
-        if (_jumpSound != null)
-        {
-            _audioSource.PlayOneShot(_jumpSound, _jumpVolume);
-        }
     }
     #endregion
     
