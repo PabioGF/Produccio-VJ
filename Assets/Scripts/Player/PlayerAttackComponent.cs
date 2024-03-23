@@ -12,13 +12,6 @@ public class PlayerAttackComponent : MonoBehaviour
     [SerializeField] private int _hitScore;
     [SerializeField] private float _scoreHitMultiplier;
 
-    [Header("Audio")]
-    [SerializeField] private AudioClip _impactSound;
-    [SerializeField] private AudioClip _punchSound;
-    [SerializeField][Range(0f, 1f)] private float _impactSoundVolume = 1f;
-
-    private AudioSource _audioSource;
-
     private PlayerCombat _playerCombat;
 
     public PlayerAttackTypes AttackType;
@@ -26,11 +19,6 @@ public class PlayerAttackComponent : MonoBehaviour
     private void Awake()
     {
         _playerCombat = GetComponentInParent<PlayerCombat>();
-        _audioSource = GetComponent<AudioSource>();
-        if (_audioSource == null)
-        {
-            _audioSource = gameObject.AddComponent<AudioSource>();
-        }
     }
 
     public enum PlayerAttackTypes
@@ -57,16 +45,6 @@ public class PlayerAttackComponent : MonoBehaviour
             // Add Score
             int scoreToAdd = Mathf.RoundToInt(_hitScore + ((_playerCombat.CurrComboLength - 1) * _scoreHitMultiplier));
             GameController.Instance.AddScore(scoreToAdd);
-
-            if (_impactSound != null)
-            {
-                _audioSource.volume = _impactSoundVolume;
-                _audioSource.PlayOneShot(_impactSound);
-            }
-        }
-        else {
-            _audioSource.volume = _impactSoundVolume;
-            _audioSource.PlayOneShot(_punchSound);
         }
     }
 

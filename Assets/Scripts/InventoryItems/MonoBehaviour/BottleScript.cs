@@ -57,9 +57,9 @@ public class BottleScript : SceneInventoryItem
     {
         if (!_isThrown) return;
 
-
-        if (collision.gameObject.TryGetComponent<LifeComponent>(out var life))
+        if (collision.collider.CompareTag("Enemy"))
         {
+            LifeComponent life = collision.gameObject.GetComponentInChildren<LifeComponent>();
             life.ReceiveHit(_damage);
         }
 

@@ -63,8 +63,8 @@ MonoBehaviour:
   _parent: {fileID: 9079628943148725425}
   _maxLife: 3
   _scoreAddWhenDead: 50
-  _punchSound: {fileID: 0}
-  _punchVolume: 0
+  _punchSound: {fileID: 8300000, guid: 950a9094d14c2e449bd96eefccffa020, type: 3}
+  _punchVolume: 0.6
 --- !u!70 &54351462183456319
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
