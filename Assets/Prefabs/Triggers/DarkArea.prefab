@@ -92,6 +92,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _lightTransitionDuration: 0.1
   _lightArea: {fileID: 2859158169847505373}
+  _lightSwitchVolume: 0.8
 --- !u!1 &3842807910525439295
 GameObject:
   m_ObjectHideFlags: 0

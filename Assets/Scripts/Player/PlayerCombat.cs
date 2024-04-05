@@ -28,6 +28,15 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _counterRadius;
     [SerializeField] private float _parryCd;
 
+    [Header("Audio")]
+    [SerializeField] private AudioClip _parrySound;
+    [SerializeField] private AudioClip _counterSound;
+
+    [Header("Audio Volumes")]
+    [SerializeField] private float _hitVolume;
+    [SerializeField] private float _parryVolume;
+    [SerializeField] private float _counterVolume;
+
     private PlayerAttackComponent[] _attackComponents;
     private Queue<AttackTypes> _attackBuffer;
     private bool _isAttacking;
@@ -40,6 +49,7 @@ public class PlayerCombat : MonoBehaviour
     private bool _deflect;
 
     private Animator _myAnimator;
+    private AudioSource _audioSource;
     private bool _isInvulnerable;
     private int _currComboLength;
     private float _parryPerformedTime;
@@ -62,11 +72,7 @@ public class PlayerCombat : MonoBehaviour
         _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
         _attackComponents = new PlayerAttackComponent[3];
-    }
-
-    private void OnDisable()
-    {
-
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -160,6 +166,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
+            AudioManager.Instance.PlaySFX("Hit", _hitVolume);
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
@@ -447,11 +454,14 @@ public class PlayerCombat : MonoBehaviour
     public void OnDeflect()
     {
         _myAnimator.SetTrigger("Counter");
+        _audioSource.PlayOneShot(_parrySound, _parryVolume);
         _hitbox.enabled = false;
+        GameController.Instance.StopTime(0f, 0.3f);
     }
 
     private void PerformCounterAttack()
     {
+        _audioSource.PlayOneShot(_counterSound, _counterVolume);
         Collider2D[] enemiesCollider = Physics2D.OverlapCircleAll(transform.position, _counterRadius, LayerMask.GetMask("Enemies"));
         
         foreach (Collider2D enemy in enemiesCollider)

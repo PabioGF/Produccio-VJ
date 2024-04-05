@@ -77,7 +77,7 @@ public class IAController : MonoBehaviour
     private void DetectPlayer()
     {
         // Lanzamos un rayo desde el enemigo hacia el jugador.
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, _player.position - transform.position, _detectionDistance);
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, _player.position - transform.position, _detectionDistance, ~LayerMask.GetMask("Enemies", "Ignore Raycast", "Trigger"));
         if (hit.collider != null)
         {
             Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * hit.distance, Color.green);

@@ -48,11 +48,6 @@ public class PlayerInputsManager : MonoBehaviour
         InputSystem.onActionChange += InputSystem_onActionChange;
     }
 
-    private void Update()
-    {
-        ManageInteraction();
-    }
-
     private void InputSystem_onActionChange(object obj, InputActionChange change)
     {
         if (change == InputActionChange.ActionPerformed)
@@ -91,19 +86,11 @@ public class PlayerInputsManager : MonoBehaviour
         _pause.performed -= PauseInput;
     }
 
-    private void ManageInteraction()
+    private void DisableInteraction()
     {
         if (_playerController.DesiredInteraction)
         {
-            _interactionFramesCounter++;
-            if (_interactionFramesCounter > 10)
-            {
-                _playerController.DesiredInteraction = false;
-            }
-        }
-        else
-        {
-            _interactionFramesCounter = 0;
+            _playerController.DesiredInteraction = false;
         }
     }
     
@@ -146,6 +133,7 @@ public class PlayerInputsManager : MonoBehaviour
         if (context.performed)
         {
             _playerController.DesiredInteraction = true;
+            Invoke(nameof(DisableInteraction), 1f);
         }
     }
 

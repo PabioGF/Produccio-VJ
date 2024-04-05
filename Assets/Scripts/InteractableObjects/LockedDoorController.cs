@@ -7,6 +7,10 @@ public class LockedDoorController : InteractableObject
 {
     [SerializeField] private Sprite[] _sprites;
     [SerializeField] protected int id;
+    [SerializeField] private Collider2D _collider;
+    [SerializeField] private SpriteRenderer _sprite;
+
+    [Header("Audio")]
     [SerializeField] private AudioClip _openSound;
     [SerializeField] private AudioClip _closeSound;
     [SerializeField] private float _openVolume = 1.0f;
@@ -47,8 +51,8 @@ public class LockedDoorController : InteractableObject
 
     private void ToggleDoor()
     {
-        GetComponent<SpriteRenderer>().sprite = _isOpen ? _sprites[0] : _sprites[1];
-        GetComponent<Collider2D>().enabled = _isOpen;
+        _sprite.sprite = _isOpen ? _sprites[0] : _sprites[1];
+        _collider.enabled = _isOpen;
         _isOpen = !_isOpen;
 
         if (_isOpen && _openSound != null)

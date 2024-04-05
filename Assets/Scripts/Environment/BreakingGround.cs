@@ -6,6 +6,7 @@ public class BreakingGround : MonoBehaviour
 {
     [SerializeField] private GameObject _ground;
     [SerializeField] private GameObject _eventTrigger;
+    [SerializeField] private float _breakSoundVolume;
     private bool _isPlayer;
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -26,7 +27,7 @@ public class BreakingGround : MonoBehaviour
         {
             if (!_eventTrigger.activeSelf)
             {
-                AudioManager.Instance.PlaySFX("GroundBreak");
+                AudioManager.Instance.PlaySFX("GroundBreak", _breakSoundVolume);
                 _ground.SetActive(false);
                 gameObject.SetActive(false);
             }

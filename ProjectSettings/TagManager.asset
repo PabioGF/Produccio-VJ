@@ -16,7 +16,7 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Trigger
   - Water
   - UI
   - Ground
@@ -25,7 +25,7 @@ TagManager:
   - Roof
   - PlayerHitbox
   - Enemies
-  - 
+  - Obstacle
   - 
   - 
   - 

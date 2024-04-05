@@ -227,19 +227,17 @@ public class PlayerController : MonoBehaviour
                         _audioSource.PlayOneShot(_movementSound);
                     }
                 }
-				_myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
             }
-
-            if (_desiredVelocity.x < 0)
-            {
-                transform.eulerAngles = new Vector3(0, 180, 0);
-                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
-            else if (_desiredVelocity.x > 0)
-            {
-                transform.eulerAngles = new Vector3(0, 0, 0);
-                _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
-            }
+        }
+        if (_desiredVelocity.x < 0)
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
+        }
+        else if (_desiredVelocity.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0);
+            _interactionIndicator.transform.eulerAngles = new Vector3(0, 0, 0);
         }
         _myAnimator.SetFloat("horizontalVelocity", Mathf.Abs(_desiredVelocity.x));
     }
@@ -256,8 +254,10 @@ public class PlayerController : MonoBehaviour
                 _dashPerformedTime = _timer;
                 _isDashing = true;
 
-                if (_movementInput == 0) _dashDirection = transform.right.x;
-                else _dashDirection = _movementInput;
+                float inputDirection = PlayerInputsManager.Instance.ReadHorizontalInput();
+
+                if (inputDirection == 0) _dashDirection = transform.right.x;
+                else _dashDirection = inputDirection;
 
                 _hitbox.enabled = false;
 
@@ -328,10 +328,6 @@ public class PlayerController : MonoBehaviour
     {
         _jumpPressedTime = _timer;
         _desiredJump = true;
-        if (_jumpSound != null)
-        {
-            _audioSource.PlayOneShot(_jumpSound, _jumpVolume);
-        }
     }
     #endregion
     

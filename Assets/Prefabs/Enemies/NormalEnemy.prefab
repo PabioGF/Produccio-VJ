@@ -142,7 +142,7 @@ MonoBehaviour:
   _maxPosition: 0
   _minPosition: 0
   _detectionDistance: 15
-  _attackRange: 0
+  _attackRange: 3
   _enablingDistance: 40
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
-  _maxLife: 3
+  _maxLife: 7
   _scoreAddWhenDead: 100
   _punchSound: {fileID: 8300000, guid: 950a9094d14c2e449bd96eefccffa020, type: 3}
+  _punchVolume: 0.6

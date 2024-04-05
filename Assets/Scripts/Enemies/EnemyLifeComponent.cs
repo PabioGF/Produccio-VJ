@@ -15,6 +15,7 @@ public class EnemyLifeComponent : LifeComponent
 
     [Header("Audio")]
     [SerializeField] private AudioClip _punchSound;
+    [SerializeField] private float _punchVolume;
 
     private AudioSource _audioSource;
     #endregion
@@ -41,7 +42,7 @@ public class EnemyLifeComponent : LifeComponent
 
         if (_punchSound != null)
         {
-            _audioSource.PlayOneShot(_punchSound);
+            _audioSource.PlayOneShot(_punchSound, _punchVolume);
         }
 
         if (_isDead)

@@ -223,3 +223,5 @@ MonoBehaviour:
   - {fileID: 21300000, guid: dd55ce2ce374a484abb9d2b4455bff6a, type: 3}
   _openSound: {fileID: 8300000, guid: 6d52f9588a2ce4d8c9b580db9e3d628a, type: 3}
   _closeSound: {fileID: 8300000, guid: 6d52f9588a2ce4d8c9b580db9e3d628a, type: 3}
+  _openVolume: 0.4
+  _closeVolume: 0.3
