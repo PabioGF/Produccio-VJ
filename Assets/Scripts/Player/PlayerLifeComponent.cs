@@ -19,6 +19,7 @@ public class PlayerLifeComponent : MonoBehaviour
 
     protected float _currentLife;
     protected bool _isDead;
+    private int _shield;
 
     [Header("Audio")]
     [SerializeField] private AudioClip _healSound;
@@ -56,6 +57,15 @@ public class PlayerLifeComponent : MonoBehaviour
         {
             Debug.Log("Shield");
             _playerController.RemoveItem(InventoryItem.ItemType.Shield);
+
+            _shield = UIController.Instance.GetShield();
+            if (_shield > 0)
+            {
+                _shield -= 1;
+            }
+
+            UIController.Instance.SetShield(_shield);
+
             return;
         }
 

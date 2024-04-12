@@ -12,6 +12,7 @@ public class BottleScript : SceneInventoryItem
 
     private bool _isPickedUp;
     private bool _isThrown;
+    private int _bottles;
     //private AudioSource _audioSource;
 
     /*private void Start()
@@ -28,6 +29,9 @@ public class BottleScript : SceneInventoryItem
         if (_isPickedUp) return;
         _isPickedUp = true;
         _playerController.AddItem(new Bottle(_damage, _throwSpeed, gameObject));
+        _bottles = UIController.Instance.GetBottles();
+        _bottles += 1;
+        UIController.Instance.SetBottles(_bottles);
         gameObject.SetActive(false);
     }
 
@@ -50,6 +54,9 @@ public class BottleScript : SceneInventoryItem
         // Sends the bottle to that direction and removes it from the inventory
         _rigidbody.velocity = _throwSpeed * direction;
         _playerTransform.GetComponent<PlayerController>().RemoveItem(InventoryItem.ItemType.Bottle);
+        _bottles = UIController.Instance.GetBottles();
+        _bottles -= 1;
+        UIController.Instance.SetBottles(_bottles);
         _isThrown = true;
     }
 
