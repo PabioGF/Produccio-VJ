@@ -397,5 +397,5 @@ MonoBehaviour:
   _parent: {fileID: 451018218054530674}
   _maxLife: 7
   _scoreAddWhenDead: 100
-  _punchSound: {fileID: 8300000, guid: 950a9094d14c2e449bd96eefccffa020, type: 3}
+  _punchSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
   _punchVolume: 0.6
