@@ -87,5 +87,11 @@ public class BottleScript : SceneInventoryItem
         base.OnTriggerExit2D(collision);
     }
 
+    public void SetPlayerRansform(Transform player)
+    {
+        Debug.Log("x2");
+        _playerTransform = player;
+    }
+
 
 }
