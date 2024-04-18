@@ -12,6 +12,7 @@ TagManager:
   - Roof
   - Wall
   - Enemy Hitbox
+  - Obstacle
   layers:
   - Default
   - TransparentFX
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Player
     uniqueID: 1872837149
+    locked: 0
+  - name: HUD
+    uniqueID: 3186215989
     locked: 0

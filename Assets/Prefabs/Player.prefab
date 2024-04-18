@@ -95,9 +95,6 @@ MonoBehaviour:
   _movingForceDown: 100
   _hitScore: 10
   _scoreHitMultiplier: 2
-  _impactSound: {fileID: 0}
-  _punchSound: {fileID: 0}
-  _impactSoundVolume: 1
   AttackType: 0
 --- !u!1 &1524150193022436047
 GameObject:
@@ -169,8 +166,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -1108751307
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5197064b08592e243b707d7797197452, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1230,9 +1227,6 @@ MonoBehaviour:
   _movingForceDown: 150
   _hitScore: 10
   _scoreHitMultiplier: 2
-  _impactSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
-  _punchSound: {fileID: 8300000, guid: 8f7e88031c999491185bcbef0c34ecea, type: 3}
-  _impactSoundVolume: 1
   AttackType: 0
 --- !u!1 &9216886434159617761
 GameObject:
@@ -1337,7 +1331,4 @@ MonoBehaviour:
   _movingForceDown: 0
   _hitScore: 10
   _scoreHitMultiplier: 2
-  _impactSound: {fileID: 0}
-  _punchSound: {fileID: 0}
-  _impactSoundVolume: 1
   AttackType: 0

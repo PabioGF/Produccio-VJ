@@ -51,9 +51,9 @@ public class LockedDoorController : InteractableObject
 
     private void ToggleDoor()
     {
-        _sprite.sprite = _isOpen ? _sprites[0] : _sprites[1];
-        _collider.enabled = _isOpen;
         _isOpen = !_isOpen;
+        _sprite.sprite = _isOpen ? _sprites[1] : _sprites[0];
+        _collider.enabled = !_isOpen;  
 
         if (_isOpen && _openSound != null)
         {
