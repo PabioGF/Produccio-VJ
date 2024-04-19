@@ -6,9 +6,6 @@ using UnityEngine.InputSystem.XR;
 public class EnemyLifeComponent : LifeComponent
 {
     #region Global Variables
-    [SerializeField]
-    private int _scoreAddWhenDead;
-
     private IAController _controller;
     private Rigidbody2D _rigidbody;
     private Animator _animator;
@@ -47,8 +44,7 @@ public class EnemyLifeComponent : LifeComponent
 
         if (_isDead)
         {
-            GameController.Instance.AddScore(_scoreAddWhenDead);
-            _parent.gameObject.SetActive(false);
+            _controller.OnDeath();
         }
     }
 

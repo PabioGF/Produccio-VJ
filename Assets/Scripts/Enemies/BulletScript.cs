@@ -34,7 +34,7 @@ public class BulletScript : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Ground") || collision.CompareTag("Wall") || collision.CompareTag("Roof"))
+        if (collision.CompareTag("Ground") || collision.CompareTag("Wall") || collision.CompareTag("Roof") || collision.CompareTag("Obstacle"))
         {
             Destroy(gameObject);
         }

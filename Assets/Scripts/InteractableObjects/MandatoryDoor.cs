@@ -6,6 +6,7 @@ using UnityEngine;
 public class MandatoryDoor : InteractableObject
 {
     [SerializeField] private Sprite[] _sprites;
+    [SerializeField] private Collider2D _collider;
 
     [Header("Audio")]
     [SerializeField] private AudioClip _openSound;
@@ -16,7 +17,6 @@ public class MandatoryDoor : InteractableObject
     public bool RoomIsCompleted { get; set; }
     private bool _isOpen;
     private SpriteRenderer _spriteRenderer;
-    private Collider2D _collider;
     private AudioSource _audioSource;
 
     private void Awake()
@@ -24,7 +24,6 @@ public class MandatoryDoor : InteractableObject
         _isOpen = true;
         RoomIsCompleted = false;
         _spriteRenderer = GetComponent<SpriteRenderer>();
-        _collider = GetComponent<Collider2D>();
         _audioSource = GetComponent<AudioSource>(); 
         if (_audioSource == null)
         {
@@ -52,9 +51,9 @@ public class MandatoryDoor : InteractableObject
 
     public void ToggleDoor()
     {
-        _spriteRenderer.sprite = _isOpen ? _sprites[0] : _sprites[1];
-        _collider.enabled = _isOpen;
         _isOpen = !_isOpen;
+        _spriteRenderer.sprite = _isOpen ? _sprites[1] : _sprites[0];
+        _collider.enabled = !_isOpen;
 
         if (_isOpen && _openSound != null)
         {

@@ -34,6 +34,7 @@ public class UIController : MonoBehaviour
     [Header("Stats Panel")]
     [SerializeField] private TextMeshProUGUI _lifeText;
     [SerializeField] private TextMeshProUGUI _scoreText;
+    [SerializeField] private TextMeshProUGUI _shieldText;
     [SerializeField] private TextMeshProUGUI _bottlesText;
 
     public void SetLife(float life)
@@ -46,10 +47,25 @@ public class UIController : MonoBehaviour
         _scoreText.text = score.ToString();
     }
 
-    public void SetBottles(float bottles)
+    public void SetShield(int shield)
+    {
+        _shieldText.text = shield.ToString();
+    }
+
+    public int GetShield()
+    {
+        return int.Parse(_shieldText.text); 
+    }
+    public void SetBottles(int bottles)
     {
         _bottlesText.text = bottles.ToString();
     }
+
+    public int GetBottles()
+    {
+        return int.Parse(_bottlesText.text);
+    }
+
     #endregion
 
     #region Pause Menu
