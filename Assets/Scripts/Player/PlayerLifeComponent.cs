@@ -43,6 +43,7 @@ public class PlayerLifeComponent : MonoBehaviour
 
         _currentLife = _maxLife;
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
         
     }
@@ -81,6 +82,7 @@ public class PlayerLifeComponent : MonoBehaviour
         // Recieves the damage of the hit, updates the UI and checks if the player is dead
         _currentLife -= amount;
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
     
         GameController.Instance.SubstractScore(_scoreSubstractByHit);
@@ -108,6 +110,7 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_currentLife > _maxLife) _currentLife = _maxLife;
         
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
         
         StartCoroutine(FlashGreen());
