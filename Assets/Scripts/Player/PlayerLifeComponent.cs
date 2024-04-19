@@ -21,12 +21,18 @@ public class PlayerLifeComponent : MonoBehaviour
     protected bool _isDead;
     private int _shield;
 
+    [SerializeField] private HealthBarComponent _healthBar;
+
     [Header("Audio")]
     [SerializeField] private AudioClip _healSound;
     [SerializeField] private float _healVolume = 1.0f;
     private AudioSource _audioSource;
     #endregion
 
+    private void Awake()
+    {
+        _healthBar = _healthBar.GetComponentInChildren<HealthBarComponent>();
+    }
     private void Start()
     {
         _audioSource = GetComponent<AudioSource>();
@@ -34,8 +40,11 @@ public class PlayerLifeComponent : MonoBehaviour
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
+
         _currentLife = _maxLife;
+        _healthBar.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
+        
     }
 
     public void ReceiveHit(float amount)
@@ -71,7 +80,9 @@ public class PlayerLifeComponent : MonoBehaviour
 
         // Recieves the damage of the hit, updates the UI and checks if the player is dead
         _currentLife -= amount;
+        _healthBar.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
+    
         GameController.Instance.SubstractScore(_scoreSubstractByHit);
         if (_currentLife <= 0) _isDead = true;
 
@@ -95,8 +106,10 @@ public class PlayerLifeComponent : MonoBehaviour
     {
         _currentLife += healingPoints;
         if (_currentLife > _maxLife) _currentLife = _maxLife;
-
+        
+        _healthBar.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
+        
         StartCoroutine(FlashGreen());
         if (_healSound != null)
         {
