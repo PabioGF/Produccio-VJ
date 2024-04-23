@@ -26,6 +26,7 @@ public class ScenesController : MonoBehaviour
     /// </summary>
     public void ReloadScene()
     {
+        Time.timeScale = 1.0f;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 

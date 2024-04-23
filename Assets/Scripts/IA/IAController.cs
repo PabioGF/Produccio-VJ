@@ -21,6 +21,9 @@ public class IAController : MonoBehaviour
     [SerializeField] protected float _detectionDistance;
     [SerializeField] protected float _attackRange;
     [SerializeField] private float _enablingDistance;
+    [SerializeField] private int _scoreAddWhenDead;
+    [SerializeField] private float _dropChance;
+    [SerializeField] private GameObject[] _possibleDrops;
 
     protected float tiempoActual;
     protected int direccion = 1;
@@ -58,6 +61,7 @@ public class IAController : MonoBehaviour
     }
     #endregion
 
+    #region Movement
     public virtual void EnemyBasicMovement()
     {
         if (DistanceToPlayer() > _enablingDistance) return;
@@ -168,17 +172,18 @@ public class IAController : MonoBehaviour
         Invoke(nameof(ResetDirectionChange), 0.5f);
     }
 
+    private void ResetMovement()
+    {
+        myRB.gravityScale = 3;
+    }
+    #endregion
+
     public void GetHit()
     {
         _isHit = true;
         myRB.gravityScale = 0;
         myRB.velocity = new(0, 0);
         _lastTimeHit = Time.time;
-    }
-
-    private void ResetMovement()
-    {
-        myRB.gravityScale = 3;
     }
 
     public void StandStill()
@@ -191,6 +196,24 @@ public class IAController : MonoBehaviour
     public float DistanceToPlayer()
     {
         return Vector2.Distance(_player.position, myRB.position);
+    }
+
+    public void OnDeath()
+    {
+        GameController.Instance.AddScore(_scoreAddWhenDead);
+        gameObject.SetActive(false);
+
+        if (Random.value < _dropChance)    // Drops an item
+        {
+            GameObject drop = Instantiate(_possibleDrops[Random.Range(0, _possibleDrops.Length - 1)], transform.position, Quaternion.identity);
+
+            if (drop.TryGetComponent(out BottleScript bottle))
+            {
+                Debug.Log("Set transform");
+                bottle.SetPlayerRansform(_player);
+            }
+        }
+            
     }
 
     public bool IsAttacking {  get { return _isAttacking; } set { _isAttacking = value; } }

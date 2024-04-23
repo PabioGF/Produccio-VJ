@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -36,6 +37,13 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _shieldText;
     [SerializeField] private TextMeshProUGUI _bottlesText;
+    [SerializeField] private Slider slider;
+
+    public void UpdateHealthBar(float current, float max)
+    {
+        slider.value = current / max;
+
+    }
 
     public void SetLife(float life)
     {
