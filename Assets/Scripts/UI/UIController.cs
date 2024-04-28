@@ -26,8 +26,14 @@ public class UIController : MonoBehaviour
         _statsPanel.SetActive(true);
     }
 
-    private void OnDisable()
+    private void Update()
     {
+        _combosIconsTimer += Time.deltaTime;
+
+        if (_combosIconsTimer > _combosShowTime)
+        {
+            ShowCurrentCombo(0);
+        }
     }
     #endregion
 
@@ -44,6 +50,8 @@ public class UIController : MonoBehaviour
     [SerializeField] private string[] _combosPhrases;
     [SerializeField] private Sprite _lightAttackIcon;
     [SerializeField] private Sprite _heavyAttackIcon;
+    private float _combosIconsTimer;
+    private float _combosShowTime = 5;
 
     public void UpdateHealthBar(float current, float max)
     {
@@ -98,6 +106,8 @@ public class UIController : MonoBehaviour
             }
             return;
         }
+
+        _combosIconsTimer = 0;
 
         switch (type)
         {

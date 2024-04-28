@@ -179,12 +179,15 @@ public class PlayerCombat : MonoBehaviour
             _isCombo = false;
             _currComboLength = 0;
             ComboIsExtended = false;
-
-            UIController.Instance.ShowCurrentCombo(_currComboLength);
         }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
+            if (_currComboLength == 0)
+            {
+                UIController.Instance.ShowCurrentCombo(_currComboLength);
+            }
+
             AudioManager.Instance.PlaySFX("Hit", _hitVolume);
             _isCombo = true;
             _isAttacking = true;
