@@ -156,6 +156,25 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void CancelCombo()
+    {
+        _myAnimator.SetBool("isCombo", false);
+        _isComboAnimation = false;
+        
+        _comboTime = _defaultComboTime;
+        _isCombo = false;
+        _currComboLength = 0;
+        ComboIsExtended = false;
+        _isAttacking = false;
+
+        _attackBuffer.Clear();
+
+        EndCombo();
+
+
+        _playerController.IsOverride = false;
+    }
+
     /// <summary>
     /// Executes the next attack stored in the input buffer
     /// </summary>
@@ -523,6 +542,8 @@ public class PlayerCombat : MonoBehaviour
     #region Hit
     public void GetHit(Vector3 damagePosition)
     {
+        CancelCombo();
+
         _isInvulnerable = true;
         _hitbox.enabled = false;
 
