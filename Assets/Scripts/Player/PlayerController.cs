@@ -308,6 +308,9 @@ public class PlayerController : MonoBehaviour
             _desiredVelocity.y = _jumpForce;
             _desiredJump = false;
             _availableJumps -= 1;
+
+            _playerCombat.ExtendComboTime(.3f);
+
             if (_jumpSound != null)
             {
                 _audioSource.PlayOneShot(_jumpSound);

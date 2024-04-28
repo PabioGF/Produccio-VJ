@@ -21,7 +21,7 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionRange;
     [SerializeField] private float _fallExplosionDamage;
     [SerializeField] private float _fallExplosionPushForce;
-    [SerializeField] private float _comboTime;
+    [SerializeField] private float _defaultComboTime;
 
     [Header("Parry")]
     [SerializeField] private float _counterDamage;
@@ -51,6 +51,7 @@ public class PlayerCombat : MonoBehaviour
     private bool _isCombo;
     private bool _isParrying;
     private bool _deflect;
+    private float _comboTime;
 
     private Animator _myAnimator;
     private AudioSource _audioSource;
@@ -89,6 +90,7 @@ public class PlayerCombat : MonoBehaviour
             i++;
         }
         _comboState = ComboStates.Idle;
+        _comboTime = _defaultComboTime;
     }
 
     void Update()
@@ -152,6 +154,8 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void ExecuteAttack()
     {
+        Debug.Log(_currComboLength);
+
         if (_isAttacking) return;
 
         if (_timer - _attackPerformed > _maxTimeBetweenAttacks && _isComboAnimation)
@@ -164,6 +168,7 @@ public class PlayerCombat : MonoBehaviour
 
         if (_timer - _attackPerformed > _comboTime && _isCombo)
         {
+            _comboTime = _defaultComboTime;
             _isCombo = false;
             _currComboLength = 0;
         }
@@ -178,6 +183,11 @@ public class PlayerCombat : MonoBehaviour
 
             HandleCombos(attack);
         }
+    }
+
+    public void ExtendComboTime(float time)
+    {
+        _comboTime += time;
     }
 
     private void HandleCombos(AttackTypes attack)
