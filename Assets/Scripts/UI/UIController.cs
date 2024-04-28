@@ -39,7 +39,9 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _bottlesText;
     [SerializeField] private Slider slider;
 
+    [SerializeField] private TextMeshProUGUI _combosText;
     [SerializeField] private Image[] _combosIcons;
+    [SerializeField] private string[] _combosPhrases;
     [SerializeField] private Sprite _lightAttackIcon;
     [SerializeField] private Sprite _heavyAttackIcon;
 
@@ -89,6 +91,7 @@ public class UIController : MonoBehaviour
 
         if (comboLength == 0)
         {
+            _combosText.enabled = false;
             foreach (Image icon in _combosIcons)
             {
                 icon.enabled = false;
@@ -107,6 +110,8 @@ public class UIController : MonoBehaviour
                 break;
         }
 
+        _combosText.enabled = true;
+        _combosText.text = _combosPhrases[comboLength - 1];
         _combosIcons[comboLength - 1].enabled = true;
     }
 
