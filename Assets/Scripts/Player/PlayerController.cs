@@ -270,6 +270,12 @@ public class PlayerController : MonoBehaviour
     {
         _desiredDash = true;
     }
+
+    public void GetHit(Vector2 force)
+    {
+        _desiredVelocity.x = force.x;
+        _desiredVelocity.y = force.y;
+    }
     #endregion
 
     #region Jump

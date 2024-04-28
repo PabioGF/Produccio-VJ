@@ -41,7 +41,7 @@ public class RangeEnemyController : IAController
 
         if (playerCollider != null)
         {
-            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, transform.position);
             Debug.Log(playerCollider.name + " has been hit");
         }
     }

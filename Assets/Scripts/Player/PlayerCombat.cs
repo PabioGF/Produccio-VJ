@@ -28,6 +28,10 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _counterRadius;
     [SerializeField] private float _parryCd;
 
+    [Header("Hit")]
+    [SerializeField] private float _horizontalForce;
+    [SerializeField] private float _verticalForce;
+
     [Header("Audio")]
     [SerializeField] private AudioClip _parrySound;
     [SerializeField] private AudioClip _counterSound;
@@ -485,10 +489,15 @@ public class PlayerCombat : MonoBehaviour
     #endregion
 
     #region Hit
-    public void GetHit()
+    public void GetHit(Vector3 damagePosition)
     {
         _isInvulnerable = true;
         _hitbox.enabled = false;
+
+        Vector2 force = new Vector2(_horizontalForce, _verticalForce);
+        force.x *= damagePosition.x - transform.position.x > 0 ? -1 : 1;
+
+        _playerController.GetHit(force);
 
         StartCoroutine(HitVisualFeedback());
     }

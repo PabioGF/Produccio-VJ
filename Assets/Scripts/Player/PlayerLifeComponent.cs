@@ -48,7 +48,7 @@ public class PlayerLifeComponent : MonoBehaviour
         
     }
 
-    public void ReceiveHit(float amount)
+    public void ReceiveHit(float amount, Vector3 damagePosition)
     {
         // If the player is deflecting, counter attacks
         if (_playerCombat.Deflect)
@@ -97,7 +97,7 @@ public class PlayerLifeComponent : MonoBehaviour
         }
 
         // Visually shows the player has been hit
-        _playerCombat.GetHit();
+        _playerCombat.GetHit(damagePosition);
     }
 
     /// <summary>
