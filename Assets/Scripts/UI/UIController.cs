@@ -39,6 +39,10 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _bottlesText;
     [SerializeField] private Slider slider;
 
+    [SerializeField] private Image[] _combosIcons;
+    [SerializeField] private Sprite _lightAttackIcon;
+    [SerializeField] private Sprite _heavyAttackIcon;
+
     public void UpdateHealthBar(float current, float max)
     {
         slider.value = current / max;
@@ -73,6 +77,39 @@ public class UIController : MonoBehaviour
     {
         return int.Parse(_bottlesText.text);
     }
+
+    /// <summary>
+    /// Shows the current combo state the player is through icons of the attacks performed. 
+    /// </summary>
+    /// <param name="comboLength">Length of the current combo</param>
+    /// <param name="type">Type of the last attack performed</param>
+    public void ShowCurrentCombo(int comboLength, PlayerCombat.AttackTypes type = 0)
+    {
+        if (comboLength > _combosIcons.Length) return;
+
+        if (comboLength == 0)
+        {
+            foreach (Image icon in _combosIcons)
+            {
+                icon.enabled = false;
+            }
+            return;
+        }
+
+        switch (type)
+        {
+            case PlayerCombat.AttackTypes.LightAttack:
+                _combosIcons[comboLength - 1].sprite = _lightAttackIcon;
+                break;
+
+            case PlayerCombat.AttackTypes.HeavyAttack:
+                _combosIcons[comboLength - 1].sprite = _heavyAttackIcon;
+                break;
+        }
+
+        _combosIcons[comboLength - 1].enabled = true;
+    }
+
 
     #endregion
 

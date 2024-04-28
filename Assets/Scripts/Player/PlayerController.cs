@@ -309,6 +309,7 @@ public class PlayerController : MonoBehaviour
             _desiredJump = false;
             _availableJumps -= 1;
 
+            _playerCombat.ResetAttackCd();
             _playerCombat.ExtendComboTime(.3f);
 
             if (_jumpSound != null)
