@@ -61,6 +61,7 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_playerCombat.IsInvulnerable) return;
 
         GameController.Instance.StopTime(0f, _hitStopDuration);
+        StartCoroutine(CameraShaker.Instance.ShakeCamera(.5f, .8f));
 
         // If the player has a shield, removes it instead of taking the damage and stops
         if (_playerController.HasItem(InventoryItem.ItemType.Shield))
@@ -75,7 +76,6 @@ public class PlayerLifeComponent : MonoBehaviour
             }
 
             UIController.Instance.SetShield(_shield);
-
             return;
         }
 

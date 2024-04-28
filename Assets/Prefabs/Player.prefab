@@ -580,7 +580,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
-  _hitStopDuration: 0.25
+  _hitStopDuration: 0.3
   _scoreSubstractByHit: 50
   _parent: {fileID: 5180191103471191624}
   _maxLife: 10
