@@ -693,7 +693,7 @@ MonoBehaviour:
   _fallExplosionRange: 2
   _fallExplosionDamage: 1
   _fallExplosionPushForce: 50
-  _comboTime: 0.2
+  _defaultComboTime: 0.2
   _counterDamage: 10
   _counterRadius: 2.5
   _parryCd: 2

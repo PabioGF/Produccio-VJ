@@ -46,7 +46,6 @@ public class PlayerController : MonoBehaviour
 
     private PlayerCombat _playerCombat;
     private Rigidbody2D _rigidbody2D;
-    private Animator _myAnimator;
     private bool _isDead;
 
     // Movement
@@ -70,6 +69,7 @@ public class PlayerController : MonoBehaviour
     private bool _isDashing;
     private float _dashDirection;
 
+    private Animator _myAnimator;
     private AudioSource _audioSource;
     #endregion
 
@@ -273,8 +273,14 @@ public class PlayerController : MonoBehaviour
 
     public void GetHit(Vector2 force)
     {
-        _desiredVelocity.x = force.x;
-        _desiredVelocity.y = force.y;
+        _desiredVelocity = force;
+    }
+
+    public void AddDesiredVelocity(Vector2 velocity)
+    {
+        _desiredVelocity = velocity;
+
+        Debug.Log("Desired velocity start: " + _desiredVelocity);
     }
     #endregion
 
@@ -325,10 +331,11 @@ public class PlayerController : MonoBehaviour
     /// </summary>
     public void ApplyMovement()
     {
-        if (_isOverride) return;
-
-        if (_playerCombat.IsAttacking || _isDashing) _desiredVelocity.y = 0;
+        if ((_playerCombat.IsAttacking && !_isOverride) || _isDashing) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
+
+        Debug.Log("Desired velocity end: " + _desiredVelocity);
+        Debug.Log("Actual velocity: " + _rigidbody2D.velocity);
     }
 
     /// <summary>

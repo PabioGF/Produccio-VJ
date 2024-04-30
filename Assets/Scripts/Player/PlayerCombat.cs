@@ -76,10 +76,10 @@ public class PlayerCombat : MonoBehaviour
     #region Unity methods
     private void Awake()
     {
-        _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
         _attackComponents = new PlayerAttackComponent[3];
         _audioSource = GetComponent<AudioSource>();
+        _myAnimator = GetComponent<Animator>();
     }
 
     void Start()
@@ -257,7 +257,7 @@ public class PlayerCombat : MonoBehaviour
                     else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isComboAnimation = false;
+                        _comboState = ComboStates.Idle;
                     }
                     break;
 
@@ -434,27 +434,40 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void UpwardsAttack()
+    {
+        _playerController.IsOverride = true;
+        _playerController.AddDesiredVelocity(new Vector2(0, 26));
+    }
+
+    public void DownwardsAttack()
+    {
+        _playerController.AddDesiredVelocity(new Vector2(0, -30));
+    }
+
     public void UnstopabbleAttackBegin()
     {
         _hitbox.enabled = false;
+        _playerController.IsOverride = true;
     }
 
     public void UnstopabbleAttackEnd()
     {
         _hitbox.enabled = true;
+        _playerController.IsOverride = false;
     }
 
     public void MovingSideAttackStart(int velocity)
     {
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(velocity, 0) * transform.right;
+        _playerController.AddDesiredVelocity(new Vector2(50, 0) * transform.right);
     }
 
     public void MovingDownAttackStart(int velocity)
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(0, -30);
+        _playerController.Rigidbody.velocity = new Vector2(0, -300);
     }
 
     /// <summary>

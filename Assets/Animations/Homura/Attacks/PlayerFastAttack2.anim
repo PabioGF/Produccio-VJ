@@ -46,8 +46,6 @@ AnimationClip:
       value: {fileID: 21300000, guid: a0ac0cb56d0e3cc4ba4ee50739481455, type: 3}
     - time: 0.3
       value: {fileID: 21300000, guid: b3ae927eb4e5aef4da90b1739752627c, type: 3}
-    - time: 0.33333334
-      value: {fileID: 21300000, guid: b3ae927eb4e5aef4da90b1739752627c, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -83,13 +81,12 @@ AnimationClip:
     - {fileID: 21300000, guid: 7bf8d6fba2c23e7458ee497e75cc3714, type: 3}
     - {fileID: 21300000, guid: a0ac0cb56d0e3cc4ba4ee50739481455, type: 3}
     - {fileID: 21300000, guid: b3ae927eb4e5aef4da90b1739752627c, type: 3}
-    - {fileID: 21300000, guid: b3ae927eb4e5aef4da90b1739752627c, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.35000002
+    m_StopTime: 0.3166667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -123,7 +120,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.33333334
+  - time: 0.3
     functionName: AttackFinished
     data: 
     objectReferenceParameter: {fileID: 0}
