@@ -385,7 +385,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 5666543866658554105}
-  camera: {fileID: 0}
   target: {fileID: 942383339766095506}
   offset: {x: 0, y: 2.2, z: 0}
 --- !u!1 &2675174009088600526
@@ -580,7 +579,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerCombat: {fileID: 5160320821678128178}
   _playerController: {fileID: 6838906068520528515}
-  _hitStopDuration: 0.25
+  _hitStopDuration: 0.2
   _scoreSubstractByHit: 50
   _parent: {fileID: 5180191103471191624}
   _maxLife: 10
@@ -694,10 +693,12 @@ MonoBehaviour:
   _fallExplosionRange: 2
   _fallExplosionDamage: 1
   _fallExplosionPushForce: 50
-  _comboTime: 0.5
+  _defaultComboTime: 0.2
   _counterDamage: 10
   _counterRadius: 2.5
   _parryCd: 2
+  _horizontalForce: 25
+  _verticalForce: 15
   _parrySound: {fileID: 8300000, guid: 7cb7b7a1d77c647418df469344d83f9f, type: 3}
   _counterSound: {fileID: 8300000, guid: 58241ae8e4c83bd4091701a1a53319e6, type: 3}
   _hitVolume: 1

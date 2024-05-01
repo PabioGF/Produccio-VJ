@@ -21,12 +21,16 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _fallExplosionRange;
     [SerializeField] private float _fallExplosionDamage;
     [SerializeField] private float _fallExplosionPushForce;
-    [SerializeField] private float _comboTime;
+    [SerializeField] private float _defaultComboTime;
 
     [Header("Parry")]
     [SerializeField] private float _counterDamage;
     [SerializeField] private float _counterRadius;
     [SerializeField] private float _parryCd;
+
+    [Header("Hit")]
+    [SerializeField] private float _horizontalForce;
+    [SerializeField] private float _verticalForce;
 
     [Header("Audio")]
     [SerializeField] private AudioClip _parrySound;
@@ -47,14 +51,17 @@ public class PlayerCombat : MonoBehaviour
     private bool _isCombo;
     private bool _isParrying;
     private bool _deflect;
+    private float _comboTime;
 
     private Animator _myAnimator;
     private AudioSource _audioSource;
     private bool _isInvulnerable;
     private int _currComboLength;
     private float _parryPerformedTime;
+
+    public bool ComboIsExtended { get; set; }
     public enum DodgeType { HighDodge, LowDodge }
-    public enum AttackTypes { FastAttack, SlowAttack }
+    public enum AttackTypes { LightAttack, HeavyAttack }
 
     /// <summary>
     /// Player combo states to keep track of the current attack playing. The f for fast and s for slow
@@ -69,10 +76,10 @@ public class PlayerCombat : MonoBehaviour
     #region Unity methods
     private void Awake()
     {
-        _myAnimator = GetComponent<Animator>();
         _attackBuffer = new Queue<AttackTypes>();
         _attackComponents = new PlayerAttackComponent[3];
         _audioSource = GetComponent<AudioSource>();
+        _myAnimator = GetComponent<Animator>();
     }
 
     void Start()
@@ -85,6 +92,7 @@ public class PlayerCombat : MonoBehaviour
             i++;
         }
         _comboState = ComboStates.Idle;
+        _comboTime = _defaultComboTime;
     }
 
     void Update()
@@ -110,10 +118,10 @@ public class PlayerCombat : MonoBehaviour
     public void HandleFastAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (_attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd && !_playerController.IsDashing)
         {
             if (_isAttacking) _attackBuffer.Clear();
-            _attackBuffer.Enqueue(AttackTypes.FastAttack);
+            _attackBuffer.Enqueue(AttackTypes.LightAttack);
         }
     }
 
@@ -123,11 +131,16 @@ public class PlayerCombat : MonoBehaviour
     public void HandleSlowAttackInput()
     {
         //Only attacks if the player is not dodging or it is not in coolDown
-        if (_attackCdTimer > _attackCd)
+        if (_attackCdTimer > _attackCd && !_playerController.IsDashing)
         {
             if (_isAttacking) _attackBuffer.Clear();
-            _attackBuffer.Enqueue(AttackTypes.SlowAttack);
+            _attackBuffer.Enqueue(AttackTypes.HeavyAttack);
         }
+    }
+
+    public void ResetAttackCd()
+    {
+        _attackCdTimer = 5;
     }
 
     public void HandleThrowBottleInput()
@@ -143,11 +156,32 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void CancelCombo()
+    {
+        _myAnimator.SetBool("isCombo", false);
+        _isComboAnimation = false;
+        
+        _comboTime = _defaultComboTime;
+        _isCombo = false;
+        _currComboLength = 0;
+        ComboIsExtended = false;
+        _isAttacking = false;
+
+        _attackBuffer.Clear();
+
+        EndCombo();
+
+
+        _playerController.IsOverride = false;
+    }
+
     /// <summary>
     /// Executes the next attack stored in the input buffer
     /// </summary>
     private void ExecuteAttack()
     {
+        Debug.Log(_currComboLength);
+
         if (_isAttacking) return;
 
         if (_timer - _attackPerformed > _maxTimeBetweenAttacks && _isComboAnimation)
@@ -160,20 +194,37 @@ public class PlayerCombat : MonoBehaviour
 
         if (_timer - _attackPerformed > _comboTime && _isCombo)
         {
+            _comboTime = _defaultComboTime;
             _isCombo = false;
             _currComboLength = 0;
+            ComboIsExtended = false;
         }
 
         if (_attackBuffer.TryDequeue(out AttackTypes attack))
         {
+            if (_currComboLength == 0)
+            {
+                UIController.Instance.ShowCurrentCombo(_currComboLength);
+            }
+
             AudioManager.Instance.PlaySFX("Hit", _hitVolume);
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
             _currComboLength++;
 
+            UIController.Instance.ShowCurrentCombo(_currComboLength, attack);
+
             HandleCombos(attack);
         }
+    }
+
+    public void ExtendComboTime(float time)
+    {
+        if (ComboIsExtended) return;
+
+        ComboIsExtended = true;
+        _comboTime += time;
     }
 
     private void HandleCombos(AttackTypes attack)
@@ -185,12 +236,12 @@ public class PlayerCombat : MonoBehaviour
             switch (_comboState)
             {
                 case ComboStates.Idle:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.F;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _comboState = ComboStates.S;
@@ -198,25 +249,25 @@ public class PlayerCombat : MonoBehaviour
                     break;
 
                 case ComboStates.F:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.Ff;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
-                        _isComboAnimation = false;
+                        _comboState = ComboStates.Idle;
                     }
                     break;
 
                 case ComboStates.Ff:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _isComboAnimation = false;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isComboAnimation = false;
@@ -224,12 +275,12 @@ public class PlayerCombat : MonoBehaviour
                     break;
 
                 case ComboStates.S:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.Sf;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isComboAnimation = false;
@@ -237,12 +288,12 @@ public class PlayerCombat : MonoBehaviour
                     break;
 
                 case ComboStates.Sf:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _isAttacking = false;
                         EndCombo();
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
                         _isComboAnimation = false;
@@ -256,56 +307,60 @@ public class PlayerCombat : MonoBehaviour
             switch (_comboState)
             {
                 case ComboStates.Idle:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.F;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
+                        _comboTime = _defaultComboTime;
                         _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
 
                 case ComboStates.F:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.Ff;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
+                        _comboTime = _defaultComboTime;
                         _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
 
                 case ComboStates.Ff:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _myAnimator.SetTrigger("FastAttack");
                         _comboState = ComboStates.Fff;
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
+                        _comboTime = _defaultComboTime;
                         _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
                     break;
 
                 case ComboStates.Fff:
-                    if (attack == AttackTypes.FastAttack)
+                    if (attack == AttackTypes.LightAttack)
                     {
                         _isAttacking = false;
                         EndCombo();
                     }
-                    else if (attack == AttackTypes.SlowAttack)
+                    else if (attack == AttackTypes.HeavyAttack)
                     {
                         _myAnimator.SetTrigger("SlowAttack");
+                        _comboTime = _defaultComboTime;
                         _isComboAnimation = false;
                         MovingDownAttackStart(50);
                     }
@@ -370,36 +425,49 @@ public class PlayerCombat : MonoBehaviour
 
         switch (attackType)
         {
-            case AttackTypes.FastAttack:
+            case AttackTypes.LightAttack:
                 _attackAreas[0].SetActive(true);
                 break;
-            case AttackTypes.SlowAttack:
+            case AttackTypes.HeavyAttack:
                 _attackAreas[1].SetActive(true);
                 break;
         }
     }
 
+    public void UpwardsAttack()
+    {
+        _playerController.IsOverride = true;
+        _playerController.AddDesiredVelocity(new Vector2(0, 26));
+    }
+
+    public void DownwardsAttack()
+    {
+        _playerController.AddDesiredVelocity(new Vector2(0, -30));
+    }
+
     public void UnstopabbleAttackBegin()
     {
         _hitbox.enabled = false;
+        _playerController.IsOverride = true;
     }
 
     public void UnstopabbleAttackEnd()
     {
         _hitbox.enabled = true;
+        _playerController.IsOverride = false;
     }
 
     public void MovingSideAttackStart(int velocity)
     {
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(velocity, 0) * transform.right;
+        _playerController.AddDesiredVelocity(new Vector2(50, 0) * transform.right);
     }
 
     public void MovingDownAttackStart(int velocity)
     {
         _attackAreas[2].SetActive(true);
         _playerController.IsOverride = true;
-        _playerController.Rigidbody.velocity = new Vector2(0, -30);
+        _playerController.Rigidbody.velocity = new Vector2(0, -300);
     }
 
     /// <summary>
@@ -411,10 +479,10 @@ public class PlayerCombat : MonoBehaviour
 
         switch (attackType)
         {
-            case AttackTypes.FastAttack:
+            case AttackTypes.LightAttack:
                 _attackAreas[0].SetActive(false);
                 break;
-            case AttackTypes.SlowAttack:
+            case AttackTypes.HeavyAttack:
                 _attackAreas[1].SetActive(false);
                 break;
         }
@@ -485,10 +553,17 @@ public class PlayerCombat : MonoBehaviour
     #endregion
 
     #region Hit
-    public void GetHit()
+    public void GetHit(Vector3 damagePosition)
     {
+        CancelCombo();
+
         _isInvulnerable = true;
         _hitbox.enabled = false;
+
+        Vector2 force = new Vector2(_horizontalForce, _verticalForce);
+        force.x *= damagePosition.x - transform.position.x > 0 ? -1 : 1;
+
+        _playerController.GetHit(force);
 
         StartCoroutine(HitVisualFeedback());
     }

@@ -116,7 +116,7 @@ public class BossController : MonoBehaviour
 
         if (playerCollider != null)
         {
-            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, transform.position);
         }
     }
 

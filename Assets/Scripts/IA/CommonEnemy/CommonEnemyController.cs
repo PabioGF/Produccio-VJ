@@ -69,7 +69,7 @@ public class CommonEnemyController : IAController
 
         if (playerCollider != null)
         {
-            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage);
+            playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, transform.position);
         }
     }
     #endregion
