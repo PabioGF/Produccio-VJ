@@ -33,11 +33,14 @@ public class PlayerCombat : MonoBehaviour
     [SerializeField] private float _verticalForce;
 
     [Header("Audio")]
+    [SerializeField] private AudioClip _hitSound;
+    [SerializeField] private AudioClip _damageSound;
     [SerializeField] private AudioClip _parrySound;
     [SerializeField] private AudioClip _counterSound;
 
     [Header("Audio Volumes")]
     [SerializeField] private float _hitVolume;
+    [SerializeField] private float _damageVolume;
     [SerializeField] private float _parryVolume;
     [SerializeField] private float _counterVolume;
 
@@ -207,7 +210,7 @@ public class PlayerCombat : MonoBehaviour
                 UIController.Instance.ShowCurrentCombo(_currComboLength);
             }
 
-            AudioManager.Instance.PlaySFX("Hit", _hitVolume);
+            _audioSource.PlayOneShot(_hitSound, _hitVolume);
             _isCombo = true;
             _isAttacking = true;
             _myAnimator.SetBool("isCombo", true);
@@ -559,6 +562,8 @@ public class PlayerCombat : MonoBehaviour
 
         _isInvulnerable = true;
         _hitbox.enabled = false;
+
+        _audioSource.PlayOneShot(_damageSound, _damageVolume);
 
         Vector2 force = new Vector2(_horizontalForce, _verticalForce);
         force.x *= damagePosition.x - transform.position.x > 0 ? -1 : 1;
