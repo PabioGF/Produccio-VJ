@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using TMPro;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -25,8 +26,14 @@ public class UIController : MonoBehaviour
         _statsPanel.SetActive(true);
     }
 
-    private void OnDisable()
+    private void Update()
     {
+        _combosIconsTimer += Time.deltaTime;
+
+        if (_combosIconsTimer > _combosShowTime)
+        {
+            ShowCurrentCombo(0);
+        }
     }
     #endregion
 
@@ -36,6 +43,21 @@ public class UIController : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreText;
     [SerializeField] private TextMeshProUGUI _shieldText;
     [SerializeField] private TextMeshProUGUI _bottlesText;
+    [SerializeField] private Slider slider;
+
+    [SerializeField] private TextMeshProUGUI _combosText;
+    [SerializeField] private Image[] _combosIcons;
+    [SerializeField] private string[] _combosPhrases;
+    [SerializeField] private Sprite _lightAttackIcon;
+    [SerializeField] private Sprite _heavyAttackIcon;
+    private float _combosIconsTimer;
+    private float _combosShowTime = 5;
+
+    public void UpdateHealthBar(float current, float max)
+    {
+        slider.value = current / max;
+
+    }
 
     public void SetLife(float life)
     {
@@ -65,6 +87,44 @@ public class UIController : MonoBehaviour
     {
         return int.Parse(_bottlesText.text);
     }
+
+    /// <summary>
+    /// Shows the current combo state the player is through icons of the attacks performed. 
+    /// </summary>
+    /// <param name="comboLength">Length of the current combo</param>
+    /// <param name="type">Type of the last attack performed</param>
+    public void ShowCurrentCombo(int comboLength, PlayerCombat.AttackTypes type = 0)
+    {
+        if (comboLength > _combosIcons.Length) return;
+
+        if (comboLength == 0)
+        {
+            _combosText.enabled = false;
+            foreach (Image icon in _combosIcons)
+            {
+                icon.enabled = false;
+            }
+            return;
+        }
+
+        _combosIconsTimer = 0;
+
+        switch (type)
+        {
+            case PlayerCombat.AttackTypes.LightAttack:
+                _combosIcons[comboLength - 1].sprite = _lightAttackIcon;
+                break;
+
+            case PlayerCombat.AttackTypes.HeavyAttack:
+                _combosIcons[comboLength - 1].sprite = _heavyAttackIcon;
+                break;
+        }
+
+        _combosText.enabled = true;
+        _combosText.text = _combosPhrases[comboLength - 1];
+        _combosIcons[comboLength - 1].enabled = true;
+    }
+
 
     #endregion
 

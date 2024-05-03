@@ -5,12 +5,13 @@ using UnityEngine;
 public class CameraController : MonoBehaviour
 {
     #region Global Variables
+    [HideInInspector] public static CameraController Instance;
+
     [SerializeField] private Transform _player;
-    [SerializeField] private Rigidbody2D _playerRb;
-    [SerializeField] private PlayerController _playerController;
+    private Rigidbody2D _playerRb;
+    private PlayerController _playerController;
 
     [Header("Camera Settings")]
-
     [SerializeField] private float _maxDampingX;
     [SerializeField] private float _minDampingX;
     [SerializeField] private float _maxDampingY;
@@ -30,11 +31,24 @@ public class CameraController : MonoBehaviour
 
     private float _dampingX = 1f;
     private float _dampingY;
-
-    private bool _yDampIsOff;
     #endregion
 
     #region Unity Methods
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        _playerRb = _player.GetComponent<Rigidbody2D>();
+        _playerController = _player.GetComponent<PlayerController>();
+    }
+
     private void Start()
     {
         Vector3 newPositon = transform.position;

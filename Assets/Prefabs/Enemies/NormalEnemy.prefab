@@ -144,10 +144,6 @@ MonoBehaviour:
   _detectionDistance: 15
   _attackRange: 3
   _enablingDistance: 40
-  _scoreAddWhenDead: 0
-  _dropChance: 0.2
-  _possibleDrops:
-  - {fileID: 5745545581012444004, guid: 445731e2133a30c47a5d9a17e59f4500, type: 3}
   _attackPoint: {fileID: 7690980103226691953}
   _attackDamage: 1
   _attackRadius: 1.5
@@ -400,5 +396,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
   _maxLife: 7
-  _punchSound: {fileID: 8300000, guid: 950a9094d14c2e449bd96eefccffa020, type: 3}
+  _scoreAddWhenDead: 100
+  _punchSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
   _punchVolume: 0.6

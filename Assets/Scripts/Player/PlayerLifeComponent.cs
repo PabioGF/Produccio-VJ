@@ -43,11 +43,12 @@ public class PlayerLifeComponent : MonoBehaviour
 
         _currentLife = _maxLife;
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
         
     }
 
-    public void ReceiveHit(float amount)
+    public void ReceiveHit(float amount, Vector3 damagePosition)
     {
         // If the player is deflecting, counter attacks
         if (_playerCombat.Deflect)
@@ -60,6 +61,7 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_playerCombat.IsInvulnerable) return;
 
         GameController.Instance.StopTime(0f, _hitStopDuration);
+        StartCoroutine(CameraShaker.Instance.ShakeCamera(.5f, .8f));
 
         // If the player has a shield, removes it instead of taking the damage and stops
         if (_playerController.HasItem(InventoryItem.ItemType.Shield))
@@ -74,13 +76,13 @@ public class PlayerLifeComponent : MonoBehaviour
             }
 
             UIController.Instance.SetShield(_shield);
-
             return;
         }
 
         // Recieves the damage of the hit, updates the UI and checks if the player is dead
         _currentLife -= amount;
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
     
         GameController.Instance.SubstractScore(_scoreSubstractByHit);
@@ -95,7 +97,7 @@ public class PlayerLifeComponent : MonoBehaviour
         }
 
         // Visually shows the player has been hit
-        _playerCombat.GetHit();
+        _playerCombat.GetHit(damagePosition);
     }
 
     /// <summary>
@@ -108,6 +110,7 @@ public class PlayerLifeComponent : MonoBehaviour
         if (_currentLife > _maxLife) _currentLife = _maxLife;
         
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);
+        UIController.Instance.UpdateHealthBar(_currentLife, _maxLife);
         UIController.Instance.SetLife(_currentLife);
         
         StartCoroutine(FlashGreen());
