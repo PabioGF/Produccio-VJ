@@ -20,11 +20,18 @@ public class RangeEnemyController : IAController
         base.EnemyBasicMovement();
 
         if (!hasDetected) return;
-        if (DistanceToPlayer() <= minPlayerDistance) return;
+        if (DistanceToPlayer() <= minPlayerDistance) {
+            myVelocity.x = 0;
+            myRB.velocity = myVelocity;
+            return;
+
+
+        };
        
         Vector3 direction = (_player.position - transform.position).normalized;
         myVelocity.x = velocidadMovimiento * direction.x;
         myRB.velocity = myVelocity;
+
         //Debug.Log(myRB.velocity);
     }
 
@@ -37,7 +44,7 @@ public class RangeEnemyController : IAController
     }
     private void PerformAttack(int type)
     {
-        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("Player"));
+        Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("PlayerHitbox"));
 
         if (playerCollider != null)
         {
