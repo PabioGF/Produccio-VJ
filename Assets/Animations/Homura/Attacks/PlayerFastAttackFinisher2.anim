@@ -21,9 +21,11 @@ AnimationClip:
   - serializedVersion: 2
     curve:
     - time: 0
-      value: {fileID: 21300000, guid: 0b472ba22d32d65469f613fcb797e7d5, type: 3}
+      value: {fileID: 21300000, guid: b848d7614db122544aac020302cd1bbc, type: 3}
+    - time: 0.083333336
+      value: {fileID: 21300000, guid: 7b5a3767bfe24f44a8e6094337aed134, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 918fcde4490d5694581a1bf20b250874, type: 3}
+      value: {fileID: 21300000, guid: a972f870b96ab1b4581ccdcc42675854, type: 3}
     attribute: m_Sprite
     path: Sprite
     classID: 212
@@ -46,14 +48,15 @@ AnimationClip:
       isIntCurve: 0
       isSerializeReferenceCurve: 0
     pptrCurveMapping:
-    - {fileID: 21300000, guid: 0b472ba22d32d65469f613fcb797e7d5, type: 3}
-    - {fileID: 21300000, guid: 918fcde4490d5694581a1bf20b250874, type: 3}
+    - {fileID: 21300000, guid: b848d7614db122544aac020302cd1bbc, type: 3}
+    - {fileID: 21300000, guid: 7b5a3767bfe24f44a8e6094337aed134, type: 3}
+    - {fileID: 21300000, guid: a972f870b96ab1b4581ccdcc42675854, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.6666667
+    m_StopTime: 0.33333334
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -74,34 +77,34 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_Events:
   - time: 0
-    functionName: SendEnemiesFly
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 0.16666667
-    functionName: MovingSideAttackStart
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 20
-    messageOptions: 0
-  - time: 0.16666667
     functionName: EnableAttackArea
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0
+    functionName: SendEnemiesFly
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0
+    functionName: MovingSideAttackStart
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 20
+    messageOptions: 0
+  - time: 0.33333334
     functionName: DisableAttackArea
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: 0.6666667
+  - time: 0.33333334
     functionName: AttackFinished
     data: 
     objectReferenceParameter: {fileID: 0}

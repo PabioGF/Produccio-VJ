@@ -62,7 +62,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _parent: {fileID: 9079628943148725425}
   _maxLife: 3
-  _scoreAddWhenDead: 50
   _punchSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
   _punchVolume: 0.6
 --- !u!70 &54351462183456319
@@ -450,6 +449,10 @@ MonoBehaviour:
   _detectionDistance: 20
   _attackRange: 20
   _enablingDistance: 40
+  _scoreAddWhenDead: 0
+  _dropChance: 0
+  _possibleDrops:
+  - {fileID: 5745545581012444004, guid: 445731e2133a30c47a5d9a17e59f4500, type: 3}
   _highBullet: {fileID: 2941671906316021625, guid: 6160cc42f1cfa254ca2ff08f8de6f6b2, type: 3}
   _lowBullet: {fileID: 2941671906316021625, guid: 7be91bfefcbd04e4d8e3b00c05fccfa2, type: 3}
   _upperBulletProbability: 0.5
