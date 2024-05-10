@@ -39,7 +39,7 @@ public class RangeEnemyController : IAController
     {
         
         StandStill();
-        myAnimator.SetInteger("Combo", Random.Range(0, 2));
+        myAnimator.SetInteger("Combo", Random.Range(0, 4));
         myAnimator.SetTrigger("attack");
     }
     private void PerformAttack(int type)
@@ -53,12 +53,4 @@ public class RangeEnemyController : IAController
         }
     }
 
-    private void CambiaAtaque()
-    {
-        int num = Random.Range(0, 2);
-        if (num == 1)
-        {
-            myAnimator.SetTrigger("cambiaAtaque");
-        }
-    }
 }
