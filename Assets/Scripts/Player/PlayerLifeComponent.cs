@@ -93,6 +93,11 @@ public class PlayerLifeComponent : MonoBehaviour
         {
             PlayerController playerController = _parent.GetComponent<PlayerController>();
             playerController.Die();
+            if(AudioManager.Instance.IsPlayingMusic())
+            {
+                AudioManager.Instance.StopMusic();
+            }
+
             UIController.Instance.ShowDeathScreen();
         }
 

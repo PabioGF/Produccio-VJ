@@ -8,5 +8,10 @@ public class FinalBossStart : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         _boss.GetComponent<Animator>().enabled = true;
+        
+        if(!AudioManager.Instance.IsPlayingMusic()) { 
+            AudioManager.Instance.PlayMusic("BossOST"); 
+        }
+        
     }
 }
