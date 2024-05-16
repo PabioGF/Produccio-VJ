@@ -2139,8 +2139,8 @@ MonoBehaviour:
   - Awesome!
   - Excellent!
   - Breathtaking!
-  _lightAttackIcon: {fileID: 21300000, guid: 8f44d2f210411aa46bac9ea5df60ee5d, type: 3}
-  _heavyAttackIcon: {fileID: 21300000, guid: 71550c247e7685d4a934c6cbff12b824, type: 3}
+  _lightAttackIcon: {fileID: 21300000, guid: fab0916e2bd822449a2211a33b8244ab, type: 3}
+  _heavyAttackIcon: {fileID: 21300000, guid: 1b72c4ae84d72164e800a1ade898482f, type: 3}
   pausePanel: {fileID: 4292863082350324343}
   _selectedOptionPause: {fileID: 8338151682707091649}
   _comboList: {fileID: 4359188860201213546}
