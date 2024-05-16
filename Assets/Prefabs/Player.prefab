@@ -586,6 +586,7 @@ MonoBehaviour:
   sprite: {fileID: 7589495094095742432}
   _healthBar: {fileID: 1433311066666342560}
   _healSound: {fileID: 8300000, guid: ba66c6ba8f3f21b4098e6bf0cd60bc82, type: 3}
+  _deathSound: {fileID: 8300000, guid: be0eedf4c83ad4247a238d404dedacba, type: 3}
   _healVolume: 5
 --- !u!1 &5180191103471191624
 GameObject:
@@ -699,9 +700,12 @@ MonoBehaviour:
   _parryCd: 2
   _horizontalForce: 25
   _verticalForce: 15
+  _hitSound: {fileID: 0}
+  _damageSound: {fileID: 0}
   _parrySound: {fileID: 8300000, guid: 7cb7b7a1d77c647418df469344d83f9f, type: 3}
   _counterSound: {fileID: 8300000, guid: 58241ae8e4c83bd4091701a1a53319e6, type: 3}
   _hitVolume: 1
+  _damageVolume: 0
   _parryVolume: 2.5
   _counterVolume: 1.5
 --- !u!50 &7522392117402914908
