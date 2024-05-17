@@ -153,6 +153,7 @@ MonoBehaviour:
   _attackRadius: 1.5
   _minPlayerDistance: 3
   _moveSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
+  _hitSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
   tiempoEntreCombos: 5
 --- !u!95 &6157194604111591697
 Animator:
@@ -399,6 +400,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _parent: {fileID: 451018218054530674}
-  _maxLife: 7
+  _maxLife: 5
   _punchSound: {fileID: 8300000, guid: 38bac86f8a93a46769ac1987f5e1e3d9, type: 3}
   _punchVolume: 0.6

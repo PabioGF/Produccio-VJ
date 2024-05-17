@@ -458,7 +458,9 @@ MonoBehaviour:
   _upperBulletProbability: 0.5
   _pointer: {fileID: 1958296773575935271}
   _bulletSpeed: 5
-  _movementSound: {fileID: 0}
+  _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
+  _hitSound: {fileID: 8300000, guid: 8f7e88031c999491185bcbef0c34ecea, type: 3}
+  _bulletSound: {fileID: 8300000, guid: 1f45635900ff046bf99af4f1e555ba72, type: 3}
 --- !u!95 &4380129257016360922
 Animator:
   serializedVersion: 5

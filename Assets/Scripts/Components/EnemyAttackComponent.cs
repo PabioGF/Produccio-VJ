@@ -1,12 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Data;
 using UnityEngine;
 
 public class EnemyAttackComponent : MonoBehaviour
 {
     [SerializeField] private float _damage;
     [SerializeField] private int _scoreSubstractByContact;
+
+    private IAController _enemyController;
+
+    private void Start()
+    {
+        _enemyController = GetComponentInParent<IAController>(); 
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -15,6 +21,8 @@ public class EnemyAttackComponent : MonoBehaviour
             Debug.Log(collision.gameObject.name);
             life.ReceiveHit(_damage, transform.position);
             GameController.Instance.SubstractScore(_scoreSubstractByContact);
+
+            _enemyController.PlayHitSound(); 
         }
     }
 }

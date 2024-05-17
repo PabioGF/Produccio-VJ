@@ -700,12 +700,12 @@ MonoBehaviour:
   _parryCd: 2
   _horizontalForce: 25
   _verticalForce: 15
-  _hitSound: {fileID: 0}
-  _damageSound: {fileID: 0}
+  _hitSound: {fileID: 8300000, guid: e15d1d3a8a49841498d76670d6c3b3e7, type: 3}
+  _damageSound: {fileID: 8300000, guid: 8f31b088a22ab4a209af5c37fcd2f36c, type: 3}
   _parrySound: {fileID: 8300000, guid: 7cb7b7a1d77c647418df469344d83f9f, type: 3}
   _counterSound: {fileID: 8300000, guid: 58241ae8e4c83bd4091701a1a53319e6, type: 3}
   _hitVolume: 1
-  _damageVolume: 0
+  _damageVolume: 1
   _parryVolume: 2.5
   _counterVolume: 1.5
 --- !u!50 &7522392117402914908

@@ -9,6 +9,8 @@ public class ShooterEnemyController : IAController
     [SerializeField] private GameObject _pointer;
     [SerializeField] private float _bulletSpeed;
     [SerializeField] private AudioClip _movementSound;
+    [SerializeField] private AudioClip _hitSound;
+    [SerializeField] private AudioClip _bulletSound;
 
     private Rigidbody2D _rigidbody;
     private bool _upperBullet;
@@ -19,7 +21,7 @@ public class ShooterEnemyController : IAController
     {
         base.Start();
         myAnimator = GetComponent<Animator>();
-        _audioSource = GetComponent<AudioSource>(); 
+        _audioSource = GetComponent<AudioSource>();
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
@@ -37,7 +39,7 @@ public class ShooterEnemyController : IAController
 
         if (!hasDetected) return;
 
-       // Debug.Log(hasDetected);
+        // Debug.Log(hasDetected);
 
         // If the player is too far, gets closer
         if (DistanceToPlayer() >= _attackRange)
@@ -57,7 +59,7 @@ public class ShooterEnemyController : IAController
             myVelocity.x = 0;
             myAnimator.SetTrigger("Shoot");
             myRB.velocity = myVelocity;
-        } 
+        }
     }
 
     private void CalculateDirection()
@@ -71,11 +73,29 @@ public class ShooterEnemyController : IAController
         GameObject bullet = Random.value > _upperBulletProbability ? _highBullet : _lowBullet;
         GameObject newBullet = Instantiate(bullet, _pointer.transform.position, _pointer.transform.rotation);
         newBullet.GetComponent<BulletScript>().SetDirection(_aimDirection);
+
+        PlayBulletSound();
     }
 
     private void Shoot()
     {
         CalculateDirection();
         SpawnBullet();
+    }
+
+    private void PlayBulletSound()
+    {
+        if (_bulletSound != null)
+        {
+            _audioSource.PlayOneShot(_bulletSound);
+        }
+    }
+
+    public override void PlayHitSound()
+    {
+        if (_hitSound != null)
+        {
+            _audioSource.PlayOneShot(_hitSound);
+        }
     }
 }
