@@ -25,6 +25,7 @@ public class PlayerLifeComponent : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip _healSound;
+    [SerializeField] private AudioClip _deathSound;
     [SerializeField] private float _healVolume = 1.0f;
     private AudioSource _audioSource;
     #endregion
@@ -93,6 +94,11 @@ public class PlayerLifeComponent : MonoBehaviour
         {
             PlayerController playerController = _parent.GetComponent<PlayerController>();
             playerController.Die();
+            if(AudioManager.Instance.IsPlayingMusic())
+            {
+                AudioManager.Instance.StopMusic();
+            }
+            _audioSource.PlayOneShot(_deathSound, _healVolume);
             UIController.Instance.ShowDeathScreen();
         }
 

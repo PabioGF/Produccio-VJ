@@ -27,6 +27,16 @@ public class AudioManager : MonoBehaviour
 		}
 	}
 
+	public bool IsPlayingMusic()
+    {
+		return _musicSource.isPlaying;
+    }
+
+	public void StopMusic()
+    {
+		_musicSource.Stop();
+	}
+
 	public void PlayMusic(string theme)
 	{
         Sound s = Array.Find(_musicThemes, item => item.name == theme);
