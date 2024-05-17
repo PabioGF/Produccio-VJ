@@ -254,6 +254,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   leftFoot: {fileID: 92941463625662824}
   rightFoot: {fileID: 7934680985890369979}
+  _spriteRenderer: {fileID: 8547066362520411918}
   tiempoCambioDireccion: 3
   _detectionExtraTime: 2
   _velocityMultiplier: 1
@@ -265,8 +266,9 @@ MonoBehaviour:
   _attackRange: 5
   _enablingDistance: 40
   _scoreAddWhenDead: 0
-  _dropChance: 0
-  _possibleDrops: []
+  _dropChance: 0.5
+  _possibleDrops:
+  - {fileID: 5745545581012444004, guid: 445731e2133a30c47a5d9a17e59f4500, type: 3}
   minPlayerDistance: 5
   _attackPoint: {fileID: 4217127970759165449}
   _attackDamage: 1
