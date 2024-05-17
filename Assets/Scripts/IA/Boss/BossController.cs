@@ -14,7 +14,6 @@ public class BossController : MonoBehaviour
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private GameObject _jumpHitbox;
     [SerializeField] private GameObject[] _specialHitAreas;
-    [SerializeField] private GameObject _endDoor;
 
     [Header("Melee Attack Parameters")]
     [SerializeField] private float _attackRange;
