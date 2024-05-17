@@ -45,7 +45,7 @@ public class BossController : MonoBehaviour
     private bool _isJumping;
 
     private bool _hasFallenRight;
-    public int phase;
+    [HideInInspector] public int phase;
     #endregion
 
     #region Unity Methods
@@ -206,7 +206,7 @@ public class BossController : MonoBehaviour
         _rigidbody.velocity = new Vector2(0, -10);
         LookAtPlayer();
 
-        if (phase > 0 && Random.value < 0.6) _animator.SetTrigger("Special");
+        if (phase > 0 /*&& Random.value < 0.6*/) _animator.SetTrigger("Special");
 
         Invoke(nameof(ResetJump), _jumpCd);
     }
@@ -286,6 +286,7 @@ public class BossController : MonoBehaviour
     public void Die()
     {
         _animator.SetTrigger("Die");
+        AudioManager.Instance.StopMusic();
     }
 
     /// <summary>

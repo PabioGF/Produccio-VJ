@@ -28,7 +28,7 @@ public class Boss_Walk : StateMachineBehaviour
     {
         Move();
 
-        if (Vector2.Distance(_player.position, _bossRb.position) <= _jumpRange && _bossController.CanJump && _bossController.phase > 0 && Random.value < _bossController.jumpChance)
+        if (_bossController.phase > 0 && _bossController.CanJump && Vector2.Distance(_player.position, _bossRb.position) >= _meleeAttackRange && Vector2.Distance(_player.position, _bossRb.position) <= _shootRange)
         {
             animator.SetTrigger("Jump");
         }
