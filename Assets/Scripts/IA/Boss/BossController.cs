@@ -145,6 +145,8 @@ public class BossController : MonoBehaviour
     /// </summary>
     private void Shoot()
     {
+        AudioManager.Instance.PlaySFX("Gunshot", 1f);
+
         if (Random.value >= 0.5)
         {
             GameObject bullet = Instantiate(_highBullet, _attackPoint.transform.position, Quaternion.identity);

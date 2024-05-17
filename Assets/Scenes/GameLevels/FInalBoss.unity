@@ -35059,7 +35059,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: _sfxSounds.Array.size
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: _musicThemes.Array.size
@@ -35068,10 +35068,10 @@ PrefabInstance:
     - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: _sfxSounds.Array.data[4].clip
       value: 
-      objectReference: {fileID: 8300000, guid: be0eedf4c83ad4247a238d404dedacba, type: 3}
+      objectReference: {fileID: 8300000, guid: 5a714b2690b1bae4a9584dbe4ab84df5, type: 3}
     - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: _sfxSounds.Array.data[4].name
-      value: Death
+      value: Gunshot
       objectReference: {fileID: 0}
     - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: _musicThemes.Array.data[0].clip
