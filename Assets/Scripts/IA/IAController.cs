@@ -91,7 +91,7 @@ public class IAController : MonoBehaviour
             Debug.DrawRay(transform.position, (_player.position - transform.position).normalized * _detectionDistance, Color.red);
         }
 
-        // Si el rayo no choca con ningún objeto, devuelve true.
+        // Si el rayo no choca con ningï¿½n objeto, devuelve true.
         if (hit.collider != null && hit.collider.CompareTag("Player") && !hasDetected)
         {
             hasDetected = true;
@@ -219,4 +219,8 @@ public class IAController : MonoBehaviour
     public bool IsAttacking {  get { return _isAttacking; } set { _isAttacking = value; } }
     public bool IsFlying { get { return _isFlying; } set { _isFlying = value; } }
     public float AttackRange => _attackRange;
+
+    public virtual void PlayHitSound()
+    {
+    }
 }

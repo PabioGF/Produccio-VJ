@@ -8,6 +8,7 @@ public class CommonEnemyController : IAController
     [SerializeField] protected float _attackRadius;
     [SerializeField] private float _minPlayerDistance;
     [SerializeField] private AudioClip _moveSound;
+    [SerializeField] private AudioClip _hitSound;
 
     private AudioSource _audioSource;
 
@@ -70,6 +71,15 @@ public class CommonEnemyController : IAController
         if (playerCollider != null)
         {
             playerCollider.GetComponent<PlayerLifeComponent>().ReceiveHit(_attackDamage, transform.position);
+        }
+        PlayHitSound();
+    }
+
+    public override void PlayHitSound()
+    {
+        if (_hitSound != null)
+        {
+            _audioSource.PlayOneShot(_hitSound);
         }
     }
     #endregion
