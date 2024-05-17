@@ -254,6 +254,7 @@ MonoBehaviour:
   _player: {fileID: 942383339766095506, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
   leftFoot: {fileID: 92941463625662824}
   rightFoot: {fileID: 7934680985890369979}
+  _sprite: {fileID: 8547066362520411918}
   tiempoCambioDireccion: 3
   _detectionExtraTime: 2
   _velocityMultiplier: 1

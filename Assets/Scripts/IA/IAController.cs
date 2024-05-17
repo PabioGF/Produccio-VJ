@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
 
 
 public class IAController : MonoBehaviour
@@ -8,6 +9,7 @@ public class IAController : MonoBehaviour
     #region Global Variables
     [SerializeField] protected Transform _player;
     [SerializeField] private Transform leftFoot, rightFoot;
+    [SerializeField] private SpriteRenderer _sprite;
 
     [Header("Shared Enemy Movement Params")]
     [SerializeField] private float tiempoCambioDireccion;
@@ -180,10 +182,18 @@ public class IAController : MonoBehaviour
 
     public void GetHit()
     {
+        StartCoroutine(FlashRed());
         _isHit = true;
         myRB.gravityScale = 0;
         myRB.velocity = new(0, 0);
         _lastTimeHit = Time.time;
+    }
+
+    public IEnumerator FlashRed()
+    {
+        _sprite.color = Color.red;
+        yield return new WaitForSeconds(0.075f);
+        _sprite.color = Color.white;
     }
 
     public void StandStill()
