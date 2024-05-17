@@ -9,6 +9,7 @@ public class BossController : MonoBehaviour
     public float rightPositionLimit;
     public float leftPositionLimit;
 
+
     [SerializeField] private Transform _player;
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private Transform _attackPoint;
@@ -24,6 +25,7 @@ public class BossController : MonoBehaviour
     [SerializeField] private GameObject _lowBullet;
 
     [Header("Special Attack Parameters")]
+    public float jumpChance;
     [SerializeField] private float _minSeparation;
     [SerializeField] private float _maxSeparation;
     [SerializeField] private float _slashInBetweenTime;
@@ -43,7 +45,7 @@ public class BossController : MonoBehaviour
     private bool _isJumping;
 
     private bool _hasFallenRight;
-    private int _phase;
+    public int phase;
     #endregion
 
     #region Unity Methods
@@ -93,8 +95,8 @@ public class BossController : MonoBehaviour
 
     public void EnterSecondPhase()
     {
-        _phase = 1;
-        _animator.SetInteger("Phase", _phase);
+        phase = 1;
+        _animator.SetInteger("Phase", phase);
     }
 
     #region Melee Attacks
@@ -204,7 +206,7 @@ public class BossController : MonoBehaviour
         _rigidbody.velocity = new Vector2(0, -10);
         LookAtPlayer();
 
-        if (_phase > 0 /*&& Random.value >= 0.3*/) _animator.SetTrigger("Special");
+        if (phase > 0 && Random.value < 0.6) _animator.SetTrigger("Special");
 
         Invoke(nameof(ResetJump), _jumpCd);
     }

@@ -7,6 +7,7 @@ public class Boss_Walk : StateMachineBehaviour
     [SerializeField] private float _speed;
     [SerializeField] private float _meleeAttackRange;
     [SerializeField] private float _shootRange;
+    [SerializeField] private float _jumpRange;
     [SerializeField] private float _minPlayerDistance;
 
     private Transform _player;
@@ -27,7 +28,7 @@ public class Boss_Walk : StateMachineBehaviour
     {
         Move();
 
-        if ((_bossRb.position.x < _bossController.leftPositionLimit || _bossRb.position.x > _bossController.rightPositionLimit) && _bossController.CanJump)
+        if (Vector2.Distance(_player.position, _bossRb.position) <= _jumpRange && _bossController.CanJump && _bossController.phase > 0 && Random.value < _bossController.jumpChance)
         {
             animator.SetTrigger("Jump");
         }

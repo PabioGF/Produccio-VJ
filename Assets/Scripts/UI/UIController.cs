@@ -143,6 +143,7 @@ public class UIController : MonoBehaviour
     {
         if (!_isPaused)
         {
+            AudioManager.Instance.SetMusicVolume(0.2f);
             _isPaused = true;
             pausePanel.SetActive(true);
             Time.timeScale = 0;
@@ -163,6 +164,7 @@ public class UIController : MonoBehaviour
         _isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
+        AudioManager.Instance.SetMusicVolume(1f);
     }
 
     public void EnterComboList()
