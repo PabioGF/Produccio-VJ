@@ -439,7 +439,7 @@ MonoBehaviour:
   _player: {fileID: 0}
   leftFoot: {fileID: 8016048925861890010}
   rightFoot: {fileID: 3873727659237531460}
-  _sprite: {fileID: 208723352932924825}
+  _spriteRenderer: {fileID: 208723352932924825}
   tiempoCambioDireccion: 3
   _detectionExtraTime: 2
   _velocityMultiplier: 1
@@ -451,7 +451,7 @@ MonoBehaviour:
   _attackRange: 20
   _enablingDistance: 40
   _scoreAddWhenDead: 0
-  _dropChance: 0
+  _dropChance: 0.1
   _possibleDrops:
   - {fileID: 5745545581012444004, guid: 445731e2133a30c47a5d9a17e59f4500, type: 3}
   _highBullet: {fileID: 2941671906316021625, guid: 6160cc42f1cfa254ca2ff08f8de6f6b2, type: 3}
@@ -459,7 +459,9 @@ MonoBehaviour:
   _upperBulletProbability: 0.5
   _pointer: {fileID: 1958296773575935271}
   _bulletSpeed: 5
-  _movementSound: {fileID: 0}
+  _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
+  _hitSound: {fileID: 8300000, guid: 8f7e88031c999491185bcbef0c34ecea, type: 3}
+  _bulletSound: {fileID: 8300000, guid: 1f45635900ff046bf99af4f1e555ba72, type: 3}
 --- !u!95 &4380129257016360922
 Animator:
   serializedVersion: 5

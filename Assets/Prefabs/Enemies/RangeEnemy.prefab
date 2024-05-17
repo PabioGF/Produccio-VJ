@@ -251,10 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267570ead4aeabf4f8a701930fe9dde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 942383339766095506, guid: 436a0c9ac0f1b234b93973567f78a349, type: 3}
+  _player: {fileID: 0}
   leftFoot: {fileID: 92941463625662824}
   rightFoot: {fileID: 7934680985890369979}
-  _sprite: {fileID: 8547066362520411918}
+  _spriteRenderer: {fileID: 8547066362520411918}
   tiempoCambioDireccion: 3
   _detectionExtraTime: 2
   _velocityMultiplier: 1
@@ -266,12 +266,14 @@ MonoBehaviour:
   _attackRange: 5
   _enablingDistance: 40
   _scoreAddWhenDead: 0
-  _dropChance: 0
-  _possibleDrops: []
+  _dropChance: 0.5
+  _possibleDrops:
+  - {fileID: 5745545581012444004, guid: 445731e2133a30c47a5d9a17e59f4500, type: 3}
   minPlayerDistance: 5
   _attackPoint: {fileID: 4217127970759165449}
   _attackDamage: 1
   _attackRadius: 1.5
+  _attackSound: {fileID: 8300000, guid: a797b71ec90ee4a9ab1c430ae4c34405, type: 3}
   tiempoEntreCombos: 5
 --- !u!70 &2496860702915715158
 CapsuleCollider2D:

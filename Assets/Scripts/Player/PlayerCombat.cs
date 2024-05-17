@@ -183,7 +183,7 @@ public class PlayerCombat : MonoBehaviour
     /// </summary>
     private void ExecuteAttack()
     {
-        Debug.Log(_currComboLength);
+        //Debug.Log(_currComboLength);
 
         if (_isAttacking) return;
 
