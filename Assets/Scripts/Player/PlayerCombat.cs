@@ -491,6 +491,14 @@ public class PlayerCombat : MonoBehaviour
         }
     }
 
+    public void DisableAttackAreas()
+    {
+        foreach (var area in _attackAreas)
+        {
+            area.SetActive(false);
+        }
+    }
+
     /// <summary>
     /// Method called when the attack animation is over (animator method)
     /// </summary>
