@@ -1167,6 +1167,23 @@ MonoBehaviour:
       m_Action: Pause
       m_Flags: 0
     m_Flags: 0
+  _combos:
+    m_Name: Combos
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 124e1f51-2df2-4c93-bcb1-21b643684c3b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d5995480-a078-4ba3-8e8f-313d19862cae
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Combos
+      m_Flags: 0
+    m_Flags: 0
 --- !u!82 &6077456118691626416
 AudioSource:
   m_ObjectHideFlags: 0

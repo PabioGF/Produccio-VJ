@@ -22,6 +22,7 @@ public class PlayerInputsManager : MonoBehaviour
     [SerializeField] private InputAction _parry;
     [SerializeField] private InputAction _throw;
     [SerializeField] private InputAction _pause;
+    [SerializeField] private InputAction _combos;
 
     public InputDevices InputDevice { get; private set; }
     public enum InputDevices { Keyboard, Controller };
@@ -44,6 +45,8 @@ public class PlayerInputsManager : MonoBehaviour
         _parry.performed += ParryInput;
         _throw.performed += ThrowInput;
         _pause.performed += PauseInput;
+        _combos.performed += CombosInput;
+        _combos.canceled += CombosInput;
 
         InputSystem.onActionChange += InputSystem_onActionChange;
     }
@@ -84,6 +87,8 @@ public class PlayerInputsManager : MonoBehaviour
         _slowAttack.performed -= SlowAttackInput;
         _throw.performed -= ThrowInput;
         _pause.performed -= PauseInput;
+        _combos.performed -= CombosInput;
+        _combos.canceled -= CombosInput;
     }
 
     private void DisableInteraction()
@@ -169,6 +174,18 @@ public class PlayerInputsManager : MonoBehaviour
         }
     }
 
+    public void CombosInput(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            UIController.Instance.ShowComboList();
+        }
+        if (context.canceled)
+        {
+            UIController.Instance.ExitComboList();
+        }
+    }
+
     public void EnableControls()
     {
         _horizontalInput.Enable();
@@ -181,6 +198,7 @@ public class PlayerInputsManager : MonoBehaviour
         _parry.Enable();
         _throw.Enable();
         _pause.Enable();
+        _combos.Enable();
     }
 
     public void DisableControls()
@@ -194,5 +212,6 @@ public class PlayerInputsManager : MonoBehaviour
         _parry.Disable();
         _throw.Disable();
         _pause.Disable();
+        _combos.Disable();
     }
 }

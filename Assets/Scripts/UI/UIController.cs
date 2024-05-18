@@ -147,6 +147,7 @@ public class UIController : MonoBehaviour
             _isPaused = true;
             pausePanel.SetActive(true);
             Time.timeScale = 0;
+            ExitComboList();
 
             EventSystem.current.SetSelectedGameObject(_selectedOptionPause);
         }
@@ -167,16 +168,20 @@ public class UIController : MonoBehaviour
         AudioManager.Instance.SetMusicVolume(1f);
     }
 
-    public void EnterComboList()
+    public void ShowComboList()
     {
-        pausePanel.SetActive(false);
-        _comboList.SetActive(true);
+        if (!_comboList.activeSelf && Time.timeScale == 1)
+        {
+            _comboList.SetActive(true);
+        }
     }
 
     public void ExitComboList()
     {
-        pausePanel.SetActive(true);
-        _comboList.SetActive(false);
+        if (_comboList.activeSelf)
+        {
+            _comboList.SetActive(false);
+        }
     }
 
     /// <summary>
