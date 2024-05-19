@@ -62,6 +62,9 @@ public class PlayerCombat : MonoBehaviour
     private int _currComboLength;
     private float _parryPerformedTime;
 
+    private float _attackingTimer;
+    private bool _attackingTimerSet;
+
     public bool ComboIsExtended { get; set; }
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { LightAttack, HeavyAttack }
@@ -100,10 +103,30 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
+        CheckOverride();
         HandleTimers();
         ExecuteAttack();
     }
     #endregion
+
+    private void CheckOverride()
+    {
+        Debug.Log(_isAttacking);
+
+        if (_isAttacking)
+        {
+            _attackingTimer += Time.deltaTime;
+        }
+        else
+        {
+            _attackingTimer = 0;
+        }
+
+        if (_attackingTimer > 1)
+        {
+            _isAttacking = false;
+        }
+    }
 
     /// <summary>
     /// Controls the attack and dodge timers
