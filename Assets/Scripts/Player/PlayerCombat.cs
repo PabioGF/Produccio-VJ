@@ -463,7 +463,9 @@ public class PlayerCombat : MonoBehaviour
     public void MovingSideAttackStart(int velocity)
     {
         _playerController.IsOverride = true;
-        _playerController.AddDesiredVelocity(new Vector2(50, 0) * transform.right);
+        float direction = PlayerInputsManager.Instance.ReadHorizontalInput();
+        if (direction == 0) direction = transform.right.x;
+        _playerController.AddDesiredVelocity(new Vector2(50, 0) * direction);
     }
 
     public void MovingDownAttackStart(int velocity)
