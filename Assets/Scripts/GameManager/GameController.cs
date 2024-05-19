@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        PlayMusic();
     }
 
     #region Data Persistance
@@ -59,6 +60,25 @@ public class GameController : MonoBehaviour
         UIController.Instance.SetScore(_score);
     }
     #endregion
+
+    private void PlayMusic()
+    {
+        switch (LevelProgressController.Instance.LevelIndex)
+        {
+            case 1:
+                AudioManager.Instance.PlayMusic("Tutorial Theme");
+                break;
+            case 2:
+                AudioManager.Instance.PlayMusic("Level 1 Theme");
+                break;
+            case 3:
+                AudioManager.Instance.PlayMusic("Level 2 Theme");
+                break;
+            case 4:
+                AudioManager.Instance.PlayMusic("Level 3 Theme");
+                break;
+        }
+    }
 
     public void StopTime(float timeChange, float duration)
     {

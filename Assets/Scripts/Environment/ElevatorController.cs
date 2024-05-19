@@ -44,6 +44,7 @@ public class ElevatorController : InteractableObject
     private void CompleteLevel()
     {
         UIController.Instance.LevelCompleted();
+        AudioManager.Instance.StopMusic();
 
         LevelProgressController.Instance.LevelIndex += 1;
         LevelProgressController.Instance.IsCompleteScreen = true;

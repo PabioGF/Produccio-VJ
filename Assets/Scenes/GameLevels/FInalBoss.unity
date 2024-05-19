@@ -35057,38 +35057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a714b2690b1bae4a9584dbe4ab84df5, type: 3}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.data[4].name
-      value: Gunshot
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b76d1a261051fb5459cb1bb8c02711b7, type: 3}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.data[0].name
-      value: BossOST
-      objectReference: {fileID: 0}
-    - target: {fileID: 5848166449636905705, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5848166449636905705, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7735430360201230806, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
