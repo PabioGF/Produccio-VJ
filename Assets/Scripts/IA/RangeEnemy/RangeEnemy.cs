@@ -26,6 +26,12 @@ public class RangeEnemyController : IAController
             _audioSource = gameObject.AddComponent<AudioSource>();
         }
     }
+    private void OnDrawGizmosSelected()
+    {
+        if (_attackPoint == null) return;
+
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRadius);
+    }
 
     public override void EnemyBasicMovement()
     {
