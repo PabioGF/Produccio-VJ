@@ -205,7 +205,7 @@ public class BossController : MonoBehaviour
             _rigidbody.MovePosition(new Vector2(20, _rigidbody.position.y));
             _hasFallenRight = true;
         }
-        _rigidbody.velocity = new Vector2(0, -10);
+        _rigidbody.velocity = new Vector2(0, -20);
         LookAtPlayer();
 
         if (phase > 0 /*&& Random.value < 0.6*/) _animator.SetTrigger("Special");
@@ -271,7 +271,7 @@ public class BossController : MonoBehaviour
             yield return new WaitForSeconds(0.05f);
         }
 
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(.5f);
 
         foreach (GameObject area in _specialHitAreas)
         {

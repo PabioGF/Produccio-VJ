@@ -35342,6 +35342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1516637877146338729, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 1633093135538294683, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -35469,6 +35473,14 @@ PrefabInstance:
     - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: jumpChance
       value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _maxSeparation
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _minSeparation
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3916079951595933580, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_SortingOrder
@@ -35615,7 +35627,8 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4293697725588436231, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
