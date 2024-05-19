@@ -21,11 +21,11 @@ public class GameController : MonoBehaviour
         SaveSystem.SaveProgress(LevelProgressController.Instance);
     }
 
-    public void LoadProgress()
+    public bool LoadProgress()
     {
         ProgressData data = SaveSystem.LoadProgress();
 
-        if (data == null) return;
+        if (data == null) return false;
 
         LevelProgressController.Instance.LevelIndex = data.LevelIndex;
         LevelProgressController.Instance.Score = data.Score;
@@ -40,6 +40,8 @@ public class GameController : MonoBehaviour
         }
 
         ScenesController.Instance.LoadSceneByIndex(data.LevelIndex);
+
+        return true;
     }
     #endregion
 
