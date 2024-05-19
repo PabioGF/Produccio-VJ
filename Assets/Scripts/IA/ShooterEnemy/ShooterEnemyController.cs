@@ -25,6 +25,7 @@ public class ShooterEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 0.5f;
         }
     }
 

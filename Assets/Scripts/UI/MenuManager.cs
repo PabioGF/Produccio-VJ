@@ -12,7 +12,7 @@ public class MenuManager : MonoBehaviour
 
     private void Awake()
     {
-        AudioManager.Instance.StopMusic();
+        if (AudioManager.Instance != null) AudioManager.Instance.StopMusic();
         EventSystem.current.SetSelectedGameObject(_selectedOption);
     }
 

@@ -63,6 +63,8 @@ public class GameController : MonoBehaviour
 
     private void PlayMusic()
     {
+        if (LevelProgressController.Instance == null || AudioManager.Instance == null) return;
+
         switch (LevelProgressController.Instance.LevelIndex)
         {
             case 1:

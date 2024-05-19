@@ -142,7 +142,7 @@ public class UIController : MonoBehaviour
     {
         if (!_isPaused)
         {
-            AudioManager.Instance.SetMusicVolume(0.2f);
+            AudioManager.Instance.SetMusicVolume(0.1f);
             _isPaused = true;
             pausePanel.SetActive(true);
             Time.timeScale = 0;
@@ -164,7 +164,7 @@ public class UIController : MonoBehaviour
         _isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
-        AudioManager.Instance.SetMusicVolume(1f);
+        AudioManager.Instance.SetMusicVolume(0.3f);
     }
 
     public void ShowComboList()
@@ -189,7 +189,7 @@ public class UIController : MonoBehaviour
     public void GoMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Menu");
+        ScenesController.Instance.LoadSceneByIndex(0);
     }
 
     public void SaveGame()

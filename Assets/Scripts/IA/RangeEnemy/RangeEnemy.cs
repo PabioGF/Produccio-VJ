@@ -24,6 +24,7 @@ public class RangeEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 0.5f;
         }
     }
     private void OnDrawGizmosSelected()
@@ -55,13 +56,12 @@ public class RangeEnemyController : IAController
         StandStill();
         myAnimator.SetInteger("Combo", Random.Range(0, 4));
         myAnimator.SetTrigger("attack");
-
-        PlayAttackSound();
     }
 
     private void PerformAttack(int type)
     {
         Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("PlayerHitbox"));
+        PlayAttackSound();
 
         if (playerCollider != null)
         {
@@ -74,6 +74,7 @@ public class RangeEnemyController : IAController
     {
         if (_attackSound != null)
         {
+
             _audioSource.PlayOneShot(_attackSound);
         }
     }
