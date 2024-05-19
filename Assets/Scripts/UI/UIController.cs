@@ -55,9 +55,7 @@ public class UIController : MonoBehaviour
 
     public void UpdateHealthBar(float current, float max)
     {
-        Debug.Log("Hola?");
         slider.value = current / max;
-
     }
 
     public void SetLife(float life)

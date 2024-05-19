@@ -22,7 +22,7 @@ public class EnemyAttackComponent : MonoBehaviour
             life.ReceiveHit(_damage, transform.position);
             GameController.Instance.SubstractScore(_scoreSubstractByContact);
 
-            _enemyController.PlayHitSound(); 
+            if (_enemyController != null) _enemyController.PlayHitSound(); 
         }
     }
 }

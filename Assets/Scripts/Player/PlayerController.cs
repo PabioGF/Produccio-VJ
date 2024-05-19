@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (centerRaycast) _stopJump = true;       
-        
     }
 
     /// <summary>
