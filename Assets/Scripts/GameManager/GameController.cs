@@ -24,6 +24,9 @@ public class GameController : MonoBehaviour
     public void LoadProgress()
     {
         ProgressData data = SaveSystem.LoadProgress();
+
+        if (data == null) return;
+
         LevelProgressController.Instance.LevelIndex = data.LevelIndex;
         LevelProgressController.Instance.Score = data.Score;
         Debug.Log("Level Index Loaded: " + data.LevelIndex);
@@ -64,6 +67,8 @@ public class GameController : MonoBehaviour
     private void PlayMusic()
     {
         if (LevelProgressController.Instance == null || AudioManager.Instance == null) return;
+
+        AudioManager.Instance.SetMusicVolume(0.3f);
 
         switch (LevelProgressController.Instance.LevelIndex)
         {
