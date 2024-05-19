@@ -39,7 +39,7 @@ public class RangeEnemyController : IAController
         base.EnemyBasicMovement();
 
         if (!hasDetected) return;
-        if (DistanceToPlayer() <= minPlayerDistance)
+        if (DistanceToPlayer() <= minPlayerDistance || CheckMovementLimits())
         {
             myVelocity.x = 0;
             myRB.velocity = myVelocity;
