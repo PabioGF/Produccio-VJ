@@ -43,7 +43,6 @@ public class GameController : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
-        if (_score < 0) _score = 0;
         UIController.Instance.SetScore(_score);
     }
 
@@ -56,6 +55,7 @@ public class GameController : MonoBehaviour
     public void SubstractScore(int score)
     {
         _score -= score;
+        if (_score < 0) _score = 0;
         UIController.Instance.SetScore(_score);
     }
     #endregion
