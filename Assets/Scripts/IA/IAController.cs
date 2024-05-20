@@ -136,7 +136,7 @@ public class IAController : MonoBehaviour
         _canChangeDirection = true;
     }
 
-    private bool CheckMovementLimits()
+    protected bool CheckMovementLimits()
     {
         if (!_limitedMovement) return false;
         return transform.position.x >= _maxPosition || transform.position.x <= _minPosition;

@@ -25961,7 +25961,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 793200829}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 253db2008b50658498eded79a335beea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -27940,7 +27940,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 911861542}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 253db2008b50658498eded79a335beea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -30602,7 +30602,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1004143244}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 253db2008b50658498eded79a335beea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -35057,38 +35057,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: AudioManager
       objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.data[4].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: 5a714b2690b1bae4a9584dbe4ab84df5, type: 3}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _sfxSounds.Array.data[4].name
-      value: Gunshot
-      objectReference: {fileID: 0}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.data[0].clip
-      value: 
-      objectReference: {fileID: 8300000, guid: b76d1a261051fb5459cb1bb8c02711b7, type: 3}
-    - target: {fileID: 4622033193307883039, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: _musicThemes.Array.data[0].name
-      value: BossOST
-      objectReference: {fileID: 0}
-    - target: {fileID: 5848166449636905705, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5848166449636905705, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
-      propertyPath: m_audioClip
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7735430360201230806, guid: aeff9a7900de96a439bd983f5f212116, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -35342,6 +35310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 1516637877146338729, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.31
+      objectReference: {fileID: 0}
     - target: {fileID: 1633093135538294683, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -35470,6 +35442,14 @@ PrefabInstance:
       propertyPath: jumpChance
       value: 0.1
       objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _maxSeparation
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3601426364276538400, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _minSeparation
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 3916079951595933580, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_SortingOrder
       value: 2
@@ -35572,7 +35552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6500170216647299195, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: _maxLife
-      value: 3
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7098393101282493331, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
       propertyPath: m_PlayOnAwake
@@ -35615,7 +35595,8 @@ PrefabInstance:
       value: -0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 4293697725588436231, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}

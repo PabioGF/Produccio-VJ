@@ -24,7 +24,14 @@ public class RangeEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 0.5f;
         }
+    }
+    private void OnDrawGizmosSelected()
+    {
+        if (_attackPoint == null) return;
+
+        Gizmos.DrawWireSphere(_attackPoint.position, _attackRadius);
     }
 
     public override void EnemyBasicMovement()
@@ -32,7 +39,7 @@ public class RangeEnemyController : IAController
         base.EnemyBasicMovement();
 
         if (!hasDetected) return;
-        if (DistanceToPlayer() <= minPlayerDistance)
+        if (DistanceToPlayer() <= minPlayerDistance || CheckMovementLimits())
         {
             myVelocity.x = 0;
             myRB.velocity = myVelocity;
@@ -49,13 +56,12 @@ public class RangeEnemyController : IAController
         StandStill();
         myAnimator.SetInteger("Combo", Random.Range(0, 4));
         myAnimator.SetTrigger("attack");
-
-        PlayAttackSound();
     }
 
     private void PerformAttack(int type)
     {
         Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRadius, LayerMask.GetMask("PlayerHitbox"));
+        PlayAttackSound();
 
         if (playerCollider != null)
         {
@@ -68,6 +74,7 @@ public class RangeEnemyController : IAController
     {
         if (_attackSound != null)
         {
+
             _audioSource.PlayOneShot(_attackSound);
         }
     }

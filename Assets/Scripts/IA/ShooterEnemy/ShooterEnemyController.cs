@@ -25,6 +25,7 @@ public class ShooterEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.volume = 0.5f;
         }
     }
 
@@ -42,7 +43,7 @@ public class ShooterEnemyController : IAController
         // Debug.Log(hasDetected);
 
         // If the player is too far, gets closer
-        if (DistanceToPlayer() >= _attackRange)
+        if (DistanceToPlayer() >= _attackRange && !CheckMovementLimits())
         {
             Vector3 direction = (_player.position - transform.position).normalized;
             myVelocity.x = velocidadMovimiento * direction.x;
@@ -54,7 +55,7 @@ public class ShooterEnemyController : IAController
             }
         }
         // If it is within the range, shoots
-        else
+        else if (DistanceToPlayer() < _attackRange)
         {
             myVelocity.x = 0;
             myAnimator.SetTrigger("Shoot");

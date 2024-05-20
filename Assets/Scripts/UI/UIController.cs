@@ -56,7 +56,6 @@ public class UIController : MonoBehaviour
     public void UpdateHealthBar(float current, float max)
     {
         slider.value = current / max;
-
     }
 
     public void SetLife(float life)
@@ -143,10 +142,11 @@ public class UIController : MonoBehaviour
     {
         if (!_isPaused)
         {
-            AudioManager.Instance.SetMusicVolume(0.2f);
+            AudioManager.Instance.SetMusicVolume(0.1f);
             _isPaused = true;
             pausePanel.SetActive(true);
             Time.timeScale = 0;
+            ExitComboList();
 
             EventSystem.current.SetSelectedGameObject(_selectedOptionPause);
         }
@@ -164,19 +164,23 @@ public class UIController : MonoBehaviour
         _isPaused = false;
         pausePanel.SetActive(false);
         Time.timeScale = 1;
-        AudioManager.Instance.SetMusicVolume(1f);
+        AudioManager.Instance.SetMusicVolume(0.3f);
     }
 
-    public void EnterComboList()
+    public void ShowComboList()
     {
-        pausePanel.SetActive(false);
-        _comboList.SetActive(true);
+        if (!_comboList.activeSelf && Time.timeScale == 1)
+        {
+            _comboList.SetActive(true);
+        }
     }
 
     public void ExitComboList()
     {
-        pausePanel.SetActive(true);
-        _comboList.SetActive(false);
+        if (_comboList.activeSelf)
+        {
+            _comboList.SetActive(false);
+        }
     }
 
     /// <summary>
@@ -185,7 +189,7 @@ public class UIController : MonoBehaviour
     public void GoMainMenu()
     {
         Time.timeScale = 1;
-        SceneManager.LoadScene("Menu");
+        ScenesController.Instance.LoadSceneByIndex(0);
     }
 
     public void SaveGame()

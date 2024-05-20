@@ -62,6 +62,9 @@ public class PlayerCombat : MonoBehaviour
     private int _currComboLength;
     private float _parryPerformedTime;
 
+    private float _attackingTimer;
+    private bool _attackingTimerSet;
+
     public bool ComboIsExtended { get; set; }
     public enum DodgeType { HighDodge, LowDodge }
     public enum AttackTypes { LightAttack, HeavyAttack }
@@ -100,10 +103,30 @@ public class PlayerCombat : MonoBehaviour
 
     void Update()
     {
+        CheckOverride();
         HandleTimers();
         ExecuteAttack();
     }
     #endregion
+
+    private void CheckOverride()
+    {
+        Debug.Log(_isAttacking);
+
+        if (_isAttacking)
+        {
+            _attackingTimer += Time.deltaTime;
+        }
+        else
+        {
+            _attackingTimer = 0;
+        }
+
+        if (_attackingTimer > 1)
+        {
+            _isAttacking = false;
+        }
+    }
 
     /// <summary>
     /// Controls the attack and dodge timers
@@ -463,7 +486,9 @@ public class PlayerCombat : MonoBehaviour
     public void MovingSideAttackStart(int velocity)
     {
         _playerController.IsOverride = true;
-        _playerController.AddDesiredVelocity(new Vector2(50, 0) * transform.right);
+        float direction = PlayerInputsManager.Instance.ReadHorizontalInput();
+        if (direction == 0) direction = transform.right.x;
+        _playerController.AddDesiredVelocity(new Vector2(50, 0) * direction);
     }
 
     public void MovingDownAttackStart(int velocity)
@@ -488,6 +513,14 @@ public class PlayerCombat : MonoBehaviour
             case AttackTypes.HeavyAttack:
                 _attackAreas[1].SetActive(false);
                 break;
+        }
+    }
+
+    public void DisableAttackAreas()
+    {
+        foreach (var area in _attackAreas)
+        {
+            area.SetActive(false);
         }
     }
 

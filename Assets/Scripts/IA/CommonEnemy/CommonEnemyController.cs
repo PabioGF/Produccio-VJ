@@ -38,7 +38,7 @@ public class CommonEnemyController : IAController
         base.EnemyBasicMovement();
 
         if (!hasDetected) return;
-        if (DistanceToPlayer() <= _minPlayerDistance)
+        if (DistanceToPlayer() <= _minPlayerDistance || CheckMovementLimits())
         {
             myVelocity.x = 0;
             myRB.velocity = myVelocity;

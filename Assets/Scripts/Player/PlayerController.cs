@@ -187,7 +187,6 @@ public class PlayerController : MonoBehaviour
         }
 
         if (centerRaycast) _stopJump = true;       
-        
     }
 
     /// <summary>
@@ -334,8 +333,8 @@ public class PlayerController : MonoBehaviour
         if ((_playerCombat.IsAttacking && !_isOverride) || _isDashing) _desiredVelocity.y = 0;
         _rigidbody2D.velocity = _desiredVelocity;
 
-        Debug.Log("Desired velocity end: " + _desiredVelocity);
-        Debug.Log("Actual velocity: " + _rigidbody2D.velocity);
+        //Debug.Log("Desired velocity end: " + _desiredVelocity);
+        //Debug.Log("Actual velocity: " + _rigidbody2D.velocity);
     }
 
     /// <summary>

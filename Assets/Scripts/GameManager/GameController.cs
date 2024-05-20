@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        PlayMusic();
     }
 
     #region Data Persistance
@@ -20,9 +21,12 @@ public class GameController : MonoBehaviour
         SaveSystem.SaveProgress(LevelProgressController.Instance);
     }
 
-    public void LoadProgress()
+    public bool LoadProgress()
     {
         ProgressData data = SaveSystem.LoadProgress();
+
+        if (data == null) return false;
+
         LevelProgressController.Instance.LevelIndex = data.LevelIndex;
         LevelProgressController.Instance.Score = data.Score;
         Debug.Log("Level Index Loaded: " + data.LevelIndex);
@@ -36,6 +40,8 @@ public class GameController : MonoBehaviour
         }
 
         ScenesController.Instance.LoadSceneByIndex(data.LevelIndex);
+
+        return true;
     }
     #endregion
 
@@ -43,7 +49,6 @@ public class GameController : MonoBehaviour
     public void AddScore(int score)
     {
         _score += score;
-        if (_score < 0) _score = 0;
         UIController.Instance.SetScore(_score);
     }
 
@@ -56,9 +61,33 @@ public class GameController : MonoBehaviour
     public void SubstractScore(int score)
     {
         _score -= score;
+        if (_score < 0) _score = 0;
         UIController.Instance.SetScore(_score);
     }
     #endregion
+
+    private void PlayMusic()
+    {
+        if (LevelProgressController.Instance == null || AudioManager.Instance == null) return;
+
+        AudioManager.Instance.SetMusicVolume(0.3f);
+
+        switch (LevelProgressController.Instance.LevelIndex)
+        {
+            case 1:
+                AudioManager.Instance.PlayMusic("Tutorial Theme");
+                break;
+            case 2:
+                AudioManager.Instance.PlayMusic("Level 1 Theme");
+                break;
+            case 3:
+                AudioManager.Instance.PlayMusic("Level 2 Theme");
+                break;
+            case 4:
+                AudioManager.Instance.PlayMusic("Level 3 Theme");
+                break;
+        }
+    }
 
     public void StopTime(float timeChange, float duration)
     {

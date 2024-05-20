@@ -744,7 +744,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 5180191103471191624}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 253db2008b50658498eded79a335beea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1167,6 +1167,23 @@ MonoBehaviour:
       m_Action: Pause
       m_Flags: 0
     m_Flags: 0
+  _combos:
+    m_Name: Combos
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 124e1f51-2df2-4c93-bcb1-21b643684c3b
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: d5995480-a078-4ba3-8e8f-313d19862cae
+      m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Combos
+      m_Flags: 0
+    m_Flags: 0
 --- !u!82 &6077456118691626416
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1333,8 +1350,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1872837149
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: d2fc32e380e85084c926c557f8ff851a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

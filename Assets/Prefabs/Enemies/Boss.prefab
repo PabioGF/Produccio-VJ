@@ -103,7 +103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slider: {fileID: 8826307568836265716}
-  camera: {fileID: 0}
   target: {fileID: 3455354017850067926}
   offset: {x: 0, y: 2.2, z: 0}
 --- !u!1 &1475015454414882672
@@ -221,17 +220,18 @@ MonoBehaviour:
   - {fileID: 9040999086350263154}
   - {fileID: 6716873603471771198}
   - {fileID: 4284584700971535621}
-  _endDoor: {fileID: 0}
   _attackRange: 2.5
   _attackDamage: 1
   _highBullet: {fileID: 2941671906316021625, guid: 04b4684e3cec532438f7bc2e4a7f1d33, type: 3}
   _lowBullet: {fileID: 2941671906316021625, guid: c42c3a6aa7d535343827f7b1d75d7ab2, type: 3}
+  jumpChance: 0
   _minSeparation: 3
   _maxSeparation: 5
   _slashInBetweenTime: 0.1
   _meleeAttackCd: 3
-  _rangedAttackCd: 6
+  _rangedAttackCd: 5
   _jumpCd: 10
+  phase: 0
 --- !u!70 &5286904795136578241
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
