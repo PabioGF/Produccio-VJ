@@ -667,6 +667,7 @@ MonoBehaviour:
   _stepsSource: {fileID: 8064674044380660957}
   _jumpSound: {fileID: 8300000, guid: 0f31b9cc7649c4bf1a4bafb3db206b8b, type: 3}
   _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
+  _dashSound: {fileID: 8300000, guid: 997269c9b0f25d74f8e1385edc0c2b5b, type: 3}
   _movementVolume: 4
   _jumpVolume: 3
 --- !u!114 &5160320821678128178
