@@ -5,8 +5,10 @@ using UnityEngine;
 public class BossLifeComponent : LifeComponent
 {
     [SerializeField] private HealthBarComponent _healthBar;
+    [SerializeField] private BossController _controller;
     public override void ReceiveHit(float amount)
     {
+        _controller.ReceiveHit();
         base.ReceiveHit(amount);
 
         _healthBar.UpdateHealthBar(_currentLife, _maxLife);

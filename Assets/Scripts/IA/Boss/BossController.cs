@@ -9,26 +9,33 @@ public class BossController : MonoBehaviour
     public float rightPositionLimit;
     public float leftPositionLimit;
 
-
     [SerializeField] private Transform _player;
     [SerializeField] private GameObject _groundCheck;
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private GameObject _jumpHitbox;
     [SerializeField] private GameObject[] _specialHitAreas;
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private SpriteRenderer _spriteRenderer;
 
     [Header("Melee Attack Parameters")]
     [SerializeField] private float _attackRange;
     [SerializeField] private float _attackDamage;
+    [SerializeField] private AudioClip _punchSound;
+    [SerializeField] private AudioClip _fireBurstSound;
+    [SerializeField] private AudioClip _hitSound;
 
     [Header("Ranged Attack parameters")]
     [SerializeField] private GameObject _highBullet;
     [SerializeField] private GameObject _lowBullet;
+    [SerializeField] private AudioClip _gunSound;
+    [SerializeField] private AudioClip _shotgunSound;
 
     [Header("Special Attack Parameters")]
     public float jumpChance;
     [SerializeField] private float _minSeparation;
     [SerializeField] private float _maxSeparation;
     [SerializeField] private float _slashInBetweenTime;
+    [SerializeField] private AudioClip _jumpSound;
 
     [Header("Cooldowns")]
     [SerializeField] private float _meleeAttackCd;
@@ -113,6 +120,16 @@ public class BossController : MonoBehaviour
 
     private void PerformAttack(int type)
     {
+        switch (type)
+        {
+            case 1:
+                _audioSource.PlayOneShot(_punchSound);
+                break;
+            case 2:
+                _audioSource.PlayOneShot(_fireBurstSound);
+                break;
+        }
+
         Collider2D playerCollider = Physics2D.OverlapCircle(_attackPoint.position, _attackRange, LayerMask.GetMask("PlayerHitbox"));
 
         if (playerCollider != null)
@@ -143,26 +160,31 @@ public class BossController : MonoBehaviour
     /// <summary>
     /// Shoots a random type of bullet to the player
     /// </summary>
-    private void Shoot()
+    private void ShootGun()
     {
-        AudioManager.Instance.PlaySFX("Gunshot", 1f);
+        _audioSource.PlayOneShot(_gunSound);
 
-        if (Random.value >= 0.5)
+        GameObject bullet = Instantiate(_lowBullet, _attackPoint.transform.position, Quaternion.identity);
+        bullet.GetComponent<BulletScript>().SetDirection(transform.right);
+
+    }
+
+    private void ShootShotgun()
+    {
+        _audioSource.PlayOneShot(_shotgunSound);
+
+        for (int i = 0; i < 4; i++)
         {
             GameObject bullet = Instantiate(_highBullet, _attackPoint.transform.position, Quaternion.identity);
-            bullet.GetComponent<BulletScript>().SetDirection(transform.right);
+            bullet.GetComponent<BulletScript>().SetDirection(transform.right + new Vector3(0, Random.Range(-0.2f, 0.2f)));
         }
-        else
-        {
-            GameObject bullet = Instantiate(_lowBullet, _attackPoint.transform.position, Quaternion.identity);
-            bullet.GetComponent<BulletScript>().SetDirection(transform.right);
-        }
+        
     }
 
     /// <summary>
     /// Invokes the ranged attack reset
     /// </summary>
-    private void StopShooting()
+    public void StopShooting()
     {
         Invoke(nameof(ResetRangedAttack), _rangedAttackCd);
     }
@@ -182,6 +204,7 @@ public class BossController : MonoBehaviour
     /// </summary>
     public void Jump()
     {
+        _audioSource.PlayOneShot(_jumpSound);
         _isJumping = true;
         _canJump = false;
         _rigidbody.velocity = new Vector2(0, 50);
@@ -282,6 +305,18 @@ public class BossController : MonoBehaviour
     #endregion
 
     #region Die
+    public void ReceiveHit()
+    {
+        StartCoroutine(FlashRed());
+        _audioSource.PlayOneShot(_hitSound);
+    }
+    public IEnumerator FlashRed()
+    {
+        _spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.075f);
+        _spriteRenderer.color = Color.white;
+    }
+
     /// <summary>
     /// Triggers the death animation
     /// </summary>
