@@ -135,7 +135,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_movementSound != null && !_audioSource.isPlaying)
             {
-                _audioSource.PlayOneShot(_movementSound, _movementVolume);
+               // _audioSource.PlayOneShot(_movementSound, _movementVolume);
             }
         }
     }

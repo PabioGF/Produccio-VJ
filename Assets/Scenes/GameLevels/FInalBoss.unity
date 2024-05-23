@@ -35326,6 +35326,10 @@ PrefabInstance:
       propertyPath: _shotgunBullet
       value: 
       objectReference: {fileID: 2941671906316021625, guid: a9db9dbddfba0b64facf08f08c4dcc00, type: 3}
+    - target: {fileID: 6500170216647299195, guid: c4899c28b2741144a9caa7d690c338f8, type: 3}
+      propertyPath: _maxLife
+      value: 30
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
