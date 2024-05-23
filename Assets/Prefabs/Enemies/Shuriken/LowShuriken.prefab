@@ -101,7 +101,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _damage: 1
-  _attackType: 1
+  _scoreSubstractByContact: 5
 --- !u!50 &1811160521062728700
 Rigidbody2D:
   serializedVersion: 4

@@ -178,7 +178,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 7
-  _damage: 10
+  _damage: 8
   _throwSpeed: 50
   _playerTransform: {fileID: 0}
   _rigidbody: {fileID: 3674621935664875031}

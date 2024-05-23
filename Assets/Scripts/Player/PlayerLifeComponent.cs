@@ -25,6 +25,7 @@ public class PlayerLifeComponent : MonoBehaviour
 
     [Header("Audio")]
     [SerializeField] private AudioClip _healSound;
+    [SerializeField] private AudioClip _shieldHit;
     [SerializeField] private AudioClip _deathSound;
     [SerializeField] private float _healVolume = 1.0f;
     private AudioSource _audioSource;
@@ -67,12 +68,12 @@ public class PlayerLifeComponent : MonoBehaviour
         // If the player has a shield, removes it instead of taking the damage and stops
         if (_playerController.HasItem(InventoryItem.ItemType.Shield))
         {
-            Debug.Log("Shield");
             _playerController.RemoveItem(InventoryItem.ItemType.Shield);
 
             _shield = UIController.Instance.GetShield();
             if (_shield > 0)
             {
+                _audioSource.PlayOneShot(_shieldHit, 0.25f);
                 _shield -= 1;
             }
 
