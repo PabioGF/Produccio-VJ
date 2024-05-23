@@ -144,7 +144,7 @@ MonoBehaviour:
   _minPosition: 0
   _detectionDistance: 15
   _attackRange: 3
-  _enablingDistance: 40
+  _enablingDistance: 30
   _scoreAddWhenDead: 0
   _dropChance: 0.2
   _possibleDrops:

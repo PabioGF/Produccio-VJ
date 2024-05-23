@@ -24,7 +24,7 @@ public class RangeEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
-            _audioSource.volume = 0.5f;
+            _audioSource.spatialBlend = 0.8f;
         }
     }
     private void OnDrawGizmosSelected()

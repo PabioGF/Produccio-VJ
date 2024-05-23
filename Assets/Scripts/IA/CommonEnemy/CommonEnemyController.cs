@@ -23,6 +23,7 @@ public class CommonEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
+            _audioSource.spatialBlend = 0.8f;
         }
     }
 
@@ -51,7 +52,7 @@ public class CommonEnemyController : IAController
 
         if (_moveSound != null && !_audioSource.isPlaying && Mathf.Abs(myVelocity.x) > 0.1f)
         {
-            _audioSource.PlayOneShot(_moveSound);
+            _audioSource.PlayOneShot(_moveSound, 0.2f);
         }
     }
 

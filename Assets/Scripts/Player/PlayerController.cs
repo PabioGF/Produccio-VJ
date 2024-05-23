@@ -35,8 +35,10 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Sprite[] _interactionSprites;
 
     [Header("Audio")]
+    [SerializeField] private AudioSource _stepsSource;
     [SerializeField] private AudioClip _jumpSound;
     [SerializeField] private AudioClip _movementSound;
+    [SerializeField] private AudioClip _dashSound;
 
     [Header("Audio Volumes")]
     [SerializeField] private float _movementVolume = 1.0f;
@@ -100,6 +102,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         HandleInputs();
+        HandleStepsSound();
         _timer += Time.deltaTime;
     }
 
@@ -140,12 +143,46 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void StartStepSound()
+    {
+        _stepsSource.Play();
+    }
+
+    public void StopStepSound()
+    {
+        _stepsSource.Stop();
+    }
+
     /// <summary>
     /// Function called when the player dies
     /// </summary>
     public void Die()
     {
         PlayerInputsManager.Instance.DisableControls();
+    }
+
+    private void HandleStepsSound()
+    {
+        if (Time.timeScale == 0)
+        {
+            _stepsSource.Stop();
+        }
+        /*
+        if (_myAnimator.GetCurrentAnimatorStateInfo(0).IsName("Homura_walk") && Time.timeScale != 0)
+        {
+            if (!_stepsSource.isPlaying)
+            {
+                _stepsSource.Play();
+            }
+        }
+        else
+        {
+            if (_stepsSource.isPlaying)
+            {
+                _stepsSource.Stop();
+            }
+        } 
+        */
     }
     #endregion
 
@@ -219,13 +256,6 @@ public class PlayerController : MonoBehaviour
             {
                 float acceleration = _isGrounded ? _acceleration : _airAcceleration;
                 _desiredVelocity.x = Mathf.MoveTowards(_desiredVelocity.x, _movementInput * _maxSpeed, acceleration * Time.fixedDeltaTime);
-                if (_movementInput != 0 && _isGrounded)
-                {
-                    if (_movementSound != null && !_audioSource.isPlaying)
-                    {
-                        _audioSource.PlayOneShot(_movementSound);
-                    }
-                }
             }
         }
         if (_desiredVelocity.x < 0)
@@ -246,10 +276,11 @@ public class PlayerController : MonoBehaviour
         if (_desiredDash && !_playerCombat.IsAttacking && !_playerCombat.IsParrying)
         {
             _desiredDash = false;
-
+            
             // If it can, dashes towards the direction the player is inputting
             if (_timer - _dashPerformedTime > _dashCd)
             {
+                _audioSource.PlayOneShot(_dashSound, 0.5f);
                 _dashPerformedTime = _timer;
                 _isDashing = true;
 

@@ -25,7 +25,7 @@ public class ShooterEnemyController : IAController
         if (_audioSource == null)
         {
             _audioSource = gameObject.AddComponent<AudioSource>();
-            _audioSource.volume = 0.5f;
+            _audioSource.spatialBlend = 0.8f;
         }
     }
 
@@ -37,7 +37,6 @@ public class ShooterEnemyController : IAController
     public override void EnemyBasicMovement()
     {
         base.EnemyBasicMovement();
-
         if (!hasDetected) return;
 
         // Debug.Log(hasDetected);
@@ -49,10 +48,7 @@ public class ShooterEnemyController : IAController
             myVelocity.x = velocidadMovimiento * direction.x;
             myRB.velocity = myVelocity;
 
-            if (_movementSound != null && !_audioSource.isPlaying)
-            {
-                _audioSource.PlayOneShot(_movementSound);
-            }
+            
         }
         // If it is within the range, shoots
         else if (DistanceToPlayer() < _attackRange)
@@ -60,6 +56,11 @@ public class ShooterEnemyController : IAController
             myVelocity.x = 0;
             myAnimator.SetTrigger("Shoot");
             myRB.velocity = myVelocity;
+        }
+
+        if (_movementSound != null && !_audioSource.isPlaying)
+        {
+            _audioSource.PlayOneShot(_movementSound, 0.2f);
         }
     }
 
