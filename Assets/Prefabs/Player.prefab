@@ -586,6 +586,7 @@ MonoBehaviour:
   sprite: {fileID: 7589495094095742432}
   _healthBar: {fileID: 1433311066666342560}
   _healSound: {fileID: 8300000, guid: ba66c6ba8f3f21b4098e6bf0cd60bc82, type: 3}
+  _shieldHit: {fileID: 8300000, guid: 9dfc1e4013b7c954b86e506df9812229, type: 3}
   _deathSound: {fileID: 8300000, guid: be0eedf4c83ad4247a238d404dedacba, type: 3}
   _healVolume: 5
 --- !u!1 &5180191103471191624
@@ -1178,6 +1179,14 @@ MonoBehaviour:
     - m_Name: 
       m_Id: d5995480-a078-4ba3-8e8f-313d19862cae
       m_Path: <Keyboard>/tab
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Combos
+      m_Flags: 0
+    - m_Name: 
+      m_Id: 2bceef9f-9eb6-4921-970e-254b0d1448a8
+      m_Path: <Gamepad>/leftTrigger
       m_Interactions: 
       m_Processors: 
       m_Groups: 

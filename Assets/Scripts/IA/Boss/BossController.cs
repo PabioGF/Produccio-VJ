@@ -25,8 +25,8 @@ public class BossController : MonoBehaviour
     [SerializeField] private AudioClip _hitSound;
 
     [Header("Ranged Attack parameters")]
-    [SerializeField] private GameObject _highBullet;
-    [SerializeField] private GameObject _lowBullet;
+    [SerializeField] private GameObject _pistolBullet;
+    [SerializeField] private GameObject _shotgunBullet;
     [SerializeField] private AudioClip _gunSound;
     [SerializeField] private AudioClip _shotgunSound;
 
@@ -103,6 +103,7 @@ public class BossController : MonoBehaviour
     public void EnterSecondPhase()
     {
         phase = 1;
+        _canShoot = true;
         _animator.SetInteger("Phase", phase);
     }
 
@@ -164,7 +165,7 @@ public class BossController : MonoBehaviour
     {
         _audioSource.PlayOneShot(_gunSound);
 
-        GameObject bullet = Instantiate(_lowBullet, _attackPoint.transform.position, Quaternion.identity);
+        GameObject bullet = Instantiate(_pistolBullet, _attackPoint.transform.position, transform.rotation);
         bullet.GetComponent<BulletScript>().SetDirection(transform.right);
 
     }
@@ -175,7 +176,7 @@ public class BossController : MonoBehaviour
 
         for (int i = 0; i < 4; i++)
         {
-            GameObject bullet = Instantiate(_highBullet, _attackPoint.transform.position, Quaternion.identity);
+            GameObject bullet = Instantiate(_shotgunBullet, _attackPoint.transform.position, Quaternion.identity);
             bullet.GetComponent<BulletScript>().SetDirection(transform.right + new Vector3(0, Random.Range(-0.2f, 0.2f)));
         }
         
