@@ -12,6 +12,8 @@ public class FinalBossStart : MonoBehaviour
         if(!AudioManager.Instance.IsPlayingMusic()) { 
             AudioManager.Instance.PlayMusic("BossOST"); 
         }
+
+        gameObject.SetActive(false);
         
     }
 }

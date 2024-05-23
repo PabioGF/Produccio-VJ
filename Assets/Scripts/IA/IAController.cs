@@ -65,7 +65,11 @@ public class IAController : MonoBehaviour
     #region Movement
     public virtual void EnemyBasicMovement()
     {
-        if (DistanceToPlayer() > _enablingDistance) return;
+        if (DistanceToPlayer() > _enablingDistance)
+        {
+            myRB.velocity = Vector3.zero;
+            return;
+        }
 
         myVelocity = myRB.velocity;
         LookAtPlayer();
