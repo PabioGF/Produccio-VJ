@@ -274,6 +274,7 @@ MonoBehaviour:
   _attackDamage: 1
   _attackRadius: 2.5
   _attackSound: {fileID: 8300000, guid: a797b71ec90ee4a9ab1c430ae4c34405, type: 3}
+  _movementSound: {fileID: 8300000, guid: 89cdb265fefe14ba18a02060987b4cc1, type: 3}
   tiempoEntreCombos: 5
 --- !u!70 &2496860702915715158
 CapsuleCollider2D:

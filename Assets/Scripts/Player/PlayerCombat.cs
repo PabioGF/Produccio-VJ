@@ -111,8 +111,6 @@ public class PlayerCombat : MonoBehaviour
 
     private void CheckOverride()
     {
-        Debug.Log(_isAttacking);
-
         if (_isAttacking)
         {
             _attackingTimer += Time.deltaTime;

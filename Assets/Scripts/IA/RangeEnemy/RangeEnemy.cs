@@ -10,6 +10,7 @@ public class RangeEnemyController : IAController
     [SerializeField] private float _attackDamage;
     [SerializeField] protected float _attackRadius;
     [SerializeField] private AudioClip _attackSound;
+    [SerializeField] private AudioClip _movementSound;
 
     public float tiempoEntreCombos = 5.0f;
 
@@ -49,6 +50,11 @@ public class RangeEnemyController : IAController
         Vector3 direction = (_player.position - transform.position).normalized;
         myVelocity.x = velocidadMovimiento * direction.x;
         myRB.velocity = myVelocity;
+
+        if (_movementSound != null && !_audioSource.isPlaying && Mathf.Abs(myVelocity.x) > 0.1f && Time.timeScale != 0)
+        {
+            _audioSource.PlayOneShot(_movementSound, 0.2f);
+        }
     }
 
     public void Attack()

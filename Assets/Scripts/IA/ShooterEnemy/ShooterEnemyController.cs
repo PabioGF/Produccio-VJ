@@ -58,7 +58,7 @@ public class ShooterEnemyController : IAController
             myRB.velocity = myVelocity;
         }
 
-        if (_movementSound != null && !_audioSource.isPlaying)
+        if (_movementSound != null && !_audioSource.isPlaying && Mathf.Abs(myVelocity.x) > 0.1f && Time.timeScale != 0)
         {
             _audioSource.PlayOneShot(_movementSound, 0.2f);
         }
